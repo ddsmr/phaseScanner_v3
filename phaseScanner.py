@@ -1,10 +1,10 @@
 # import os
 import subprocess
 import json
-from multiprocessing import Process, Queue, Pipe
+import re
 import importlib
+from multiprocessing import Process, Queue, Pipe
 from time import gmtime, strftime
-
 
 from halo import Halo
 from tqdm import tqdm
@@ -17,7 +17,7 @@ from Utils.printUtils import *
 from Utils.SmartRandomGenerator.smartRand import *
 from Utils.metaLogging import *
 from Utils.constrEval  import *
-# from Utils.multiThreadAlg import *
+from Utils.multiThreadAlg import *
 
 
 
@@ -45,6 +45,73 @@ def genRndDict(paramDict):
                               )
                             ])
     return rndDict
+def chunkList(listToChunk, noOfLits):
+    '''
+        Chunks a list into n  = noOfLits smaller lists. Used in the genetic algorithm.
+
+        Arguments:
+            - listToChunk       ::   List user wants to split (chunk) into noOfLits lists.
+            - noOfLits          ::   Number of lists to be split into
+
+        Returns:
+            - listOfLists = [ [...], [...], ...   ]
+    '''
+    index = 0
+    listOfLists = []
+
+    for i in range(noOfLits):
+        listOfLists.append([])
+
+    lenLtC = len(listToChunk)
+    for index in range (len(listToChunk)):
+
+        listOfLists[index%noOfLits].append(listToChunk[index])
+
+    for memberListIdx in range(len(listOfLists)):
+        if (len(listOfLists[memberListIdx]) == 0):
+              listOfLists[memberListIdx] = listOfLists[int(random.uniform(0, memberListIdx))]
+
+    return listOfLists
+def fixJsonWAppend(jsonDir):
+    '''
+        Give a FOCUS Directory jSonDir, the function will use regEx to fix the append issue for the json files produced in the Generational algorithm.
+    '''
+    p = re.compile(r'}{')
+    toReplace = r','
+
+    # 'SO11Hosotani_DummyCase/Dicts/Focus_15_04_2019/'
+    # jsonDir = 'Results/SO11Hosotani_DummyCase/Dicts/Focus_06_05_2019/'
+
+    for jsonDict in os.listdir(jsonDir):
+
+        if ('.json' in jsonDict) and ('Focus' not in jsonDict):
+            try:
+                with open(jsonDir + jsonDict, 'r') as inFile:
+                    jsonContent = inFile.readline()
+                    correctedJSON = p.sub(toReplace, jsonContent)
+
+                    nbJson = jsonDict.split('ThreadNb')[1]
+
+                    fileName = 'Focus_Clifford' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) +'_FixedJson-ThreadNb' + nbJson
+                    newJson = open(jsonDir + fileName, 'w')
+                    newJson.write(correctedJSON)
+                    newJson.close()
+
+                    # Remove the old file if the new Json is fixed
+                try:
+                    with open(jsonDir + fileName, 'r') as inFile:
+                        fixedDict = json.load(inFile)
+
+                    subprocess.call('rm ' + jsonDict, shell = True, cwd = jsonDir)
+                except:
+                    print('Failed to Fix Json ', jsonDict)
+
+            except Exception as e:
+                print('Failed to open ', jsonDict, ' with Exception ', e)
+
+    return None
+
+
 
 class phaseScannerModel:
     '''
@@ -339,11 +406,7 @@ class phaseScannerModel:
 
 
                 genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
-
                 phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
-
-
-
                 phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
                 massTruth = generatingEngine._check0Mass( phaseSpaceDict )
 
@@ -531,6 +594,7 @@ class phaseScannerModel:
                         phaseSpaceDict[point][calcParam] = calcParamVal
 
                     ############## External ################################
+                    ###### COMEBACK
                     if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
 
                         routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
@@ -679,37 +743,49 @@ class phaseScannerModel:
 
         return phaseSpaceDict
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'diffEvol'):
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol'):
         '''
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
 
-        # if sortByChiSquare == False:
-        #     numberOfPoints = len( list( phaseSpaceDict.keys() ) )
-        #
-        #
-        # bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare )
-        #
-        # listOfchi2Lists = chunkList(bestChiSquares, numbOfCores)
-        # listOfsortedChi2Lists= chunkList(sortedChiSquare_ListOfTuples, numbOfCores)
-        configString = 'Utils.multiThreadAlg'
+        if sortByChiSquare == False:
+            numberOfPoints = len( list( phaseSpaceDict.keys() ) )
 
-        try:
-            algModule = importlib.import_module(configString)
-        except Exception as e:
-            print(e)
 
-        from Utils.multiThreadAlg import exec(algorithm)
-        exit()
+        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare )
 
+        listOfchi2Lists = chunkList(bestChiSquares, numbOfCores)
+        listOfsortedChi2Lists= chunkList(sortedChiSquare_ListOfTuples, numbOfCores)
 
         localQue = Queue()
-        processes = { 'Proc::'+str(x+1) : Process(target = self._walkAroundListOfPoints_Gamma ,
-                                                args=(localQue, listOfchi2Lists[x],
-                                                listOfsortedChi2Lists[x], str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug, numberOfPoints, chi2LowerBound )
+        algClasses = [ minimAlg( self,  localQue , listOfchi2Lists[x], listOfsortedChi2Lists[x],
+                                str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug,  chi2LowerBound)
+                      for x in range(numbOfCores)]
+        # algClasses = [ minimAlg( )
+        #     for x in range(numbOfCores)]
+
+        # pp(algDict)
+
+        # exit()
+
+        # print (    Process(target =  algClasses[0].__class__.__dict__['singleCellEvol'],
+        #                     args= [algClasses[0].__init__]
+        #                                         )
+        #                                         )
+        # exit()
+        processes = { 'Proc::'+str(x+1) : Process(target =  algClasses[x].__class__.__dict__[algorithm],
+                                                args=[ algClasses[x] ]
                                                 )
                     for x in range(numbOfCores) }
 
+        # exit()
+        # processes = { 'Proc::'+str(x+1) : Process(target =  algDict[algorithm],
+        #                                         args=(self, localQue, listOfchi2Lists[x], listOfsortedChi2Lists[x],
+        #                                         str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug,  chi2LowerBound )
+        #                                         )
+        #             for x in range(numbOfCores) }
+
+        # exit()
 
         ######################## Printing info and generating Scan ID ########################
         scanID = self.modelName + self.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime())
@@ -727,10 +803,15 @@ class phaseScannerModel:
         spinner.start()
 
         try:
-            while True:
-                continue
+            while len(processes) > 0 :
+                result = localQue.get()
+
+                if type(result) == int:
+                    processes['Proc::'+str(result)].terminate()
+                    del processes['Proc::'+str(result)]
+
         except KeyboardInterrupt:
-            print('Process killed by user')
+            print('\nProcess killed by user')
 
         ############ Terminate the processes #############
         for procKey in processes.keys():
@@ -755,6 +836,7 @@ if __name__ == '__main__':
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
     # modelConstr = constrEval( newModel )
+    # newModel.runMultiThreadExplore(numberOfPoints = 50)
 
     psDict = newModel.loadResults( )
-    newModel.runGenerationMultithread(psDict)
+    newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 4, chi2LowerBound = 10000, debug = False)

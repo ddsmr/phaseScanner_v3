@@ -41,6 +41,7 @@ class constrEval:
         for key in self.allDicts.keys():
 
             if key not in self.noneAttr:
+                # print(phaseSpacePointDict, key)
                 notemptyDict = notemptyDict and bool(phaseSpacePointDict[key])
 
         if notemptyDict == True:

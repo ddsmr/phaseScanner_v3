@@ -77,3 +77,15 @@ def printHeader(scanType, scanStage, numberOfCores):
 
 
     return None
+
+def printGenMsg(genNb, chi2Min, threadNumber, printStr, percChange):
+    '''
+    '''
+    print(delimitator2)
+    print ('\n'+'For ' +Fore.GREEN+'Gen# ' + str(genNb)+ Style.RESET_ALL +
+            ' the best' + Fore.RED +  ' χ² of ', round(chi2Min,4) ,
+            Fore.YELLOW + ' from ThreadNb :' + str(int(threadNumber)+1) ,
+             # ' from point ', minKey ,
+            "   |   ", Fore.BLUE + printStr +  Style.RESET_ALL, percChange , '%' )
+    print(delimitator2)
+    return None
