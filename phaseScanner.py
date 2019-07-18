@@ -3,8 +3,11 @@ import subprocess
 import json
 import re
 import importlib
+import pickle
 from multiprocessing import Process, Queue, Pipe
 from time import gmtime, strftime
+from datetime import date, datetime
+
 
 from halo import Halo
 from tqdm import tqdm
@@ -18,6 +21,8 @@ from Utils.SmartRandomGenerator.smartRand import *
 from Utils.metaLogging import *
 from Utils.constrEval  import *
 from Utils.multiThreadAlg import *
+
+
 
 
 
@@ -45,7 +50,7 @@ def genRndDict(paramDict):
                               )
                             ])
     return rndDict
-def chunkList(listToChunk, noOfLits):
+def chunkList(listToChunk, noOfLits, threadNBSort = False):
     '''
         Chunks a list into n  = noOfLits smaller lists. Used in the genetic algorithm.
 
@@ -61,6 +66,14 @@ def chunkList(listToChunk, noOfLits):
 
     for i in range(noOfLits):
         listOfLists.append([])
+
+    # pp(listOfLists)
+    if threadNBSort == True:
+        for i in range( len(listToChunk) ):
+            # print(i // (len(listToChunk) // noOfLits))
+            listOfLists[i // (len(listToChunk) // noOfLits)].append( listToChunk[i] )
+        return listOfLists
+        # exit()
 
     lenLtC = len(listToChunk)
     for index in range (len(listToChunk)):
@@ -110,8 +123,46 @@ def fixJsonWAppend(jsonDir):
                 print('Failed to open ', jsonDict, ' with Exception ', e)
 
     return None
+def writeGenStat(resultsDirDicts, threadNumber, listOfStats, listOfStatsNames):
+    with open(resultsDirDicts + 'GenStatus_ThreadNb'+ threadNumber +'.dat', 'a') as outFile:
+
+        outFile.write(  ''.join(  attrName + str(attr) + '   ||  '
+                                for attrName, attr in zip(listOfStatsNames, listOfStats)
+                                            ) +'\n'  )
+    return None
+def checkListForLatestDate( dateList ):
+    '''
+        Given a list of dates function will check all FOLDERS and return the string corresponding to the latest date.
+    '''
+    listOfDates = []
+    listOfTimes = []
+    for strDate in dateList:
+        print(strDate)
+        splitDateStr_aux = strDate.split('_')
+        splitDateStr = splitDateStr_aux[0].split('-')
+        print(splitDateStr)
+
+        newDate = datetime(int(splitDateStr[3]), int(splitDateStr[1]), int(splitDateStr[2]), hour=int(splitDateStr_aux[1]), minute=int(splitDateStr_aux[2]), second=int(splitDateStr_aux[3]) )
+        # newTime =
+
+        listOfDates.append(newDate)
+    # pp(listOfDates)
+
+    return max( listOfDates )
+def convertDateTimeToStr( dateTime ):
+    '''
+        Given a datetime object it will output a string of the form MM-DD-YYYY_HH_MM_SS
+    '''
+    monthStr = '0' + str(dateTime.month)
+    dayStr = '0' + str(dateTime.day)
+    hourStr = '0' + str(dateTime.hour)
+    minStr = '0' + str(dateTime.minute)
+    secStr = '0' + str(dateTime.second)
 
 
+    dateStr = monthStr[-2:]+ '-' + dayStr[-2:]  + '-' + str(dateTime.year) + '_'+ hourStr[-2:] + '_'+ minStr[-2:]+ '_'+ secStr[-2:]
+
+    return dateStr
 
 class phaseScannerModel:
     '''
@@ -635,7 +686,7 @@ class phaseScannerModel:
 
         return phaseSpaceDict
 
-    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr ='Global', specificCuts = 'Global', ignoreConstrList = [], returnDict = False, exportAsDict = False, sortByChiSquare = True):
+    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr ='Global', specificCuts = 'Global', ignoreConstrList = [], returnDict = False, exportAsDict = False, sortByChiSquare = True, sortbyThrNb = False):
         '''
             Given a phase Space dictionary, and a the top number of points to be ranked via their chi2 value, the function returns the sorted list of chi2 . Can be toggled to return the dictionary, or return the countChi2 random number of points.
         '''
@@ -661,12 +712,17 @@ class phaseScannerModel:
                 chiSquareDict[pointKey] = chiSquare
 
 
-
-        if sortByChiSquare == True:
-            sortedChiSquare_ListOfTuples = sorted(chiSquareDict.items(), key=lambda kv: kv[1])
+        # pp(chiSquareDict)
+        if sortbyThrNb == True:
+            sortedChiSquare_ListOfTuples = sorted(chiSquareDict.items(), key=lambda kv: kv[0])
         else:
-            sortedChiSquare_ListOfTuples = [ (pointKey, chiSquareDict[pointKey]) for pointKey in chiSquareDict.keys()   ]
+            if sortByChiSquare == True:
+                sortedChiSquare_ListOfTuples = sorted(chiSquareDict.items(), key=lambda kv: kv[1])
+            else:
+                sortedChiSquare_ListOfTuples = [ (pointKey, chiSquareDict[pointKey]) for pointKey in chiSquareDict.keys()   ]
 
+        # pp(sortedChiSquare_ListOfTuples)
+        # exit()
         # pp(sortedChiSquare_ListOfTuples)
         # print(delimitator)
         # pp(constrAux)
@@ -743,7 +799,16 @@ class phaseScannerModel:
 
         return phaseSpaceDict
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol'):
+    def _exportFocusStats(self, focusDir, nbOfPoints, numbOfCores, algorithm):
+        '''
+            Exports the stats of the focus run so it can be recreated
+        '''
+        dataDict= {'nbOfPoints' : nbOfPoints, 'numbOfCores': numbOfCores, 'algorihm':algorithm}
+        with open(focusDir + 'RunCard.pickle', 'wb') as fPickl:
+            pickle.dump(dataDict, fPickl, pickle.HIGHEST_PROTOCOL)
+
+
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False):
         '''
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
@@ -752,10 +817,20 @@ class phaseScannerModel:
             numberOfPoints = len( list( phaseSpaceDict.keys() ) )
 
 
-        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare )
+        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload)
 
-        listOfchi2Lists = chunkList(bestChiSquares, numbOfCores)
-        listOfsortedChi2Lists= chunkList(sortedChiSquare_ListOfTuples, numbOfCores)
+        # pp(bestChiSquares)
+        # pp(sortedChiSquare_ListOfTuples)
+        # exit()
+        # if reload == True:
+            # pass
+
+        listOfchi2Lists = chunkList(bestChiSquares, numbOfCores, threadNBSort = reload)
+        listOfsortedChi2Lists= chunkList(sortedChiSquare_ListOfTuples, numbOfCores, threadNBSort = reload)
+
+        # pp(listOfchi2Lists)
+        # pp(listOfsortedChi2Lists)
+        # exit()
 
         localQue = Queue()
         algClasses = [ minimAlg( self,  localQue , listOfchi2Lists[x], listOfsortedChi2Lists[x],
@@ -789,8 +864,11 @@ class phaseScannerModel:
 
         ######################## Printing info and generating Scan ID ########################
         scanID = self.modelName + self.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime())
-        resultsDirDicts = self.resultDir + 'Dicts/Focus' + strftime("_%d_%m_%Y/", gmtime())
+        resultsDirDicts = self.resultDir + 'Dicts/Focus' + strftime("-%m-%d-%Y_%H_%M_%S/", gmtime())
         subprocess.call('mkdir ' + resultsDirDicts, shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirDicts + 'GenResults', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+        self._exportFocusStats(resultsDirDicts, numberOfPoints, numbOfCores, algorithm)
+
         print(delimitator)
 
 
@@ -806,9 +884,33 @@ class phaseScannerModel:
             while len(processes) > 0 :
                 result = localQue.get()
 
-                if type(result) == int:
-                    processes['Proc::'+str(result)].terminate()
-                    del processes['Proc::'+str(result)]
+
+                #### Update the generational status of the thread sending the information
+                if 'GenStat' in result.keys():
+                    genNb, chi2Min, chi2Mean, chi2Std = result['GenStat']['GenNb'], result['GenStat']['chi2Min'] , result['GenStat']['chi2Mean'], result['GenStat']['chi2Std']
+
+
+
+                    writeGenStat(resultsDirDicts, str(result['GenStat']['ThreadNb']),
+                                [genNb, chi2Min, chi2Mean, chi2Std],
+                                ['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '] )
+
+                    subprocess.call('rm '+ resultsDirDicts  + 'GenResults/*ThreadNb-' + str(result['GenStat']['ThreadNb']) + '*', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+
+                    with open(resultsDirDicts  +'GenResults/GenResults.' + str(genNb) + '-ThreadNb-'+ str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
+                        json.dump(result['GenStat']['GenDict'], genOut)
+
+
+                #### Update the json result file of the thread sending the info
+                if 'NewPoint' in result.keys():
+                    scanIDwThread = scanID + '_ThreadNb-' + str(result['NewPoint']['ThreadNb'])
+                    with open( resultsDirDicts +'ScanResults.' + scanIDwThread + '.json', 'a') as outfile:
+                        json.dump(result['NewPoint']['Dict'], outfile)
+
+                #### Terminate the respective thread sending the information
+                if 'Terminate' in result.keys():
+                    processes['Proc::'+str(result['Terminate'])].terminate()
+                    del processes['Proc::'+str(result['Terminate'])]
 
         except KeyboardInterrupt:
             print('\nProcess killed by user')
@@ -826,7 +928,62 @@ class phaseScannerModel:
 
         return resultDict
 
+    def resumeGenRun(self, focusDateTime_str = 'MostRecent'):
+        '''
+            Used to continue the generational multirun if interupted.
+        '''
 
+        try:
+            focusDate = ''
+            dirEntries = os.listdir(self.resultDir + 'Dicts/')
+
+            listOfDirs = []
+            for dirEntry in dirEntries:
+                if 'Focus' in dirEntry and ('.' not in dirEntry):
+                    listOfDirs.append(dirEntry.replace('Focus_', ''))
+
+
+            focusDate_DateTime = checkListForLatestDate(listOfDirs)
+            focusDateTime_str = convertDateTimeToStr( focusDate_DateTime )
+
+        except Exception as e:
+            print(e)
+            raise
+        # print(focusDate)
+        # exit()
+
+        focusDir = self.resultDir+  'Dicts/Focus-' + focusDateTime_str +'/'
+        pickleName = focusDir + 'RunCard.pickle'
+        with open(pickleName , 'rb') as fPickl:
+            # The protocol version used is detected automatically, so we do not
+            # have to specify it.
+            runCard = pickle.load(fPickl)
+        exit()
+        threadDict = []
+
+        try:
+            dirEntries = os.listdir(focusDir + 'GenResults/')
+            for dirEntry in dirEntries:
+                with open(focusDir + 'GenResults/' + dirEntry, 'r') as jsonIn:
+                    thData = json.load(jsonIn)
+
+                thrNb = str( dirEntry.split('ThreadNb-')[1].replace('.json', ''))
+                threadDict .append( thData )
+        except Exception as e:
+            print(e)
+            raise
+        # pp(runCard)
+
+
+        psDict = {}
+        for dictToApp in threadDict:
+            psDict.update(dictToApp)
+        # pp(psDict)
+        # print(delimitator)
+        # exit()
+        newModel.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = False, reload = True)
+
+        return None
 if __name__ == '__main__':
 
     modelName = 'testEngine'
@@ -839,4 +996,5 @@ if __name__ == '__main__':
     # newModel.runMultiThreadExplore(numberOfPoints = 50)
 
     psDict = newModel.loadResults( )
-    newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 4, chi2LowerBound = 10000, debug = False)
+    # newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 8, chi2LowerBound = 0.1, debug = False, algorithm = 'diffEvol')
+    newModel.resumeGenRun()
