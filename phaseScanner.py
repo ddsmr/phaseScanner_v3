@@ -137,10 +137,10 @@ def checkListForLatestDate( dateList ):
     listOfDates = []
     listOfTimes = []
     for strDate in dateList:
-        print(strDate)
+        # print(strDate)
         splitDateStr_aux = strDate.split('_')
         splitDateStr = splitDateStr_aux[0].split('-')
-        print(splitDateStr)
+        # print(splitDateStr)
 
         newDate = datetime(int(splitDateStr[3]), int(splitDateStr[1]), int(splitDateStr[2]), hour=int(splitDateStr_aux[1]), minute=int(splitDateStr_aux[2]), second=int(splitDateStr_aux[3]) )
         # newTime =
@@ -608,7 +608,7 @@ class phaseScannerModel:
         return None
 
     #####################  Evaluations ##############################################
-    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson = False):
+    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson = False, ignoreInternal = False, ignoreExternal = False):
         '''
         Given a phaseSpaceDict, for each point in the phase space,  the function will go through the calcDict specified in the configFile, and calculate the specified attributes.
 
@@ -635,38 +635,30 @@ class phaseScannerModel:
 
 
                     ############## InternalCalc ################################
-                    if self.calc[calcParam]['Calc']['Type'] == 'InternalCalc':
-                        for paramToUse in self.calc[calcParam]['Calc']['ToCalc']['ParamList']:
-                            exec(paramToUse + '=' +
-                                 str(phaseSpaceDict[point][paramToUse]))
+                    if ignoreInternal == False:
+                        if self.calc[calcParam]['Calc']['Type'] == 'InternalCalc':
+                            for paramToUse in self.calc[calcParam]['Calc']['ToCalc']['ParamList']:
+                                exec(paramToUse + '=' +
+                                     str(phaseSpaceDict[point][paramToUse]))
 
-                        calcParamVal = eval( self.calc[calcParam]['Calc']['ToCalc']['Expression'])
+                            calcParamVal = eval( self.calc[calcParam]['Calc']['ToCalc']['Expression'])
 
-                        phaseSpaceDict[point][calcParam] = calcParamVal
+                            phaseSpaceDict[point][calcParam] = calcParamVal
 
                     ############## External ################################
-                    ###### COMEBACK
-                    if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
+                    if ignoreExternal == False:
+                        if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
 
-                        routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
-                        methodStr = self.calc[calcParam]['Calc']['Method']
+                            routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
+                            methodStr = self.calc[calcParam]['Calc']['Method']
 
-                        routineModule = importlib.import_module(routineStr)
+                            routineModule = importlib.import_module(routineStr)
 
-                        paramListStr = ''
-                        for paramToUse in self.calc[calcParam]['Calc']['ParamList']:
-                            exec(paramToUse + '=' +
-                                 str(phaseSpaceDict[point][paramToUse]))
-                            paramListStr = paramListStr + paramToUse + ','
+                            extParamDict = {}
+                            for paramName in self.calc[calcParam]['Calc']['ParamList']:
+                                extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
-
-
-
-                        routineCmd = 'routineModule.' + methodStr + '('+ paramListStr[:-1]  +')'
-                        exec( calcParam + '_Aux =' + routineCmd)
-                        phaseSpaceDict[point][calcParam] = eval( calcParam + '_Aux')
-
-                        # pp(phaseSpaceDict[point])
+                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict)
 
 
 
@@ -871,8 +863,6 @@ class phaseScannerModel:
 
         print(delimitator)
 
-
-
         resultDict = {}
         for procKey in processes.keys():
             processes[procKey].start()
@@ -889,6 +879,16 @@ class phaseScannerModel:
                 if 'GenStat' in result.keys():
                     genNb, chi2Min, chi2Mean, chi2Std = result['GenStat']['GenNb'], result['GenStat']['chi2Min'] , result['GenStat']['chi2Mean'], result['GenStat']['chi2Std']
 
+                    #### self._evalKillThread(genNb, chi2Min, chi2Mean, chi2Std, algorithm)
+                    # thrNb_str = str(result['GenStat']['ThreadNb'])
+                    #
+                    # if genNb > 5 and thrNb_str == '1':
+                    #     processes['Proc::'+ thrNb_str].terminate()
+                    #     del processes['Proc::'+ thrNb_str]
+                    #     print(len(processes))
+                    #     print(3* (Fore.RED + delimitator))
+                    #
+                    #     self.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'})
 
 
                     writeGenStat(resultsDirDicts, str(result['GenStat']['ThreadNb']),
@@ -928,9 +928,23 @@ class phaseScannerModel:
 
         return resultDict
 
-    def resumeGenRun(self, focusDateTime_str = 'MostRecent'):
+    def _setAlgParams(self, algorithm, numbOfCores, nbOfPoints):
         '''
-            Used to continue the generational multirun if interupted.
+            Given the algorithm will set  numberOfPoints ,  sortByChiSquare
+        '''
+        algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints,
+                                    'nbOfPoints': nbOfPoints,
+                                     'sortByChiSquare': True},
+                    'diffEvol':{'numbOfCores': numbOfCores,
+                                'nbOfPoints': nbOfPoints,
+                                'sortByChiSquare': False}
+                }
+
+        return algDict[algorithm]
+
+    def resumeGenRun(self, focusDateTime_str = 'MostRecent', swicthAlg = False, threadNb = 'All'):
+        '''
+            Used to continue the generational multirun if interupted. Defaults to the most recent run of the model, loads the parameter and algorithm runs from the pickle run file.
         '''
 
         try:
@@ -958,7 +972,6 @@ class phaseScannerModel:
             # The protocol version used is detected automatically, so we do not
             # have to specify it.
             runCard = pickle.load(fPickl)
-        exit()
         threadDict = []
 
         try:
@@ -972,7 +985,21 @@ class phaseScannerModel:
         except Exception as e:
             print(e)
             raise
-        # pp(runCard)
+        pp(runCard)
+        sortByChiSquare = False
+        reload = True
+
+        if type(swicthAlg) == dict:
+            runCard['algorihm'] = swicthAlg['NewAlg']
+            newAlgDict = self._setAlgParams(swicthAlg['NewAlg'], runCard['numbOfCores'], runCard['nbOfPoints'])
+            # pp(newAlgDict)
+            runCard['nbOfPoints'], runCard['numbOfCores'], sortByChiSquare = newAlgDict['nbOfPoints'], newAlgDict['numbOfCores'], newAlgDict['sortByChiSquare']
+            reload = False
+
+            # pass
+            ## Will change the run card
+        pp(runCard)
+        # exit()
 
 
         psDict = {}
@@ -980,10 +1007,17 @@ class phaseScannerModel:
             psDict.update(dictToApp)
         # pp(psDict)
         # print(delimitator)
-        # exit()
-        newModel.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = False, reload = True)
+        newModel.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = sortByChiSquare, reload = reload)
 
         return None
+
+    def chainEvents(self, eventTrigger):
+        '''
+        '''
+
+        return None
+
+
 if __name__ == '__main__':
 
     modelName = 'testEngine'
@@ -992,9 +1026,21 @@ if __name__ == '__main__':
 
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
-    # modelConstr = constrEval( newModel )
-    # newModel.runMultiThreadExplore(numberOfPoints = 50)
+
+    # routineStr = 'Routines.testExtCalc'
+    # routineModule = importlib.import_module(routineStr)
+    # methodStr = 'testRoutine'
+    #
+    #
+    # fakeList = ['a', 'b', {'a':1}]
+    # print( routineModule.__dict__[methodStr](fakeList)  )
+
+
+    # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
+
+    # pp( newModel.runMultiThreadExplore(numberOfPoints = 10) )
 
     psDict = newModel.loadResults( )
-    # newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 8, chi2LowerBound = 0.1, debug = False, algorithm = 'diffEvol')
+    newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 8, chi2LowerBound = 0.1, debug = False, algorithm = 'diffEvol')
+    # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'})
     newModel.resumeGenRun()

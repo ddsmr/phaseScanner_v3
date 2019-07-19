@@ -73,6 +73,27 @@ calcDict={
                         }
                     }
 
+},
+
+'extTest':{
+    'LaTeX': r'$\Delta a_{\mu}$' ,
+    'Marker': 'O',
+    'Calc' : {'Type':'ExternalCalc',
+              'Routine': 'testExtCalc',
+              'Method' : 'testRoutine',
+              'ParamList': ['Lambda', 'Kappa', 'tanBeta']
+              },
+
+
+    'Constraint': {
+        'Type': 'None',#<<<<<
+        'ToCheck': {
+                        'CentralVal': 100,
+                        'TheorySigma': 1.0,
+                        'ExpSigma': 0.0
+                        }
+                    }
+
 }
 
 }
