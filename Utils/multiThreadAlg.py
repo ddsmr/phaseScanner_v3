@@ -819,7 +819,7 @@ class minimAlg:
         return None
 
     @regAlg
-    def metropolisHastings(self):
+    def metropolisHastings( self ):
         '''
             aaaaas
         '''
@@ -855,3 +855,6 @@ class minimAlg:
 
 
 algDict = regAlg.all
+subAlg_rules = {'diffEvol'      :{'Children': ['singleCellEvol'], 'KillAlg':['CurrMiMeStd', 'CurrPrevMiMi']},
+                'singleCellEvol':{'Children': ['singleCellEvol'], 'KillAlg':['CurrPrevMiMi']}
+                }

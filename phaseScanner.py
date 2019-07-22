@@ -828,35 +828,16 @@ class phaseScannerModel:
         algClasses = [ minimAlg( self,  localQue , listOfchi2Lists[x], listOfsortedChi2Lists[x],
                                 str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug,  chi2LowerBound)
                       for x in range(numbOfCores)]
-        # algClasses = [ minimAlg( )
-        #     for x in range(numbOfCores)]
 
-        # pp(algDict)
-
-        # exit()
-
-        # print (    Process(target =  algClasses[0].__class__.__dict__['singleCellEvol'],
-        #                     args= [algClasses[0].__init__]
-        #                                         )
-        #                                         )
-        # exit()
         processes = { 'Proc::'+str(x+1) : Process(target =  algClasses[x].__class__.__dict__[algorithm],
                                                 args=[ algClasses[x] ]
                                                 )
                     for x in range(numbOfCores) }
 
-        # exit()
-        # processes = { 'Proc::'+str(x+1) : Process(target =  algDict[algorithm],
-        #                                         args=(self, localQue, listOfchi2Lists[x], listOfsortedChi2Lists[x],
-        #                                         str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug,  chi2LowerBound )
-        #                                         )
-        #             for x in range(numbOfCores) }
-
-        # exit()
 
         ######################## Printing info and generating Scan ID ########################
         scanID = self.modelName + self.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime())
-        resultsDirDicts = self.resultDir + 'Dicts/Focus' + strftime("-%m-%d-%Y_%H_%M_%S/", gmtime())
+        resultsDirDicts = self.resultDir + 'Dicts/Focus'+ strftime("-%m-%d-%Y_%H_%M_%S/", gmtime())
         subprocess.call('mkdir ' + resultsDirDicts, shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
         subprocess.call('mkdir ' + resultsDirDicts + 'GenResults', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
         self._exportFocusStats(resultsDirDicts, numberOfPoints, numbOfCores, algorithm)
@@ -867,8 +848,8 @@ class phaseScannerModel:
         for procKey in processes.keys():
             processes[procKey].start()
 
-        spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
-        spinner.start()
+        # spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
+        # spinner.start()
 
         try:
             while len(processes) > 0 :
@@ -878,27 +859,37 @@ class phaseScannerModel:
                 #### Update the generational status of the thread sending the information
                 if 'GenStat' in result.keys():
                     genNb, chi2Min, chi2Mean, chi2Std = result['GenStat']['GenNb'], result['GenStat']['chi2Min'] , result['GenStat']['chi2Mean'], result['GenStat']['chi2Std']
-
-                    #### self._evalKillThread(genNb, chi2Min, chi2Mean, chi2Std, algorithm)
-                    # thrNb_str = str(result['GenStat']['ThreadNb'])
-                    #
-                    # if genNb > 5 and thrNb_str == '1':
-                    #     processes['Proc::'+ thrNb_str].terminate()
-                    #     del processes['Proc::'+ thrNb_str]
-                    #     print(len(processes))
-                    #     print(3* (Fore.RED + delimitator))
-                    #
-                    #     self.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'})
-
+                    thrNb_str = str(result['GenStat']['ThreadNb'])
 
                     writeGenStat(resultsDirDicts, str(result['GenStat']['ThreadNb']),
-                                [genNb, chi2Min, chi2Mean, chi2Std],
-                                ['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '] )
+                    [genNb, chi2Min, chi2Mean, chi2Std],
+                    ['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '] )
 
                     subprocess.call('rm '+ resultsDirDicts  + 'GenResults/*ThreadNb-' + str(result['GenStat']['ThreadNb']) + '*', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
 
                     with open(resultsDirDicts  +'GenResults/GenResults.' + str(genNb) + '-ThreadNb-'+ str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
                         json.dump(result['GenStat']['GenDict'], genOut)
+
+
+
+                    if self._evalKillThread( thrNb_str, algorithm, resultsDirDicts) == True:
+
+                        newAlg = self._getSubAlgorithm( algorithm )
+                        swicthAlg = {'NewAlg': newAlg }
+
+                        ##### Kill current thread and start a new gnerational run with the remnants of current the generation
+                        processes['Proc::'+ thrNb_str].terminate()
+                        del processes['Proc::'+ thrNb_str]
+                        print(len(processes))
+                        print(3* (Fore.YELLOW + delimitator))
+
+
+                        processes_subThr = Process(target =  self.resumeGenRun,
+                                                                  args=( 'MostRecent', swicthAlg, thrNb_str )
+                                                                )
+                        processes_subThr.start()
+
+
 
 
                 #### Update the json result file of the thread sending the info
@@ -918,7 +909,7 @@ class phaseScannerModel:
         ############ Terminate the processes #############
         for procKey in processes.keys():
             processes[procKey].terminate()
-        spinner.stop()
+        # spinner.stop()
 
 
         self.cleanRun( numbOfCores )
@@ -928,17 +919,99 @@ class phaseScannerModel:
 
         return resultDict
 
-    def _setAlgParams(self, algorithm, numbOfCores, nbOfPoints):
+
+    def _evalKillThread( self, threadNb, algorithm, focusDir, genOfSet = 6, evolPerc = 0.01, ordMag = 1):
+        '''
+            Condition to kill a thread based on the convergence speed, varies for each algorithm specified.
+        '''
+        try:
+            with open(focusDir + 'GenStatus_ThreadNb' + threadNb + '.dat', 'r') as fileIn:
+                GenStatAll = fileIn.readlines()
+        except:
+            return False
+
+        statDict = {}
+        for genLine in GenStatAll:
+            genNb =  genLine.replace(' ', '').split('||')[0]
+
+            auxDict = {  attrName:float(genLine.replace(' ', '').split('||')[x].split(':')[1])
+                        for x, attrName in zip([1, 2, 3],['MinChi2', 'MeanChi2', 'StdChi2'])  }
+            statDict.update( {genNb:auxDict} )
+
+
+        genList_revSort = sorted(statDict.keys(), key= lambda genNbr: int(genNbr.split('-')[1]), reverse=True)
+        latestGen = genList_revSort[0]
+        try:
+            targetGen = genList_revSort[genOfSet]
+        except:
+            return False
+        else:
+            # evolPerc = 0.5
+            # ordMag = 1
+
+            currChi2Mean = statDict[latestGen]['MeanChi2']
+            currChi2Std =  statDict[latestGen]['StdChi2']
+            currChi2Min = statDict[latestGen]['MinChi2']
+            prevChi2Min = statDict[targetGen]['MinChi2']
+
+            # pp(subAlg_rules[algorithm])
+
+
+
+
+            if algorithm == 'diffEvol':
+                #### Cut diff evolution if :
+                # 1) The current Mean and Minimum are 1 σ away from each other
+                # 2) Current Minimum hasn't evolved more than 1 % in the last genOfSet entries
+
+                if (currChi2Mean // 10**ordMag) >  currChi2Std:
+                    print('001', threadNb, algorithm, currChi2Min, currChi2Std)
+                    return True
+
+                # prevChi2Min = statDict[targetGen]['MinChi2']
+                if abs(prevChi2Min - currChi2Min) / prevChi2Min < evolPerc:
+                    print('002', threadNb, algorithm, prevChi2Min, currChi2Min)
+                    return True
+
+            elif algorithm == 'singleCellEvol':
+                #### Cut single Cell evolution if :
+                # 1) Current Minimum hasn't evolved more than 1 % in the last genOfSet entries
+
+                if abs(prevChi2Min - currChi2Min) / prevChi2Min < evolPerc:
+                    print('001', threadNb, algorithm, currChi2Min, currChi2Std)
+                    return True
+
+
+        print('000')
+        return False
+
+    def _getSubAlgorithm(self, algorithm ):
+        '''
+            Given an algorithm function returns one of the subalgorithms specified by the user in the algorithm module.
+        '''
+
+        return random.choice( subAlg_rules[algorithm]['Children']  )
+
+    def _setAlgParams(self, algorithm, numbOfCores, nbOfPoints, threadNb = 'All'):
         '''
             Given the algorithm will set  numberOfPoints ,  sortByChiSquare
         '''
-        algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints,
+        if threadNb == 'All':
+            algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints,
+                                        'nbOfPoints': nbOfPoints,
+                                         'sortByChiSquare': True},
+                        'diffEvol':{'numbOfCores': numbOfCores,
                                     'nbOfPoints': nbOfPoints,
-                                     'sortByChiSquare': True},
-                    'diffEvol':{'numbOfCores': numbOfCores,
-                                'nbOfPoints': nbOfPoints,
-                                'sortByChiSquare': False}
-                }
+                                    'sortByChiSquare': False}
+                    }
+        else:
+            algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints // numbOfCores,
+                                        'nbOfPoints': nbOfPoints // numbOfCores,
+                                         'sortByChiSquare': True},
+                        'diffEvol':{'numbOfCores': 1,
+                                    'nbOfPoints': nbOfPoints // numbOfCores,
+                                    'sortByChiSquare': False}
+                    }
 
         return algDict[algorithm]
 
@@ -969,11 +1042,10 @@ class phaseScannerModel:
         focusDir = self.resultDir+  'Dicts/Focus-' + focusDateTime_str +'/'
         pickleName = focusDir + 'RunCard.pickle'
         with open(pickleName , 'rb') as fPickl:
-            # The protocol version used is detected automatically, so we do not
-            # have to specify it.
             runCard = pickle.load(fPickl)
         threadDict = []
 
+        #### Gather the latest generational data
         try:
             dirEntries = os.listdir(focusDir + 'GenResults/')
             for dirEntry in dirEntries:
@@ -981,30 +1053,39 @@ class phaseScannerModel:
                     thData = json.load(jsonIn)
 
                 thrNb = str( dirEntry.split('ThreadNb-')[1].replace('.json', ''))
-                threadDict .append( thData )
+                print(thrNb)
+                if threadNb != 'All' and thrNb == threadNb:
+                    threadDict.append( thData )
+
         except Exception as e:
             print(e)
             raise
+
+
+
         pp(runCard)
         sortByChiSquare = False
         reload = True
 
         if type(swicthAlg) == dict:
             runCard['algorihm'] = swicthAlg['NewAlg']
-            newAlgDict = self._setAlgParams(swicthAlg['NewAlg'], runCard['numbOfCores'], runCard['nbOfPoints'])
+            newAlgDict = self._setAlgParams(swicthAlg['NewAlg'], runCard['numbOfCores'], runCard['nbOfPoints'], threadNb = threadNb)
             # pp(newAlgDict)
             runCard['nbOfPoints'], runCard['numbOfCores'], sortByChiSquare = newAlgDict['nbOfPoints'], newAlgDict['numbOfCores'], newAlgDict['sortByChiSquare']
             reload = False
 
             # pass
             ## Will change the run card
-        pp(runCard)
-        # exit()
+
 
 
         psDict = {}
         for dictToApp in threadDict:
             psDict.update(dictToApp)
+
+        pp(runCard)
+        pp(psDict)
+        # exit()
         # pp(psDict)
         # print(delimitator)
         newModel.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = sortByChiSquare, reload = reload)
@@ -1042,5 +1123,6 @@ if __name__ == '__main__':
 
     psDict = newModel.loadResults( )
     newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 8, chi2LowerBound = 0.1, debug = False, algorithm = 'diffEvol')
-    # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'})
-    newModel.resumeGenRun()
+    # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
+    # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
+    # newModel.resumeGenRun()
