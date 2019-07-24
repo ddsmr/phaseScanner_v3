@@ -211,11 +211,12 @@ class minimAlg:
 
 
                     ########### Selection stage ############
+                    massTruth, newPointWithAttr = self.psObject.engineProcedure(mutatedDict, threadNumber = self.threadNumber, debug = self.debug)
 
-                    genValidPointOutDict = generatingEngine.runPoint( mutatedDict, threadNumber = self.threadNumber , debug = self.debug)
-                    newPointWithAttr_int = generatingEngine._getRequiredAttributes(mutatedDict, self.threadNumber)
-                    newPointWithAttr = self.psObject._getCalcAttribForDict( newPointWithAttr_int )
-                    massTruth = generatingEngine._check0Mass( newPointWithAttr )
+                    # genValidPointOutDict = generatingEngine.runPoint( mutatedDict, threadNumber = self.threadNumber , debug = self.debug)
+                    # newPointWithAttr_int = generatingEngine._getRequiredAttributes(mutatedDict, self.threadNumber)
+                    # newPointWithAttr = self.psObject._getCalcAttribForDict( newPointWithAttr_int )
+                    # massTruth = generatingEngine._check0Mass( newPointWithAttr )
 
 
 
@@ -472,11 +473,12 @@ class minimAlg:
                 # newPointWithAttr = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
                 # massTruth = generatingEngine._check0Mass( newPointWithAttr )
 
+                massTruth, newPointWithAttr = self.psObject.engineProcedure(newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
 
-                genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
-                newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
-                newPointWithAttr = self.psObject._getCalcAttribForDict(newPointWithAttr_int )
-                massTruth = generatingEngine._check0Mass( newPointWithAttr )
+                # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
+                # newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
+                # newPointWithAttr = self.psObject._getCalcAttribForDict(newPointWithAttr_int )
+                # massTruth = generatingEngine._check0Mass( newPointWithAttr )
 
                 if  massTruth == False:
                     ### Point has 0 masses clean and try again.
@@ -550,11 +552,11 @@ class minimAlg:
                     # paramsDict = { modelAttr :phaseSpacePointDict[pointKey][modelAttr]   for modelAttr in self.psObject.params}
                     newParamsDict = smartRndGen.genRandUniform_Rn( paramsDict , best_rSigma)
                     ### Generate a point and extract its attributes
-
-                    genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
-                    newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
-                    newPointWithAttr = self.psObject._getCalcAttribForDict(newPointWithAttr_int )
-                    massTruth = generatingEngine._check0Mass( newPointWithAttr )
+                    massTruth, newPointWithAttr = self.psObject.engineProcedure(newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
+                    # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
+                    # newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
+                    # newPointWithAttr = self.psObject._getCalcAttribForDict(newPointWithAttr_int )
+                    # massTruth = generatingEngine._check0Mass( newPointWithAttr )
 
                     if  massTruth == False:
                         ### Point has 0 masses clean and try again.

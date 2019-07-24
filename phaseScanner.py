@@ -340,7 +340,7 @@ class phaseScannerModel:
             writeToLogFile_InitModel(self)
         printCentered( ' ✔ Done Initialising Model', fillerChar = '█', color = Fore.GREEN )
 
-    def loadResults(self, nbOfPoints='All', targetDir = 'Dicts/', specFile = ''):
+    def loadResults(self, nbOfPoints='All', targetDir = 'Dicts/', specFile = '', ignoreIntegrCheck = False):
         '''
             Loads all the json result dictionaries as a full dictionary.
 
@@ -378,23 +378,27 @@ class phaseScannerModel:
         ########## COMEBACK #######
         ### Integrity check , excludes all points that have None as an attribute
         pointsToRemove = []
-        for point in phaseSpaceDict.keys():
-            for attribute  in self.allDicts.keys():
 
-                # print(self.)
-                # for attribute in self.allDicts[attributeType].keys():
+        if ignoreIntegrCheck == False:
+            for point in phaseSpaceDict.keys():
+                for attribute  in self.allDicts.keys():
 
-                #### Check if the point in question hass all the attributes specified by the model
-                if attribute not in phaseSpaceDict[point].keys() :
-                    pointsToRemove.append (point)
+                    # print(self.)
+                    # for attribute in self.allDicts[attributeType].keys():
 
-                #### if it has all the attributes then check if they are non empty
-                elif phaseSpaceDict[point][attribute] == None  and attribute not in self.noneAttr :
-                # attribute!='ChiSquared'
-                    # print(attribute)
-                    pointsToRemove.append (point)
+                    #### Check if the point in question hass all the attributes specified by the model
+                    if attribute not in phaseSpaceDict[point].keys() :
+                        print(attribute)
+                        pointsToRemove.append (point)
+
+                    #### if it has all the attributes then check if they are non empty
+                    elif phaseSpaceDict[point][attribute] == None  and attribute not in self.noneAttr :
+                    # attribute!='ChiSquared'
+                        print(attribute)
+                        pointsToRemove.append (point)
 
         # exit()
+        # pp(pointsToRemove)
         for point in pointsToRemove:
             del phaseSpaceDict[point]
 
@@ -408,6 +412,21 @@ class phaseScannerModel:
             listOfPointIDs =[  random.choice( keyList ) for i in range(nbOfPoints)]
 
             return {k:phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
+
+    def engineProcedure(self, newParamsDict, threadNumber = '0', debug = False):
+        '''
+            Auxiliary procedure to compactify the generating engine and getting attributes. Also has the requirements for a engine along with the cleaning procedure
+        '''
+        generatingEngine = self.engineClass(self)
+
+        genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
+        phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
+
+        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
+        massTruth = generatingEngine._check0Mass( phaseSpaceDict )
+
+        return massTruth, phaseSpaceDict
+
 
     def _mThreadAUXexplore(self, q , threadNumber = "0", debug = False, newParamBounds = {} ): #<----- Needs documentation!!!
         '''
@@ -453,13 +472,16 @@ class phaseScannerModel:
 
                 # genValidPointOutDict = generatingEngine._genValidPoint(paramsDictMinMax, threadNumber = threadNumber, debug = debug)
 
-                newParamsDict = smartRndGen.genSmartRnd( debug = debug)
+                newParamsDict = smartRndGen.genSmartRnd( debug = debug )
+                massTruth, phaseSpaceDict = self.engineProcedure(newParamsDict, threadNumber = threadNumber, debug = debug)
 
 
-                genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
-                phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
-                phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
-                massTruth = generatingEngine._check0Mass( phaseSpaceDict )
+                # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
+                # phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
+                #
+                # phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
+                # massTruth = generatingEngine._check0Mass( phaseSpaceDict )
+
 
 
                 if  massTruth == False:
@@ -554,18 +576,23 @@ class phaseScannerModel:
             pbar = tqdm(total=numberOfPoints, bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.GREEN )
 
 
-            while pointHandle < numberOfPoints:
+            try:
+                while pointHandle < numberOfPoints:
 
-                result = localQue.get()
-                resultDict.update(result)
-                pbar.update(1)
+                    result = localQue.get()
+                    resultDict.update(result)
+                    pbar.update(1)
 
-                #### Update the Json file every 10 pointsself.
-                if True:#pointHandle % 10 == 0:
-                    with open(resultsDirDicts +'ScanResults.' + scanID + '.json', 'w') as outfile:
-                        json.dump(resultDict, outfile)
+                    #### Update the Json file every 10 pointsself.
+                    if True:#pointHandle % 10 == 0:
+                        with open(resultsDirDicts +'ScanResults.' + scanID + '.json', 'w') as outfile:
+                            json.dump(resultDict, outfile)
 
-                pointHandle += 1
+                    pointHandle += 1
+
+            except KeyboardInterrupt:
+                print('\nProcess killed by user')
+
 
             pbar.close()
             for proc in processes:
@@ -692,16 +719,18 @@ class phaseScannerModel:
 
             notemptyDict = True
             for modelAttribute in self.allDicts.keys():
-                if modelAttribute not in self.noneAttr:
+                if modelAttribute not in self.noneAttr and (phaseSpaceDict[pointKey][modelAttribute] != 0):
+
                     notemptyDict = notemptyDict and bool(phaseSpaceDict[pointKey][modelAttribute])
 
             #### Not entirely sure about the checkHardCut if it should or shouldn't be in here.
             if notemptyDict == True and modelConstr._checkHardCut(phaseSpaceDict[pointKey], specificCuts = specificCuts):
 
-
+                # print('aaaaaaaaaa')
                 chiSquare = modelConstr.getChi2(phaseSpaceDict[pointKey], ignoreConstrList = ignoreConstrList,
                                     minimisationConstr = minimisationConstr, returnDict = False)
                 chiSquareDict[pointKey] = chiSquare
+                # print(chiSquare)
 
 
         # pp(chiSquareDict)
@@ -799,15 +828,16 @@ class phaseScannerModel:
         with open(focusDir + 'RunCard.pickle', 'wb') as fPickl:
             pickle.dump(dataDict, fPickl, pickle.HIGHEST_PROTOCOL)
 
+    # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
     def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False):
         '''
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
 
-        if sortByChiSquare == False:
-            numberOfPoints = len( list( phaseSpaceDict.keys() ) )
-
+        # if sortByChiSquare == False:
+        #     numberOfPoints = len( list( phaseSpaceDict.keys() ) )
+        #
 
         bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload)
 
@@ -847,6 +877,7 @@ class phaseScannerModel:
         resultDict = {}
         for procKey in processes.keys():
             processes[procKey].start()
+        writeToLogFile_Action(self, 'Started', 'Focus_' + algorithm )
 
         # spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
         # spinner.start()
@@ -911,6 +942,7 @@ class phaseScannerModel:
             processes[procKey].terminate()
         # spinner.stop()
 
+        writeToLogFile_Action(self, 'Finished', 'Focus_' + algorithm )
 
         self.cleanRun( numbOfCores )
         fixJsonWAppend(resultsDirDicts)
@@ -1092,11 +1124,140 @@ class phaseScannerModel:
 
         return None
 
-    def chainEvents(self, eventTrigger):
+    def _mThreadAUXrerun(self, q , listOfPoints, threadNumber = '0', debug = False):
         '''
+        Auxiliary worker multiprocessing function used to do a phase space rerun. Called in the master function reRunMultiThreadself.
+
+        Arguments:
+            - q                     ::       Queue() object that passes results to the master function.
+            - listOfPoints          ::       List of points to be run by a specific thread.
+            - threadNumber          ::       DEFAULT: 0 . Identifies the thread number, is set in the master function.
+            - debug                 ::       DEFAULT: False. Set to True to enable verbose error messages.
+
+        Returns:
+            - None      ;;     !!Puts results in Queue()
         '''
 
+        generatingEngine = self.engineClass(self)
+
+        ################################################################
+        while bool(listOfPoints) != False:
+            paramsDict = listOfPoints[-1]
+
+            try:
+
+                massTruth, phaseSpaceDict = self.engineProcedure(paramsDict, threadNumber = threadNumber, debug = debug)
+
+                # generatingEngine.runPoint( paramsDict, threadNumber = threadNumber , debug = debug)
+                # phaseSpaceDict = generatingEngine._getRequiredAttributes(paramsDict, threadNumber)
+                # massTruth = generatingEngine._check0Mass( phaseSpaceDict )
+
+                if  massTruth == True:
+                    q.put(phaseSpaceDict)
+
+                generatingEngine._clean( threadNumber)
+                listOfPoints.pop()
+
+
+            except Exception as e :
+
+                print(e)
+
+                listOfPoints.pop()
+                generatingEngine._clean( threadNumber )
+
+                q.put(None)
+
         return None
+
+    def reRunMultiThread (self, phaseSpaceDict, numbOfCores = 8, debug = False):
+        '''
+            Master multiprocessing function to be used to rerun points in a phaseSpaceDict. Writes the results to json,
+
+            !!!!!!!!!!!! DELETES OLD RESULTS AND LOGS !!!!!!!!!!!!!
+
+            Arguments:
+                - phaseSpaceDict        ::       Dictionary of points in the phase space.
+                - numbOfCores           ::       DEFAULT: 14. Should be set to whatever the optimum number is for the machine on which it  is run. Run the corePicker utility to find the optimum.
+                - debug                 ::       DEFAULT: False. Set to True to enable verbose error messages.
+
+            Returns:
+                - None
+
+        '''
+        listOfLists = []
+        for core in range(numbOfCores):
+            listOfLists.append([])
+        pointCounter = 0
+        for point in phaseSpaceDict.keys():
+            try:
+                phaseSpacePoint = phaseSpaceDict[point]['Params']
+            except:
+                paramsDict = { modelAttr : phaseSpaceDict[point][modelAttr]   for modelAttr in self.params}
+                phaseSpacePoint = paramsDict
+
+            listOfLists[pointCounter % numbOfCores].append(phaseSpacePoint)
+            pointCounter += 1
+
+        # pp(listOfLists)
+        # exit()
+
+        localQue = Queue()
+        processes = [Process( target=self._mThreadAUXrerun, args=(localQue, listOfLists[coreNumber], str(coreNumber), debug) )
+                     for coreNumber in range(numbOfCores) ]
+
+        for proc in processes:
+            proc.start()
+
+        scanID = self.modelName + '_' + self.case.replace(" ","") +'_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
+        printHeader('ReRun', 'Started', numbOfCores)
+        writeToLogFile_Action(self, 'Start', 'ReRun')
+        pbar = tqdm(total = pointCounter, bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.LIGHTYELLOW_EX)
+
+
+        resultDict ={}
+        pointCounterCopy = pointCounter
+        while pointCounter > 0:
+            result = localQue.get()
+
+            if result != None:
+                resultDict.update(result)
+            pbar.update(1)
+
+            if pointCounter % 20 == 0:
+                with open( self.resultDir +'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
+                    json.dump(resultDict, outfile)
+
+
+            pointCounter += (-1)
+            ##################################################
+        for proc in processes:
+            proc.terminate()
+
+
+        pbar.close()
+        printHeader('ReRun', 'Finished', numbOfCores)
+        print ('Success Rate: ', len(resultDict), ' /', pointCounterCopy)
+        print (Style.RESET_ALL)
+
+        #######################   Clean old dicts and plots #########################
+        # subprocess.call('rm *.json', shell = True, cwd = self.resultDir + 'Dicts/' )
+        # subprocess.call('rm -r Plots', shell = True, cwd = self.resultDir )
+
+
+        with open( self.resultDir +'Dicts/ScanResults.' + scanID + '.json', 'w') as outfile:
+            json.dump(resultDict, outfile)
+        # self.cleanFiles()
+
+        writeToLogFile_Action(self, 'Finished', 'ReRun')
+        # mergeAllResDicts(self)
+
+        return None
+    # def chainEvents(self, eventTrigger):
+    #     '''
+    #     '''
+    #
+    #     return None
 
 
 if __name__ == '__main__':
@@ -1105,9 +1266,13 @@ if __name__ == '__main__':
     auxCase ='DummyCase'
     micrOmegasName = modelName
 
+    modelName = 'SO11Hosotani'
+    auxCase ='DummyCase'
+    micrOmegasName = modelName
+
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
-
+    # exit()
     # routineStr = 'Routines.testExtCalc'
     # routineModule = importlib.import_module(routineStr)
     # methodStr = 'testRoutine'
@@ -1119,10 +1284,18 @@ if __name__ == '__main__':
 
     # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
 
-    # pp( newModel.runMultiThreadExplore(numberOfPoints = 10) )
+    # newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
+    # exit()
+    # fixJsonWAppend('Results/SO11Hosotani_DummyCase/Dicts/Focus_28_06_2019/')
+    psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
+    print(len(psDict))
 
-    psDict = newModel.loadResults( )
-    newModel.runGenerationMultithread(psDict, numbOfCores = 2, numberOfPoints = 8, chi2LowerBound = 0.1, debug = False, algorithm = 'diffEvol')
+    # newModel.runGenerationMultithread(psDict, numbOfCores = 4  , numberOfPoints = 4, chi2LowerBound = 1000.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True)
     # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
     # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
     # newModel.resumeGenRun()
+
+    # with open('Results/SO11Hosotani_DummyCase/Dicts/ReRun_ScanResults.SO11Hosotani_DummyCase_06-07-2019_09:35:10.json', 'r') as jsonIn:
+    #     psDict = json.load(jsonIn)
+    #
+    newModel.reRunMultiThread(psDict, numbOfCores = 8)

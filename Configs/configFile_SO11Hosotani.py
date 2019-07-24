@@ -10,30 +10,26 @@ from scipy.special import yv as BesselY
 
 
 
+# import platform
+# sysInfo = platform.linux_distribution()
+# mathScript = 'MathematicaScript'
+# if '16.04' in sysInfo[1]:
+#     mathScript = 'MathematicaScript'
+# elif '18.04' in sysInfo[1]:
+#     mathScript = 'wolframscript'
+#
+#
+# runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...
 # The directory of te Hosotani script
-engineDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica'
+# engineDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica'
+
+
 genEngine = 'HosotaniSO11'
 engVers = '6.0'
 
-
-
-import platform
-sysInfo = platform.linux_distribution()
-mathScript = 'MathematicaScript'
-if '16.04' in sysInfo[1]:
-    mathScript = 'MathematicaScript'
-elif '18.04' in sysInfo[1]:
-    mathScript = 'wolframscript'
-
-
-runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...
-
-# runCMD = 'wolframscript -script SO11_Masses_v5.m'  ### ThreadNb-n where n=1,2, ...
-
-
 ###############################     Dictionaries         ###########################################
 
-parameterDict = {
+paramDict = {
     'k': {
         'LaTeX': r'$k (GeV)$',
         'Constraint': {
@@ -124,73 +120,7 @@ parameterDict = {
 
 
 }
-
-dictMinMax  = {
-'Mu1':      {'Min':0.0, 'Max': 100.0},
-'Mu2Tilde':  {'Min':0.0, 'Max': 100.0},
-
-'Mu11':     {'Min':0.0, 'Max': 100.0},
-'Mu11Prime': {'Min':0.0, 'Max': 100.0},
-
-
-'c0':        {'Min': 0.0, 'Max': 1.0},
-'c0Prime':   {'Min': 0.0, 'Max': 1.0},
-'c1':        {'Min': 0.0, 'Max': 2.0},
-'c2':       {'Min':  -3.0, 'Max': 3.0},
-
-'k':        {'Min': 1000.0, 'Max': 10000000.0},
-'zL':        {'Min': 10.0, 'Max': 2500.0}
-###### Uncomment below to obtain the original solution #####
-# 'Mu1':      {'Min': 11.7911, 'Max': 11.9747},
-# 'Mu2Tilde':  {'Min': 0.7147, 'Max': 0.7190},
-#
-# 'Mu11':      {'Min': 0.1115, 'Max': 0.119},
-# 'Mu11Prime': {'Min': 0.1228, 'Max': 0.1277},
-#
-#
-# 'c0':        {'Min': 0.32176, 'Max': 0.3333},
-# 'c0Prime':  {'Min': 0.5138, 'Max': 0.5331},
-# 'c1':        {'Min': 0.0, 'Max': 0.0},
-# 'c2':       {'Min': -0.6811, 'Max': -0.67135},
-#
-# 'k':        {'Min': 88462.008, 'Max': 88955.77},
-# 'zL':        {'Min': 34.632, 'Max': 34.6673}
-########### Restricted parameter range #############
-# 'Mu1':      {'Min': 11.0, 'Max': 13.0},
-# 'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
-#
-# 'Mu11':      {'Min': 0.0, 'Max': 0.5},
-# 'Mu11Prime': {'Min': 0.0, 'Max': 0.5},
-#
-#
-# 'c0':        {'Min': 0.1, 'Max': 0.5},
-# 'c0Prime':   {'Min': 0.4, 'Max': 0.7},
-# 'c1':        {'Min': 0.0, 'Max': 0.2},
-# 'c2':        {'Min': -1.0, 'Max': -0.5},
-#
-# 'k':         {'Min': 100000.0, 'Max': 300000.00},
-# 'zL':        {'Min': 33.0, 'Max': 37.0}
-
-}
-
-
-sigmasDict = {
-'k':          10,
-'zL':         0.01,
-'c0':         0.01,
-'c1':         0.01,
-'c2':         0.01 ,
-'c0Prime':    0.01,
-# 'Mu11':       0.1,
-# 'Mu11Prime':  0.1,
-'Mu1':        0.1,
-'Mu2Tilde':   0.1}
-
-replacementRules = {
-'DummyCase' :{}
-}
-
-particleDict = {
+attrDict = {
 'Higgs':  {
         'LaTeX': r'$m_H (GeV)$',
         'Marker': 'o',
@@ -376,14 +306,13 @@ particleDict = {
 
 
 }
-
 calcDict = {
-'ChiSquared':{
-    'LaTeX': r'$\chi^2_G$' ,
-    'Calc' : {'Type':'ChiSquared'},
-    'Constraint': {
-        'Type': 'None'
-    }
+            'ChiSquared':{
+                'LaTeX': r'$\chi^2_G$' ,
+                'Calc' : {'Type':'ChiSquared'},
+                'Constraint': {
+                'Type': 'None'
+                }
 }
 
 # ,
@@ -414,15 +343,66 @@ calcDict = {
 
 }
 
-rgflowDict = {
+
+
+############### Min Max / Replacement Rules #
+dictMinMax  = {
+# 'Mu1':      {'Min':0.0, 'Max': 100.0},
+# 'Mu2Tilde':  {'Min':0.0, 'Max': 100.0},
+#
+# 'Mu11':     {'Min':0.0, 'Max': 100.0},
+# 'Mu11Prime': {'Min':0.0, 'Max': 100.0},
+#
+#
+# 'c0':        {'Min': 0.0, 'Max': 1.0},
+# 'c0Prime':   {'Min': 0.0, 'Max': 1.0},
+# 'c1':        {'Min': 0.0, 'Max': 2.0},
+# 'c2':       {'Min':  -3.0, 'Max': 3.0},
+#
+# 'k':        {'Min': 1000.0, 'Max': 10000000.0},
+# 'zL':        {'Min': 10.0, 'Max': 2500.0}
+###### Uncomment below to obtain the original solution #####
+'Mu1':      {'Min': 11.7911, 'Max': 11.9747},
+'Mu2Tilde':  {'Min': 0.7147, 'Max': 0.7190},
+
+'Mu11':      {'Min': 0.1115, 'Max': 0.119},
+'Mu11Prime': {'Min': 0.1228, 'Max': 0.1277},
+
+
+'c0':        {'Min': 0.32176, 'Max': 0.3333},
+'c0Prime':  {'Min': 0.5138, 'Max': 0.5331},
+'c1':        {'Min': 0.0, 'Max': 0.0},
+'c2':       {'Min': -0.6811, 'Max': -0.67135},
+
+'k':        {'Min': 88462.008, 'Max': 88955.77},
+'zL':        {'Min': 34.632, 'Max': 34.6673}
+########### Restricted parameter range #############
+# 'Mu1':      {'Min': 11.0, 'Max': 13.0},
+# 'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
+#
+# 'Mu11':      {'Min': 0.0, 'Max': 0.5},
+# 'Mu11Prime': {'Min': 0.0, 'Max': 0.5},
+#
+#
+# 'c0':        {'Min': 0.1, 'Max': 0.5},
+# 'c0Prime':   {'Min': 0.4, 'Max': 0.7},
+# 'c1':        {'Min': 0.0, 'Max': 0.2},
+# 'c2':        {'Min': -1.0, 'Max': -0.5},
+#
+# 'k':         {'Min': 100000.0, 'Max': 300000.00},
+# 'zL':        {'Min': 33.0, 'Max': 37.0}
 
 }
+replacementRules = {
+'DummyCase' :{}
+}
 
-classificationDict = {'Params': parameterDict,
-                      'Particles' : particleDict ,
-                      'Couplings' : rgflowDict ,
-                      'Calc' : calcDict
-                      }
+
+# classificationDict = {'Params': parameterDict,
+#                       'Particles' : particleDict ,
+#                       'Couplings' : rgflowDict ,
+#                       'Calc' : calcDict
+#                       }
 
 
 
@@ -506,8 +486,6 @@ toSetDict = {
             # }
 }
 
-
-from collections import OrderedDict
 
 betaH = 0.0
 alphaH = 10.0

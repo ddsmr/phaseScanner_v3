@@ -40,7 +40,7 @@ class constrEval:
         notemptyDict = True
         for key in self.allDicts.keys():
 
-            if key not in self.noneAttr:
+            if key not in self.noneAttr and (phaseSpacePointDict[key] != 0):
                 # print(phaseSpacePointDict, key)
                 notemptyDict = notemptyDict and bool(phaseSpacePointDict[key])
 

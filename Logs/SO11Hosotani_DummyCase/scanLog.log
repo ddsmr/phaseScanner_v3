@@ -1,0 +1,1008 @@
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:33:52 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:35:05 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:35:25 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:35:34 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:36:11 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:36:49 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:36:56  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:38:23 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:38:28  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:40:01 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:40:06  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:40:56 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:41:06  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:44:08 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:44:32 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:44:47  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:45:09  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:47:57 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:48:03  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:48:05  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:49:06 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:49:15  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:50:05  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:51:00 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:53:34 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:53:53  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:53:58  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:54:42 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:54:48 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:56:03 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:56:20  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:56:37  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:57:48 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_09:58:56 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 09:59:13  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 10:00:00  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_10:33:26 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_10:33:47 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 10:34:06  Started Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 10:34:10  Finished Explore Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:04:21 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:05:27 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:05:28  Start ReRun Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:07:59  Finished ReRun Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:30:22 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:30:22  Started Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:30:25  Finished Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:30:35 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:30:45 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:30:45  Started Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:30:46  Finished Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:31:04 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:31:19 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:32:02 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:32:31 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:33:53 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:34:08 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:35:04 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:36:38 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:36:49 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:39:49 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:40:19 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-07-2019_11:40:26 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:40:26  Started Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/07/2019 -- 11:46:37  Finished Focus_singleCellEvol Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:38:00 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:38:19 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:38:39 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:38:45 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:39:28 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:39:42 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:39:47 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:39:55 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:40:10 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:41:27 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 24-07-2019_09:41:58 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 2500.0, "TheorySigma": 25.0, "ExpSigma": 0.0}}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2000}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 24/07/2019 -- 09:41:59  Start ReRun Scan :: SO11HosotaniDummyCase
+****************************************************************************************************
+

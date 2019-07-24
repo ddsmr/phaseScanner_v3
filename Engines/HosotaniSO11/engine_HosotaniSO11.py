@@ -1,19 +1,12 @@
-from Utils.SmartRandomGenerator.smartRand import *
+import os
 import json
 import subprocess
 from time import gmtime, strftime
 
-testdict ={'Woooo':'oooooo!'}
+from Utils.SmartRandomGenerator.smartRand import *
+from Utils.printUtils import *
 
-import os
 
-nbrTerminalRows, nbrTerminalCols = os.popen('stty size', 'r').read().split()
-nbrTerminalRows = int(nbrTerminalRows)
-nbrTerminalCols = int(nbrTerminalCols)
-delimitator = '\n' + '▓' * nbrTerminalCols + '\n'
-delimitator2 = '\n' + '-' * nbrTerminalCols + '\n'
-
-FNULL = open(os.devnull, 'w')
 
 
 class engineClass:
@@ -21,67 +14,83 @@ class engineClass:
     '''
 
 
-    def __init__(self, modelName, caseHandle):
+    def __init__(self, phaseSpaceObj):
         '''
         '''
 
-        configString = 'Configs.configFile_' + modelName
-        import importlib
-        configModule = importlib.import_module(configString)
+        # configString = 'Configs.configFile_' + modelName
+        # import importlib
+        # configModule = importlib.import_module(configString)
 
-        self.condDict = configModule.condDict
-        self.rndDict = configModule.rndDict
-        self.toSetDict = configModule.toSetDict
-        self.targetDir = configModule.engineDir
-        self.runCMD = configModule.runCMD
-        self.calc = configModule.calcDict
+        self.condDict = phaseSpaceObj.condDict
+        self.rndDict = phaseSpaceObj.rndDict
+        self.toSetDict = phaseSpaceObj.toSetDict
+        self.calc = phaseSpaceObj.calc
 
+        self.targetDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica'
 
-
-    def _generateRandomPointJSON(self, paramsDictMinMax, samplingPDF = 'Uniform' ,  threadNumber ="0", debug = False):
-        '''
-        '''
-        targetDir = self.targetDir
-        paramsDict = {}
-
-        # Use something like self._genSmartRnd(paramsDictMinMax)
-
-        smartRndGen = smartRand(paramsDictMinMax, self.condDict, self.rndDict, self.toSetDict)
-        paramsDict = smartRndGen.genSmartRnd(debug= debug, samplingPDF = samplingPDF)
-
-        # for param in paramsDictMinMax.keys():
-        #     paramsDict[param] = round ( random.uniform(paramsDictMinMax[param]['Min'], paramsDictMinMax[param]['Max'])  , 4)
+        import platform
+        sysInfo = platform.linux_distribution()
+        mathScript = 'MathematicaScript'
+        if '16.04' in sysInfo[1]:
+            mathScript = 'MathematicaScript'
+        elif '18.04' in sysInfo[1]:
+            mathScript = 'wolframscript'
 
 
-        with open(targetDir + '/dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
-            json.dump(paramsDict, jsonParamFile)
+        runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...
+        self.runCMD = runCMD
 
-        return paramsDict
 
-    def _runCustomCMD(self, threadNumber = "0"):
-        '''
-        '''
 
-        targetDir = self.targetDir
-        FNULL = open(os.devnull, 'w')
+    # def _generateRandomPointJSON(self, paramsDictMinMax, samplingPDF = 'Uniform' ,  threadNumber ="0", debug = False):
+    #     '''
+    #     '''
+    #     targetDir = self.targetDir
+    #     paramsDict = {}
+    #
+    #     # Use something like self._genSmartRnd(paramsDictMinMax)
+    #
+    #     smartRndGen = smartRand(paramsDictMinMax, self.condDict, self.rndDict, self.toSetDict)
+    #     paramsDict = smartRndGen.genSmartRnd(debug= debug, samplingPDF = samplingPDF)
+    #
+    #     # for param in paramsDictMinMax.keys():
+    #     #     paramsDict[param] = round ( random.uniform(paramsDictMinMax[param]['Min'], paramsDictMinMax[param]['Max'])  , 4)
+    #
+    #
+    #     with open(targetDir + '/dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
+    #         json.dump(paramsDict, jsonParamFile)
+    #
+    #     return paramsDict
 
-        runCMD = self.runCMD + ' ThreadNb-' + threadNumber
-        subprocess.call(runCMD , shell = True, cwd = targetDir, stdout = FNULL, stderr=subprocess.STDOUT)
+    # def _runCustomCMD(self, threadNumber = "0", debug = False):
+    #     '''
+    #     '''
+    #
+    #     targetDir = self.targetDir
+    #     FNULL = open(os.devnull, 'w')
+    #
+    #     runCMD = self.runCMD + ' ThreadNb-' + threadNumber
+    #
+    #     if debug == False:
+    #         subprocess.call(runCMD , shell = True, cwd = targetDir, stdout = FNULL, stderr=subprocess.STDOUT)
+    #     else:
+    #         subprocess.call(runCMD , shell = True, cwd = targetDir)
+    #
+    #     return None
 
-        return None
-
-    def _genValidPoint(self, paramsDictMinMax, threadNumber = "0", debug = False , samplingPDF = 'Uniform'):
-        '''
-            CUSTOM USER FUNCTION.
-        '''
-        targetDir = self.targetDir
-
-        paramsDict = self._generateRandomPointJSON(paramsDictMinMax, threadNumber = threadNumber, samplingPDF = samplingPDF, debug = debug)
-
-        self._runCustomCMD(threadNumber)
-
-        return paramsDict
-
+    # def _genValidPoint(self, paramsDictMinMax, threadNumber = "0", debug = False , samplingPDF = 'Uniform'):
+    #     '''
+    #         CUSTOM USER FUNCTION.
+    #     '''
+    #     targetDir = self.targetDir
+    #
+    #     paramsDict = self._generateRandomPointJSON(paramsDictMinMax, threadNumber = threadNumber, samplingPDF = samplingPDF, debug = debug)
+    #
+    #     self._runCustomCMD(threadNumber)
+    #
+    #     return paramsDict
+    #
     def _getRequiredAttributes(self, paramsDict, threadNumber="0"):
         '''
         '''
@@ -111,15 +120,15 @@ class engineClass:
             pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
 
             phaseSpaceDict = {}
-            phaseSpaceDict[pointKey]= {'Params': paramsDict}
-            phaseSpaceDict[pointKey].update( {'Particles': phaseSpaceDict_NOID} )
+            phaseSpaceDict[pointKey] =  paramsDict
+            phaseSpaceDict[pointKey].update( phaseSpaceDict_NOID )
 
             ###########################  Calc initialisation ####################################
             calcParamDict = {}
             for calcParam in self.calc.keys():
                 calcParamDict[calcParam] = None
 
-            phaseSpaceDict[pointKey].update({'Calc' : calcParamDict})
+            # phaseSpaceDict[pointKey].update({calcParamDict})
             #####################################################################################
         # print (phaseSpaceDict)
             return phaseSpaceDict
@@ -174,17 +183,24 @@ class engineClass:
         with open(targetDir + '/dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
             json.dump(paramsDict, jsonParamFile)
 
-        self._runCustomCMD(threadNumber)
+
+        runCMD = self.runCMD + ' ThreadNb-' + threadNumber
+        if debug == False:
+            subprocess.call(runCMD , shell = True, cwd = targetDir, stdout = FNULL, stderr=subprocess.STDOUT)
+        else:
+            subprocess.call(runCMD , shell = True, cwd = targetDir)
+
+
         time.sleep(0.1)
 
         return None
 
-    def _genPointAroundSeed(self, paramsDict, rSigma,  threadNumber='0', debug= False):
-        '''
-        '''
-        smartRndGen = smartRand({}, self.condDict, self.rndDict, self.toSetDict)
-
-        randParamDict = smartRndGen.genRandUniform_Rn( paramsDict , rSigma)
-        self.runPoint(randParamDict, threadNumber = threadNumber, debug = debug)
-
-        return randParamDict
+    # def _genPointAroundSeed(self, paramsDict, rSigma,  threadNumber='0', debug= False):
+    #     '''
+    #     '''
+    #     smartRndGen = smartRand({}, self.condDict, self.rndDict, self.toSetDict)
+    #
+    #     randParamDict = smartRndGen.genRandUniform_Rn( paramsDict , rSigma)
+    #     self.runPoint(randParamDict, threadNumber = threadNumber, debug = debug)
+    #
+    #     return randParamDict
