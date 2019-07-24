@@ -1287,13 +1287,14 @@ if __name__ == '__main__':
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
     modelConstr = constrEval( newModel )
 
-    psDict = newModel.loadResults( )
+    psDict = newModel.loadResults(targetDir = 'Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True )
     # pointID = list( pointPSDict.keys() )[0]
     # pp( pointPSDict )
     # pp( newModel.allDicts['mBottom'] )
     # print( modelConstr.getLogLikelihood(pointPSDict[pointID]) )
     # exit()
-
+    print(psDict['Point T0-366-10072019140014-GenNb12468'])
+    pp( newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)) 
 
 
     # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
@@ -1301,7 +1302,7 @@ if __name__ == '__main__':
     # psDict = newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
     # psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
     print(len(psDict))
-    # exit()
+    exit()
     newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
 
     # newModel.runGenerationMultithread(psDict, numbOfCores = 1  , numberOfPoints = 1, chi2LowerBound = -2.0, debug = False, algorithm = 'metropolisHastings', sortByChiSquare = True, statistic = 'LogL')
@@ -1312,4 +1313,3 @@ if __name__ == '__main__':
     # with open('Results/SO11Hosotani_DummyCase/Dicts/ReRun_ScanResults.SO11Hosotani_DummyCase_06-07-2019_09:35:10.json', 'r') as jsonIn:
     #     psDict = json.load(jsonIn)
     #
-    # newModel.reRunMultiThread(psDict, numbOfCores = 8)
