@@ -26,7 +26,7 @@ def makeRegistrar():
 regAlg = makeRegistrar()
 
 
-def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples ):##### DOCUEMNTEATIN
+def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples, statistic = 'Chi2' ):##### DOCUEMNTEATIN
     '''
     '''
     pointTree = {}
@@ -47,7 +47,7 @@ def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples ):##### 
 
         # pp(pointTree[newKey]['FullDescription'])
         pointTree[newKey] = pointDict[pointKey]
-        pointTree[newKey]['Chi2'] = sortedChiSquare_ListOfTuples[pointNb][1]
+        pointTree[newKey][statistic] = sortedChiSquare_ListOfTuples[pointNb][1]
         pointTree[newKey]['Parent'] = None
         pointTree[newKey]['Children'] = []
 
@@ -527,6 +527,8 @@ class minimAlg:
         '''
             Auxiliary algorithm to determine the best value for r_Sigma based on a percentage change of a test statistic
         '''
+
+
         generatingEngine = self.psObject.engineClass( self.psObject )
         smartRndGen = smartRand({}, self.psObject.condDict, self.psObject.rndDict, self.psObject.toSetDict)
         modelConstr = constrEval( self.psObject )
@@ -550,6 +552,7 @@ class minimAlg:
 
 
                     # paramsDict = { modelAttr :phaseSpacePointDict[pointKey][modelAttr]   for modelAttr in self.psObject.params}
+
                     newParamsDict = smartRndGen.genRandUniform_Rn( paramsDict , best_rSigma)
                     ### Generate a point and extract its attributes
                     massTruth, newPointWithAttr = self.psObject.engineProcedure(newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
@@ -569,9 +572,13 @@ class minimAlg:
 
                         ### New point evaluation
                         newPointKey = list(newPointWithAttr.keys())[0]
-                        newChiSquared = self.modelConstr.getChi2(newPointWithAttr[newPointKey], ignoreConstrList = self.ignoreConstrList,
-                                                    minimisationConstr = self.minimisationConstr, returnDict = False)
-                        newPointWithAttr[newPointKey]['ChiSquared'] = newChiSquared
+                        if testStat == 'ChiSquared':
+                            newChiSquared = self.modelConstr.getChi2(newPointWithAttr[newPointKey], ignoreConstrList = self.ignoreConstrList,
+                                                        minimisationConstr = self.minimisationConstr, returnDict = False)
+                        elif testStat == 'LogL':
+                            newChiSquared = self.modelConstr.getLogLikelihood( newPointWithAttr[newPointKey] )
+
+                        newPointWithAttr[newPointKey][testStat] = newChiSquared
 
                         # pp(newPointWithAttr[newPointKey]['ChiSquared'])
                         # pp(phaseSpacePointDict[pointKey]['ChiSquared'])
@@ -580,7 +587,8 @@ class minimAlg:
 
                         testCount += (-1)
 
-                        testStatSum += abs(newPointWithAttr[newPointKey][testStat] - phaseSpacePointDict[pointKey][testStat]) / phaseSpacePointDict[pointKey][testStat]
+                        testStatSum += abs(newPointWithAttr[newPointKey][testStat] - phaseSpacePointDict[pointKey][testStat]) / abs(phaseSpacePointDict[pointKey][testStat])
+
 
                         # print(testStatSum / (nbOfTests - testCount))
                         # break
@@ -597,12 +605,11 @@ class minimAlg:
 
 
 
-            # print(delimitator)
-            # print(best_rSigma)
+
             if (testStatSum / nbOfTests) > percGoal:
                 best_rSigma = best_rSigma / redFact
-                # print(delimitator2)
-                # print('New best rSigma ', best_rSigma)
+                print(delimitator2)
+                print('New best rSigma ', best_rSigma)
 
             else :
                 good_rSigma = True
@@ -641,6 +648,7 @@ class minimAlg:
 
         #### Selecting the best value for rSigma
         printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
+
         auxPoint = deepcopy(pointTree['G0-P0']['FullDescription'])
         pointKey = list( pointTree['G0-P0']['FullDescription'].keys() )[0]
         auxPoint[pointKey]['ChiSquared'] = pointTree['G0-P0']['Chi2']
@@ -839,7 +847,7 @@ class minimAlg:
 
 
         #### Initialisation stage ####
-        pointTree =  formatTopChi2List_asGen0( self.bestChiSquares, self.sortedChiSquare_ListOfTuples )
+        pointTree =  formatTopChi2List_asGen0( self.bestChiSquares, self.sortedChiSquare_ListOfTuples , 'LogL')
         alphaParents = list (pointTree.keys() )
         chi2Min = self.sortedChiSquare_ListOfTuples[0][1]
         genNb = 0
@@ -848,11 +856,209 @@ class minimAlg:
 
         #### Selecting the best value for rSigma
         printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
+
         auxPoint = deepcopy(pointTree['G0-P0']['FullDescription'])
         pointKey = list( pointTree['G0-P0']['FullDescription'].keys() )[0]
-        auxPoint[pointKey]['ChiSquared'] = pointTree['G0-P0']['Chi2']
 
-        best_rSigma , best_rSigmaCutoff = self._findBest_rSigma( auxPoint , redFact = amplificationFactor, percGoal = chi2PercCut / genNbKill)
+        auxPoint[pointKey]['LogL'] = pointTree['G0-P0']['LogL']
+
+        # best_rSigma , best_rSigmaCutoff = self._findBest_rSigma( auxPoint , redFact = amplificationFactor, percGoal = chi2PercCut / genNbKill, testStat = 'LogL')
+
+        best_rSigma , best_rSigmaCutoff = 0.00778, 0.3441
+        best_rSigmaInit = best_rSigma
+        justKicked = False
+
+        chi2MinDict = {'GenNb-0': {'BestChi2':chi2Min , 'rSigmaVal':best_rSigma} }
+
+        # rSigmaDict = {'Current_rSigma': best_rSigma, 'LastBest_rSigma': best_rSigma}
+
+        resetCount = 0
+        while True:
+
+
+            # Update the list?
+            newParents = []
+            pointCount = 0
+
+            for parentID in alphaParents:
+
+                pointNb = int(parentID.split('P')[1])
+                startTime = time.time()
+
+                # pp(bestChiSquares[pointNb])
+                # pp(pointTree[parentID]['FullDescription'])
+                # exit()
+
+
+                # newPointDict = ...
+                # newPointDictID =  ...
+                while True:
+                    try:
+
+                        phaseSpacePointDict = pointTree[parentID]['FullDescription']
+                        pointKey = list(  phaseSpacePointDict.keys() )[0]
+
+                        paramsDict = { modelAttr :phaseSpacePointDict[pointKey][modelAttr]   for modelAttr in self.psObject.params}
+                        newParamsDict = smartRndGen.genRandUniform_Rn( paramsDict , best_rSigma)
+                        ### Generate a point and extract its attributes
+
+                        massTruth, newPointDict = self.psObject.engineProcedure(newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
+
+                        if  massTruth == False:
+                            ### Point has 0 masses clean and try again.
+                            generatingEngine._clean( self.threadNumber)
+                            continue
+                        else:
+
+                            ### Escape condition when massTruth = True, move on to next stage.
+                            generatingEngine._clean( self.threadNumber)
+                            break
+
+                    except Exception as e:
+                        raise
+                        print(e)
+                ### Generate a point and extract its attributes
+
+                newPointKey = list(newPointDict.keys())[0]
+                newLogL = modelConstr.getLogLikelihood( newPointDict[newPointKey] )
+
+
+
+                ##### Get new point
+
+                if (    newLogL > pointTree[parentID]['LogL']
+                    or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) )
+                    ):
+
+                    # {'NewPointDict': newPointWithAttr, 'ChiSquared':newChiSquared}
+                    pointCount += 1
+
+                    # newParamsDict = paramsDict
+                    newPointDict[newPointKey]['LogL'] = newLogL
+                    newChi2 = newLogL
+                else:
+
+                    newChi2 = phaseSpacePointDict[pointKey]['LogL']
+                    newPointDict = phaseSpacePointDict
+                    newPointDict[pointKey]['LogL'] = pointTree[parentID]['LogL']
+
+
+                childID = 'G' + str(genNb + 1) + '-P' + str(pointCount)
+                pointTree.update (makeBranch( newPointDict,
+                                                newChi2, parentID, childID))
+                pointTree[parentID]['Children'].append( childID )
+
+                newParents.append( childID )
+
+                # self.Que.put( newPointDict['NewPointDict'] )
+                self.Que.put( {'NewPoint' : {'Dict' : newPointDict,
+                                             'ThreadNb' : int(self.threadNumber)+1}} )
+
+
+
+            alphaParents = newParents
+
+            chi2Min = pointTree[alphaParents[0]]['LogL']
+            minKey = alphaParents[0]
+
+
+
+            for  newParent in alphaParents:
+                if pointTree[newParent]['LogL'] < chi2Min:
+                    chi2Min = pointTree[newParent]['LogL']
+                    minKey = newParent
+
+
+            genNb += 1
+
+            printStr = 'Minimum Decrease of '
+            percChange = round ( (chi2Min - listOfBestChi2[-1]) / listOfBestChi2[-1], 4) * 100
+            printGenMsg(genNb, chi2Min, self.threadNumber, printStr, percChange)
+
+
+            chi2MinDict.update( {'GenNb-'+str(genNb) : {'BestChi2': chi2Min, 'rSigmaVal': best_rSigma}  } )
+            # pp(chi2MinDict)
+
+
+            newListOfChi2 = []
+            for  newParent in alphaParents:
+                newListOfChi2.append(pointTree[newParent]['LogL'])
+
+            chi2Min, chi2Mean , chi2Std=  min( newListOfChi2 ), np.mean( newListOfChi2), np.std( newListOfChi2)
+            genDict = {}
+            auxList = [ pointTree[parentID]['FullDescription'] for parentID in alphaParents]
+            for membDict in auxList:
+                genDict.update(membDict)
+
+            self.Que.put( {'GenStat':{'GenNb': genNb,
+                                    'ThreadNb': int(self.threadNumber)+1,
+                                    'NewChi2': chi2Min,
+                                    'OldChi2': listOfBestChi2[-1],
+                                    'chi2Min': chi2Min,
+                                    'chi2Mean': chi2Mean,
+                                    'chi2Std': chi2Std,
+                                    'GenDict' : genDict}}
+                )
+
+            # If after genNbKill generations the chi2 measure hasn't changed by more than chi2PercCut percent then we increase the best_rSigma for the thread by a factor of amplificationFactor.
+
+            # amplificationFactor = 2.71828182846
+
+            if genNb >= genNbKill:
+                chi2ToCompare = chi2MinDict[ 'GenNb-' + str(genNb-genNbKill) ]['BestChi2']
+
+                if ( (abs( chi2Min - chi2ToCompare )/ chi2ToCompare < chi2PercCut)
+                    and (genNb % genNbKill == 0)
+                     ):
+
+                     if best_rSigma > best_rSigmaCutoff :
+                         best_rSigma = best_rSigmaInit
+                         resetCount +=1
+
+                         if resetCount >=2:
+                             alphaParents = [random.choice (list(pointTree.keys())[:-1])]
+                             resetCount = 0
+                             pp(alphaParents)
+                         # exit()
+                         print(Fore.GREEN + delimitator + Style.RESET_ALL)
+                         printCentered('Reset rSigma value to ' + str(best_rSigma), color=Fore.GREEN)
+                         print(Fore.GREEN + delimitator + Style.RESET_ALL)
+                     else:
+
+
+                         best_rSigma = best_rSigma * amplificationFactor
+                         justKicked = True
+                         print(Fore.YELLOW + delimitator + Style.RESET_ALL)
+                         printCentered('NEW rSigma value of ' + str(best_rSigma), color=Fore.YELLOW)
+                         print(Fore.YELLOW + delimitator + Style.RESET_ALL)
+
+            ##At some point by increasing rSigma enough we'll effectivelly land on a new region (which we define by best_rSigmaCutoff * amplificationFactor due to the lack of a better solution) we reset the rSigma value back to its initial value and restart the process.
+
+            # #### NEED TO ADD COONDITION TO SEE IF THE NEW KICK HAS PRODUCED A SMALLER CHI 2
+            # if genNb == 5:
+            # if best_rSigma > best_rSigmaCutoff * amplificationFactor:
+            #     best_rSigma = best_rSigmaInit
+            #
+            #     alphaParents = [random.choice (list(pointTree.keys())[:-1])]
+            #     # pp(alphaParents)
+            #     # exit()
+            #     print(Fore.GREEN + delimitator + Style.RESET_ALL)
+            #     printCentered('Reset rSigma value to ' + str(best_rSigma), color=Fore.GREEN)
+            #     print(Fore.GREEN + delimitator + Style.RESET_ALL)
+
+
+
+            listOfBestChi2.append(chi2Min)
+            del listOfBestChi2[0]
+
+            if chi2Min > self.chi2LowerBound:
+                # self.Que.put( int(self.threadNumber)+1 )
+                self.Que.put( {'Terminate': int(self.threadNumber)+1 } )
+
+
+
+
+        return None
 
 
 

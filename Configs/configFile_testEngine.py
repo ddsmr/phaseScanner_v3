@@ -57,6 +57,13 @@ calcDict={
         'Type': 'None'
     }
 },
+'LogL':{
+    'LaTeX': r'$\log L$' ,
+    'Calc' : {'Type':'ChiSquared'},
+    'Constraint': {
+        'Type': 'None'
+    }
+},
 'testCalc':{
     'LaTeX': r'$\Delta a_{\mu}$' ,
     'Marker': 'X',

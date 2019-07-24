@@ -255,12 +255,7 @@ class phaseScannerModel:
         self.modelAttrs = configModule.attrDict
         self.calc = configModule.calcDict
 
-        try:
-            self.noneAttr = configModule.noneAttr
-        except Exception as e:
-            self.noneAttr = []
-        finally:
-            self.noneAttr.append('ChiSquared')
+
 
         #### Param Ranges and sigmas ##############
         self.paramBounds = configModule.dictMinMax
@@ -291,6 +286,21 @@ class phaseScannerModel:
                 self.allDicts.update(dict)
 
         ##### Constraint list #################################
+        self.noneAttr = []
+        try:
+            self.noneAttr = configModule.noneAttr
+        except Exception as e:
+            self.noneAttr = []
+        finally:
+            # self.noneAttr.append('ChiSquared')
+            for attr in self.calc.keys():
+                try:
+                    if self.calc[attr]['Calc']['Type'] == 'ChiSquared':
+                        self.noneAttr.append( attr )
+                except:
+                    pass
+
+
 
         constrList = []
         cutList = []
@@ -705,7 +715,7 @@ class phaseScannerModel:
 
         return phaseSpaceDict
 
-    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr ='Global', specificCuts = 'Global', ignoreConstrList = [], returnDict = False, exportAsDict = False, sortByChiSquare = True, sortbyThrNb = False):
+    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr ='Global', specificCuts = 'Global', ignoreConstrList = [], returnDict = False, exportAsDict = False, sortByChiSquare = True, sortbyThrNb = False, statistic = 'ChiSquared'):
         '''
             Given a phase Space dictionary, and a the top number of points to be ranked via their chi2 value, the function returns the sorted list of chi2 . Can be toggled to return the dictionary, or return the countChi2 random number of points.
         '''
@@ -727,8 +737,11 @@ class phaseScannerModel:
             if notemptyDict == True and modelConstr._checkHardCut(phaseSpaceDict[pointKey], specificCuts = specificCuts):
 
                 # print('aaaaaaaaaa')
-                chiSquare = modelConstr.getChi2(phaseSpaceDict[pointKey], ignoreConstrList = ignoreConstrList,
-                                    minimisationConstr = minimisationConstr, returnDict = False)
+                if statistic == 'ChiSquared':
+                    chiSquare = modelConstr.getChi2(phaseSpaceDict[pointKey], ignoreConstrList = ignoreConstrList,
+                                        minimisationConstr = minimisationConstr, returnDict = False)
+                elif statistic == 'LogL':
+                    chiSquare = modelConstr.getLogLikelihood( phaseSpaceDict[pointKey] )
                 chiSquareDict[pointKey] = chiSquare
                 # print(chiSquare)
 
@@ -830,7 +843,7 @@ class phaseScannerModel:
 
     # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False):
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False, statistic = 'ChiSquared', enableSubSpawn = False):
         '''
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
@@ -839,10 +852,10 @@ class phaseScannerModel:
         #     numberOfPoints = len( list( phaseSpaceDict.keys() ) )
         #
 
-        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload)
+        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload, statistic = statistic)
 
-        # pp(bestChiSquares)
-        # pp(sortedChiSquare_ListOfTuples)
+        pp(bestChiSquares)
+        pp(sortedChiSquare_ListOfTuples)
         # exit()
         # if reload == True:
             # pass
@@ -903,7 +916,7 @@ class phaseScannerModel:
 
 
 
-                    if self._evalKillThread( thrNb_str, algorithm, resultsDirDicts) == True:
+                    if enableSubSpawn == True and self._evalKillThread( thrNb_str, algorithm, resultsDirDicts) == True:
 
                         newAlg = self._getSubAlgorithm( algorithm )
                         swicthAlg = {'NewAlg': newAlg }
@@ -1272,25 +1285,26 @@ if __name__ == '__main__':
 
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
+    modelConstr = constrEval( newModel )
+
+    psDict = newModel.loadResults( )
+    # pointID = list( pointPSDict.keys() )[0]
+    # pp( pointPSDict )
+    # pp( newModel.allDicts['mBottom'] )
+    # print( modelConstr.getLogLikelihood(pointPSDict[pointID]) )
     # exit()
-    # routineStr = 'Routines.testExtCalc'
-    # routineModule = importlib.import_module(routineStr)
-    # methodStr = 'testRoutine'
-    #
-    #
-    # fakeList = ['a', 'b', {'a':1}]
-    # print( routineModule.__dict__[methodStr](fakeList)  )
+
 
 
     # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
 
-    # newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
-    # exit()
-    # fixJsonWAppend('Results/SO11Hosotani_DummyCase/Dicts/Focus_28_06_2019/')
-    psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
+    # psDict = newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
+    # psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
     print(len(psDict))
+    # exit()
+    newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
 
-    # newModel.runGenerationMultithread(psDict, numbOfCores = 4  , numberOfPoints = 4, chi2LowerBound = 1000.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True)
+    # newModel.runGenerationMultithread(psDict, numbOfCores = 1  , numberOfPoints = 1, chi2LowerBound = -2.0, debug = False, algorithm = 'metropolisHastings', sortByChiSquare = True, statistic = 'LogL')
     # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
     # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
     # newModel.resumeGenRun()
@@ -1298,4 +1312,4 @@ if __name__ == '__main__':
     # with open('Results/SO11Hosotani_DummyCase/Dicts/ReRun_ScanResults.SO11Hosotani_DummyCase_06-07-2019_09:35:10.json', 'r') as jsonIn:
     #     psDict = json.load(jsonIn)
     #
-    newModel.reRunMultiThread(psDict, numbOfCores = 8)
+    # newModel.reRunMultiThread(psDict, numbOfCores = 8)

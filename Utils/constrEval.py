@@ -310,3 +310,54 @@ class constrEval:
 
 
         return chiSquare
+
+    def _calculateLogLikelyhood(self, constraintDict, minimisationConstr='Global', returnDict = False, distribution = 'Normal'):
+        '''
+            Given the constraintDict produced by the _constraintEvaluation function, _calculateLogLikelyhood produces either the Global Log Likelihood for all the constraints in the entire dictionary, or given a specific constraint produces that specific one.
+        '''
+
+        π = math.pi
+        logL = None
+
+        if bool(constraintDict):
+            if minimisationConstr == 'Global':
+                constraintList = constraintDict.keys()
+            elif type(minimisationConstr) == list:
+                constraintList = minimisationConstr
+
+
+            logL = 0
+            logLDict = {}
+
+
+            for constrToEval in constraintList:
+                σ_constr = constraintDict[constrToEval]['Sigma']
+                paramDev = constraintDict[constrToEval]['Deviation']
+
+                auxLogL = - (1/2) * math.log(2 * π *(σ_constr**2)) - (paramDev**2)/(2 * (σ_constr**2) )
+                logL += auxLogL
+
+                logLDict['LogL-' + constrToEval] = auxLogL
+
+        if returnDict == True:
+            return logLDict
+        else:
+            return logL
+
+
+    def getLogLikelihood(self, pointPSDict,  noOfSigmasB = 1, noOfSigmasPM = 1, ignoreConstrList = [], minimisationConstr='Global', returnDict = False, distribution = 'Normal'):
+        '''
+            Given a point's phase Space dictionary (no point ID) the funciton evaluates the different constraints and calculates the corresponding log likelihood.
+        '''
+        if not self._checkHardCut(pointPSDict):
+            return math.inf
+
+        else:
+
+            constraintDict =  self._constraintEvaluation(pointPSDict, ignoreConstrList = ignoreConstrList,
+                                                         noOfSigmasB = noOfSigmasB, noOfSigmasPM = noOfSigmasPM)
+            logL = self._calculateLogLikelyhood(constraintDict, minimisationConstr = minimisationConstr,
+                                                 returnDict = returnDict, distribution = distribution)
+
+
+        return logL
