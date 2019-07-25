@@ -29,13 +29,13 @@ class engineClass:
 
         self.targetDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica'
 
-        import platform
-        sysInfo = platform.linux_distribution()
-        mathScript = 'MathematicaScript'
-        if '16.04' in sysInfo[1]:
-            mathScript = 'MathematicaScript'
-        elif '18.04' in sysInfo[1]:
-            mathScript = 'wolframscript'
+        # import platform
+        # sysInfo = platform.linux_distribution()
+        # mathScript = 'MathematicaScript'
+        # if '16.04' in sysInfo[1]:
+        #     mathScript = 'MathematicaScript'
+        # elif '18.04' in sysInfo[1]:
+        mathScript = 'wolframscript'
 
 
         runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...

@@ -1168,7 +1168,7 @@ class phaseScannerModel:
                 if  massTruth == True:
                     q.put(phaseSpaceDict)
 
-                generatingEngine._clean( threadNumber)
+                # generatingEngine._clean( threadNumber)
                 listOfPoints.pop()
 
 
@@ -1177,7 +1177,7 @@ class phaseScannerModel:
                 print(e)
 
                 listOfPoints.pop()
-                generatingEngine._clean( threadNumber )
+                # generatingEngine._clean( threadNumber )
 
                 q.put(None)
 
@@ -1294,16 +1294,18 @@ if __name__ == '__main__':
     # print( modelConstr.getLogLikelihood(pointPSDict[pointID]) )
     # exit()
     print(psDict['Point T0-366-10072019140014-GenNb12468'])
-    pp( newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)) 
+    newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)
+    print(len(psDict))
+    exit()
 
+    newModel.reRunMultiThread(psDict, numbOfCores = 8)
 
     # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
 
     # psDict = newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
     # psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
-    print(len(psDict))
-    exit()
-    newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
+
+    # newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
 
     # newModel.runGenerationMultithread(psDict, numbOfCores = 1  , numberOfPoints = 1, chi2LowerBound = -2.0, debug = False, algorithm = 'metropolisHastings', sortByChiSquare = True, statistic = 'LogL')
     # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
