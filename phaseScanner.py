@@ -260,11 +260,20 @@ class phaseScannerModel:
 
         #### Param Ranges and sigmas ##############
         self.paramBounds = configModule.dictMinMax
+        try:
+            self.defaultPlot = configModule.defaultPlot
+        except:
+            self.defaultPlot = {'xAxis':random.choice(self.params.keys),
+                                'yAxis':random.choice(self.params.keys),
+                                'colorAxis':random.choice(self.modelAttrs.keys)}
+            print(Fore.YELLOW + delimitator2+ str(e) +  '\nWARNING: Setting default plot.' + Style.RESET_ALL)
+
+
 
         try:
             self.plotFormatting = configModule.plotFormatting
         except Exception as e:
-            print(Fore.YELLOW, delimitator2, e, '\nWARNING: Setting default plotting attrs.', Style.RESET_ALL)
+            print(Fore.YELLOW + delimitator2+ str(e) +  '\nWARNING: Setting default plotting attrs.' + Style.RESET_ALL)
             self.plotFormatting = {
                  'failPlot' : {'alpha':0.5, 'lw' :0, 's':100},
                  'passPlot' : {'alpha':1,   'lw' : 0.6, 's':240},
@@ -877,14 +886,14 @@ class phaseScannerModel:
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
 
-        # if sortByChiSquare == False:
+        # if sortByChiSquare == False and algorithm == 'diffEvol':
         #     numberOfPoints = len( list( phaseSpaceDict.keys() ) )
         #
 
         bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload, statistic = statistic)
 
-        pp(bestChiSquares)
-        pp(sortedChiSquare_ListOfTuples)
+        # pp(bestChiSquares)
+        # pp(sortedChiSquare_ListOfTuples)
         # exit()
         # if reload == True:
             # pass
@@ -1362,6 +1371,8 @@ if __name__ == '__main__':
     # newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
 
     # newModel.runGenerationMultithread(psDict, numbOfCores = 1  , numberOfPoints = 1, chi2LowerBound = -2.0, debug = False, algorithm = 'metropolisHastings', sortByChiSquare = True, statistic = 'LogL')
+
+
     # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
     # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
     # newModel.resumeGenRun()

@@ -528,6 +528,18 @@ class minimAlg:
             Auxiliary algorithm to determine the best value for r_Sigma based on a percentage change of a test statistic
         '''
 
+        #### Check if we've already done this before
+        try:
+            with open('Configs/best_rSigma/' + self.psObject.name + '.json', 'r') as jsonIn:
+                rSigmaDict_Test = json.load(jsonIn)
+            ###### Return slightly differenct ones
+            return rSigmaDict_Test['best_rSigma'] / redFact, rSigmaDict_Test['max_rSigma'] * redFact
+        except:
+
+            print(delimitator2,'No rSigma detected, running rSigma procedure for ThreadNb ', self.threadNumber, delimitator2)
+            pass
+
+
 
         generatingEngine = self.psObject.engineClass( self.psObject )
         smartRndGen = smartRand({}, self.psObject.condDict, self.psObject.rndDict, self.psObject.toSetDict)
@@ -623,6 +635,10 @@ class minimAlg:
         print(Fore.YELLOW +  'rSigma cutoff with ', max_rSigma, Style.RESET_ALL)
         print(delimitator)
 
+        # subprocess.call('mkdir Configs/best_rSigma/', shell = True, )
+        with open('Configs/best_rSigma/' + self.psObject.name + '.json', 'w') as jsonOut:
+            json.dump({'best_rSigma': best_rSigma, 'max_rSigma': max_rSigma}, jsonOut)
+
         return best_rSigma, max_rSigma
 
     @regAlg
@@ -647,7 +663,7 @@ class minimAlg:
         listOfBestChi2 = [chi2Min]
 
         #### Selecting the best value for rSigma
-        printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
+        # printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
 
         auxPoint = deepcopy(pointTree['G0-P0']['FullDescription'])
         pointKey = list( pointTree['G0-P0']['FullDescription'].keys() )[0]
@@ -855,7 +871,7 @@ class minimAlg:
         listOfBestChi2 = [chi2Min]
 
         #### Selecting the best value for rSigma
-        printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
+        # printCentered(' Finding Best r Sigma for ThreadNb ' + str(self.threadNumber) + ' ', color=Fore.GREEN, fillerChar='◉')
 
         auxPoint = deepcopy(pointTree['G0-P0']['FullDescription'])
         pointKey = list( pointTree['G0-P0']['FullDescription'].keys() )[0]

@@ -12,6 +12,7 @@ engVers = '6.0'
 
 ###############################     Dictionaries         ###########################################
 
+
 paramDict = {
     'Lambda': {
         'LaTeX': r'$\lambda$',
@@ -133,6 +134,9 @@ calcDict={
 replacementRules = {
 'DummyCase' :{}
 }
+
+defaultPlot = {'xAxis':'Lambda', 'yAxis':'tanBeta', 'colorAxis':'Kappa'}
+
 
 # rgflowDict ={
 # }
