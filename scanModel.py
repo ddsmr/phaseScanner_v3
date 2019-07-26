@@ -106,6 +106,8 @@ if __name__ == '__main__':
     parser.add_argument("-rF", '--runFocused',  help = Fore.RED + 'Enable focused running.'+ Style.RESET_ALL, action="store_true")
     parser.add_argument('--algFocus',       help = 'Algorithm to run focus scan with', default= 'diffEvol', type=str)
     parser.add_argument('-tT', '--targetThreads',  help = 'Set flag to target the files from the previous thread runs', action="store_true")
+    parser.add_argument('--targetResDir', default = '', help = 'Descriptor that user wants to associate with the model')
+
     parser.add_argument("-spwn", '--spawnSubAlgorithms',  help = 'Algorithm to run focus scan with', action="store_true")
 
     # parser.add_argument('--nbOfSigmasRelax', default = 1, help = 'Number Of Sigmas for the focus scan to relax.', type = int)
@@ -147,8 +149,10 @@ if __name__ == '__main__':
         newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
 
     if scanCard['runFocused'] == True and scanCard['resumeGenRun'] == False:
-        if scanCard['targetThreads'] == True:
+        if scanCard['targetThreads'] == True and scanCard['targetResDir'] == False:
             resDir =  getLatestFocusDir(newModel)
+        elif scanCard['targetResDir'] == True:
+            resDir = scanCard['targetResDir']
         else:
             resDir = 'Dicts/'
 
