@@ -406,7 +406,7 @@ class minimAlg:
 
         return None
 
-    def _lookAroundPointForSmallerChi2 (self, phaseSpacePointDict, startTime, best_rSigma):
+    def _lookAroundPointForSmallerChi2 (self, phaseSpacePointDict, startTime, best_rSigma, debug = False):
         '''
             Given a point via phaseSpacePointDict, the function performs a random search in the hypercube defined by phaseSpacePointDict['Params'][param] ± sigmasDict[param] untill it finds a new point with a χ^2 smaller than the initial point. Requires a startTime to be externally monitored for timeOuts (recursive function calls itself).
 
@@ -519,7 +519,7 @@ class minimAlg:
 
         ### Check new point against old
         if newChiSquared > chiSquareToMinimise:
-            return self._lookAroundPointForSmallerChi2(phaseSpacePointDict, startTime, best_rSigma)
+            return self._lookAroundPointForSmallerChi2(phaseSpacePointDict, startTime, best_rSigma, debug = debug)
         else:
             return {'NewPointDict': newPointWithAttr, 'ChiSquared':newChiSquared}
 
@@ -685,7 +685,7 @@ class minimAlg:
                 # exit()
                 newPointDict = self._lookAroundPointForSmallerChi2(
                                                             pointTree[parentID]['FullDescription'],
-                                                            startTime, best_rSigma
+                                                            startTime, best_rSigma, debug = self.debug
                                                             )
 
                 if newPointDict == None:

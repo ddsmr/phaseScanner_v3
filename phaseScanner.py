@@ -4,6 +4,7 @@ import json
 import re
 import importlib
 import pickle
+import csv
 from multiprocessing import Process, Queue, Pipe
 from time import gmtime, strftime
 from datetime import date, datetime
@@ -21,8 +22,7 @@ from Utils.SmartRandomGenerator.smartRand import *
 from Utils.metaLogging import *
 from Utils.constrEval  import *
 from Utils.multiThreadAlg import *
-
-
+from Utils.dictplotting import *
 
 
 
@@ -213,6 +213,7 @@ class phaseScannerModel:
         ############### Model Bits ###################
         self.modelName = modelName
         self.case = caseHandle
+        self.name = modelName + caseHandle
         if micrOmegasName != '':
             self.micrOmegasName = modelName
 
@@ -275,10 +276,12 @@ class phaseScannerModel:
 
         ##### Classification & All dicts #################
         classDict = {}
-        for params, paramType in zip( [self.params.keys(), self.modelAttrs.keys(), self.calc.keys()] , ['Param', 'Attr', 'Calc']):
+        self.classList = ['Param', 'Attr', 'Calc']
+        for params, paramType in zip( [self.params.keys(), self.modelAttrs.keys(), self.calc.keys()] , self.classList):
             for param in params:
                 classDict[param] = paramType
         self.classDict = classDict
+
 
         self.allDicts = {}
         for dict in  [self.params, self.modelAttrs,  self.calc]:
@@ -301,32 +304,50 @@ class phaseScannerModel:
                     pass
 
 
-
+        constrDict = {}
         constrList = []
+
         cutList = []
+        cutDict = {}
+
         polygCuts = []
 
         for attr in self.allDicts.keys():
             # for attr in self.allDicts[attrType].keys():
             if self.allDicts[attr]['Constraint']['Type'] == 'ParamMatch':
                 constrList.append ( 'ParamMatch-' + attr  )
+                constrDict[attr] =  'ParamMatch-' + attr
+
             elif self.allDicts[attr]['Constraint']['Type'] == 'CheckBounded':
                 constrList.append ( 'CheckBounded-' + attr  )
+                constrDict[attr] =  'CheckBounded-' + attr
+
             elif self.allDicts[attr]['Constraint']['Type'] in ['HardCutLess', 'HardCutMore']:
                 cutList.append(attr)
+                cutDict[attr] = self.allDicts[attr]['Constraint']['Type']
+
             elif self.allDicts[attr]['Constraint']['Type']=='CombinedCut':
                 cutList.append(attr)
                 cutList.append(self.allDicts[attr]['Constraint']['ToCheck']['ToCheck'])
+                cutDict[attr] = self.allDicts[attr]['Constraint']['ToCheck']['ToCheck']
+
             elif self.allDicts[attr]['Constraint']['Type']=='PolygonCut':
                 cutList.append(attr)
                 polygCuts.append(attr)
+                cutDict[attr] = self.allDicts[attr]['Constraint']['Type']
+
+            elif self.allDicts[attr]['Constraint']['Type']=='Constrained':
+                cutDict[attr] = self.allDicts[attr]['Constraint']['ToCheck']
 
         self.constrList = constrList
+        self.constrDict = constrDict
+
         self.cutList = cutList
+        self.cutDict = cutDict
 
         ############### Set up exclusion polygon if available ##############
 
-        cutDict = {}
+        cutDict_Poly = {}
         try:
             for attrToCut in polygCuts:
                 plotDataName = 'Configs/ExperimentalCuts/plotCut_'  + attrToCut + '.csv'
@@ -339,15 +360,23 @@ class phaseScannerModel:
                         xCoord, yCoord = float(rawRow[0]), float(rawRow[1])
                         polygonList.append( (xCoord, yCoord) )
 
-                cutDict.update( {attrToCut : Polygon( polygonList )} )
-        except:
+                cutDict_Poly.update( {attrToCut : Polygon( polygonList )} )
+        except Exception as e:
+            print(e)
             pass
         #######################################################################################
-        self.polygCuts = cutDict
+        self.polygCuts = cutDict_Poly
 
 
         if (writeToLogFile == True):
             writeToLogFile_InitModel(self)
+
+        ######### SubClasses ###########
+        self.generatingEngine = self.engineClass(self)
+        self.modelConstr = constrEval( self )
+
+
+
         printCentered( ' ✔ Done Initialising Model', fillerChar = '█', color = Fore.GREEN )
 
     def loadResults(self, nbOfPoints='All', targetDir = 'Dicts/', specFile = '', ignoreIntegrCheck = False):
@@ -1230,20 +1259,24 @@ class phaseScannerModel:
 
         resultDict ={}
         pointCounterCopy = pointCounter
-        while pointCounter > 0:
-            result = localQue.get()
+        try:
+            while pointCounter > 0:
+                result = localQue.get()
 
-            if result != None:
-                resultDict.update(result)
-            pbar.update(1)
+                if result != None:
+                    resultDict.update(result)
+                pbar.update(1)
 
-            if pointCounter % 20 == 0:
-                with open( self.resultDir +'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
-                    json.dump(resultDict, outfile)
+                if pointCounter % 20 == 0:
+                    with open( self.resultDir +'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
+                        json.dump(resultDict, outfile)
 
 
-            pointCounter += (-1)
-            ##################################################
+                pointCounter += (-1)
+                ##################################################
+        except KeyboardInterrupt:
+            print('\nProcess killed by user')
+
         for proc in processes:
             proc.terminate()
 
@@ -1266,11 +1299,37 @@ class phaseScannerModel:
         # mergeAllResDicts(self)
 
         return None
-    # def chainEvents(self, eventTrigger):
-    #     '''
-    #     '''
-    #
-    #     return None
+
+    def exportPSDitctCSV(self, phaseSpaceDict, listOfAttr, nameOut='Default'):
+        '''
+            Given a phase space dictionary function will create a csv file with the PointIDs and the attributes specified in listOfAttr
+        '''
+        # write it
+        if nameOut == 'Default':
+            csvFileName ='ExportCSV-' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) + '.csv'
+        else:
+            csvFileName = nameOut + '.csv'
+
+
+        with open(self.resultDir + csvFileName, 'w') as csvfile:
+            writer = csv.writer(csvfile)
+
+            writer.writerow(['PointID'] + listOfAttr)
+            # [writer.writerow(r) for r in tableConstr]
+
+            for pointTuple in phaseSpaceDict.items():
+                pointID = pointTuple[0]
+                pointAttr = pointTuple[1]
+
+                rowToWrite = [pointID]
+
+                for attrToAdd in listOfAttr:
+
+                    rowToWrite.append( pointAttr[attrToAdd] )
+
+                writer.writerow(rowToWrite)
+
+        return None
 
 
 if __name__ == '__main__':
@@ -1279,31 +1338,26 @@ if __name__ == '__main__':
     auxCase ='DummyCase'
     micrOmegasName = modelName
 
-    modelName = 'SO11Hosotani'
-    auxCase ='DummyCase'
-    micrOmegasName = modelName
+    # modelName = 'SO11Hosotani'
+    # auxCase ='DummyCase'
+    # micrOmegasName = modelName
 
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
-    modelConstr = constrEval( newModel )
+    psDict = newModel.loadResults()
+    modelPlotter = dictPlotting(newModel)
 
-    psDict = newModel.loadResults(targetDir = 'Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True )
-    # pointID = list( pointPSDict.keys() )[0]
-    # pp( pointPSDict )
-    # pp( newModel.allDicts['mBottom'] )
-    # print( modelConstr.getLogLikelihood(pointPSDict[pointID]) )
-    # exit()
-    print(psDict['Point T0-366-10072019140014-GenNb12468'])
-    newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)
-    print(len(psDict))
-    exit()
+    modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])
 
-    newModel.reRunMultiThread(psDict, numbOfCores = 8)
 
-    # subprocess.call(["python3", "Routines/testExtCalc.py", fakeList])
+    # psDict = newModel.loadResults(targetDir = 'Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True )
+    # print(psDict['Point T0-366-10072019140014-GenNb12468'])
+    # newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)
+    # print(len(psDict))
+    # newModel.reRunMultiThread(psDict, numbOfCores = 8)
+
 
     # psDict = newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
-    # psDict = newModel.loadResults( targetDir='Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True)
 
     # newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
 
@@ -1311,7 +1365,3 @@ if __name__ == '__main__':
     # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
     # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
     # newModel.resumeGenRun()
-
-    # with open('Results/SO11Hosotani_DummyCase/Dicts/ReRun_ScanResults.SO11Hosotani_DummyCase_06-07-2019_09:35:10.json', 'r') as jsonIn:
-    #     psDict = json.load(jsonIn)
-    #

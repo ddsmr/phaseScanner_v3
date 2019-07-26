@@ -65,7 +65,7 @@ calcDict={
     }
 },
 'testCalc':{
-    'LaTeX': r'$\Delta a_{\mu}$' ,
+    'LaTeX': r'$\Delta_{int}$' ,
     'Marker': 'X',
     'Calc' : {'Type':'InternalCalc',
               'ToCalc': {'ParamList':['Lambda', 'Kappa', 'tanBeta', 'mBottom'],
