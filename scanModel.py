@@ -98,12 +98,12 @@ if __name__ == '__main__':
 
     parser.add_argument('--Description', default = '', help = 'Descriptor that user wants to associate with the model')
 
-
     parser.add_argument('--resumeGenRun',  help = 'Resume the latest run.', action="store_true")
     parser.add_argument('--numberOfCores', default = 8, help = 'Number Of Threads to use in the scanning procedure.', type = int)
     parser.add_argument('--numberOfPointsExplore', default = 100, help = 'Number Of Points to scan for in the exploration scan.', type = int)
 
-    parser.add_argument("-rF", '--runFocused',  help = 'Enable focused running.', action="store_true")
+    parser.add_argument("-rE", '--runExplore',  help = Fore.RED + 'Enable exploration running.'+ Style.RESET_ALL, action="store_true")
+    parser.add_argument("-rF", '--runFocused',  help = Fore.RED + 'Enable focused running.'+ Style.RESET_ALL, action="store_true")
     parser.add_argument('--algFocus',       help = 'Algorithm to run focus scan with', default= 'diffEvol', type=str)
     parser.add_argument('-tT', '--targetThreads',  help = 'Set flag to target the files from the previous thread runs', action="store_true")
     parser.add_argument("-spwn", '--spawnSubAlgorithms',  help = 'Algorithm to run focus scan with', action="store_true")
@@ -111,14 +111,14 @@ if __name__ == '__main__':
     # parser.add_argument('--nbOfSigmasRelax', default = 1, help = 'Number Of Sigmas for the focus scan to relax.', type = int)
     # parser.add_argument("-t", '--targetThread', default = False, help = 'Set to True to target', action="store_true")
 
-    parser.add_argument("-e", '--sendCompletionEmail', help='Enable completion email from being sent with the provided params.', action="store_true")
-    parser.add_argument('--xAxis', default='mTop', help='X axis for the plot sent in the email.')
-    parser.add_argument('--yAxis', default='Higgs', help='Y axis for the plot sent in the email.')
-    parser.add_argument('--colorAxis', default='c0', help='Color axis for the plot sent in the email.')
-
-    parser.add_argument("-g", '--pushToGit', help='Push by default to the Results_Auto git repo the results when done.', action="store_true")
-
-    parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts, Focus, sendCompletionEmail, and pushToGit',action="store_true")
+    # parser.add_argument("-e", '--sendCompletionEmail', help='Enable completion email from being sent with the provided params.', action="store_true")
+    # parser.add_argument('--xAxis', default='mTop', help='X axis for the plot sent in the email.')
+    # parser.add_argument('--yAxis', default='Higgs', help='Y axis for the plot sent in the email.')
+    # parser.add_argument('--colorAxis', default='c0', help='Color axis for the plot sent in the email.')
+    #
+    # parser.add_argument("-g", '--pushToGit', help='Push by default to the Results_Auto git repo the results when done.', action="store_true")
+    #
+    # parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts, Focus, sendCompletionEmail, and pushToGit',action="store_true")
 
     parser.add_argument("-d", '--debug', help=Fore.RED + 'Enable to debug.' + Style.RESET_ALL, action="store_true")
     #####################################################################################################
@@ -134,14 +134,17 @@ if __name__ == '__main__':
     enableSubSpawn = scanCard['spawnSubAlgorithms']
 
 
-
-
-
     if scanCard['micrOmegasName'] == None:
         micrOmegasName = modelName
 
-    newModel = phaseScannerModel( modelName, modelCase , micrOmegasName= micrOmegasName, writeToLogFile = True)
-    newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
+    try:
+        newModel = phaseScannerModel( modelName, modelCase , micrOmegasName= micrOmegasName, writeToLogFile = True)
+    except:
+        print('🔥' + Fore.RED + '  No such model in the database   🚒')
+        raise
+
+    if scanCard['runExplore'] == True:
+        newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
 
     if scanCard['runFocused'] == True and scanCard['resumeGenRun'] == False:
         if scanCard['targetThreads'] == True:

@@ -262,10 +262,11 @@ class phaseScannerModel:
         self.paramBounds = configModule.dictMinMax
         try:
             self.defaultPlot = configModule.defaultPlot
-        except:
-            self.defaultPlot = {'xAxis':random.choice(self.params.keys),
-                                'yAxis':random.choice(self.params.keys),
-                                'colorAxis':random.choice(self.modelAttrs.keys)}
+        except Exception as e:
+
+            self.defaultPlot = {'xAxis':random.choice(list(self.params.keys())) ,
+                                'yAxis':random.choice(list(self.params.keys())),
+                                'colorAxis':random.choice(list(self.modelAttrs.keys()))}
             print(Fore.YELLOW + delimitator2+ str(e) +  '\nWARNING: Setting default plot.' + Style.RESET_ALL)
 
 
