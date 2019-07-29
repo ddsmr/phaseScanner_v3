@@ -21250,3 +21250,73 @@ Action : @ 26/07/2019 -- 15:51:23  Started Focus_diffEvol Scan :: testEngineDumm
 Action : @ 26/07/2019 -- 15:51:34  Finished Focus_diffEvol Scan :: testEngineDummyCase
 ****************************************************************************************************
 
+----------------------------------------------------------------------------------------------------
+Initialised model @ 29-07-2019_09:05:42 with attributes:
+Engine ::testEngine
+Version :: 6.0
+Model Name: testEngine
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"Lambda": {"LaTeX": "$\\lambda$", "Constraint": {"Type": "None"}}, "Kappa": {"LaTeX": "$\\kappa$", "Constraint": {"Type": "None"}}, "tanBeta": {"LaTeX": "$ \\tan \\beta$", "Constraint": {"Type": "HardCutMore", "ToCheck": 0}}}
+Attr: 
+{"mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.005, "ExpSigma": 0.04}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "LogL": {"LaTeX": "$\\log L$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "testCalc": {"LaTeX": "$\\Delta_{int}$", "Marker": "X", "Calc": {"Type": "InternalCalc", "ToCalc": {"ParamList": ["Lambda", "Kappa", "tanBeta", "mBottom"], "Expression": "Lambda**2 + mBottom / 2 + Kappa * tanBeta"}}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 2.86e-09, "TheorySigma": 800.0, "ExpSigma": 0.0}}}, "extTest": {"LaTeX": "$\\Delta a_{\\mu}$", "Marker": "O", "Calc": {"Type": "ExternalCalc", "Routine": "testExtCalc", "Method": "testRoutine", "ParamList": ["Lambda", "Kappa", "tanBeta"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 100, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 29-07-2019_09:06:06 with attributes:
+Engine ::testEngine
+Version :: 6.0
+Model Name: testEngine
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"Lambda": {"LaTeX": "$\\lambda$", "Constraint": {"Type": "None"}}, "Kappa": {"LaTeX": "$\\kappa$", "Constraint": {"Type": "None"}}, "tanBeta": {"LaTeX": "$ \\tan \\beta$", "Constraint": {"Type": "HardCutMore", "ToCheck": 0}}}
+Attr: 
+{"mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.005, "ExpSigma": 0.04}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "LogL": {"LaTeX": "$\\log L$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "testCalc": {"LaTeX": "$\\Delta_{int}$", "Marker": "X", "Calc": {"Type": "InternalCalc", "ToCalc": {"ParamList": ["Lambda", "Kappa", "tanBeta", "mBottom"], "Expression": "Lambda**2 + mBottom / 2 + Kappa * tanBeta"}}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 2.86e-09, "TheorySigma": 800.0, "ExpSigma": 0.0}}}, "extTest": {"LaTeX": "$\\Delta a_{\\mu}$", "Marker": "O", "Calc": {"Type": "ExternalCalc", "Routine": "testExtCalc", "Method": "testRoutine", "ParamList": ["Lambda", "Kappa", "tanBeta"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 100, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 29/07/2019 -- 09:06:06  Started Focus_metropolisHastings Scan :: testEngineDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 29/07/2019 -- 09:06:53  Finished Focus_metropolisHastings Scan :: testEngineDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 29-07-2019_09:09:04 with attributes:
+Engine ::testEngine
+Version :: 6.0
+Model Name: testEngine
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"Lambda": {"LaTeX": "$\\lambda$", "Constraint": {"Type": "None"}}, "Kappa": {"LaTeX": "$\\kappa$", "Constraint": {"Type": "None"}}, "tanBeta": {"LaTeX": "$ \\tan \\beta$", "Constraint": {"Type": "HardCutMore", "ToCheck": 0}}}
+Attr: 
+{"mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.005, "ExpSigma": 0.04}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "LogL": {"LaTeX": "$\\log L$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "testCalc": {"LaTeX": "$\\Delta_{int}$", "Marker": "X", "Calc": {"Type": "InternalCalc", "ToCalc": {"ParamList": ["Lambda", "Kappa", "tanBeta", "mBottom"], "Expression": "Lambda**2 + mBottom / 2 + Kappa * tanBeta"}}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 2.86e-09, "TheorySigma": 800.0, "ExpSigma": 0.0}}}, "extTest": {"LaTeX": "$\\Delta a_{\\mu}$", "Marker": "O", "Calc": {"Type": "ExternalCalc", "Routine": "testExtCalc", "Method": "testRoutine", "ParamList": ["Lambda", "Kappa", "tanBeta"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 100, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 29/07/2019 -- 09:09:04  Started Focus_metropolisHastings Scan :: testEngineDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 29/07/2019 -- 09:10:08  Finished Focus_metropolisHastings Scan :: testEngineDummyCase
+****************************************************************************************************
+

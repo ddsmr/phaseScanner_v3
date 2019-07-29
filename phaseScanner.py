@@ -314,6 +314,7 @@ class phaseScannerModel:
                     pass
 
 
+
         constrDict = {}
         constrList = []
 
@@ -1350,17 +1351,22 @@ class phaseScannerModel:
 
 if __name__ == '__main__':
 
-    modelName = 'testEngine'
-    auxCase ='DummyCase'
-    micrOmegasName = modelName
-
-    # modelName = 'SO11Hosotani'
+    # modelName = 'testEngine'
     # auxCase ='DummyCase'
     # micrOmegasName = modelName
+
+    modelName = 'SO11Hosotani'
+    auxCase ='DummyCase'
+    micrOmegasName = modelName
 
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
     psDict = newModel.loadResults()
+
+
+
+
+
     modelPlotter = dictPlotting(newModel)
 
     modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])

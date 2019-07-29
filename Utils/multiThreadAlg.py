@@ -880,9 +880,9 @@ class minimAlg:
 
         auxPoint[pointKey]['LogL'] = pointTree['G0-P0']['LogL']
 
-        # best_rSigma , best_rSigmaCutoff = self._findBest_rSigma( auxPoint , redFact = amplificationFactor, percGoal = chi2PercCut / genNbKill, testStat = 'LogL')
+        best_rSigma , best_rSigmaCutoff = self._findBest_rSigma( auxPoint , redFact = amplificationFactor, percGoal = chi2PercCut / genNbKill, testStat = 'LogL')
 
-        best_rSigma , best_rSigmaCutoff = 0.00778, 0.3441
+        # best_rSigma , best_rSigmaCutoff = 0.00778, 0.3441
         best_rSigmaInit = best_rSigma
         justKicked = False
 
@@ -1025,7 +1025,7 @@ class minimAlg:
             if genNb >= genNbKill:
                 chi2ToCompare = chi2MinDict[ 'GenNb-' + str(genNb-genNbKill) ]['BestChi2']
 
-                if ( (abs( chi2Min - chi2ToCompare )/ chi2ToCompare < chi2PercCut)
+                if ( (abs( chi2Min - chi2ToCompare) / abs(chi2ToCompare) < chi2PercCut)
                     and (genNb % genNbKill == 0)
                      ):
 

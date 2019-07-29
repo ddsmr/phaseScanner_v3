@@ -306,14 +306,25 @@ attrDict = {
 
 
 }
+
+######### To define a test measure e.g. χ^2 or Log L the attribute must be of Type:'ChiSquared'
 calcDict = {
             'ChiSquared':{
                 'LaTeX': r'$\chi^2_G$' ,
                 'Calc' : {'Type':'ChiSquared'},
                 'Constraint': {
                 'Type': 'None'
+                    }
+                },
+
+            'LogL':{
+                'LaTeX': r'$\log L$' ,
+                'Calc' : {'Type':'ChiSquared'},
+                'Constraint': {
+                    'Type': 'None'
                 }
-}
+            }
+
 
 # ,
 # 'mTopTower' :{

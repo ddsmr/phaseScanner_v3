@@ -51,36 +51,44 @@ def _createFocusRunCard(algorihm, psDict, numbOfCores, targetThreads, psObject):
         focusCard['sortByChiSquare'] = True
         focusCard['statistic'] = 'ChiSquared'
 
-        if targetThreads == True:
-            dictOfThreadDicts = {}
-            # sortedListOfPoints =  sorted(psDict.items(), key=lambda kv: kv[0])
-            sortedListOfKeys =  sorted(psDict.keys(), key=lambda kv: kv)
 
-            # print(sortedListOfKeys)
-            # exit()
+    elif algorihm == 'metropolisHastings':
+        focusCard['nbOfPoints'] = numbOfCores
+        focusCard['nbOfCores']  = numbOfCores
+        focusCard['chi2LowerBound'] = -3.0
+        focusCard['sortByChiSquare'] = True
+        focusCard['statistic'] = 'LogL'
+
+    if targetThreads == True and algorihm != 'diffEvol':
+        dictOfThreadDicts = {}
+        # sortedListOfPoints =  sorted(psDict.items(), key=lambda kv: kv[0])
+        sortedListOfKeys =  sorted(psDict.keys(), key=lambda kv: kv)
+
+        # print(sortedListOfKeys)
+        # exit()
 
 
-            # pp(sortedListOfPoints)
+        # pp(sortedListOfPoints)
 
-            for pointID in sortedListOfKeys:
-                thrNb = pointID.split(' ')[1].split('-')[0]
+        for pointID in sortedListOfKeys:
+            thrNb = pointID.split(' ')[1].split('-')[0]
 
-                if thrNb not in dictOfThreadDicts.keys():
-                    dictOfThreadDicts[thrNb]  =  {}
-                    dictOfThreadDicts[thrNb].update( {pointID:psDict[pointID]} )
+            if thrNb not in dictOfThreadDicts.keys():
+                dictOfThreadDicts[thrNb]  =  {}
+                dictOfThreadDicts[thrNb].update( {pointID:psDict[pointID]} )
 
-                else:
-                    dictOfThreadDicts[thrNb].update( {pointID:psDict[pointID]} )
+            else:
+                dictOfThreadDicts[thrNb].update( {pointID:psDict[pointID]} )
 
-            outDict = {}
+        outDict = {}
 
-            chi2List = []
-            for threadNb in dictOfThreadDicts.keys():
-                outDict.update ( psObject.getTopNChiSquaredPoints(dictOfThreadDicts[threadNb], 1)[0][0] )
-                chi2List.append ( psObject.getTopNChiSquaredPoints(dictOfThreadDicts[threadNb], 1)[1] )
+        chi2List = []
+        for threadNb in dictOfThreadDicts.keys():
+            outDict.update ( psObject.getTopNChiSquaredPoints(dictOfThreadDicts[threadNb], 1)[0][0] )
+            chi2List.append ( psObject.getTopNChiSquaredPoints(dictOfThreadDicts[threadNb], 1)[1] )
 
-        else:
-            outDict = psDict
+    else:
+        outDict = psDict
 
 
     return focusCard, outDict
@@ -149,16 +157,26 @@ if __name__ == '__main__':
         newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
 
     if scanCard['runFocused'] == True and scanCard['resumeGenRun'] == False:
-        if scanCard['targetThreads'] == True and scanCard['targetResDir'] == False:
+
+        if scanCard['targetThreads'] == True and scanCard['targetResDir'] == '':
             resDir =  getLatestFocusDir(newModel)
-        elif scanCard['targetResDir'] == True:
+        elif scanCard['targetResDir'] != '':
             resDir = 'Dicts/' + scanCard['targetResDir']
         else:
             resDir = 'Dicts/'
 
 
+        # scanCard['targetThreads'] = True
+
         psDict = newModel.loadResults(targetDir = resDir)
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores, scanCard['targetThreads'], newModel)
+
+        # pp(psDict)
+
+        # newModel.reRunMultiThread(psDict, numbOfCores = 1)
+
+        # exit()
+
 
 
         newModel.runGenerationMultithread(psDict, numbOfCores = algCard['nbOfCores'] ,
