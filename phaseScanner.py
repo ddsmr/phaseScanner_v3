@@ -1132,14 +1132,19 @@ class phaseScannerModel:
         #### Gather the latest generational data
         try:
             dirEntries = os.listdir(focusDir + 'GenResults/')
+
             for dirEntry in dirEntries:
                 with open(focusDir + 'GenResults/' + dirEntry, 'r') as jsonIn:
                     thData = json.load(jsonIn)
 
+                # pp(thData)
                 thrNb = str( dirEntry.split('ThreadNb-')[1].replace('.json', ''))
-                print(thrNb)
                 if threadNb != 'All' and thrNb == threadNb:
+
                     threadDict.append( thData )
+                elif threadNb == 'All':
+                    threadDict.append( thData )
+
 
         except Exception as e:
             print(e)
@@ -1149,7 +1154,7 @@ class phaseScannerModel:
 
         pp(runCard)
         sortByChiSquare = False
-        reload = True
+        reload = False
 
         if type(swicthAlg) == dict:
             runCard['algorihm'] = swicthAlg['NewAlg']
@@ -1157,6 +1162,7 @@ class phaseScannerModel:
             # pp(newAlgDict)
             runCard['nbOfPoints'], runCard['numbOfCores'], sortByChiSquare = newAlgDict['nbOfPoints'], newAlgDict['numbOfCores'], newAlgDict['sortByChiSquare']
             reload = False
+
 
             # pass
             ## Will change the run card
@@ -1167,12 +1173,12 @@ class phaseScannerModel:
         for dictToApp in threadDict:
             psDict.update(dictToApp)
 
-        pp(runCard)
-        pp(psDict)
+        # pp(psDict)
+        # pp(runCard)
         # exit()
         # pp(psDict)
         # print(delimitator)
-        newModel.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = sortByChiSquare, reload = reload)
+        self.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = sortByChiSquare, reload = reload)
 
         return None
 

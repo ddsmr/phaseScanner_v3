@@ -152,7 +152,7 @@ if __name__ == '__main__':
         if scanCard['targetThreads'] == True and scanCard['targetResDir'] == False:
             resDir =  getLatestFocusDir(newModel)
         elif scanCard['targetResDir'] == True:
-            resDir = scanCard['targetResDir']
+            resDir = 'Dicts/' + scanCard['targetResDir']
         else:
             resDir = 'Dicts/'
 

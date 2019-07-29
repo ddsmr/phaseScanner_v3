@@ -714,6 +714,8 @@ class minimAlg:
                         # else:
                         #     newParents.append(parentID)
                     else:
+                        ######### COMEBACK
+                        newParents.append(parentID)
                         best_rSigma = best_rSigmaInit
                         resetCount +=1
 
