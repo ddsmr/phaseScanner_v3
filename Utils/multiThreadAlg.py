@@ -533,7 +533,7 @@ class minimAlg:
             with open('Configs/best_rSigma/' + self.psObject.name + '.json', 'r') as jsonIn:
                 rSigmaDict_Test = json.load(jsonIn)
             ###### Return slightly differenct ones
-            return rSigmaDict_Test['best_rSigma'] / redFact, rSigmaDict_Test['max_rSigma'] * redFact
+            return rSigmaDict_Test['best_rSigma'] , rSigmaDict_Test['max_rSigma'] 
         except:
 
             print(delimitator2,'No rSigma detected, running rSigma procedure for ThreadNb ', self.threadNumber, delimitator2)
