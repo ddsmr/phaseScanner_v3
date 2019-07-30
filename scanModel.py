@@ -6,7 +6,6 @@ from Utils.Gmail.gMailModule import *
 from Utils.printUtils import *
 
 
-# sendCompletionEmail('Hallo Dwayne', None, ['d.spiteri.1@research.gla.ac.uk'])
 def getLatestFocusDir(psObject):
     '''
     '''
@@ -171,7 +170,7 @@ if __name__ == '__main__':
 
         if bool(psDict) == False:
             psDict = newModel.loadResults(targetDir = resDir)
-            
+
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores, scanCard['targetThreads'], newModel)
 
         # pp(psDict)

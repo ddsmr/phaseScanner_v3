@@ -945,7 +945,7 @@ class minimAlg:
                 ##### Get new point
 
                 if (    newLogL > pointTree[parentID]['LogL']
-                    or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) )
+                    or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) ) and newLogL != math.inf
                     ):
 
                     # {'NewPointDict': newPointWithAttr, 'ChiSquared':newChiSquared}
