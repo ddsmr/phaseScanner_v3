@@ -142,6 +142,7 @@ if __name__ == '__main__':
     numbOfCores = scanCard['numberOfCores']
     debug = scanCard['debug']
     enableSubSpawn = scanCard['spawnSubAlgorithms']
+    psDict = {}
 
 
     if scanCard['micrOmegasName'] == None:
@@ -154,7 +155,7 @@ if __name__ == '__main__':
         raise
 
     if scanCard['runExplore'] == True:
-        newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
+        psDict = newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'], nbOfThreads = numbOfCores, debug = False)
 
     if scanCard['runFocused'] == True and scanCard['resumeGenRun'] == False:
 
@@ -168,7 +169,9 @@ if __name__ == '__main__':
 
         # scanCard['targetThreads'] = True
 
-        psDict = newModel.loadResults(targetDir = resDir)
+        if bool(psDict) == False:
+            psDict = newModel.loadResults(targetDir = resDir)
+            
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores, scanCard['targetThreads'], newModel)
 
         # pp(psDict)
