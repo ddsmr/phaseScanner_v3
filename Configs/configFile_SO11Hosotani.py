@@ -137,13 +137,17 @@ attrDict = {
 'mPsiDark':{
     'LaTeX': r'$m_{\psi_D} (GeV)$',
     'Constraint': {
-        'Type': 'CheckBounded',#'None'#
-                'ToCheck': {
-                            'CentralVal': 2500.00,
-                            'TheorySigma': 25.0,
-                            'ExpSigma': 0.0
-                            }
-                  }
+        'Type': 'HardCutMore',
+        'ToCheck' : 2400
+    }
+    # 'Constraint': {
+    #     'Type': 'CheckBounded',#'None'#
+    #             'ToCheck': {
+    #                         'CentralVal': 2500.00,
+    #                         'TheorySigma': 25.0,
+    #                         'ExpSigma': 0.0
+    #                         }
+    #               }
 },
 'mTau':{
     'LaTeX': r'$m_{\tau} (GeV)$',

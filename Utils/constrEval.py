@@ -1,4 +1,6 @@
 import math
+from pprint import pprint as pp
+
 
 class constrEval:
     '''
@@ -339,6 +341,8 @@ class constrEval:
 
                 logLDict['LogL-' + constrToEval] = auxLogL
 
+        pp(logLDict)
+        print(paramDev,σ_constr )
         if returnDict == True:
             return logLDict
         else:

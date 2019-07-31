@@ -533,7 +533,7 @@ class minimAlg:
             with open('Configs/best_rSigma/' + self.psObject.name + '.json', 'r') as jsonIn:
                 rSigmaDict_Test = json.load(jsonIn)
             ###### Return slightly differenct ones
-            return rSigmaDict_Test['best_rSigma'] , rSigmaDict_Test['max_rSigma'] 
+            return rSigmaDict_Test['best_rSigma'] , rSigmaDict_Test['max_rSigma']
         except:
 
             print(delimitator2,'No rSigma detected, running rSigma procedure for ThreadNb ', self.threadNumber, delimitator2)
@@ -649,7 +649,7 @@ class minimAlg:
 
         #### Controlling factors ####
         chi2PercCut = 0.1
-        genNbKill = 10
+        genNbKill = 15
 
         amplificationFactor = 1.71828182846
 
@@ -944,8 +944,10 @@ class minimAlg:
 
                 ##### Get new point
 
-                if (    newLogL > pointTree[parentID]['LogL']
-                    or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) ) and newLogL != math.inf
+                if (    (newLogL > pointTree[parentID]['LogL']
+                    or (newLogL /  pointTree[parentID]['LogL']) > random.uniform(0,1) ) 
+                    # or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) ))
+                    and newLogL != math.inf
                     ):
 
                     # {'NewPointDict': newPointWithAttr, 'ChiSquared':newChiSquared}

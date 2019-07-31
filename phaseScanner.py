@@ -883,7 +883,7 @@ class phaseScannerModel:
 
     # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 120, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False, statistic = 'ChiSquared', enableSubSpawn = False):
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 600, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False, statistic = 'ChiSquared', enableSubSpawn = False):
         '''
             Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
         '''
