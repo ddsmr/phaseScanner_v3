@@ -327,6 +327,26 @@ calcDict = {
                 'Constraint': {
                     'Type': 'None'
                 }
+            },
+            'sin2ThW':{
+                'LaTeX': r'$\sin^2 \theta_W$' ,
+                'Marker': 'O',
+                'Calc' : {'Type':'ExternalCalc',
+                          'Routine': 'weinbergAnalysis',
+                          'Method' : 'getWeinbergAngle',
+                          'ParamList': ["k", "zL", "c0", "c1", "c2", "c0Prime", "Mu1", "Mu2Tilde", "Mu11", "Mu11Prime", "ThetaHiggs"]
+                          },
+
+
+                'Constraint': {
+                    'Type': 'None',#<<<<< HardCutLess
+                    'ToCheck': {
+                                    'CentralVal': 0.375,
+                                    'TheorySigma': 1.0,
+                                    'ExpSigma': 0.0
+                                    }
+                                }
+
             }
 
 

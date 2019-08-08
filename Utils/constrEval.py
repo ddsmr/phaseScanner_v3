@@ -310,7 +310,7 @@ class constrEval:
             chiSquare = self._calculateChiSquared(constraintDict, minimisationConstr = minimisationConstr,
                                                  returnDict = returnDict)
 
-
+        # print(chiSquare)
         return chiSquare
 
     def _calculateLogLikelyhood(self, constraintDict, minimisationConstr='Global', returnDict = False, distribution = 'Normal'):

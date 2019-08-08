@@ -197,6 +197,8 @@ class phaseScannerModel:
             configModule = importlib.import_module(configString)
         except Exception as e:
             print(e)
+            raise
+
 
         self.genEngine = configModule.genEngine
         self.engineVersion = configModule.engVers
@@ -386,6 +388,16 @@ class phaseScannerModel:
         self.generatingEngine = self.engineClass(self)
         self.modelConstr = constrEval( self )
 
+        self.calcRoutines = {}
+        for calcParam in self.calc.keys():
+            if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
+                routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
+                routineModule = importlib.import_module(routineStr)
+
+                self.calcRoutines[calcParam] = routineModule
+
+
+
 
 
         printCentered( ' ✔ Done Initialising Model', fillerChar = '█', color = Fore.GREEN )
@@ -469,10 +481,16 @@ class phaseScannerModel:
         '''
         generatingEngine = self.engineClass(self)
 
+        # printCentered('Running Point and getting attrs.', fillerChar='*')
         genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
         phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
 
-        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
+        # pp(phaseSpaceDict_int)
+        # exit()
+        # printCentered('Getting Calc Attributes', fillerChar='*')
+
+
+        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int, threadNumber =  threadNumber )
         massTruth = generatingEngine._check0Mass( phaseSpaceDict )
 
         return massTruth, phaseSpaceDict
@@ -685,7 +703,7 @@ class phaseScannerModel:
         return None
 
     #####################  Evaluations ##############################################
-    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson = False, ignoreInternal = False, ignoreExternal = False):
+    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson = False, ignoreInternal = False, ignoreExternal = False, threadNumber='0'):
         '''
         Given a phaseSpaceDict, for each point in the phase space,  the function will go through the calcDict specified in the configFile, and calculate the specified attributes.
 
@@ -726,16 +744,17 @@ class phaseScannerModel:
                     if ignoreExternal == False:
                         if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
 
-                            routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
+                            # routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
+                            routineModule = self.calcRoutines[calcParam]
                             methodStr = self.calc[calcParam]['Calc']['Method']
 
-                            routineModule = importlib.import_module(routineStr)
+                            # routineModule = importlib.import_module(routineStr)
 
                             extParamDict = {}
                             for paramName in self.calc[calcParam]['Calc']['ParamList']:
                                 extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
-                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict)
+                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict, threadNumber = threadNumber)
 
 
 
@@ -1351,13 +1370,13 @@ class phaseScannerModel:
 
 if __name__ == '__main__':
 
-    # modelName = 'testEngine'
-    # auxCase ='DummyCase'
-    # micrOmegasName = modelName
-
-    modelName = 'SO11Hosotani'
+    modelName = 'ackleyFunct'
     auxCase ='DummyCase'
     micrOmegasName = modelName
+
+    # modelName = 'SO11Hosotani'
+    # auxCase ='DummyCase'
+    # micrOmegasName = modelName
 
 
     newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
@@ -1368,8 +1387,8 @@ if __name__ == '__main__':
 
 
     modelPlotter = dictPlotting(newModel)
-
-    modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])
+    modelPlotter.plotModel( psDict , 'x', 'y',  'fAckley', colorMap='RdYlGn' )
+    # modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])
 
 
     # psDict = newModel.loadResults(targetDir = 'Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True )

@@ -35,7 +35,7 @@ def _createFocusRunCard(algorihm, psDict, numbOfCores, targetThreads, psObject):
         Provided the algorithm the function gives bakc the parameters for the focus scan.
     '''
     focusCard = {}
-    if algorihm == 'diffEvol':
+    if 'diffEvol' in algorihm :
         focusCard['nbOfPoints'] = len( list( psDict.keys() ) )
         focusCard['nbOfCores']  = numbOfCores
         focusCard['chi2LowerBound'] = 10.0
@@ -111,7 +111,7 @@ if __name__ == '__main__':
 
     parser.add_argument("-rE", '--runExplore',  help = Fore.RED + 'Enable exploration running.'+ Style.RESET_ALL, action="store_true")
     parser.add_argument("-rF", '--runFocused',  help = Fore.RED + 'Enable focused running.'+ Style.RESET_ALL, action="store_true")
-    parser.add_argument('--algFocus',       help = 'Algorithm to run focus scan with', default= 'diffEvol', type=str)
+    parser.add_argument('--algFocus',       help = 'Algorithm to run focus scan with. Default algorithm is diffEvol.', default= 'diffEvol', type=str)
     parser.add_argument('-tT', '--targetThreads',  help = 'Set flag to target the files from the previous thread runs', action="store_true")
     parser.add_argument('--targetResDir', default = '', help = 'Descriptor that user wants to associate with the model')
 
@@ -169,15 +169,16 @@ if __name__ == '__main__':
         # scanCard['targetThreads'] = True
 
         if bool(psDict) == False:
-            psDict = newModel.loadResults(targetDir = resDir)
+            psDict = newModel.loadResults(targetDir = resDir, ignoreIntegrCheck = True, )
 
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores, scanCard['targetThreads'], newModel)
 
         # pp(psDict)
 
         # newModel.reRunMultiThread(psDict, numbOfCores = 1)
+        newModel.reRunMultiThread(psDict, numbOfCores = algCard['nbOfCores'])
 
-        # exit()
+        exit()
 
 
 

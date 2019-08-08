@@ -26,7 +26,7 @@ def makeRegistrar():
 regAlg = makeRegistrar()
 
 
-def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples, statistic = 'Chi2' ):##### DOCUEMNTEATIN
+def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples, statistic = 'Chi2' , Auxiliaries={}):##### DOCUEMNTEATIN
     '''
     '''
     pointTree = {}
@@ -52,6 +52,7 @@ def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples, statist
         pointTree[newKey]['Children'] = []
 
         pointTree[newKey]['FullDescription'] =  auxDict
+        pointTree[newKey]['Aux'] = Auxiliaries
         # pp(pointTree[newKey])
 
         # pp(pointTree[newKey])
@@ -59,7 +60,7 @@ def formatTopChi2List_asGen0( topChi2List, sortedChiSquare_ListOfTuples, statist
         # pointTree[newKey]['OrigKey'] = pointKey
 
     return pointTree
-def makeBranch( pointDict, newChi2 , parentID, pointID ):
+def makeBranch( pointDict, newChi2 , parentID, pointID , Auxiliaries={}):
     '''
         E.g.   add Generation-2
     '''
@@ -72,6 +73,8 @@ def makeBranch( pointDict, newChi2 , parentID, pointID ):
     pointBranch[pointID] .update( {'Children' : [] } )
     pointBranch[pointID] .update( {'Parent' : parentID } )
     pointBranch[pointID] .update( {'FullDescription' : pointDict } )
+    pointBranch[pointID] .update( {'Aux' : Auxiliaries } )
+
 
     # pp (pointBranch)
 
@@ -136,11 +139,13 @@ class minimAlg:
 
         listOfBestChi2 = [  sorted(self.sortedChiSquare_ListOfTuples, key=lambda tup: tup[1])[0][1]  ]
         ####  Pick target vector at rndom / as lowestchi2? ####
-        # F_factor = 0.4
-        # CR_factor = 0.1
+        # F_factor = 0.66
+        # CR_factor = 0.236
 
         F_factor = 0.5
         CR_factor = 0.1
+
+
         generatingEngine = self.psObject.engineClass( self.psObject )
 
 
@@ -172,6 +177,8 @@ class minimAlg:
 
                     # targetKey = rndKeyChoice[0]
                     targetChi2 = pointTree[targetKey]['Chi2']
+                    # targetF_fact = pointTree[targetKey]['Aux']['F_factor']
+                    # Gen newF_fact
 
 
 
@@ -185,6 +192,7 @@ class minimAlg:
                         xr3_Comp = pointTree[rndKeyChoice[2]][modelParam]
 
                         # F_factor = random.uniform(0, 2)
+                        # newF_fact
 
                         donorDict[modelParam] = xr1_Comp + F_factor * (xr2_Comp - xr3_Comp)
 
@@ -198,8 +206,11 @@ class minimAlg:
                     mutatedDict = {}
                     rndParamChoice = random.choice(list(  self.psObject.params.keys() ) )
 
-                    for modelParam in self.psObject.params.keys():
+                    # targetCR_fact = pointTree[targetKey]['Aux']['CR_factor']
+                    # Gen newCR_fact
 
+                    for modelParam in self.psObject.params.keys():
+                        ### new CR Factor
                         if   random.uniform(0, 1) <= CR_factor or modelParam == rndParamChoice :
                             # print ('_________--------\\\\\\\\')
                             mutatedDict[modelParam] = donorDict[modelParam]
@@ -945,7 +956,7 @@ class minimAlg:
                 ##### Get new point
 
                 if (    (newLogL > pointTree[parentID]['LogL']
-                    or (newLogL /  pointTree[parentID]['LogL']) > random.uniform(0,1) ) 
+                    or (newLogL /  pointTree[parentID]['LogL']) > random.uniform(0,1) )
                     # or (newLogL -  pointTree[parentID]['LogL']) > math.log( random.uniform(0,1) ))
                     and newLogL != math.inf
                     ):
@@ -1079,6 +1090,333 @@ class minimAlg:
 
 
         return None
+
+    @regAlg
+    def diffEvolAdapt_1 ( self ):
+        '''
+            Differential evolution algorithm works as per Storn and Price [see ref]
+        '''
+
+        modelConstr = constrEval( self.psObject )
+        mutationDictInit = {"F_factor" : 0.66,
+                            "CR_factor" : 0.236}
+
+        pointTree =  formatTopChi2List_asGen0( self.bestChiSquares, self.sortedChiSquare_ListOfTuples, Auxiliaries= mutationDictInit)
+
+
+
+        alphaParents = list (  pointTree.keys() )
+        scanIDwThread = self.psObject.modelName + self.psObject.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime()) + '_ThreadNb' + self.threadNumber
+        resultsDirDicts = self.psObject.resultDir + 'Dicts/Focus' + strftime("_%d_%m_%Y/", gmtime())
+
+        # print(delimitator)
+        resultDict_Thread = {}
+
+
+        # chi2Min = sortedChiSquare_ListOfTuples[0][1]
+        # pp(sortedChiSquare_ListOfTuples[0])
+        # 'chi2Min': min( newListOfChi2 ),
+        # 'chi2Mean' : np.mean( newListOfChi2),
+        # 'chi2Std' : np.std( newListOfChi2)
+        chi2Vals = [chi2Tuple[1] for chi2Tuple in self.sortedChiSquare_ListOfTuples ]
+        listOfChi2StatDicts = [ { 'chi2Min': min(chi2Vals),
+                                    'chi2Mean': np.mean(chi2Vals) ,
+                                    'chi2Std': np.std(chi2Vals)
+                                                 } ]
+
+
+        listOfBestChi2 = [  sorted(self.sortedChiSquare_ListOfTuples, key=lambda tup: tup[1])[0][1]  ]
+        ####  Pick target vector at rndom / as lowestchi2? ####
+
+
+        # F_factor = 0.5
+        # CR_factor = 0.1
+
+
+        generatingEngine = self.psObject.engineClass( self.psObject )
+
+
+
+        #### Initialisation stage ####
+        # Pick out 4 points in phase space and assign one of them as the target.
+
+        ### This population size multiplier seems slightly unnecessary
+        genPopSize = len(alphaParents)
+        genNb = 0
+        changeNb = 0
+
+
+        while True:
+
+            newParents = []
+            pointCount = 0
+
+            #### Populating the new generation. Stop when we have the same number of parents in the new one.
+            while len(newParents) < genPopSize:
+
+                for targetKey in alphaParents:
+
+
+
+                    # alphaParentsMod = deepcopy(alphaParents)
+                    # alphaParentsMod = [ parent for parent in alphaParents if parent != targetKey]
+                    rndKeyChoice = random.sample(alphaParents , 3)
+
+                    # targetKey = rndKeyChoice[0]
+                    targetChi2 = pointTree[targetKey]['Chi2']
+                    targetF_fact = pointTree[targetKey]['Aux']['F_factor']
+
+                    # Gen newF_fact
+                    if random.uniform(0,1) < 0.1:
+                        newF_fact = 0.1 + random.uniform(0,1) * 0.9
+                    else:
+                        newF_fact = targetF_fact
+
+
+
+
+                    #### Mutation stage ####
+                    # Create a donnor vector out of the parameters of the 3 others via the formula below.
+                    donorDict = {}
+                    for modelParam in self.psObject.params.keys():
+                        xr1_Comp = pointTree[rndKeyChoice[0]][modelParam]
+                        xr2_Comp = pointTree[rndKeyChoice[1]][modelParam]
+                        xr3_Comp = pointTree[rndKeyChoice[2]][modelParam]
+
+                        # F_factor = random.uniform(0, 2)
+                        # newF_fact
+
+                        donorDict[modelParam] = xr1_Comp + newF_fact * (xr2_Comp - xr3_Comp)
+
+                    # alphaParents = [parentPoint for parentPoint in alphaParents if parentPoint not in rndKeyChoice]
+
+
+
+                    #### Recombination stage ####
+                    # Make a new hybrid vector
+
+                    mutatedDict = {}
+                    rndParamChoice = random.choice(list(  self.psObject.params.keys() ) )
+                    targetCR_fact = pointTree[targetKey]['Aux']['CR_factor']
+
+                    # Gen newF_fact
+                    if random.uniform(0,1) < 0.1:
+                        newCR_fact = random.uniform(0,1)
+                    else:
+                        newCR_fact = targetCR_fact
+                    # Gen newCR_fact
+
+                    for modelParam in self.psObject.params.keys():
+                        ### new CR Factor
+                        if   random.uniform(0, 1) <= newCR_fact or modelParam == rndParamChoice :
+                            # print ('_________--------\\\\\\\\')
+                            mutatedDict[modelParam] = donorDict[modelParam]
+                        else:
+                            # print('---------------------')
+                            mutatedDict[modelParam] = pointTree[targetKey][modelParam]
+
+
+
+
+                    ########### Selection stage ############
+                    massTruth, newPointWithAttr = self.psObject.engineProcedure(mutatedDict, threadNumber = self.threadNumber, debug = self.debug)
+
+                    # genValidPointOutDict = generatingEngine.runPoint( mutatedDict, threadNumber = self.threadNumber , debug = self.debug)
+                    # newPointWithAttr_int = generatingEngine._getRequiredAttributes(mutatedDict, self.threadNumber)
+                    # newPointWithAttr = self.psObject._getCalcAttribForDict( newPointWithAttr_int )
+                    # massTruth = generatingEngine._check0Mass( newPointWithAttr )
+
+
+
+                    if  massTruth == True:
+
+                        newPointKey = list(newPointWithAttr.keys())[0]
+
+                        newChiSquared = modelConstr.getChi2(
+                        newPointWithAttr[newPointKey], ignoreConstrList = self.ignoreConstrList, minimisationConstr = self.minimisationConstr, returnDict = False)
+                    else:
+                        newChiSquared = targetChi2 + 1
+
+
+                    # newPointWithAttr = generatingEngine._getRequiredAttributes(mutatedDict, threadNumber)
+                    ### New point evaluation
+
+                    # print(newChiSquared, targetChi2)
+                    # time.sleep(0.3)
+
+                    if newChiSquared < targetChi2:
+
+                        oldID = list(newPointWithAttr.keys())[0]
+                        pointGenID = oldID + '-GenNb'+ str(genNb)
+
+                        toAddDict = {}
+                        toAddDict[pointGenID] = newPointWithAttr[oldID]
+                        toAddChi2 = newChiSquared
+
+                        self.Que.put( {'NewPoint' : {'Dict' : toAddDict,
+                                                     'ThreadNb' : int(self.threadNumber)+1}} )
+
+                        # print(toAddChi2, list(toAddDict.keys()) )
+                        # with open( resultsDirDicts +'ScanResults.' + scanIDwThread + '.json', 'a') as outfile:
+                        #     json.dump(toAddDict, outfile)
+
+                    else:
+                        toAddDict = pointTree[targetKey]['FullDescription']
+                        toAddChi2 = targetChi2
+
+                    generatingEngine._clean( self.threadNumber )
+                    # print( delimitator )
+                    ### Add to the new generation
+                    pointCount += 1
+
+                    # newPointKey = list(newPointDict['NewPointDict'].keys())[0]
+                    # newParamsDict = newPointDict['NewPointDict']
+                    # newChi2 = newPointDict['ChiSquared']
+
+                    parentID = targetKey
+                    childID = 'G' + str(genNb + 1) + '-P' + str(pointCount)
+
+                    # print(parentID)
+                    # pp({'F_factor':newF_fact, 'CR_factor':newCR_fact})
+                    pointTree.update ( makeBranch( toAddDict, toAddChi2, parentID, childID, Auxiliaries={'F_factor':newF_fact, 'CR_factor':newCR_fact}) )
+
+                    pointTree[parentID]['Children'].append( childID )
+                    newParents.append( childID )
+
+                    # resultDict_Thread.update( toAddDict )
+
+
+
+                    # q.put( toAddDict )
+
+            #### Move on to the new generation ####
+            # print(len(newParents))
+            alphaParents = newParents
+            genNb += 1
+
+
+            ##### Getting the smallest Chi2 and sending it to the plotting function ####
+            chi2Min = pointTree[alphaParents[0]]['Chi2']
+            # minKey = alphaParents[0]
+
+            newListOfChi2 = []
+            for  newParent in alphaParents:
+                newListOfChi2.append(pointTree[newParent]['Chi2'])
+
+
+            chi2Min, chi2Mean , chi2Std=  min( newListOfChi2 ), np.mean( newListOfChi2), np.std( newListOfChi2)
+            # chi2Mean = np.mean( newListOfChi2)
+
+            newChi2Dict = {
+            'chi2Min': chi2Min,
+            'chi2Mean' : chi2Mean,
+            'chi2Std' : chi2Std,
+            'chi2List' : newListOfChi2 }
+
+                #
+                # if pointTree[newParent]['Chi2'] < chi2Min:
+                #     chi2Min = pointTree[newParent]['Chi2']
+                #     minKey = newParent
+
+            # pp(pointTree[minKey])
+            ############# Printing section ###########
+            quePut = False
+
+            if chi2Min < listOfBestChi2[-1]:
+                printStr = 'Minimum Decrease of'
+                percChange = round ( (chi2Min - listOfBestChi2[-1]) / listOfBestChi2[-1], 4) * 100
+                quePut = True
+
+                changeNb += 1
+
+                printGenMsg(genNb, chi2Min, self.threadNumber, printStr, percChange)
+
+                # print(delimitator2)
+                # print ('\n'+'For ' +Fore.GREEN+'Gen# ' + str(genNb)+ Style.RESET_ALL +
+                #         ' the best' + Fore.RED +  ' χ² of ', round(chi2Min,4) ,
+                #         Fore.YELLOW + ' from ThreadNb :' + str(int(threadNumber)+1) ,
+                #          # ' from point ', minKey ,
+                #         "   |   ", Fore.BLUE + printStr +  Style.RESET_ALL, percChange , '%' )
+                # print(delimitator2)
+            # elif chi2Min >  listOfBestChi2[-1]:
+            #     printStr = 'Increase of'
+
+            elif chi2Mean < listOfChi2StatDicts[-1]['chi2Mean']:
+                printStr = 'Distribution Mean Decrease of'
+                percChange = round ( (chi2Mean - listOfChi2StatDicts[-1]['chi2Mean']) /
+                                    listOfChi2StatDicts[-1]['chi2Mean'], 4) * 100
+
+                quePut = True
+                changeNb += 1
+                printGenMsg(genNb, chi2Min, self.threadNumber, printStr, percChange)
+
+
+            if quePut ==  True:
+
+                genDict = {}
+                auxList = [ pointTree[parentID]['FullDescription'] for parentID in alphaParents]
+                for membDict in auxList:
+                    genDict.update(membDict)
+                # print( len(pointTree) )
+                # print( alphaParents )
+                self.Que.put( {'GenStat':{'GenNb': genNb,
+                                        'ThreadNb': int(self.threadNumber)+1,
+                                        'NewChi2': chi2Min,
+                                        'OldChi2': listOfBestChi2[-1],
+                                        'chi2Min': chi2Min,
+                                        'chi2Mean': chi2Mean,
+                                        'chi2Std': chi2Std,
+                                        'GenDict' : genDict}}
+                    )
+                # self.Que.put( {'GenNb': genNb,
+                #         'ThreadNb': int(self.threadNumber)+1,
+                #         'NewChi2': chi2Min,
+                #         'OldChi2': listOfBestChi2[-1],
+                #         'NewChi2Dict': newChi2Dict ,
+                #         'OldChi2Dict': listOfChi2StatDicts[-1] ,
+                #         'ChangeNb': changeNb
+                #         }
+                #     )
+                # with open(resultsDirDicts + 'GenStatus_ThreadNb'+ self.threadNumber +'.dat', 'a') as outFile:
+                #
+                #     outFile.write(  ''.join(  attrName + str(attr)+'   ||  '
+                #                             for attrName, attr in zip(['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '],
+                #                                                       [genNb, chi2Min, chi2Mean, chi2Std])
+                #                                         ) +'\n'  )
+
+            # print(delimitator2)
+            # print ('\n'+'For ' +Fore.GREEN+'Gen# ' + str(genNb)+ Style.RESET_ALL +
+            #         ' the best' + Fore.RED +  ' χ² of ', round(chi2Min,4) ,
+            #         Fore.YELLOW + ' from ThreadNb :' + str(int(threadNumber)+1) ,
+            #          # ' from point ', minKey ,
+            #         "   |   ", Fore.BLUE + printStr +  Style.RESET_ALL, percChange , '%' )
+            # print(delimitator2)
+
+            # chi2MinDict.update( {'GenNb-'+str(genNb) : {'BestChi2': chi2Min, 'rSigmaVal': best_rSigma}  } )
+            # pp(chi2MinDict)
+
+            # listOfBestChi2.append( newChi2Dict )
+            listOfChi2StatDicts.append( newChi2Dict )
+            listOfBestChi2.append(chi2Min)
+
+            del listOfBestChi2[0]
+            del listOfChi2StatDicts[0]
+
+            if chi2Min < self.chi2LowerBound:
+
+                print(Fore.RED + delimitator + Style.RESET_ALL)
+                printCentered('Hit χ² bound of '+str(self.chi2LowerBound) +   '   :::   Killing Thread #' + str(int(self.threadNumber)+1), color=Fore.RED)
+                print(Fore.RED + delimitator + Style.RESET_ALL)
+
+                # print(Fore.YELLOW + delimitator + Style.RESET_ALL)
+                # self.Que.put( int(self.threadNumber)+1 )
+                self.Que.put( {'Terminate': int(self.threadNumber)+1 } )
+                break
+
+
+
+        return None
+
 
 
 

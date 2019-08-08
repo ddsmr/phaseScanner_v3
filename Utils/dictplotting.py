@@ -453,7 +453,7 @@ class dictPlotting():
                                  text = 'Finished exporting.')
 
         # plt.tight_layout()
-        # plt.show()
+        plt.show()
 
         return  returnDict, passAxisDict , failAxisDict
 
