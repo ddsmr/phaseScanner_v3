@@ -6,8 +6,7 @@
 genEngine = 'ackleyFunct'
 engVers = '0.1'
 
-###############################     Dictionaries         ###########################################
-
+# #################   Dictionaries         #################
 
 paramDict = {
     'x': {
@@ -77,14 +76,14 @@ replacementRules = {
 'DummyCase' :{}
 }
 
-defaultPlot = {'xAxis':'x', 'yAxis':'y', 'colorAxis':'fAckley'}
+defaultPlot = {'xAxis': 'x', 'yAxis': 'y', 'colorAxis': 'fAckley'}
 
 
 # rgflowDict ={
 # }
 dictMinMax = {
-              'x':    {'Min': -1.0, 'Max': 1.0},
-              'y':     {'Min': -1.0, 'Max': 1.0},
+              'x':    {'Min': -30.0, 'Max': 30.0},
+              'y':     {'Min': -30.0, 'Max': 30.0},
 
               }
 # sigmasDict = {

@@ -1,56 +1,54 @@
-# import os
+import os
 import subprocess
 import json
 import re
 import importlib
 import pickle
 import csv
-from multiprocessing import Process, Queue, Pipe
+from multiprocessing import Process, Queue
 from time import gmtime, strftime
 from datetime import date, datetime
 
 
 from halo import Halo
 from tqdm import tqdm
-from shapely.geometry import Point
 from shapely.geometry.polygon import Polygon
-
+# from shapely.geometry import Point
 
 
 from Utils.printUtils import *
 from Utils.SmartRandomGenerator.smartRand import *
 from Utils.metaLogging import *
-from Utils.constrEval  import *
+from Utils.constrEval import *
 from Utils.multiThreadAlg import *
 from Utils.dictplotting import *
 
 
-
-
-
 def genRndDict(paramDict):
     '''
-        Given a parameter Dictionary , the function will generate the default random pciker with Succes as the 1st stage, e.g. :
+        Given a parameter Dictionary , the function will generate the default
+        random picker with Succes as the 1st stage, e.g. :
 
-        rndDict = OrderedDict ([  ('Check-0', {'ToPick': ['Lambda', 'Kappa', 'tanBeta'],
-                                               'ToCheck': [],
-                                               'ToSet' : [],
-                                               'Pass' : 'Success',
-                                               'Fail' : 'Check-0'}
+        rndDict = OrderedDict ([('Check-0', {'ToPick': ['Lambda', 'Kappa',
+                                                        'tanBeta'],
+                                           'ToCheck': [],
+                                           'ToSet' : [],
+                                           'Pass' : 'Success',
+                                           'Fail' : 'Check-0'}
                                   )
                                 ])
     '''
     from collections import OrderedDict
 
-    rndDict = OrderedDict ([  ('Check-0', {'ToPick': list( paramDict.keys() ),
-                                           'ToCheck': [],
-                                           'ToSet' : [],
-                                           'Pass' : 'Success',
-                                           'Fail' : 'Check-0'}
-                              )
-                            ])
+    rndDict = OrderedDict([('Check-0', {'ToPick': list(paramDict.keys()),
+                                        'ToCheck': [],
+                                        'ToSet': [],
+                                        'Pass': 'Success',
+                                        'Fail': 'Check-0'})])
     return rndDict
-def chunkList(listToChunk, noOfLits, threadNBSort = False):
+
+
+def chunkList(listToChunk, noOfLits, threadNBSort=False):
     '''
         Chunks a list into n  = noOfLits smaller lists. Used in the genetic algorithm.
 
@@ -68,23 +66,24 @@ def chunkList(listToChunk, noOfLits, threadNBSort = False):
         listOfLists.append([])
 
     # pp(listOfLists)
-    if threadNBSort == True:
-        for i in range( len(listToChunk) ):
+    if threadNBSort is True:
+        for i in range(len(listToChunk)):
             # print(i // (len(listToChunk) // noOfLits))
-            listOfLists[i // (len(listToChunk) // noOfLits)].append( listToChunk[i] )
+            listOfLists[i // (len(listToChunk) // noOfLits)].append(listToChunk[i])
         return listOfLists
         # exit()
 
     lenLtC = len(listToChunk)
-    for index in range (len(listToChunk)):
+    for index in range(len(listToChunk)):
 
-        listOfLists[index%noOfLits].append(listToChunk[index])
+        listOfLists[index % noOfLits].append(listToChunk[index])
 
     for memberListIdx in range(len(listOfLists)):
         if (len(listOfLists[memberListIdx]) == 0):
-              listOfLists[memberListIdx] = listOfLists[int(random.uniform(0, memberListIdx))]
+            listOfLists[memberListIdx] = listOfLists[int(random.uniform(0, memberListIdx))]
 
     return listOfLists
+
 def fixJsonWAppend(jsonDir):
     '''
         Give a FOCUS Directory jSonDir, the function will use regEx to fix the append issue for the json files produced in the Generational algorithm.
@@ -130,20 +129,23 @@ def writeGenStat(resultsDirDicts, threadNumber, listOfStats, listOfStatsNames):
                                 for attrName, attr in zip(listOfStatsNames, listOfStats)
                                             ) +'\n'  )
     return None
-def checkListForLatestDate( dateList ):
+
+
+def checkListForLatestDate(dateList):
     '''
         Given a list of dates function will check all FOLDERS and return the string corresponding to the latest date.
     '''
     listOfDates = []
-    listOfTimes = []
+
     for strDate in dateList:
         # print(strDate)
         splitDateStr_aux = strDate.split('_')
         splitDateStr = splitDateStr_aux[0].split('-')
         # print(splitDateStr)
 
-        newDate = datetime(int(splitDateStr[3]), int(splitDateStr[1]), int(splitDateStr[2]), hour=int(splitDateStr_aux[1]), minute=int(splitDateStr_aux[2]), second=int(splitDateStr_aux[3]) )
-        # newTime =
+        newDate = datetime(int(splitDateStr[3]), int(splitDateStr[1]), int(splitDateStr[2]),
+                           hour=int(splitDateStr_aux[1]), minute=int(splitDateStr_aux[2]),
+                           second=int(splitDateStr_aux[3]))
 
         listOfDates.append(newDate)
     # pp(listOfDates)
@@ -173,7 +175,7 @@ class phaseScannerModel:
 
     '''
 
-    def __init__(self, modelName, caseHandle, micrOmegasName='', userDescription="" ,       writeToLogFile = False):
+    def __init__(self, modelName, caseHandle, micrOmegasName='', userDescription="" , writeToLogFile = False):
         '''
             Init stage for the modelFS class.
 
@@ -187,9 +189,6 @@ class phaseScannerModel:
                 - userDescription       ::      Description user passes to further help with identification.
                 - writeToLogFile        ::      Set to True to write to log file.
         '''
-
-
-        import importlib
         configString = 'Configs.configFile_' + modelName
 
 
@@ -475,7 +474,7 @@ class phaseScannerModel:
 
             return {k:phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
 
-    def engineProcedure(self, newParamsDict, threadNumber = '0', debug = False):
+    def engineProcedure(self, newParamsDict, threadNumber = '0', debug = False, ignoreInternal = False, ignoreExternal = False):
         '''
             Auxiliary procedure to compactify the generating engine and getting attributes. Also has the requirements for a engine along with the cleaning procedure
         '''
@@ -490,13 +489,13 @@ class phaseScannerModel:
         # printCentered('Getting Calc Attributes', fillerChar='*')
 
 
-        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int, threadNumber =  threadNumber )
+        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int, threadNumber =  threadNumber , ignoreExternal = ignoreExternal, ignoreInternal = ignoreInternal)
         massTruth = generatingEngine._check0Mass( phaseSpaceDict )
 
         return massTruth, phaseSpaceDict
 
 
-    def _mThreadAUXexplore(self, q , threadNumber = "0", debug = False, newParamBounds = {} ): #<----- Needs documentation!!!
+    def _mThreadAUXexplore(self, q , threadNumber = "0", debug = False, newParamBounds = {} , ignoreExternal= False, ignoreInternal = False): #<----- Needs documentation!!!
         '''
             Auxiliary function needed for multithreading, which generates valid points in the phase space along with getting the required attributes and putting them in a dictionary, via a Queue().
 
@@ -541,7 +540,7 @@ class phaseScannerModel:
                 # genValidPointOutDict = generatingEngine._genValidPoint(paramsDictMinMax, threadNumber = threadNumber, debug = debug)
 
                 newParamsDict = smartRndGen.genSmartRnd( debug = debug )
-                massTruth, phaseSpaceDict = self.engineProcedure(newParamsDict, threadNumber = threadNumber, debug = debug)
+                massTruth, phaseSpaceDict = self.engineProcedure(newParamsDict, threadNumber = threadNumber, debug = debug, ignoreExternal = ignoreExternal, ignoreInternal = ignoreInternal )
 
 
                 # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
@@ -575,7 +574,7 @@ class phaseScannerModel:
 
         return None
 
-    def runMultiThreadExplore(self, numberOfPoints = 10, nbOfThreads = 1, debug = False, quitTime = 50000, newParamBounds = {}, runComment = ''):
+    def runMultiThreadExplore(self, numberOfPoints = 10, nbOfThreads = 1, debug = False, quitTime = 50000, newParamBounds = {}, runComment = '', ignoreExternal = False, ignoreInternal = False):
         '''
             Multiprocessing Exploration Scan, main parent function to a number of _mThreadAUXexplore to get all the points and store them in a proper phaseSpaceDict.
 
@@ -604,7 +603,7 @@ class phaseScannerModel:
         # print(delimitator)
 
         localQue = Queue()
-        processes = [Process(target=self._mThreadAUXexplore , args=(localQue, str(x), debug, newParamBounds)) for x in range(nbOfThreads)]
+        processes = [Process(target=self._mThreadAUXexplore , args=(localQue, str(x), debug, newParamBounds, ignoreExternal, ignoreInternal)) for x in range(nbOfThreads)]
 
         resultDict = {};
         for proc in processes:
@@ -739,6 +738,9 @@ class phaseScannerModel:
                             calcParamVal = eval( self.calc[calcParam]['Calc']['ToCalc']['Expression'])
 
                             phaseSpaceDict[point][calcParam] = calcParamVal
+                    else:
+                        pass
+
 
                     ############## External ################################
                     if ignoreExternal == False:
@@ -755,6 +757,8 @@ class phaseScannerModel:
                                 extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
                             phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict, threadNumber = threadNumber)
+                    else:
+                        pass
 
 
 
@@ -1119,13 +1123,14 @@ class phaseScannerModel:
 
         return algDict[algorithm]
 
-    def resumeGenRun(self, focusDateTime_str = 'MostRecent', swicthAlg = False, threadNb = 'All'):
+    def resumeGenRun(self, focusDateTime_str='MostRecent', swicthAlg=False, threadNb='All'):
         '''
-            Used to continue the generational multirun if interupted. Defaults to the most recent run of the model, loads the parameter and algorithm runs from the pickle run file.
+                Used to continue the generational multirun if interupted. Defaults to the most recent run of the model,
+            loads the parameter and algorithm runs from the pickle run file.
         '''
 
         try:
-            focusDate = ''
+            # focusDate = ''
             dirEntries = os.listdir(self.resultDir + 'Dicts/')
 
             listOfDirs = []
@@ -1133,9 +1138,8 @@ class phaseScannerModel:
                 if 'Focus' in dirEntry and ('.' not in dirEntry):
                     listOfDirs.append(dirEntry.replace('Focus_', ''))
 
-
             focusDate_DateTime = checkListForLatestDate(listOfDirs)
-            focusDateTime_str = convertDateTimeToStr( focusDate_DateTime )
+            focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
 
         except Exception as e:
             print(e)

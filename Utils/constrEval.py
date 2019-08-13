@@ -1,5 +1,9 @@
 import math
+import copy
+
 from pprint import pprint as pp
+from Utils.printUtils import delimitator
+from shapely.geometry import Point
 
 
 class constrEval:
@@ -15,20 +19,29 @@ class constrEval:
 
         return None
 
-    def _constraintEvaluation(self, phaseSpacePointDict, noOfSigmasB = 1, noOfSigmasPM = 1, ignoreConstrList = []):
+    def _constraintEvaluation(self, phaseSpacePointDict, noOfSigmasB=1,
+                              noOfSigmasPM=1, ignoreConstrList=[]):
         '''
-            Given  point in the phase space via phaseSpacePointDict, checks the different constraints specified in the parameterDict, particleDict and rgflowDict, be it a bound or a parameter match.
+            Given  point in the phase space via phaseSpacePointDict, checks the
+            different constraints specified in the parameterDict, particleDict
+            and rgflowDict, be it a bound or a parameter match.
 
             Attributes:
                 - phaseSpacePointDict = {'Params':{...},
                                          'Particles':{...},
-                                         'Couplings':{...}}      ::      Dictionary associated with a valid point in phase space.
-                - noOfSigmasB                       ::           Number of sigmas for the bounds.
-                - noOfSigmasPM                      ::           Number of sigmas for the parameter matching.
-                - ignoreConstrList                  ::           DEFAULT : [] . List of constraints to be ignored . Used in plotting multiple constaints in the plot function.
+                                         'Couplings':{...}}
+                  Dictionary associated with a valid point in phase space.
+
+                - noOfSigmasB   ::  Number of sigmas for the bounds.
+                - noOfSigmasPM  ::  Number of sigmas for the parameter matching
+                - ignoreConstrList  ::  DEFAULT= [] . List of constraints to be
+                    ignored. Used in plotting multiple constaints in the plot
+                    function.
 
             Return:
-                Depending on the different types of constraints it returns the chiSquared  and if the constraint passed the check via a dictionary:
+                Depending on the different types of constraints it returns the
+                chiSquared  and if the constraint passed the check via a
+                dictionary:
 
                     cEvalDict = {'ConstraintType1' : {'Deviation': ...,
                                                      'PassTruth': ... ,
@@ -46,21 +59,21 @@ class constrEval:
                 # print(phaseSpacePointDict, key)
                 notemptyDict = notemptyDict and bool(phaseSpacePointDict[key])
 
-        if notemptyDict == True:
+        if notemptyDict is True:
 
             for modelAttribute in self.allDicts.keys():
                 # for modelAttribute in currentDict.keys():
 
                 if modelAttribute not in ignoreConstrList:
 
-                    ##  If the attribute doesn't have any Constraint, pass it , go to the next one
-                    if(self.allDicts[modelAttribute]['Constraint']['Type'] == 'None' ):
+                    #  If the attribute doesn't have any Constraint, pass it , go to the next one
+                    if(self.allDicts[modelAttribute]['Constraint']['Type'] == 'None'):
                         pass
 
                     #  If the attribute is bounded
                     elif(self.allDicts[modelAttribute]['Constraint']['Type'] == 'CheckBounded'):
 
-                        ## For 'CheckBounded' attribute should have 3 keys: 'CentralVal', 'TheorySigma', 'ExperimentSigma'
+                        # For 'CheckBounded' attribute should have 3 keys: 'CentralVal','TheorySigma','ExperimentSigma'
                         CentralVal = self.allDicts[modelAttribute]['Constraint']['ToCheck']['CentralVal']
                         TheorySigma = self.allDicts[modelAttribute]['Constraint']['ToCheck']['TheorySigma']
                         ExpSigma = self.allDicts[modelAttribute]['Constraint']['ToCheck']['ExpSigma']
@@ -68,36 +81,29 @@ class constrEval:
                         try:
                             toCheckVal = phaseSpacePointDict[modelAttribute]
                             devBoundVal = abs(CentralVal - toCheckVal)
-                        except:
-                            print (delimitator)
-                            print (phaseSpacePointDict)
-                            print (modelAttribute)
+                        except Exception as e:
+                            print(delimitator)
+                            print('Could not evaluate CheckBounded, with error:', e)
+                            print(phaseSpacePointDict, modelAttribute)
 
                         # Checks if the value is within noOfSigmasB * σ_(Combined).
-                        # print (delimitator)
-                        # print (phaseSpacePointDict)
-                        # print (modelAttribute)
-                        # print(toCheckVal)
-                        # print(delimitator)
-
-                        if abs(CentralVal - toCheckVal) < ( math.sqrt(TheorySigma**2 + ExpSigma**2) * noOfSigmasB):
+                        if abs(CentralVal - toCheckVal) < (math.sqrt(TheorySigma**2 + ExpSigma**2) * noOfSigmasB):
                             boundTruth = True
                         else:
                             boundTruth = False
 
-                        ## cEvalDict new gains a new key for the CheckBounded - attribute with:
-                        #       'Deviation'     ::  Distance of the value from the central value
-                        #       'PassTruth'     ::  If the deviation is smaller than the combined σ, (i.e. the attribute
-                        #                           is within noOfSigmasB * σ_(combined) from the central value it takes
-                        #                           True. False otherwise)
-                        #       'Precision'     ::  Gives σ_(combined) * noOfSigmasB
+                        #  cEvalDict new gains a new key for the CheckBounded - attribute with:
+                        #      'Deviation'     ::  Distance of the value from the central value
+                        #      'PassTruth'     ::  If the deviation is smaller than the combined σ, (i.e. the attribute
+                        #                          is within noOfSigmasB * σ_(combined) from the central value it takes
+                        #                          True. False otherwise)
+                        #      'Precision'     ::  Gives σ_(combined) * noOfSigmasB
 
                         cEvalDict['CheckBounded' + '-' + modelAttribute] =  \
-                                                                {'Deviation' : devBoundVal,
-                                                                 'PassTruth':  boundTruth,
-                                                                 'Precision' : math.sqrt(TheorySigma**2 + ExpSigma**2) * noOfSigmasB,
-                                                                 'Sigma': math.sqrt(TheorySigma**2 + ExpSigma**2)}
-
+                                                {'Deviation': devBoundVal,
+                                                 'PassTruth':  boundTruth,
+                                                 'Precision': math.sqrt(TheorySigma**2 + ExpSigma**2) * noOfSigmasB,
+                                                 'Sigma': math.sqrt(TheorySigma**2 + ExpSigma**2)}
 
                     # If the attribute is matched with some other parameters.
                     # Config file for ParamMatch should have a list with 3 components:
@@ -106,20 +112,22 @@ class constrEval:
                     #   -   component3 = [σ to evaluate]
 
                     elif(self.allDicts[modelAttribute]['Constraint']['Type'] == 'ParamMatch'):
-                        # Goes into the first entry and assigns the values to the required mathching parameters from the values of the phaseSpacePointDict
+                        #   Goes into the first entry and assigns the values to the required mathching parameters from
+                        # the values of the phaseSpacePointDict
                         for paramExec in self.allDicts[modelAttribute]['Constraint']['ToCheck'][0]:
-                            exec(paramExec + '=' +                                  str(phaseSpacePointDict[paramExec]) )
+                            exec(paramExec + '=' + str(phaseSpacePointDict[paramExec]))
 
                         # For ParamMatch we have 3 keys :
                         #       genParamMatch      ::   expression to be evaluated  specified in ['ToCheck']['1']
                         #       sigmaParamMatch    ::   Sigma deviation to be evaluated          ['ToCheck']['2']
                         #       devParamMatchVal   ::   Deviation fistance from the evaluated expression from 0.
 
-                        genParamMatch =  eval(self.allDicts[modelAttribute]['Constraint']['ToCheck'][1])
+                        genParamMatch = eval(self.allDicts[modelAttribute]['Constraint']['ToCheck'][1])
                         sigmaParamMatch = eval(self.allDicts[modelAttribute]['Constraint']['ToCheck'][2])
                         devParamMatchVal = abs(0 - genParamMatch)
 
-                        # Checks the deviation against σ_(generated) * noOfSigmasPM gives paramTruth True if smaller, False otherwise
+                        #   Checks the deviation against σ_(generated) * noOfSigmasPM gives paramTruth True if smaller,
+                        # False otherwise
                         if abs(0 - genParamMatch) < (sigmaParamMatch * noOfSigmasPM):
                             paramTruth = True
                         else:
@@ -127,10 +135,9 @@ class constrEval:
 
                         cEvalDict['ParamMatch' + '-' + modelAttribute] = \
                                                                     {'Deviation': devParamMatchVal,
-                                                                     'PassTruth' : paramTruth,
-                                                                     'Precision' : sigmaParamMatch * noOfSigmasPM,
+                                                                     'PassTruth': paramTruth,
+                                                                     'Precision': sigmaParamMatch * noOfSigmasPM,
                                                                      'Sigma': sigmaParamMatch}
-
 
         else:
             return None

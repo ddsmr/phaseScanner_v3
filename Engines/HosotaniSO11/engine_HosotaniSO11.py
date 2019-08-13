@@ -113,7 +113,7 @@ class engineClass:
             # print(Fore.RED + '\n Thread Nb-' + str(threadNumber) + ' Failure')
             # print(Fore.YELLOW + str(e))
 
-        if phaseSpaceDict_NOID and phaseSpaceDict_NOID['Triviality']==0 :
+        if phaseSpaceDict_NOID and phaseSpaceDict_NOID['Triviality'] == 0:
 
 
 
