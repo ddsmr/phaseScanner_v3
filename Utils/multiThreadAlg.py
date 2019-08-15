@@ -139,11 +139,11 @@ class minimAlg:
 
         listOfBestChi2 = [  sorted(self.sortedChiSquare_ListOfTuples, key=lambda tup: tup[1])[0][1]  ]
         ####  Pick target vector at rndom / as lowestchi2? ####
-        # F_factor = 0.66
-        # CR_factor = 0.236
+        F_factor = 0.66
+        CR_factor = 0.236
 
-        F_factor = 0.5
-        CR_factor = 0.1
+        # F_factor = 0.5
+        # CR_factor = 0.1
 
 
         generatingEngine = self.psObject.engineClass( self.psObject )

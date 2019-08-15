@@ -41,8 +41,6 @@ class engineClass:
         runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...
         self.runCMD = runCMD
 
-
-
     # def _generateRandomPointJSON(self, paramsDictMinMax, samplingPDF = 'Uniform' ,  threadNumber ="0", debug = False):
     #     '''
     #     '''
@@ -91,10 +89,11 @@ class engineClass:
     #
     #     return paramsDict
     #
-    def _getRequiredAttributes(self, paramsDict, threadNumber="0"):
-        '''
-        '''
 
+
+    def _getRequiredAttributes(self, paramsDict, threadNumber="0", runDict={}, pointKey=''):
+        '''
+        '''
         targetDir = self.targetDir
 
         for param in paramsDict.keys():
@@ -115,9 +114,7 @@ class engineClass:
 
         if phaseSpaceDict_NOID and phaseSpaceDict_NOID['Triviality'] == 0:
 
-
-
-            pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
+            # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
 
             phaseSpaceDict = {}
             phaseSpaceDict[pointKey] =  paramsDict

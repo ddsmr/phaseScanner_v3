@@ -45,4 +45,5 @@ def getWeinbergAngle(dataDict, threadNumber='0'):
         session.terminate()
         print('Weinberg Angle value: ', weinbergAngle)
 
+    # Should probably rm the log files
     return weinbergAngle

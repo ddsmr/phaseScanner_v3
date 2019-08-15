@@ -60,14 +60,14 @@ class engineClass:
         return randParamDict
 
 
-    def _getRequiredAttributes(self, paramsDict, threadNumber="0"):
+    def _getRequiredAttributes(self, paramsDict, threadNumber="0", runDict={}, pointKey=''):
 
         waitTime = globalWaitFact * random.uniform(0, 1)
         # print('Thread Nb ', threadNb+1, ' waiting time of :', waitTime)
 
         time.sleep( waitTime )
 
-        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
+        # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
 
         phaseSpaceDict = {}
         phaseSpaceDict[pointKey] = paramsDict

@@ -84,9 +84,11 @@ def chunkList(listToChunk, noOfLits, threadNBSort=False):
 
     return listOfLists
 
+
 def fixJsonWAppend(jsonDir):
     '''
-        Give a FOCUS Directory jSonDir, the function will use regEx to fix the append issue for the json files produced in the Generational algorithm.
+            Give a FOCUS Directory jSonDir, the function will use regEx to fix the append issue for the json files
+        produced in the Generational algorithm.
     '''
     p = re.compile(r'}{')
     toReplace = r','
@@ -104,7 +106,7 @@ def fixJsonWAppend(jsonDir):
 
                     nbJson = jsonDict.split('ThreadNb')[1]
 
-                    fileName = 'Focus_Clifford' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) +'_FixedJson-ThreadNb' + nbJson
+                    fileName = 'Focus_Clifford' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) + '_FixedJson-ThreadNb' + nbJson
                     newJson = open(jsonDir + fileName, 'w')
                     newJson.write(correctedJSON)
                     newJson.close()
@@ -114,20 +116,22 @@ def fixJsonWAppend(jsonDir):
                     with open(jsonDir + fileName, 'r') as inFile:
                         fixedDict = json.load(inFile)
 
-                    subprocess.call('rm ' + jsonDict, shell = True, cwd = jsonDir)
-                except:
+                    subprocess.call('rm ' + jsonDict, shell=True, cwd=jsonDir)
+                except Exception as e:
                     print('Failed to Fix Json ', jsonDict)
+                    print(e)
 
             except Exception as e:
                 print('Failed to open ', jsonDict, ' with Exception ', e)
 
     return None
-def writeGenStat(resultsDirDicts, threadNumber, listOfStats, listOfStatsNames):
-    with open(resultsDirDicts + 'GenStatus_ThreadNb'+ threadNumber +'.dat', 'a') as outFile:
 
-        outFile.write(  ''.join(  attrName + str(attr) + '   ||  '
-                                for attrName, attr in zip(listOfStatsNames, listOfStats)
-                                            ) +'\n'  )
+
+def writeGenStat(resultsDirDicts, threadNumber, listOfStats, listOfStatsNames):
+    with open(resultsDirDicts + 'GenStatus_ThreadNb' + threadNumber + '.dat', 'a') as outFile:
+
+        outFile.write(''.join(attrName + str(attr) + '   ||  '
+                              for attrName, attr in zip(listOfStatsNames, listOfStats)) + '\n')
     return None
 
 
@@ -150,8 +154,10 @@ def checkListForLatestDate(dateList):
         listOfDates.append(newDate)
     # pp(listOfDates)
 
-    return max( listOfDates )
-def convertDateTimeToStr( dateTime ):
+    return max(listOfDates)
+
+
+def convertDateTimeToStr(dateTime):
     '''
         Given a datetime object it will output a string of the form MM-DD-YYYY_HH_MM_SS
     '''
@@ -161,43 +167,44 @@ def convertDateTimeToStr( dateTime ):
     minStr = '0' + str(dateTime.minute)
     secStr = '0' + str(dateTime.second)
 
-
-    dateStr = monthStr[-2:]+ '-' + dayStr[-2:]  + '-' + str(dateTime.year) + '_'+ hourStr[-2:] + '_'+ minStr[-2:]+ '_'+ secStr[-2:]
+    dateStr = monthStr[-2:] + '-' + dayStr[-2:] + '-' + str(dateTime.year) + '_' + hourStr[-2:] + '_' + minStr[-2:] + '_' + secStr[-2:]
 
     return dateStr
 
+
 class phaseScannerModel:
     '''
-        Class that initialises a phaseScannerModel model and then is used to to the various things specified in the documentation.
+            Class that initialises a phaseScannerModel model and then is used to to the various things specified
+        in the documentation.
 
         Pre-requirements:
             - Generating engine for the points with it's required functionalities.
 
     '''
 
-    def __init__(self, modelName, caseHandle, micrOmegasName='', userDescription="" , writeToLogFile = False):
+    def __init__(self, modelName, caseHandle, micrOmegasName='', userDescription="", writeToLogFile=False):
         '''
             Init stage for the modelFS class.
 
             Attributes:
                 - modelName             ::      Name of the specified model that we want to work with.
                 - caseHandle            ::      Casehandle that specifies which case the model will be dealing with.
-                                                !!! NOTE : if there's just one case pass dummy case handle e.g. 'DummyCase'.
+                                                !!! NOTE : if there's just one case pass dummy case handle e.g.
+                                                'DummyCase'.
 
-                - generatingEngine      ::      Engine that will generate the required attributes. Should be the same name as the .py file in Engines/
+                - generatingEngine      ::      Engine that will generate the required attributes. Should be the same
+                                                name as the .py file in Engines/
 
                 - userDescription       ::      Description user passes to further help with identification.
                 - writeToLogFile        ::      Set to True to write to log file.
         '''
         configString = 'Configs.configFile_' + modelName
 
-
         try:
             configModule = importlib.import_module(configString)
         except Exception as e:
             print(e)
             raise
-
 
         self.genEngine = configModule.genEngine
         self.engineVersion = configModule.engVers
@@ -208,22 +215,22 @@ class phaseScannerModel:
         except Exception as e:
             print(e)
 
-        ############### Engine class ###################
+        # ############## Engine class ###################
         self.engineClass = engineModule.engineClass
 
-        ############### Model Bits ###################
+        # ############## Model Bits ###################
         self.modelName = modelName
         self.case = caseHandle
         self.name = modelName + caseHandle
         if micrOmegasName != '':
             self.micrOmegasName = modelName
 
-        ############### Data bits ####################
+        # ############## Data bits ####################
         # self.targetDir = configModule.engineDir
         # self.runCMD = configModule.runCMD
         self.description = userDescription
 
-        ############## Smart Random Bits ############
+        # ############# Smart Random Bits ############
         try:
             self.rndDict = configModule.rndDict
             self.condDict = configModule.condDict
@@ -233,53 +240,46 @@ class phaseScannerModel:
             self.condDict = {}
             self.toSetDict = {}
             self.rndDict = genRndDict(configModule.paramDict)
-            print(Fore.YELLOW, delimitator2, e, '\nWARNING: Created default random parameter selection.', Style.RESET_ALL)
+            print(Fore.YELLOW, delimitator2, e, '\nWARNING: Created default random parameter selection.',
+                  Style.RESET_ALL)
 
-
-        ####### Result and Log directories #########
+        # ###### Result and Log directories #########
         if ('Utils' in os.getcwd()):
-            self.resultDir = '../Results/' + modelName + '_' +caseHandle.replace(" ", '') + '/'
-            self.logDir = '../Logs/' + modelName + '_' +caseHandle.replace(" ", '') + '/'
+            self.resultDir = '../Results/' + modelName + '_' + caseHandle.replace(" ", '') + '/'
+            self.logDir = '../Logs/' + modelName + '_' + caseHandle.replace(" ", '') + '/'
         else:
-            self.resultDir = 'Results/' + modelName + '_' +caseHandle.replace(" ", '') + '/'
-            self.logDir = 'Logs/' + modelName + '_' +caseHandle.replace(" ", '') + '/'
+            self.resultDir = 'Results/' + modelName + '_' + caseHandle.replace(" ", '') + '/'
+            self.logDir = 'Logs/' + modelName + '_' + caseHandle.replace(" ", '') + '/'
 
+        for dirToMake in [self.resultDir, self.logDir]:
+            subprocess.call('mkdir ' + dirToMake, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
 
-        for dirToMake in ['Results/', 'Logs/', self.resultDir, self.logDir]:
-            subprocess.call('mkdir ' + dirToMake, shell = True,  stdout=FNULL, stderr=subprocess.STDOUT)
-
-
-        ####### Params, Particles , Rules, Calcs ###########
-
+        # ###### Params, Particles , Rules, Calcs ###########
         self.params = configModule.paramDict
         self.rules = configModule.replacementRules[caseHandle]
 
         self.modelAttrs = configModule.attrDict
         self.calc = configModule.calcDict
 
-
-
-        #### Param Ranges and sigmas ##############
+        # ### Param Ranges and sigmas ##############
         self.paramBounds = configModule.dictMinMax
         try:
             self.defaultPlot = configModule.defaultPlot
         except Exception as e:
 
-            self.defaultPlot = {'xAxis':random.choice(list(self.params.keys())) ,
-                                'yAxis':random.choice(list(self.params.keys())),
-                                'colorAxis':random.choice(list(self.modelAttrs.keys()))}
-            print(Fore.YELLOW + delimitator2+ str(e) +  '\nWARNING: Setting default plot.' + Style.RESET_ALL)
-
-
+            self.defaultPlot = {'xAxis': random.choice(list(self.params.keys())),
+                                'yAxis': random.choice(list(self.params.keys())),
+                                'colorAxis': random.choice(list(self.modelAttrs.keys()))}
+            print(Fore.YELLOW + delimitator2 + str(e) + '\nWARNING: Setting default plot.' + Style.RESET_ALL)
 
         try:
             self.plotFormatting = configModule.plotFormatting
         except Exception as e:
-            print(Fore.YELLOW + delimitator2+ str(e) +  '\nWARNING: Setting default plotting attrs.' + Style.RESET_ALL)
+            print(Fore.YELLOW + delimitator2 + str(e) + '\nWARNING: Setting default plotting attrs.' + Style.RESET_ALL)
             self.plotFormatting = {
-                 'failPlot' : {'alpha':0.5, 'lw' :0, 's':100},
-                 'passPlot' : {'alpha':1,   'lw' : 0.6, 's':240},
-                 'fontSize' : 40
+                 'failPlot': {'alpha':0.5, 'lw' :0, 's':100},
+                 'passPlot': {'alpha':1,   'lw' : 0.6, 's':240},
+                 'fontSize': 40
                   # 'failPlot' : {'alpha':0.1, 'lw' :0, 's':30},
                   # 'passPlot' : {'alpha':1,   'lw' : 0.17, 's':140}
                   # 'fontSize' : 30
@@ -311,7 +311,8 @@ class phaseScannerModel:
                 try:
                     if self.calc[attr]['Calc']['Type'] == 'ChiSquared':
                         self.noneAttr.append( attr )
-                except:
+                except Exception as e:
+                    print(e)
                     pass
 
 
@@ -474,23 +475,26 @@ class phaseScannerModel:
 
             return {k:phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
 
-    def engineProcedure(self, newParamsDict, threadNumber = '0', debug = False, ignoreInternal = False, ignoreExternal = False):
+    def engineProcedure(self, newParamsDict, threadNumber='0', debug=False, ignoreInternal=False, ignoreExternal=False):
         '''
-            Auxiliary procedure to compactify the generating engine and getting attributes. Also has the requirements for a engine along with the cleaning procedure
+                Auxiliary procedure to compactify the generating engine and getting attributes.
+            Also has the requirements for a engine along with the cleaning procedure
         '''
         generatingEngine = self.engineClass(self)
 
         # printCentered('Running Point and getting attrs.', fillerChar='*')
-        genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
-        phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
+        genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
+        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + strftime("-%d%m%Y%H%M%S", gmtime())
+
+        phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber, genValidPointOutDict,
+                                                                     pointKey)
 
         # pp(phaseSpaceDict_int)
         # exit()
         # printCentered('Getting Calc Attributes', fillerChar='*')
-
-
-        phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int, threadNumber =  threadNumber , ignoreExternal = ignoreExternal, ignoreInternal = ignoreInternal)
-        massTruth = generatingEngine._check0Mass( phaseSpaceDict )
+        phaseSpaceDict = self._getCalcAttribForDict(phaseSpaceDict_int, threadNumber=threadNumber,
+                                                    ignoreExternal=ignoreExternal, ignoreInternal=ignoreInternal)
+        massTruth = generatingEngine._check0Mass(phaseSpaceDict)
 
         return massTruth, phaseSpaceDict
 
@@ -1365,7 +1369,7 @@ class phaseScannerModel:
 
                 for attrToAdd in listOfAttr:
 
-                    rowToWrite.append( pointAttr[attrToAdd] )
+                    rowToWrite.append(pointAttr[attrToAdd])
 
                 writer.writerow(rowToWrite)
 
@@ -1374,16 +1378,28 @@ class phaseScannerModel:
 
 if __name__ == '__main__':
 
-    modelName = 'ackleyFunct'
-    auxCase ='DummyCase'
-    micrOmegasName = modelName
-
-    # modelName = 'SO11Hosotani'
+    # modelName = 'ackleyFunct'
     # auxCase ='DummyCase'
     # micrOmegasName = modelName
 
+    modelName = 'SO11Hosotani0'
+    auxCase ='DummyCase'
+    micrOmegasName = modelName
 
-    newModel = phaseScannerModel( modelName, auxCase , micrOmegasName= micrOmegasName, writeToLogFile =True)
+    # genEngine = 'HosotaniSO110'
+    # engineString = 'Engines.' + genEngine + ".engine_" + genEngine
+    # engineModule_Class = importlib.import_module(engineString)
+    # engine = engineModule_Class()
+    newModel = phaseScannerModel(modelName, auxCase, micrOmegasName=micrOmegasName, writeToLogFile=True)
+
+    paramDict = {"k": 4940082.1133, "zL": 1873.5944, "c0": 0.7662, "c0Prime": 0.206, "c2": 2.031,
+                 "Mu2Tilde": 18.0885, "Mu11Prime": 37.4122, "c1": 1.2347, "Mu1": 13.1461, "Mu11": 32.8173}
+    generatingEngine = newModel.engineClass(newModel)
+    generatingEngine.runPoint(paramDict)
+    exit()
+
+
+
     psDict = newModel.loadResults()
 
 

@@ -1,0 +1,1218 @@
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel writes commands to socket: <Socket: uri=tcp://127.0.0.1:49901>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel receives evaluated expressions from socket: <Socket: uri=tcp://127.0.0.1:49902>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel process started with PID: 62701
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel 62701 is ready. Startup took 4.09 seconds.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4486}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4486} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4578}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4578} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4777}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4777} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$4964}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$4964} = {0.0}.
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Termination requested for kernel controller. Associated kernel PID: 62701
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Start termination on kernel <WolframKernelController: wolfram-kernel-2>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel writes commands to socket: <Socket: uri=tcp://127.0.0.1:50035>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel receives evaluated expressions from socket: <Socket: uri=tcp://127.0.0.1:50036>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel process started with PID: 63599
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel 63599 is ready. Startup took 1.89 seconds.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Termination requested for kernel controller. Associated kernel PID: 63599
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Start termination on kernel <WolframKernelController: wolfram-kernel-2>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel writes commands to socket: <Socket: uri=tcp://127.0.0.1:50039>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel receives evaluated expressions from socket: <Socket: uri=tcp://127.0.0.1:50040>
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel process started with PID: 63647
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel 63647 is ready. Startup took 1.16 seconds.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.kernelcontroller:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2365}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2365} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Plus[∞, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2455}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2455} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2652}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2652} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[Infinity, indet] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[StringForm, string] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+WARNING:wolframclient.evaluation.kernel.localsession:Further output of MessageName[FindRoot, nlnum] will be suppressed during this calculation.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:Indeterminate expression Times[0.0, ∞] encountered.
+WARNING:wolframclient.evaluation.kernel.localsession:String expected at position 1 in StringForm[MessageName[General, nlnum], {0.0}, {X$2837}, {Indeterminate}, {1}].
+WARNING:wolframclient.evaluation.kernel.localsession:The function value {Indeterminate} is not a list of numbers with dimensions {1} at {X$2837} = {0.0}.
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Termination requested for kernel controller. Associated kernel PID: 63647
+INFO:wolframclient.evaluation.kernel.kernelcontroller:Start termination on kernel <WolframKernelController: wolfram-kernel-2>

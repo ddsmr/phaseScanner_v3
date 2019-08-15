@@ -1,4 +1,0 @@
-INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel writes commands to socket: <Socket: uri=tcp://127.0.0.1:50185>
-INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel receives evaluated expressions from socket: <Socket: uri=tcp://127.0.0.1:50186>
-INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel process started with PID: 34519
-INFO:wolframclient.evaluation.kernel.kernelcontroller:Kernel 34519 is ready. Startup took 4.01 seconds.

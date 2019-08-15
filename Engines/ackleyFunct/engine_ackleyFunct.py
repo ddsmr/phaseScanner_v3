@@ -11,11 +11,11 @@ class engineClass:
         '''
         '''
 
-    def _getRequiredAttributes(self, paramsDict, threadNumber="0"):
+    def _getRequiredAttributes(self, paramsDict, threadNumber="0", runDict={}, pointKey=''):
         '''
         '''
         phaseSpaceDict = {}
-        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + strftime("-%d%m%Y%H%M%S", gmtime())
+        # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + strftime("-%d%m%Y%H%M%S", gmtime())
         phaseSpaceDict[pointKey] = paramsDict
 
         a_ct = 20
