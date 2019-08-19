@@ -14,7 +14,7 @@ class engineClass:
     '''
 
 
-    def __init__(self, phaseSpaceObj):
+    def __init__(self): # phaseSpaceObj
         '''
         '''
 
@@ -22,10 +22,10 @@ class engineClass:
         # import importlib
         # configModule = importlib.import_module(configString)
 
-        self.condDict = phaseSpaceObj.condDict
-        self.rndDict = phaseSpaceObj.rndDict
-        self.toSetDict = phaseSpaceObj.toSetDict
-        self.calc = phaseSpaceObj.calc
+        # self.condDict = phaseSpaceObj.condDict
+        # self.rndDict = phaseSpaceObj.rndDict
+        # self.toSetDict = phaseSpaceObj.toSetDict
+        # self.calc = phaseSpaceObj.calc
 
         self.targetDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica'
 
@@ -121,9 +121,9 @@ class engineClass:
             phaseSpaceDict[pointKey].update( phaseSpaceDict_NOID )
 
             ###########################  Calc initialisation ####################################
-            calcParamDict = {}
-            for calcParam in self.calc.keys():
-                calcParamDict[calcParam] = None
+            # calcParamDict = {}
+            # for calcParam in self.calc.keys():
+            #     calcParamDict[calcParam] = None
 
             # phaseSpaceDict[pointKey].update({calcParamDict})
             #####################################################################################
@@ -161,17 +161,14 @@ class engineClass:
             # print (Fore.GREEN + 'mTop == ' +str( phaseSpaceDict[pointKey]['Particles']['mTop']) )
             # print (Fore.RED + delimitator2 )
 
-
-            if  ( False
-
-                ):
+            if (False):
 
                 no_0Mass = False
                 # print (no_0Mass, Style.RESET_ALL)
 
         return no_0Mass
 
-    def runPoint(self, paramsDict, threadNumber='0', debug= False):
+    def runPoint(self, paramsDict, threadNumber='0', debug=False):
         '''
         '''
 
@@ -180,18 +177,17 @@ class engineClass:
         with open(targetDir + '/dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
             json.dump(paramsDict, jsonParamFile)
 
-
         runCMD = self.runCMD + ' ThreadNb-' + threadNumber
-        if debug == False:
-            subprocess.call(runCMD , shell = True, cwd = targetDir, stdout = FNULL, stderr=subprocess.STDOUT)
+        if debug is False:
+            subprocess.call(runCMD, shell=True, cwd=targetDir, stdout=FNULL, stderr=subprocess.STDOUT)
         else:
-            subprocess.call(runCMD , shell = True, cwd = targetDir)
+            subprocess.call(runCMD, shell=True, cwd=targetDir)
 
-
-        time.sleep(0.1)
-
+        # time.sleep(0.1)
         return None
 
+    def _terminateSession(self):
+        return None
     # def _genPointAroundSeed(self, paramsDict, rSigma,  threadNumber='0', debug= False):
     #     '''
     #     '''

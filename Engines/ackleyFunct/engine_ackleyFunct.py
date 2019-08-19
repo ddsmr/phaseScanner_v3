@@ -7,7 +7,7 @@ from random import uniform as randU
 
 class engineClass:
 
-    def __init__(self, phaseSpaceObj):
+    def __init__(self):
         '''
         '''
 
@@ -15,7 +15,8 @@ class engineClass:
         '''
         '''
         phaseSpaceDict = {}
-        # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + strftime("-%d%m%Y%H%M%S", gmtime())
+        # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000)))
+        # + strftime("-%d%m%Y%H%M%S", gmtime())
         phaseSpaceDict[pointKey] = paramsDict
 
         a_ct = 20
@@ -33,7 +34,7 @@ class engineClass:
         phaseSpaceDict[pointKey]['fAckley'] = ackleyVal
 
         # Put in a pause to simulate computational complexity
-        time.sleep(0.5 * randU(0, 1))
+        time.sleep(0.25 * randU(0, 1))
         return phaseSpaceDict
 
     def _clean(self, threadNumber):
@@ -49,4 +50,7 @@ class engineClass:
     def runPoint(self, paramsDict, threadNumber='0', debug=False):
         '''
         '''
+        return None
+
+    def _terminateSession(self):
         return None

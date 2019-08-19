@@ -5,7 +5,7 @@ import re
 import importlib
 import pickle
 import csv
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, Pipe
 from time import gmtime, strftime
 from datetime import date, datetime
 
@@ -105,8 +105,9 @@ def fixJsonWAppend(jsonDir):
                     correctedJSON = p.sub(toReplace, jsonContent)
 
                     nbJson = jsonDict.split('ThreadNb')[1]
+                    currTime = strftime("-%d-%m-%Y_%H:%M:%S", gmtime())
 
-                    fileName = 'Focus_Clifford' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) + '_FixedJson-ThreadNb' + nbJson
+                    fileName = 'Focus_Clifford' + currTime + '_FixedJson-ThreadNb' + nbJson
                     newJson = open(jsonDir + fileName, 'w')
                     newJson.write(correctedJSON)
                     newJson.close()
@@ -159,7 +160,7 @@ def checkListForLatestDate(dateList):
 
 def convertDateTimeToStr(dateTime):
     '''
-        Given a datetime object it will output a string of the form MM-DD-YYYY_HH_MM_SS
+        Given a datetime object it will output a string of the form MM-DD-YYYY_HH_MM_SS .
     '''
     monthStr = '0' + str(dateTime.month)
     dayStr = '0' + str(dateTime.day)
@@ -167,9 +168,13 @@ def convertDateTimeToStr(dateTime):
     minStr = '0' + str(dateTime.minute)
     secStr = '0' + str(dateTime.second)
 
-    dateStr = monthStr[-2:] + '-' + dayStr[-2:] + '-' + str(dateTime.year) + '_' + hourStr[-2:] + '_' + minStr[-2:] + '_' + secStr[-2:]
+    dateStr = monthStr[-2:] + '-' + dayStr[-2:] + '-' + str(dateTime.year) + '_'
+    timeStr = hourStr[-2:] + '_' + minStr[-2:] + '_' + secStr[-2:]
 
-    return dateStr
+    # dateStr = monthStr[-2:] + '-' + dayStr[-2:] + '-' + str(dateTime.year) + '_' + hourStr[-2:] + '_' + \
+    # minStr[-2:] + '_' + secStr[-2:]
+
+    return dateStr + timeStr
 
 
 class phaseScannerModel:
@@ -198,6 +203,8 @@ class phaseScannerModel:
                 - userDescription       ::      Description user passes to further help with identification.
                 - writeToLogFile        ::      Set to True to write to log file.
         '''
+        print('\n')
+        printCentered(' ⦿ Started Initialising Model  ', fillerChar='░', color=Fore.BLUE)
         configString = 'Configs.configFile_' + modelName
 
         try:
@@ -214,10 +221,11 @@ class phaseScannerModel:
             engineModule = importlib.import_module(engineString)
         except Exception as e:
             print(e)
+            raise
 
         # ############## Engine class ###################
         self.engineClass = engineModule.engineClass
-
+        # self.engine
         # ############## Model Bits ###################
         self.modelName = modelName
         self.case = caseHandle
@@ -277,29 +285,28 @@ class phaseScannerModel:
         except Exception as e:
             print(Fore.YELLOW + delimitator2 + str(e) + '\nWARNING: Setting default plotting attrs.' + Style.RESET_ALL)
             self.plotFormatting = {
-                 'failPlot': {'alpha':0.5, 'lw' :0, 's':100},
-                 'passPlot': {'alpha':1,   'lw' : 0.6, 's':240},
+                 'failPlot': {'alpha': 0.5, 'lw': 0, 's': 100},
+                 'passPlot': {'alpha': 1,   'lw': 0.6, 's': 240},
                  'fontSize': 40
                   # 'failPlot' : {'alpha':0.1, 'lw' :0, 's':30},
                   # 'passPlot' : {'alpha':1,   'lw' : 0.17, 's':140}
                   # 'fontSize' : 30
             }
 
-        ##### Classification & All dicts #################
+        # #### Classification & All dicts #################
         classDict = {}
         self.classList = ['Param', 'Attr', 'Calc']
-        for params, paramType in zip( [self.params.keys(), self.modelAttrs.keys(), self.calc.keys()] , self.classList):
+        for params, paramType in zip([self.params.keys(), self.modelAttrs.keys(), self.calc.keys()], self.classList):
             for param in params:
                 classDict[param] = paramType
         self.classDict = classDict
 
-
         self.allDicts = {}
-        for dict in  [self.params, self.modelAttrs,  self.calc]:
+        for dict in [self.params, self.modelAttrs,  self.calc]:
             if dict:
                 self.allDicts.update(dict)
 
-        ##### Constraint list #################################
+        # #### Constraint list #################################
         self.noneAttr = []
         try:
             self.noneAttr = configModule.noneAttr
@@ -310,12 +317,10 @@ class phaseScannerModel:
             for attr in self.calc.keys():
                 try:
                     if self.calc[attr]['Calc']['Type'] == 'ChiSquared':
-                        self.noneAttr.append( attr )
+                        self.noneAttr.append(attr)
                 except Exception as e:
                     print(e)
                     pass
-
-
 
         constrDict = {}
         constrList = []
@@ -328,28 +333,28 @@ class phaseScannerModel:
         for attr in self.allDicts.keys():
             # for attr in self.allDicts[attrType].keys():
             if self.allDicts[attr]['Constraint']['Type'] == 'ParamMatch':
-                constrList.append ( 'ParamMatch-' + attr  )
-                constrDict[attr] =  'ParamMatch-' + attr
+                constrList.append('ParamMatch-' + attr)
+                constrDict[attr] = 'ParamMatch-' + attr
 
             elif self.allDicts[attr]['Constraint']['Type'] == 'CheckBounded':
-                constrList.append ( 'CheckBounded-' + attr  )
-                constrDict[attr] =  'CheckBounded-' + attr
+                constrList.append('CheckBounded-' + attr)
+                constrDict[attr] = 'CheckBounded-' + attr
 
             elif self.allDicts[attr]['Constraint']['Type'] in ['HardCutLess', 'HardCutMore']:
                 cutList.append(attr)
                 cutDict[attr] = self.allDicts[attr]['Constraint']['Type']
 
-            elif self.allDicts[attr]['Constraint']['Type']=='CombinedCut':
+            elif self.allDicts[attr]['Constraint']['Type'] == 'CombinedCut':
                 cutList.append(attr)
                 cutList.append(self.allDicts[attr]['Constraint']['ToCheck']['ToCheck'])
                 cutDict[attr] = self.allDicts[attr]['Constraint']['ToCheck']['ToCheck']
 
-            elif self.allDicts[attr]['Constraint']['Type']=='PolygonCut':
+            elif self.allDicts[attr]['Constraint']['Type'] == 'PolygonCut':
                 cutList.append(attr)
                 polygCuts.append(attr)
                 cutDict[attr] = self.allDicts[attr]['Constraint']['Type']
 
-            elif self.allDicts[attr]['Constraint']['Type']=='Constrained':
+            elif self.allDicts[attr]['Constraint']['Type'] == 'Constrained':
                 cutDict[attr] = self.allDicts[attr]['Constraint']['ToCheck']
 
         self.constrList = constrList
@@ -358,12 +363,12 @@ class phaseScannerModel:
         self.cutList = cutList
         self.cutDict = cutDict
 
-        ############### Set up exclusion polygon if available ##############
+        # ############## Set up exclusion polygon if available ##############
 
         cutDict_Poly = {}
         try:
             for attrToCut in polygCuts:
-                plotDataName = 'Configs/ExperimentalCuts/plotCut_'  + attrToCut + '.csv'
+                plotDataName = 'Configs/ExperimentalCuts/plotCut_' + attrToCut + '.csv'
 
                 polygonList = []
                 with open(plotDataName, 'r') as fileIn:
@@ -371,56 +376,52 @@ class phaseScannerModel:
 
                     for rawRow in csvReader:
                         xCoord, yCoord = float(rawRow[0]), float(rawRow[1])
-                        polygonList.append( (xCoord, yCoord) )
+                        polygonList.append((xCoord, yCoord))
 
-                cutDict_Poly.update( {attrToCut : Polygon( polygonList )} )
+                cutDict_Poly.update({attrToCut: Polygon(polygonList)})
         except Exception as e:
             print(e)
             pass
         #######################################################################################
         self.polygCuts = cutDict_Poly
 
-
-        if (writeToLogFile == True):
+        if (writeToLogFile is True):
             writeToLogFile_InitModel(self)
 
-        ######### SubClasses ###########
-        self.generatingEngine = self.engineClass(self)
-        self.modelConstr = constrEval( self )
+        # ######## SubClasses ###########
+        self.generatingEngine = self.engineClass()
+        self.modelConstr = constrEval(self)
 
         self.calcRoutines = {}
         for calcParam in self.calc.keys():
-            if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
+            if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc':
                 routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
                 routineModule = importlib.import_module(routineStr)
 
                 self.calcRoutines[calcParam] = routineModule
 
+        print('\n')
+        printCentered('  ✔ Done Initialising Model  ', fillerChar='░', color=Fore.GREEN)
 
-
-
-
-        printCentered( ' ✔ Done Initialising Model', fillerChar = '█', color = Fore.GREEN )
-
-    def loadResults(self, nbOfPoints='All', targetDir = 'Dicts/', specFile = '', ignoreIntegrCheck = False):
+    def loadResults(self, nbOfPoints='All', targetDir='Dicts/', specFile='', ignoreIntegrCheck=False):
         '''
             Loads all the json result dictionaries as a full dictionary.
 
             Attributes:
 
             Returns:
-            - dict              ::          phaseSpaceDict dictionary with all the points contained in all the json files.
+            - dict              ::          phaseSpaceDict dictionary with all the points contained in all the json
+              files.
         '''
-        ### Load all Jsons in Dicts/ dir.
+        # ## Load all Jsons in Dicts/ dir.
         phaseSpaceDict = {}
-        printCentered(' Looking in dir '+ targetDir +' ', fillerChar='▀')
+        printCentered(' Looking in dir ' + targetDir + ' ', fillerChar='▀')
 
         try:
             dirFiles = os.listdir(self.resultDir + targetDir)
         except Exception as e:
             print(Fore.RED + str(e))
             return {}
-
 
         for jsonDict in dirFiles:
             if ('.json' in jsonDict):
@@ -430,34 +431,34 @@ class phaseScannerModel:
 
                         with open(self.resultDir + targetDir + jsonDict) as inFile:
                             tempDict = json.load(inFile)
-                        printCentered(' Opening ' + jsonDict+ ' ', fillerChar='-')
+                        printCentered(' Opening ' + jsonDict + ' ', fillerChar='-')
                         phaseSpaceDict = {**phaseSpaceDict, **tempDict}
                     except Exception as e:
                         print(e)
                         printCentered('❎ Cannot open ' + jsonDict, color=Fore.RED, fillerChar='-')
 
         print()
-        ########## COMEBACK #######
-        ### Integrity check , excludes all points that have None as an attribute
+        # ######### COMEBACK #######
+        # ## Integrity check , excludes all points that have None as an attribute
         pointsToRemove = []
 
-        if ignoreIntegrCheck == False:
+        if ignoreIntegrCheck is False:
             for point in phaseSpaceDict.keys():
-                for attribute  in self.allDicts.keys():
+                for attribute in self.allDicts.keys():
 
                     # print(self.)
                     # for attribute in self.allDicts[attributeType].keys():
 
-                    #### Check if the point in question hass all the attributes specified by the model
-                    if attribute not in phaseSpaceDict[point].keys() :
+                    # ### Check if the point in question hass all the attributes specified by the model
+                    if attribute not in phaseSpaceDict[point].keys():
                         print(attribute)
-                        pointsToRemove.append (point)
+                        pointsToRemove.append(point)
 
-                    #### if it has all the attributes then check if they are non empty
-                    elif phaseSpaceDict[point][attribute] == None  and attribute not in self.noneAttr :
-                    # attribute!='ChiSquared'
+                    # ### If it has all the attributes then check if they are non empty
+                    elif (phaseSpaceDict[point][attribute] is None) and (attribute not in self.noneAttr):
+                        # attribute!='ChiSquared'
                         print(attribute)
-                        pointsToRemove.append (point)
+                        pointsToRemove.append(point)
 
         # exit()
         # pp(pointsToRemove)
@@ -465,22 +466,24 @@ class phaseScannerModel:
             del phaseSpaceDict[point]
 
         # print( len(phaseSpaceDict) )
-        #### Return all or a number of points chosen at random.
-        if nbOfPoints=='All':
+        # ### Return all or a number of points chosen at random.
+        if nbOfPoints == 'All':
             return phaseSpaceDict
         elif type(nbOfPoints) == int:
             # listOfPointIDs = list (phaseSpaceDict.keys()) [0:nbOfPoints]
-            keyList = list (phaseSpaceDict.keys())
-            listOfPointIDs =[  random.choice( keyList ) for i in range(nbOfPoints)]
+            keyList = list(phaseSpaceDict.keys())
+            listOfPointIDs = [random.choice(keyList) for i in range(nbOfPoints)]
 
-            return {k:phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
+            return {k: phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
 
-    def engineProcedure(self, newParamsDict, threadNumber='0', debug=False, ignoreInternal=False, ignoreExternal=False):
+    def engineProcedure(self, generatingEngine, newParamsDict, threadNumber='0', debug=False,
+                        ignoreInternal=False, ignoreExternal=False):
         '''
                 Auxiliary procedure to compactify the generating engine and getting attributes.
             Also has the requirements for a engine along with the cleaning procedure
         '''
-        generatingEngine = self.engineClass(self)
+        # generatingEngine = self.engineClass()
+        # generatingEngine = self.generatingEngine
 
         # printCentered('Running Point and getting attrs.', fillerChar='*')
         genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
@@ -495,26 +498,33 @@ class phaseScannerModel:
         phaseSpaceDict = self._getCalcAttribForDict(phaseSpaceDict_int, threadNumber=threadNumber,
                                                     ignoreExternal=ignoreExternal, ignoreInternal=ignoreInternal)
         massTruth = generatingEngine._check0Mass(phaseSpaceDict)
+        # generatingEngine._terminateSession()
 
         return massTruth, phaseSpaceDict
 
-
-    def _mThreadAUXexplore(self, q , threadNumber = "0", debug = False, newParamBounds = {} , ignoreExternal= False, ignoreInternal = False): #<----- Needs documentation!!!
+    def _mThreadAUXexplore(self, q, childConn, threadNumber="0", debug=False, newParamBounds={}, ignoreExternal=False,
+                           ignoreInternal=False):  # <----- Needs NEW documentation!!!
         '''
-            Auxiliary function needed for multithreading, which generates valid points in the phase space along with getting the required attributes and putting them in a dictionary, via a Queue().
+                Auxiliary function needed for multithreading, which generates valid points in the phase space along
+            with getting the required attributes and putting them in a dictionary, via a Queue().
 
             Will use the generating engine specified to produce the points. Requires engine have the following methods:
-                †)  _genValidPoint          ::          Method should generate a valid phaseSpaceDictOut given paramsDictMinMax.
-                †)  _getRequiredAttributes  ::          Method that gets the required attributes from the out given by _genValidPoint.
+                †)  _genValidPoint          ::          Method should generate a valid phaseSpaceDictOut given
+                    paramsDictMinMax.
+                †)  _getRequiredAttributes  ::          Method that gets the required attributes from the out
+                    given by _genValidPoint.
                 †)  _check0Mass             ::          Consistency check on phaseSpaceDict.
                 †)  _clean                  ::          Cleaning file method.
 
             Arguments:
                 - q                     ::          Multiprocessing Queue() object which takes the results from all
                                                     the child processes and then passes them to the main function
-                - threadNumber          ::          DEFAULT:'0' .  To be used in multiprocessing to identify what thread is being used.
-                - debug                 ::          DEFAULT = False. Set to True to get error messages and a Spectrum. file when running points.
-                - newParamBounds        ::      DEFAULT: {}. new bounds to be used if the user wants to target a spcific hypervolume in the phase space.
+                - threadNumber          ::          DEFAULT:'0' .  To be used in multiprocessing to identify what
+                  thread is being used.
+                - debug                 ::          DEFAULT = False. Set to True to get error messages and a Spectrum.
+                  file when running points.
+                - newParamBounds        ::      DEFAULT: {}. new bounds to be used if the user wants to target a
+                  specific hypervolume in the phase space.
 
 
             Return:
@@ -524,74 +534,91 @@ class phaseScannerModel:
                 Puts the valid phase space dictionary in a que that is used later for multithreading, but returns None
 
         '''
-
-
-        generatingEngine = self.engineClass(self)
-
+        generatingEngine = self.engineClass()
+        # generatingEngine = self.generatingEngine
         # generatingEngine = self.engineClass(self.modelName, self.case)
 
-
-        if bool(newParamBounds) == True:
+        if bool(newParamBounds) is True:
             paramsDictMinMax = newParamBounds
         else:
             paramsDictMinMax = self.paramBounds
 
         smartRndGen = smartRand(paramsDictMinMax, self.condDict, self.rndDict, self.toSetDict)
-        while True:
 
+        killMsg = False
+        while killMsg is False:
+            # print(threadNumber, ' Started ------------->')
+
+            # Kill the child process if the parent has sent the message
+            # print(killMsg)
+            # if killMsg is True:
+            #     print('\nTerminating Session Nb ', threadNumber)
+            #     generatingEngine._terminateSession()
+            #     childConn.send(threadNumber)
+            #     return None
+            # else:
             try:
+                # Generate a random number and run it via the engine procedure
+                newParamsDict = smartRndGen.genSmartRnd(debug=debug)
+                # print('\n', threadNumber, ' Started ------------->')
+                massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine, newParamsDict, threadNumber=threadNumber,
+                                                                 debug=debug, ignoreExternal=ignoreExternal,
+                                                                 ignoreInternal=ignoreInternal)
+                # print('\n', threadNumber, '  <------------- Finished')
 
-                # genValidPointOutDict = generatingEngine._genValidPoint(paramsDictMinMax, threadNumber = threadNumber, debug = debug)
-
-                newParamsDict = smartRndGen.genSmartRnd( debug = debug )
-                massTruth, phaseSpaceDict = self.engineProcedure(newParamsDict, threadNumber = threadNumber, debug = debug, ignoreExternal = ignoreExternal, ignoreInternal = ignoreInternal )
-
-
-                # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = threadNumber , debug = debug)
-                # phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
-                #
-                # phaseSpaceDict = self._getCalcAttribForDict( phaseSpaceDict_int )
-                # massTruth = generatingEngine._check0Mass( phaseSpaceDict )
-
-
-
-                if  massTruth == False:
-                    generatingEngine._clean( threadNumber )
+                if massTruth is False:
+                    generatingEngine._clean(threadNumber)
                     continue
 
                 else:
                     # pp(phaseSpaceDict)
-                    generatingEngine._clean( threadNumber )
+                    generatingEngine._clean(threadNumber)
                     pass
 
             except Exception as e:
 
                 print(e)
                 raise
-
-
-                generatingEngine._clean( threadNumber )
+                generatingEngine._clean(threadNumber)
                 continue
 
-
+            # print('Put in the Que', threadNumber)
+            # print(phaseSpaceDict)
             q.put(phaseSpaceDict)
 
-        return None
+            if childConn.poll():
+                killMsg = childConn.recv()
+                print('\n', killMsg, threadNumber)
+            # else:
+            #     killMsg = False
+        if killMsg is True:
+            print('\nTerminating Session Nb ', threadNumber)
+            generatingEngine._terminateSession()
+            childConn.send(threadNumber)
 
-    def runMultiThreadExplore(self, numberOfPoints = 10, nbOfThreads = 1, debug = False, quitTime = 50000, newParamBounds = {}, runComment = '', ignoreExternal = False, ignoreInternal = False):
+            # return None
+        # return None
+
+    def runMultiThreadExplore(self, numberOfPoints=10, nbOfThreads=1, debug=False, quitTime=50000, newParamBounds={},
+                              runComment='', ignoreExternal=False, ignoreInternal=False):
         '''
-            Multiprocessing Exploration Scan, main parent function to a number of _mThreadAUXexplore to get all the points and store them in a proper phaseSpaceDict.
+                Multiprocessing Exploration Scan, main parent function to a number of _mThreadAUXexplore to get all
+            the points and store them in a proper phaseSpaceDict.
 
             Arguments:
                 - numberOfPoints        ::      DEFAULT:10 ; Number of Points intended for the scan to collect
                 - nbOfThreads           ::      DEFAULT: 1 ; Number of child processes to be started and ran.
-                - debug                 ::      DEFAULT: False ; Set to True to print out error messages & Spectrum. files
-                - quitTime              ::      DEFAULT: 300; If after quitTime secconds the scan can't find one point that produces EWSB it exits and prints out an error message.
-                - newParamBounds        ::      DEFAULT: {}. new bounds to be used if the user wants to target a spcific hypervolume in the phase space.
+                - debug                 ::      DEFAULT: False ; Set to True to print out error messages &
+                  Spectrum. files
+                - quitTime              ::      DEFAULT: 300; If after quitTime secconds the scan can't find one
+                  point that produces EWSB it exits and prints out an error message.
+                - newParamBounds        ::      DEFAULT: {}. new bounds to be used if the user wants to target a
+                  specific hypervolume in the phase space.
 
                 Returns:
                     - None.
-                    Writes a ScanResults.xxxxxxx.json file with the complete phaseSpaceDict in the Results/modelName/Dicts/ directory:
+                        Writes a ScanResults.xxxxxxx.json file with the complete phaseSpaceDict in the
+                    Results/modelName/Dicts/ directory:
 
                     phaseSpaceDict = {"Point ...1": { Params : {...},
                                                      Particles:{...},
@@ -607,45 +634,54 @@ class phaseScannerModel:
         # print(delimitator)
 
         localQue = Queue()
-        processes = [Process(target=self._mThreadAUXexplore , args=(localQue, str(x), debug, newParamBounds, ignoreExternal, ignoreInternal)) for x in range(nbOfThreads)]
+        # parentConn, childConn = Pipe()
+        # connDict
+        connDict = {'Conn::' + str(x): Pipe() for x in range(nbOfThreads)}
+        processes = {'Proc::' + str(x): Process(target=self._mThreadAUXexplore,
+                                                args=(localQue, connDict['Conn::' + str(x)][1], str(x),
+                                                      debug, newParamBounds, ignoreExternal, ignoreInternal))
+                     for x in range(nbOfThreads)}
 
-        resultDict = {};
-        for proc in processes:
-            proc.start()
+        resultDict = {}
+        for procKey in processes.keys():
+            processes[procKey].start()
 
         abandonScan = False
-        spinner = Halo(text='Trying to find a valid point in phase space. Will timeout after ' + Fore.RED +  str(quitTime) + ' s' + Style.RESET_ALL, spinner='dots')
+        spinner = Halo(text='Trying to find a valid point in phase space. Will timeout after '
+                            + Fore.RED + str(quitTime) + ' s' + Style.RESET_ALL, spinner='dots')
         spinner.start()
 
         try:
             result = localQue.get(block=True, timeout=quitTime)
-        except :
+        except Exception as e:
             spinner.stop_and_persist(symbol=Fore.RED+'\u2718' + Style.RESET_ALL,
-                                     text = 'Cannot find valid point in phase space.')
-            errorMsg ='\n'+ Fore.RED + "Timeout Reached." + Fore.GREEN + " Model with specified rules cannot produce valid points in phase space. " + Style.RESET_ALL
-            print (errorMsg)
+                                     text='Cannot find valid point in phase space.')
+            errorMsg = '\n' + Fore.RED + "Timeout Reached." + Fore.GREEN + \
+                       " Model with specified rules cannot produce valid points in phase space. " + Style.RESET_ALL
+            print(errorMsg)
 
-            for proc in processes:
-                proc.terminate()
+            for procKey in processes.keys():
+                processes[procKey].terminate()
+            # for proc in processes:
+            #     proc.terminate()
             abandonScan = True
 
+        if abandonScan is False:
 
-        if abandonScan == False:
-
-            spinner.stop_and_persist(symbol = Fore.GREEN+'\u2713'+ Style.RESET_ALL,
-                                     text ='Model can produce points in phase space. Starting scan for ' + Fore.RED + self.modelName + '-' + self.case + Style.RESET_ALL)
+            spinner.stop_and_persist(symbol=Fore.GREEN+'\u2713' + Style.RESET_ALL,
+                                     text='Model can produce points in phase space. Starting scan for '
+                                     + Fore.RED + self.modelName + '-' + self.case + Style.RESET_ALL)
 
             pointHandle = 0
-
-            scanID = self.modelName + '_' + self.case.replace(" ","") +'_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
+            scanID = self.modelName + '_' + self.case.replace(" ", "") + '_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
 
             resultsDirDicts = self.resultDir + 'Dicts/'
-            subprocess.call('mkdir ' + resultsDirDicts, shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+            subprocess.call('mkdir ' + resultsDirDicts, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
 
             writeToLogFile_Action(self, 'Started', 'Explore')
             printHeader('Explore', 'Started', nbOfThreads)
-            pbar = tqdm(total=numberOfPoints, bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.GREEN )
-
+            pbar = tqdm(total=numberOfPoints,
+                        bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.GREEN)
 
             try:
                 while pointHandle < numberOfPoints:
@@ -654,37 +690,61 @@ class phaseScannerModel:
                     resultDict.update(result)
                     pbar.update(1)
 
-                    #### Update the Json file every 10 pointsself.
-                    if True:#pointHandle % 10 == 0:
-                        with open(resultsDirDicts +'ScanResults.' + scanID + '.json', 'w') as outfile:
+                    # ### Update the Json file every 10 pointsself.
+                    if True:  # pointHandle % 10 == 0:
+                        # print(delimitator)
+                        # print(result)
+                        # print(type(result))
+                        # print(delimitator)
+                        with open(resultsDirDicts + 'ScanResults.' + scanID + '.json', 'w') as outfile:
                             json.dump(resultDict, outfile)
 
                     pointHandle += 1
 
             except KeyboardInterrupt:
+                # raise
                 print('\nProcess killed by user')
+                pbar.close()
+                for procKey in processes.keys():
+                    processes[procKey].terminate()
+                connDict = {}
+                processes = {}
 
+            finally:
+                # Kill the sessions
+                # print(delimitator)
+                for connID in connDict.keys():
+                    connDict[connID][0].send(True)
 
-            pbar.close()
-            for proc in processes:
-                proc.terminate()
+                while processes:
+                    while connDict:
+                        # localQue.get(block=False)
 
-            printHeader('Explore', 'Finished', nbOfThreads )
-            print (Style.RESET_ALL)
+                        connID = random.choice(list(connDict.keys()))
+                        if connDict[connID][0].poll():
+                            killThreadNb = connDict[connID][0].recv()
+                            processes['Proc::' + str(killThreadNb)].terminate()
+                            del processes['Proc::' + str(killThreadNb)]
+                            del connDict['Conn::' + str(killThreadNb)]
+                            # print(bool(processes), processes)
 
+                pbar.close()
+                for procKey in processes.keys():
+                    processes[procKey].terminate()
+                # for proc in processes:
+                #     proc.terminate()
 
-            writeToLogFile_Action(self, 'Finished', 'Explore')
-            # mergeAllResDicts(self)
+                printHeader('Explore', 'Finished', nbOfThreads)
+                print(Style.RESET_ALL)
 
+                writeToLogFile_Action(self, 'Finished', 'Explore')
+                # mergeAllResDicts(self)
 
-        spinnerWait = Halo(text = 'Waiting for everything to finish running.', spinner='dots')
+        spinnerWait = Halo(text='Waiting for everything to finish running.', spinner='dots')
         spinnerWait.start()
-        time.sleep(1)
 
-        self.cleanRun( nbOfThreads )
-        spinnerWait.stop_and_persist(symbol = Fore.GREEN + '✔' + Style.RESET_ALL, text = 'Done cleaning.')
-
-
+        self.cleanRun(nbOfThreads)
+        spinnerWait.stop_and_persist(symbol=Fore.GREEN + '✔' + Style.RESET_ALL, text='Done cleaning.')
 
         return resultDict
 
@@ -698,42 +758,40 @@ class phaseScannerModel:
             Return:
             -   None
         '''
-        generatingEngine = self.engineClass( self )
-
+        # generatingEngine = self.engineClass( self )
+        generatingEngine = self.generatingEngine
         for threadNumber in range(nbOfThreads):
-            generatingEngine._clean( threadNumber )
+            generatingEngine._clean(threadNumber)
 
         return None
 
-    #####################  Evaluations ##############################################
-    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson = False, ignoreInternal = False, ignoreExternal = False, threadNumber='0'):
+    # ####################  Evaluations ##############################################
+    def _getCalcAttribForDict(self, phaseSpaceDict,  exportJson=False, ignoreInternal=False, ignoreExternal=False,
+                              threadNumber='0'):
         '''
-        Given a phaseSpaceDict, for each point in the phase space,  the function will go through the calcDict specified in the configFile, and calculate the specified attributes.
+            Given a phaseSpaceDict, for each point in the phase space,  the function will go through the calcDict
+        specified in the configFile, and calculate the specified attributes.
 
         Arguments:
             - phaseSpaceDict            ::      Phase space dictionary containing a numbe of points.
             - disableExternal           ::      DEFAULT: False. Set to True to enable external dependency calculations.
-            - exportJson                ::      DEFAULT: False. Set to True to export to json , the new phaseSpaceDict with the calculated
+            - exportJson                ::      DEFAULT: False. Set to True to export to json , the new phaseSpaceDict
+              with the calculated
                                                 attributes.
         Returns:
             - phaseSpaceDict            with the new calculated attributes.
         '''
 
-
         for point in phaseSpaceDict.keys():
             for calcParam in self.calc.keys():
 
-
-                ############## Possible BADNESS = 10000 ±!!!!!
+                # ############# Possible BADNESS = 10000 ±!!!!!
                 if calcParam not in phaseSpaceDict[point].keys():
                     phaseSpaceDict[point][calcParam] = None
 
-
-                if ( phaseSpaceDict[point][calcParam] == None ):
-
-
-                    ############## InternalCalc ################################
-                    if ignoreInternal == False:
+                if (phaseSpaceDict[point][calcParam] is None):
+                    # ############# InternalCalc ################################
+                    if ignoreInternal is False:
                         if self.calc[calcParam]['Calc']['Type'] == 'InternalCalc':
                             for paramToUse in self.calc[calcParam]['Calc']['ToCalc']['ParamList']:
                                 exec(paramToUse + '=' +
@@ -745,9 +803,8 @@ class phaseScannerModel:
                     else:
                         pass
 
-
-                    ############## External ################################
-                    if ignoreExternal == False:
+                    # ############# External ################################
+                    if ignoreExternal is False:
                         if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
 
                             # routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
@@ -760,17 +817,15 @@ class phaseScannerModel:
                             for paramName in self.calc[calcParam]['Calc']['ParamList']:
                                 extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
-                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict, threadNumber = threadNumber)
+                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict, threadNumber=threadNumber)
                     else:
                         pass
 
-
-
-        if exportJson == True:
+        if exportJson is True:
 
             spinner = Halo(text='Writing to JSON.', spinner='dots')
             spinner.start()
-            scanID = self.modelName + self.case.replace(" ","") +'_wPM_wCalc' + strftime("-%d%m%Y%H%M%S", gmtime())
+            scanID = self.modelName + self.case.replace(" ", "") + '_wPM_wCalc' + strftime("-%d%m%Y%H%M%S", gmtime())
 
             # Remove old jsonDicts
             subprocess.call('rm ' + self.resultDir + 'Dicts/*', shell=True)
@@ -778,7 +833,7 @@ class phaseScannerModel:
             with open(self.resultDir + 'Dicts/' + scanID + '.json', 'w') as outFile:
                 json.dump(phaseSpaceDict, outFile)
 
-            spinner.stop_and_persist({'symbol':Fore.GREEN+'✓' + Style.RESET_ALL, 'text':'Finished writing to Json'})
+            spinner.stop_and_persist({'symbol': Fore.GREEN + '✓' + Style.RESET_ALL, 'text': 'Finished writing to Json'})
 
         return phaseSpaceDict
 
@@ -910,106 +965,96 @@ class phaseScannerModel:
 
     # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints = 16, numbOfCores = 1, minimisationConstr = 'Global', ignoreConstrList = [], timeOut = 600, noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0,  sortByChiSquare = True, overSSH=False, algorithm = 'singleCellEvol', reload = False, statistic = 'ChiSquared', enableSubSpawn = False):
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints=16, numbOfCores=1, minimisationConstr='Global',
+    ignoreConstrList=[], timeOut=600, noOfSigmasB=1, noOfSigmasPM=1, debug=False,  chi2LowerBound=1.0,  sortByChiSquare=True,
+    algorithm='singleCellEvol', reload=False, statistic='ChiSquared', enableSubSpawn=False):
         '''
-            Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will produce a generational evolution.
+                Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of
+            numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will
+            produce a generational evolution.
         '''
 
         # if sortByChiSquare == False and algorithm == 'diffEvol':
         #     numberOfPoints = len( list( phaseSpaceDict.keys() ) )
-        #
 
-        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints, sortByChiSquare = sortByChiSquare , sortbyThrNb = reload, statistic = statistic)
+        bestChiSquares, sortedChiSquare_ListOfTuples = self.getTopNChiSquaredPoints(phaseSpaceDict, numberOfPoints,
+        sortByChiSquare=sortByChiSquare, sortbyThrNb=reload, statistic=statistic)
 
-        # pp(bestChiSquares)
-        # pp(sortedChiSquare_ListOfTuples)
-        # exit()
-        # if reload == True:
-            # pass
+        if bool(bestChiSquares) is False:
+            printCentered('  ❎ Empty list of χ²s. Check Constraints and point list ', color=Fore.RED, fillerChar='-')
+            return None
 
-        listOfchi2Lists = chunkList(bestChiSquares, numbOfCores, threadNBSort = reload)
-        listOfsortedChi2Lists= chunkList(sortedChiSquare_ListOfTuples, numbOfCores, threadNBSort = reload)
-
-        # pp(listOfchi2Lists)
-        # pp(listOfsortedChi2Lists)
-        # exit()
+        listOfchi2Lists = chunkList(bestChiSquares, numbOfCores, threadNBSort=reload)
+        listOfsortedChi2Lists = chunkList(sortedChiSquare_ListOfTuples, numbOfCores, threadNBSort=reload)
 
         localQue = Queue()
-        algClasses = [ minimAlg( self,  localQue , listOfchi2Lists[x], listOfsortedChi2Lists[x],
-                                str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM, debug,  chi2LowerBound)
+        algClasses = [minimAlg(self, localQue, listOfchi2Lists[x], listOfsortedChi2Lists[x],
+                               str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM,
+                               debug, chi2LowerBound)
                       for x in range(numbOfCores)]
 
-        processes = { 'Proc::'+str(x+1) : Process(target =  algClasses[x].__class__.__dict__[algorithm],
-                                                args=[ algClasses[x] ]
+        processes = {'Proc::'+str(x+1): Process(target=algClasses[x].__class__.__dict__[algorithm],
+                                                args=[algClasses[x]]
                                                 )
-                    for x in range(numbOfCores) }
+                     for x in range(numbOfCores)}
 
-
-        ######################## Printing info and generating Scan ID ########################
-        scanID = self.modelName + self.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime())
-        resultsDirDicts = self.resultDir + 'Dicts/Focus'+ strftime("-%m-%d-%Y_%H_%M_%S/", gmtime())
-        subprocess.call('mkdir ' + resultsDirDicts, shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
-        subprocess.call('mkdir ' + resultsDirDicts + 'GenResults', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+        # ####################### Printing info and generating Scan ID ########################
+        scanID = self.modelName + self.case.replace(" ", "") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime())
+        resultsDirDicts = self.resultDir + 'Dicts/Focus' + strftime("-%m-%d-%Y_%H_%M_%S/", gmtime())
+        subprocess.call('mkdir ' + resultsDirDicts, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirDicts + 'GenResults', shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
         self._exportFocusStats(resultsDirDicts, numberOfPoints, numbOfCores, algorithm)
-
         print(delimitator)
 
         resultDict = {}
         for procKey in processes.keys():
             processes[procKey].start()
-        writeToLogFile_Action(self, 'Started', 'Focus_' + algorithm )
+        writeToLogFile_Action(self, 'Started', 'Focus_' + algorithm)
 
-        # spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
-        # spinner.start()
+        spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
+        spinner.start()
 
         try:
-            while len(processes) > 0 :
+            while len(processes) > 0:
                 result = localQue.get()
 
-
-                #### Update the generational status of the thread sending the information
+                # ### Update the generational status of the thread sending the information
                 if 'GenStat' in result.keys():
-                    genNb, chi2Min, chi2Mean, chi2Std = result['GenStat']['GenNb'], result['GenStat']['chi2Min'] , result['GenStat']['chi2Mean'], result['GenStat']['chi2Std']
+                    genNb, chi2Min, chi2Mean, chi2Std = result['GenStat']['GenNb'], result['GenStat']['chi2Min'], result['GenStat']['chi2Mean'], result['GenStat']['chi2Std']
                     thrNb_str = str(result['GenStat']['ThreadNb'])
 
                     writeGenStat(resultsDirDicts, str(result['GenStat']['ThreadNb']),
-                    [genNb, chi2Min, chi2Mean, chi2Std],
-                    ['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '] )
+                                 [genNb, chi2Min, chi2Mean, chi2Std],
+                                 ['GenNb-', 'MinChi2: ', 'MeanChi2: ', 'StdChi2: '])
 
-                    subprocess.call('rm '+ resultsDirDicts  + 'GenResults/*ThreadNb-' + str(result['GenStat']['ThreadNb']) + '*', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+                    subprocess.call('rm ' + resultsDirDicts + 'GenResults/*ThreadNb-'
+                                    + str(result['GenStat']['ThreadNb']) + '*', shell=True, stdout=FNULL,
+                                    stderr=subprocess.STDOUT)
 
-                    with open(resultsDirDicts  +'GenResults/GenResults.' + str(genNb) + '-ThreadNb-'+ str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
+                    with open(resultsDirDicts + 'GenResults/GenResults.' + str(genNb) + '-ThreadNb-' + str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
                         json.dump(result['GenStat']['GenDict'], genOut)
 
+                    if enableSubSpawn is True and self._evalKillThread(thrNb_str, algorithm, resultsDirDicts) is True:
 
+                        newAlg = self._getSubAlgorithm(algorithm)
+                        swicthAlg = {'NewAlg': newAlg}
 
-                    if enableSubSpawn == True and self._evalKillThread( thrNb_str, algorithm, resultsDirDicts) == True:
-
-                        newAlg = self._getSubAlgorithm( algorithm )
-                        swicthAlg = {'NewAlg': newAlg }
-
-                        ##### Kill current thread and start a new gnerational run with the remnants of current the generation
-                        processes['Proc::'+ thrNb_str].terminate()
-                        del processes['Proc::'+ thrNb_str]
+                        # #### Kill current thread and start a new gnerational run with the remnants of current gen.
+                        processes['Proc::' + thrNb_str].terminate()
+                        del processes['Proc::' + thrNb_str]
                         print(len(processes))
-                        print(3* (Fore.YELLOW + delimitator))
+                        print(3*(Fore.YELLOW + delimitator))
 
-
-                        processes_subThr = Process(target =  self.resumeGenRun,
-                                                                  args=( 'MostRecent', swicthAlg, thrNb_str )
-                                                                )
+                        processes_subThr = Process(target=self.resumeGenRun, args=('MostRecent', swicthAlg, thrNb_str))
                         processes_subThr.start()
 
-
-
-
-                #### Update the json result file of the thread sending the info
+                # ### Update the json result file of the thread sending the info
                 if 'NewPoint' in result.keys():
                     scanIDwThread = scanID + '_ThreadNb-' + str(result['NewPoint']['ThreadNb'])
-                    with open( resultsDirDicts +'ScanResults.' + scanIDwThread + '.json', 'a') as outfile:
+                    with open(resultsDirDicts + 'ScanResults.' + scanIDwThread + '.json', 'a') as outfile:
                         json.dump(result['NewPoint']['Dict'], outfile)
 
-                #### Terminate the respective thread sending the information
+                # ### Terminate the respective thread sending the information
                 if 'Terminate' in result.keys():
                     processes['Proc::'+str(result['Terminate'])].terminate()
                     del processes['Proc::'+str(result['Terminate'])]
@@ -1017,14 +1062,13 @@ class phaseScannerModel:
         except KeyboardInterrupt:
             print('\nProcess killed by user')
 
-        ############ Terminate the processes #############
+        # ########### Terminate the processes #############
         for procKey in processes.keys():
             processes[procKey].terminate()
-        # spinner.stop()
+        spinner.stop()
 
-        writeToLogFile_Action(self, 'Finished', 'Focus_' + algorithm )
-
-        self.cleanRun( numbOfCores )
+        writeToLogFile_Action(self, 'Finished', 'Focus_' + algorithm)
+        self.cleanRun(numbOfCores)
         fixJsonWAppend(resultsDirDicts)
 
         print(Fore.GREEN + delimitator + Style.RESET_ALL)
@@ -1210,9 +1254,10 @@ class phaseScannerModel:
 
         return None
 
-    def _mThreadAUXrerun(self, q , listOfPoints, threadNumber = '0', debug = False):
+    def _mThreadAUXrerun(self, q, listOfPoints, threadNumber='0', debug=False):
         '''
-        Auxiliary worker multiprocessing function used to do a phase space rerun. Called in the master function reRunMultiThreadself.
+            Auxiliary worker multiprocessing function used to do a phase space rerun. Called in the master
+        function reRunMultiThreadself.
 
         Arguments:
             - q                     ::       Queue() object that passes results to the master function.
@@ -1223,32 +1268,31 @@ class phaseScannerModel:
         Returns:
             - None      ;;     !!Puts results in Queue()
         '''
-
-        generatingEngine = self.engineClass(self)
+        # generatingEngine = self.engineClass(self)
+        generatingEngine = self.generatingEngine
 
         ################################################################
-        while bool(listOfPoints) != False:
+        while bool(listOfPoints) is not False:
             paramsDict = listOfPoints[-1]
 
             try:
 
-                massTruth, phaseSpaceDict = self.engineProcedure(paramsDict, threadNumber = threadNumber, debug = debug)
+                massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine,
+                                                                 paramsDict, threadNumber=threadNumber, debug=debug)
 
                 # generatingEngine.runPoint( paramsDict, threadNumber = threadNumber , debug = debug)
                 # phaseSpaceDict = generatingEngine._getRequiredAttributes(paramsDict, threadNumber)
                 # massTruth = generatingEngine._check0Mass( phaseSpaceDict )
 
-                if  massTruth == True:
+                if massTruth is True:
                     q.put(phaseSpaceDict)
 
                 # generatingEngine._clean( threadNumber)
                 listOfPoints.pop()
 
-
-            except Exception as e :
+            except Exception as e:
 
                 print(e)
-
                 listOfPoints.pop()
                 # generatingEngine._clean( threadNumber )
 
@@ -1256,7 +1300,7 @@ class phaseScannerModel:
 
         return None
 
-    def reRunMultiThread (self, phaseSpaceDict, numbOfCores = 8, debug = False):
+    def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False):
         '''
             Master multiprocessing function to be used to rerun points in a phaseSpaceDict. Writes the results to json,
 
@@ -1264,7 +1308,8 @@ class phaseScannerModel:
 
             Arguments:
                 - phaseSpaceDict        ::       Dictionary of points in the phase space.
-                - numbOfCores           ::       DEFAULT: 14. Should be set to whatever the optimum number is for the machine on which it  is run. Run the corePicker utility to find the optimum.
+                - numbOfCores           ::       DEFAULT: 14. Should be set to whatever the optimum number is for
+                  the machine on which it  is run. Run the corePicker utility to find the optimum.
                 - debug                 ::       DEFAULT: False. Set to True to enable verbose error messages.
 
             Returns:
@@ -1275,11 +1320,12 @@ class phaseScannerModel:
         for core in range(numbOfCores):
             listOfLists.append([])
         pointCounter = 0
+
         for point in phaseSpaceDict.keys():
             try:
                 phaseSpacePoint = phaseSpaceDict[point]['Params']
-            except:
-                paramsDict = { modelAttr : phaseSpaceDict[point][modelAttr]   for modelAttr in self.params}
+            except Exception as e:
+                paramsDict = {modelAttr: phaseSpaceDict[point][modelAttr] for modelAttr in self.params}
                 phaseSpacePoint = paramsDict
 
             listOfLists[pointCounter % numbOfCores].append(phaseSpacePoint)
@@ -1289,32 +1335,33 @@ class phaseScannerModel:
         # exit()
 
         localQue = Queue()
-        processes = [Process( target=self._mThreadAUXrerun, args=(localQue, listOfLists[coreNumber], str(coreNumber), debug) )
-                     for coreNumber in range(numbOfCores) ]
+        processes = [Process(target=self._mThreadAUXrerun,
+                             args=(localQue, listOfLists[coreNumber], str(coreNumber), debug))
+                     for coreNumber in range(numbOfCores)]
 
         for proc in processes:
             proc.start()
 
-        scanID = self.modelName + '_' + self.case.replace(" ","") +'_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
+        scanID = self.modelName + '_' + self.case.replace(" ", "") + '_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
         printHeader('ReRun', 'Started', numbOfCores)
         writeToLogFile_Action(self, 'Start', 'ReRun')
-        pbar = tqdm(total = pointCounter, bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.LIGHTYELLOW_EX)
+        pbar = tqdm(total=pointCounter,
+                    bar_format='%s{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]' % Fore.LIGHTYELLOW_EX)
 
-
-        resultDict ={}
+        resultDict = {}
         pointCounterCopy = pointCounter
+
         try:
             while pointCounter > 0:
                 result = localQue.get()
 
-                if result != None:
+                if result is not None:
                     resultDict.update(result)
                 pbar.update(1)
 
                 if pointCounter % 20 == 0:
-                    with open( self.resultDir +'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
+                    with open(self.resultDir + 'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
                         json.dump(resultDict, outfile)
-
 
                 pointCounter += (-1)
                 ##################################################
@@ -1324,18 +1371,16 @@ class phaseScannerModel:
         for proc in processes:
             proc.terminate()
 
-
         pbar.close()
         printHeader('ReRun', 'Finished', numbOfCores)
-        print ('Success Rate: ', len(resultDict), ' /', pointCounterCopy)
-        print (Style.RESET_ALL)
+        print('Success Rate: ', len(resultDict), ' /', pointCounterCopy)
+        print(Style.RESET_ALL)
 
-        #######################   Clean old dicts and plots #########################
+        # ######################   Clean old dicts and plots #########################
         # subprocess.call('rm *.json', shell = True, cwd = self.resultDir + 'Dicts/' )
         # subprocess.call('rm -r Plots', shell = True, cwd = self.resultDir )
 
-
-        with open( self.resultDir +'Dicts/ScanResults.' + scanID + '.json', 'w') as outfile:
+        with open(self.resultDir + 'Dicts/ScanResults.' + scanID + '.json', 'w') as outfile:
             json.dump(resultDict, outfile)
         # self.cleanFiles()
 
@@ -1346,14 +1391,14 @@ class phaseScannerModel:
 
     def exportPSDitctCSV(self, phaseSpaceDict, listOfAttr, nameOut='Default'):
         '''
-            Given a phase space dictionary function will create a csv file with the PointIDs and the attributes specified in listOfAttr
+                Given a phase space dictionary function will create a csv file with the PointIDs and the attributes
+            specified in listOfAttr
         '''
         # write it
         if nameOut == 'Default':
-            csvFileName ='ExportCSV-' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) + '.csv'
+            csvFileName = 'ExportCSV-' + strftime("-%d-%m-%Y_%H:%M:%S", gmtime()) + '.csv'
         else:
             csvFileName = nameOut + '.csv'
-
 
         with open(self.resultDir + csvFileName, 'w') as csvfile:
             writer = csv.writer(csvfile)
@@ -1383,7 +1428,7 @@ if __name__ == '__main__':
     # micrOmegasName = modelName
 
     modelName = 'SO11Hosotani0'
-    auxCase ='DummyCase'
+    auxCase = 'DummyCase'
     micrOmegasName = modelName
 
     # genEngine = 'HosotaniSO110'
@@ -1394,20 +1439,17 @@ if __name__ == '__main__':
 
     paramDict = {"k": 4940082.1133, "zL": 1873.5944, "c0": 0.7662, "c0Prime": 0.206, "c2": 2.031,
                  "Mu2Tilde": 18.0885, "Mu11Prime": 37.4122, "c1": 1.2347, "Mu1": 13.1461, "Mu11": 32.8173}
-    generatingEngine = newModel.engineClass(newModel)
-    generatingEngine.runPoint(paramDict)
+    # generatingEngine = newModel.engineClass(newModel)
+    # generatingEngine.runPoint(paramDict)
+
+    runRes = newModel.engineProcedure(newModel.generatingEngine, paramDict, ignoreExternal=True)
+    pp(runRes)
     exit()
-
-
 
     psDict = newModel.loadResults()
 
-
-
-
-
     modelPlotter = dictPlotting(newModel)
-    modelPlotter.plotModel( psDict , 'x', 'y',  'fAckley', colorMap='RdYlGn' )
+    modelPlotter.plotModel(psDict, 'x', 'y',  'fAckley', colorMap='RdYlGn')
     # modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])
 
 

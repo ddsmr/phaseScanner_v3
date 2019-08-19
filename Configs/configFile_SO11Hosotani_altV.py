@@ -6,7 +6,7 @@ from math import sin, cos
 # from scipy.special import jv as BesselJ
 # from scipy.special import yv as BesselY
 
-genEngine = 'HosotaniSO110'
+genEngine = 'HosotaniSO11_altV'
 engVers = '6.0'
 
 # ##############################     Dictionaries         #####################

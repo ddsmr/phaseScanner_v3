@@ -150,12 +150,14 @@ if __name__ == '__main__':
         raise
 
 
-    if scanCard['runExplore'] == True:
-        psDict = newModel.runMultiThreadExplore( numberOfPoints = scanCard['numberOfPointsExplore'],nbOfThreads = numbOfCores, debug = False, ignoreExternal = True, ignoreInternal = False)
+    if scanCard['runExplore'] is True:
+        psDict = newModel.runMultiThreadExplore(numberOfPoints=scanCard['numberOfPointsExplore'],
+                                                nbOfThreads=numbOfCores, debug=False, ignoreExternal=True,
+                                                ignoreInternal=False)
 
-    if scanCard['runFocused'] == True and scanCard['resumeGenRun'] == False:
-        if scanCard['targetThreads'] == True and scanCard['targetResDir'] == '':
-            resDir =  getLatestFocusDir(newModel)
+    if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:
+        if scanCard['targetThreads'] is True and scanCard['targetResDir'] == '':
+            resDir = getLatestFocusDir(newModel)
         elif scanCard['targetResDir'] != '':
             resDir = 'Dicts/' + scanCard['targetResDir']
         else:
@@ -163,10 +165,11 @@ if __name__ == '__main__':
 
         # scanCard['targetThreads'] = True
 
-        if bool(psDict) == False:
-            psDict = newModel.loadResults(targetDir = resDir)
+        if bool(psDict) is False:
+            psDict = newModel.loadResults(targetDir=resDir, specFile='08-08-2019')
 
-        algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores, scanCard['targetThreads'], newModel)
+        algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores,
+                                              scanCard['targetThreads'], newModel)
 
         # pp(psDict)
         # newModel.reRunMultiThread(psDict, numbOfCores=1)
@@ -175,5 +178,5 @@ if __name__ == '__main__':
 
         newModel.runGenerationMultithread(psDict, numbOfCores = algCard['nbOfCores'] , numberOfPoints = algCard['nbOfPoints'], chi2LowerBound = algCard['chi2LowerBound'],debug = scanCard['debug'], algorithm = scanCard['algFocus'],sortByChiSquare =   algCard['sortByChiSquare'], statistic = algCard['statistic'], enableSubSpawn = enableSubSpawn)
 
-    elif scanCard['resumeGenRun'] == True:
+    elif scanCard['resumeGenRun'] is True:
         newModel.resumeGenRun()

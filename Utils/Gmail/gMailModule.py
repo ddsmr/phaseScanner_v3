@@ -34,7 +34,8 @@ APPLICATION_NAME = 'Gmail API Python Send Email'
 
 def get_credentials():
     '''
-        Gets the credentials from the gmail-python-email-send.json file via the oauth2client protocols and returns the credentials as output
+            Gets the credentials from the gmail-python-email-send.json file via the oauth2client protocols
+        and returns the credentials as output
     '''
     home_dir = os.path.expanduser('~')
     credential_dir = os.path.join(home_dir, '.credentials')
@@ -48,7 +49,7 @@ def get_credentials():
         flow = client.flow_from_clientsecrets(CLIENT_SECRET_FILE, SCOPES)
         flow.user_agent = APPLICATION_NAME
         credentials = tools.run_flow(flow, store)
-        print ('Storing credentials to ' + credential_path)
+        print('Storing credentials to ' + credential_path)
     return credentials
 
 
@@ -82,12 +83,13 @@ def ListMessagesMatchingQuery(service, user_id, query=''):
 
         return messages
     except errors.HttpError as error:
-        print ('An error occurred: %s' % error)
+        print('An error occurred: %s' % error)
 
 
 def SendMessage(sender, to, subject, msgHtml, msgPlain, attachmentFile=None):
     '''
-        Calls the createMessage functions depending if there is an attachmentFile or not, sends the email and returns as a result the status message of the entire thing
+            Calls the createMessage functions depending if there is an attachmentFile or not, sends the email and
+        returns as a result the status message of the entire thing
     '''
     credentials = get_credentials()
     http = credentials.authorize(httplib2.Http())
@@ -108,17 +110,18 @@ def SendMessageInternal(service, user_id, message):
     try:
         message = (service.users().messages().send(
             userId=user_id, body=message).execute())
-        print ('Message Id: %s' % message['id'])
+        print('Message Id: %s' % message['id'])
         return message
     except errors.HttpError as error:
-        print ('An error occurred: %s' % error)
+        print('An error occurred: %s' % error)
         return "Error"
     return "OK"
 
 
 def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
     '''
-        Creates a MIME message addresed to "to" from "sender" and contains a HTML and a plain part of the message. Returns a 64 bit encoded message as a result
+            Creates a MIME message addresed to "to" from "sender" and contains a HTML and a plain part of the message.
+        Returns a 64 bit encoded message as a result
     '''
     msg = MIMEMultipart('alternative')
     msg['Subject'] = subject
@@ -126,7 +129,7 @@ def CreateMessageHtml(sender, to, subject, msgHtml, msgPlain):
     msg['To'] = to
     msg.attach(MIMEText(msgPlain, 'plain'))
     msg.attach(MIMEText(msgHtml, 'html'))
-    return {'raw': base64.urlsafe_b64encode( msg.as_string().encode('UTF-8')).decode('ascii')}
+    return {'raw': base64.urlsafe_b64encode(msg.as_string().encode('UTF-8')).decode('ascii')}
 
 
 def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachmentFile):
@@ -157,7 +160,7 @@ def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachme
 
     message.attach(messageA)
 
-    print ("create_message_with_attachment: file:", attachmentFile)
+    print("create_message_with_attachment: file:", attachmentFile)
     content_type, encoding = mimetypes.guess_type(attachmentFile)
 
     if content_type is None or encoding is not None:
@@ -181,14 +184,12 @@ def createMessageWithAttachment(sender, to, subject, msgHtml, msgPlain, attachme
         msg.set_payload(fp.read())
         fp.close()
 
-
-
     filename = os.path.basename(attachmentFile)
     msg.add_header('Content-Disposition', 'attachment', filename=filename)
     email.encoders.encode_base64(msg)
     message.attach(msg)
 
-    return {'raw': base64.urlsafe_b64encode( message.as_string().encode('UTF-8')).decode('ascii')}
+    return {'raw': base64.urlsafe_b64encode(message.as_string().encode('UTF-8')).decode('ascii')}
 
 
 def GetMessage(service, user_id, msg_id):
@@ -210,7 +211,7 @@ def GetMessage(service, user_id, msg_id):
 
         return message
     except errors.HttpError as error:
-        print ('An error occurred: %s' % error)
+        print('An error occurred: %s' % error)
 
 
 def GetMimeMessage(service, user_id, msg_id):
@@ -237,12 +238,14 @@ def GetMimeMessage(service, user_id, msg_id):
 
         return mime_msg
     except errors.HttpError as error:
-        print ('An error occurred: %s' % error)
+        print('An error occurred: %s' % error)
 
 
-def sendCompletionEmail(scanSting, pathToAttach=None, toList = ['dansmaranda@gmail.com']):
+def sendCompletionEmail(scanSting, pathToAttach=None, toList=['dansmaranda@gmail.com']):
     '''
-        Pseudo-main sorta file ment to send out a completion email whenever a scan finishes. Takes a "scanSting" to be inserted somewhere in the message and a "pathToAttach" file path to the required attachment.
+            Pseudo-main sorta file ment to send out a completion email whenever a scan finishes.
+        Takes a "scanSting" to be inserted somewhere in the message and a "pathToAttach" file path
+        to the required attachment.
     '''
 
     # str(numpy.random.randint(1, 1000000))
@@ -285,6 +288,55 @@ def sendCompletionEmail(scanSting, pathToAttach=None, toList = ['dansmaranda@gma
             SendMessage(sender, to, subject, msgHtml, msgPlain)
 
     return None
+
+
+# def sendEmail_(scanSting, pathToAttach=None, toList=['dansmaranda@gmail.com']):
+#     '''
+#             Pseudo-main sorta file ment to send out a completion email whenever a scan finishes.
+#         Takes a "scanSting" to be inserted somewhere in the message and a
+#         "pathToAttach" file path to the required attachment.
+#     '''
+#
+#     # str(numpy.random.randint(1, 1000000))
+#     # jobID = strftime("%d/%m/%Y %H:%M:%S", gmtime())
+#
+#     # computerName = socket.gethostname()
+#     # computerName = computerName[0:1].upper() + computerName[1:]
+#     computerName = 'SLURM at HPCS/CSD3'
+#     import random
+#     for to in toList:
+#         sender = formataddr((str(Header(computerName, 'utf-8')),
+#                              'ppt.glasgow.computer@gmail.com'))
+#         jobID = random.randint(14000000, 15000000)
+#         jobNb = random.randint(1, 10)
+#
+#         subject = "Slurm Job_id=" + str(jobID) + " Name=openmm-uf" + str(jobNb) + " Failed, Run time 00:00:00, FAILED"
+#         msgHtml = ''
+#
+#         # if pathToAttach:
+#         #     msgHtml = msgHtml + """ <br><br>
+#         #     See attached pdf's for the plots!<br><br>
+#         #
+#         #     Cheers,<br>
+#         #     """ + computerName + """
+#         #     </p>
+#         #     """
+#         # else:
+#         #     msgHtml = msgHtml + """ <br><br>
+#         #
+#         #     Cheers,<br>
+#         #     """ + computerName + """
+#         #     </p>
+#         #     """
+#         #
+#         msgPlain = ""
+#         # Send message with attachment:
+#         if pathToAttach:
+#             SendMessage(sender, to, subject, msgHtml, msgPlain, pathToAttach)
+#         else:
+#             SendMessage(sender, to, subject, msgHtml, msgPlain)
+#
+#     return None
 
 
 def labelMessageAsRead(service, user_id, msg_id):
