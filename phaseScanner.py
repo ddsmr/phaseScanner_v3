@@ -21,7 +21,33 @@ from Utils.SmartRandomGenerator.smartRand import *
 from Utils.metaLogging import *
 from Utils.constrEval import *
 from Utils.multiThreadAlg import *
-from Utils.dictplotting import *
+# from Utils.dictplotting import *
+
+
+def getLatestFocusDir(psObject):
+    '''
+        Given a psObject the function will get the latest focus directory from the Results directory.
+    '''
+    try:
+        # focusDate = ''
+        dirEntries = os.listdir(psObject.resultDir + 'Dicts/')
+
+        listOfDirs = []
+        for dirEntry in dirEntries:
+            if 'Focus' in dirEntry and ('.' not in dirEntry):
+                listOfDirs.append(dirEntry.replace('Focus_', ''))
+
+        focusDate_DateTime = checkListForLatestDate(listOfDirs)
+        focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
+
+    except Exception as e:
+        print(e)
+        raise
+    # print(focusDate)
+    # exit()
+
+    focusDir = 'Dicts/Focus-' + focusDateTime_str + '/'
+    return focusDir
 
 
 def genRndDict(paramDict):
@@ -271,6 +297,9 @@ class phaseScannerModel:
 
         # ### Param Ranges and sigmas ##############
         self.paramBounds = configModule.dictMinMax
+
+        #   Set a the default plotting specified in the config. If none is available, generate one from the keys,
+        # similarly for the default plotting atributes.
         try:
             self.defaultPlot = configModule.defaultPlot
         except Exception as e:
@@ -316,7 +345,9 @@ class phaseScannerModel:
             # self.noneAttr.append('ChiSquared')
             for attr in self.calc.keys():
                 try:
-                    if self.calc[attr]['Calc']['Type'] == 'ChiSquared':
+                    if (self.calc[attr]['Calc']['Type'] == 'ChiSquared'
+                            or self.calc[attr]['Calc']['Type'] == 'ExternalCalc'):
+
                         self.noneAttr.append(attr)
                 except Exception as e:
                     print(e)
@@ -451,18 +482,19 @@ class phaseScannerModel:
 
                     # ### Check if the point in question hass all the attributes specified by the model
                     if attribute not in phaseSpaceDict[point].keys():
-                        print(attribute)
+                        # print(attribute, ' not present in', point)
                         pointsToRemove.append(point)
 
                     # ### If it has all the attributes then check if they are non empty
                     elif (phaseSpaceDict[point][attribute] is None) and (attribute not in self.noneAttr):
                         # attribute!='ChiSquared'
-                        print(attribute)
+                        # print(attribute)
                         pointsToRemove.append(point)
 
         # exit()
-        # pp(pointsToRemove)
-        for point in pointsToRemove:
+        # Remove the points , using set to ensure they're no duplicates.
+        for point in set(pointsToRemove):
+            # print(point)
             del phaseSpaceDict[point]
 
         # print( len(phaseSpaceDict) )
@@ -484,21 +516,18 @@ class phaseScannerModel:
         '''
         # generatingEngine = self.engineClass()
         # generatingEngine = self.generatingEngine
-
-        # printCentered('Running Point and getting attrs.', fillerChar='*')
         genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
-        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + strftime("-%d%m%Y%H%M%S", gmtime())
+
+        # Associate a Point ID
+        currTime = strftime("-%d%m%Y%H%M%S", gmtime())
+        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + currTime
 
         phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber, genValidPointOutDict,
                                                                      pointKey)
 
-        # pp(phaseSpaceDict_int)
-        # exit()
-        # printCentered('Getting Calc Attributes', fillerChar='*')
         phaseSpaceDict = self._getCalcAttribForDict(phaseSpaceDict_int, threadNumber=threadNumber,
                                                     ignoreExternal=ignoreExternal, ignoreInternal=ignoreInternal)
         massTruth = generatingEngine._check0Mass(phaseSpaceDict)
-        # generatingEngine._terminateSession()
 
         return massTruth, phaseSpaceDict
 
@@ -561,7 +590,8 @@ class phaseScannerModel:
                 # Generate a random number and run it via the engine procedure
                 newParamsDict = smartRndGen.genSmartRnd(debug=debug)
                 # print('\n', threadNumber, ' Started ------------->')
-                massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine, newParamsDict, threadNumber=threadNumber,
+                massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine, newParamsDict,
+                                                                 threadNumber=threadNumber,
                                                                  debug=debug, ignoreExternal=ignoreExternal,
                                                                  ignoreInternal=ignoreInternal)
                 # print('\n', threadNumber, '  <------------- Finished')
@@ -588,16 +618,15 @@ class phaseScannerModel:
 
             if childConn.poll():
                 killMsg = childConn.recv()
-                print('\n', killMsg, threadNumber)
+                # print('\n', killMsg, threadNumber)
             # else:
             #     killMsg = False
         if killMsg is True:
-            print('\nTerminating Session Nb ', threadNumber)
+            printCentered(' Terminating Session Nb ' + threadNumber + ' ', color=Fore.RED, fillerChar='*')
             generatingEngine._terminateSession()
             childConn.send(threadNumber)
 
-            # return None
-        # return None
+        return None
 
     def runMultiThreadExplore(self, numberOfPoints=10, nbOfThreads=1, debug=False, quitTime=50000, newParamBounds={},
                               runComment='', ignoreExternal=False, ignoreInternal=False):
@@ -794,10 +823,9 @@ class phaseScannerModel:
                     if ignoreInternal is False:
                         if self.calc[calcParam]['Calc']['Type'] == 'InternalCalc':
                             for paramToUse in self.calc[calcParam]['Calc']['ToCalc']['ParamList']:
-                                exec(paramToUse + '=' +
-                                     str(phaseSpaceDict[point][paramToUse]))
+                                exec(paramToUse + '=' + str(phaseSpaceDict[point][paramToUse]))
 
-                            calcParamVal = eval( self.calc[calcParam]['Calc']['ToCalc']['Expression'])
+                            calcParamVal = eval(self.calc[calcParam]['Calc']['ToCalc']['Expression'])
 
                             phaseSpaceDict[point][calcParam] = calcParamVal
                     else:
@@ -805,7 +833,7 @@ class phaseScannerModel:
 
                     # ############# External ################################
                     if ignoreExternal is False:
-                        if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc' :
+                        if self.calc[calcParam]['Calc']['Type'] == 'ExternalCalc':
 
                             # routineStr = 'Routines.' + self.calc[calcParam]['Calc']['Routine']
                             routineModule = self.calcRoutines[calcParam]
@@ -817,7 +845,8 @@ class phaseScannerModel:
                             for paramName in self.calc[calcParam]['Calc']['ParamList']:
                                 extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
-                            phaseSpaceDict[point][calcParam] = routineModule.__dict__[methodStr](extParamDict, threadNumber=threadNumber)
+                            calcVal = routineModule.__dict__[methodStr](extParamDict, threadNumber=threadNumber)
+                            phaseSpaceDict[point][calcParam] = calcVal
                     else:
                         pass
 
@@ -833,21 +862,30 @@ class phaseScannerModel:
             with open(self.resultDir + 'Dicts/' + scanID + '.json', 'w') as outFile:
                 json.dump(phaseSpaceDict, outFile)
 
-            spinner.stop_and_persist({'symbol': Fore.GREEN + '✓' + Style.RESET_ALL, 'text': 'Finished writing to Json'})
+            spinner.stop_and_persist({'symbol': Fore.GREEN + '✓' + Style.RESET_ALL, 'text': 'Finished.'})
 
         return phaseSpaceDict
 
-    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr ='Global', specificCuts = 'Global', ignoreConstrList = [], returnDict = False, exportAsDict = False, sortByChiSquare = True, sortbyThrNb = False, statistic = 'ChiSquared'):
+    def getTopNChiSquaredPoints(self, phaseSpaceDict, countChi2, minimisationConstr='Global', specificCuts='Global',
+                                ignoreConstrList=[], returnDict=False, exportAsDict=False, sortByChiSquare=True,
+                                sortbyThrNb=False, statistic='ChiSquared'):  # Needs more documentation
         '''
-            Given a phase Space dictionary, and a the top number of points to be ranked via their chi2 value, the function returns the sorted list of chi2 . Can be toggled to return the dictionary, or return the countChi2 random number of points.
+                Given a phase Space dictionary, and a the top number of points to be ranked via their chi2 value, the
+            function returns the sorted list of chi2 values (where chi2 refferes to the TEST statistic). Can be toggled
+            to return the dictionary, or return the countChi2 random number of points.
+
+            Arguments:
+            -   phaseSpaceDict  ::  Type=Dict. Phase space dictionary contianing a number of points with their IDs.
+            -   countChi2   ::  Type=Int. The N top number of points to be returned.
+
+            -   sortByChiSquare    ::    OPTIONAL, Type=Bool. Set to False to return just a random sorted order.
+                Function then acts as a cut on the top N points on the stack.
         '''
 
         chiSquareDict = {}
-        modelConstr = constrEval( self )
-
+        modelConstr = constrEval(self)
 
         for pointKey in phaseSpaceDict.keys():
-
 
             notemptyDict = True
             for modelAttribute in self.allDicts.keys():
@@ -855,27 +893,26 @@ class phaseScannerModel:
 
                     notemptyDict = notemptyDict and bool(phaseSpaceDict[pointKey][modelAttribute])
 
-            #### Not entirely sure about the checkHardCut if it should or shouldn't be in here.
-            if notemptyDict == True and modelConstr._checkHardCut(phaseSpaceDict[pointKey], specificCuts = specificCuts):
+            # ### Not entirely sure about the checkHardCut if it should or shouldn't be in here.
+            if notemptyDict is True and modelConstr._checkHardCut(phaseSpaceDict[pointKey], specificCuts=specificCuts):
 
                 # print('aaaaaaaaaa')
                 if statistic == 'ChiSquared':
-                    chiSquare = modelConstr.getChi2(phaseSpaceDict[pointKey], ignoreConstrList = ignoreConstrList,
-                                        minimisationConstr = minimisationConstr, returnDict = False)
+                    chiSquare = modelConstr.getChi2(phaseSpaceDict[pointKey], ignoreConstrList=ignoreConstrList,
+                                                    minimisationConstr=minimisationConstr, returnDict=False)
                 elif statistic == 'LogL':
-                    chiSquare = modelConstr.getLogLikelihood( phaseSpaceDict[pointKey] )
+                    chiSquare = modelConstr.getLogLikelihood(phaseSpaceDict[pointKey])
                 chiSquareDict[pointKey] = chiSquare
                 # print(chiSquare)
 
-
-        # pp(chiSquareDict)
-        if sortbyThrNb == True:
+        if sortbyThrNb is True:
             sortedChiSquare_ListOfTuples = sorted(chiSquareDict.items(), key=lambda kv: kv[0])
         else:
-            if sortByChiSquare == True:
+            if sortByChiSquare is True:
                 sortedChiSquare_ListOfTuples = sorted(chiSquareDict.items(), key=lambda kv: kv[1])
             else:
-                sortedChiSquare_ListOfTuples = [ (pointKey, chiSquareDict[pointKey]) for pointKey in chiSquareDict.keys()   ]
+                sortedChiSquare_ListOfTuples = [(pointKey, chiSquareDict[pointKey])
+                                                for pointKey in chiSquareDict.keys()]
 
         # pp(sortedChiSquare_ListOfTuples)
         # exit()
@@ -885,18 +922,16 @@ class phaseScannerModel:
         #
         # exit()
 
-
-
-        if exportAsDict == False:
+        if exportAsDict is False:
             topChi2List = []
             for pointAttr in sortedChiSquare_ListOfTuples[0:countChi2]:
                 pointKey = pointAttr[0]
-                topChi2List.append( { pointKey : phaseSpaceDict[ pointKey ] })
+                topChi2List.append({pointKey: phaseSpaceDict[pointKey]})
         else:
             topChi2List = {}
             for pointAttr in sortedChiSquare_ListOfTuples[0:countChi2]:
                 pointKey = pointAttr[0]
-                topChi2List.update( { pointKey : phaseSpaceDict[ pointKey ] })
+                topChi2List.update({pointKey: phaseSpaceDict[pointKey]})
 
         return topChi2List, sortedChiSquare_ListOfTuples[0:countChi2]
 
@@ -1011,7 +1046,10 @@ class phaseScannerModel:
             processes[procKey].start()
         writeToLogFile_Action(self, 'Started', 'Focus_' + algorithm)
 
-        spinner = Halo(text='Started ' + Fore.RED +strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL +'Running on '+ Fore.RED + str(len(processes.keys())) + ' thread/s.'  + Style.RESET_ALL, spinner='dots')
+        spinnText = 'Started ' + Fore.RED + strftime("%d/%m/%Y at %H:%M:%S ", gmtime()) + Style.RESET_ALL \
+                    + 'Running on ' + Fore.RED + str(len(processes.keys())) + ' thread/s.' + Style.RESET_ALL\
+                    + ' Lower Statistic bound of ' + Fore.RED + str(round(chi2LowerBound, 4)) + Style.RESET_ALL
+        spinner = Halo(text=spinnText, spinner='dots')
         spinner.start()
 
         try:

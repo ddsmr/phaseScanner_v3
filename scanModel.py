@@ -1,35 +1,36 @@
 import argparse
 import os
 # from phaseScanner import *
-from phaseScanner import phaseScannerModel, checkListForLatestDate, convertDateTimeToStr
+from phaseScanner import phaseScannerModel, checkListForLatestDate, convertDateTimeToStr, getLatestFocusDir
 
 # from Utils.Gmail.gMailModule import *
 from Utils.printUtils import *
 
 
-def getLatestFocusDir(psObject):
-    '''
-    '''
-    try:
-        # focusDate = ''
-        dirEntries = os.listdir(psObject.resultDir + 'Dicts/')
-
-        listOfDirs = []
-        for dirEntry in dirEntries:
-            if 'Focus' in dirEntry and ('.' not in dirEntry):
-                listOfDirs.append(dirEntry.replace('Focus_', ''))
-
-        focusDate_DateTime = checkListForLatestDate(listOfDirs)
-        focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
-
-    except Exception as e:
-        print(e)
-        raise
-    # print(focusDate)
-    # exit()
-
-    focusDir = 'Dicts/Focus-' + focusDateTime_str + '/'
-    return focusDir
+# def getLatestFocusDir(psObject):
+#     '''
+#         Given a psObject the function will get the latest focus directory from the Results directory.
+#     '''
+#     try:
+#         # focusDate = ''
+#         dirEntries = os.listdir(psObject.resultDir + 'Dicts/')
+#
+#         listOfDirs = []
+#         for dirEntry in dirEntries:
+#             if 'Focus' in dirEntry and ('.' not in dirEntry):
+#                 listOfDirs.append(dirEntry.replace('Focus_', ''))
+#
+#         focusDate_DateTime = checkListForLatestDate(listOfDirs)
+#         focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
+#
+#     except Exception as e:
+#         print(e)
+#         raise
+#     # print(focusDate)
+#     # exit()
+#
+#     focusDir = 'Dicts/Focus-' + focusDateTime_str + '/'
+#     return focusDir
 
 
 def _createFocusRunCard(algorihm, psDict, numbOfCores, targetThreads, psObject):
@@ -94,36 +95,43 @@ if __name__ == '__main__':
     parser.add_argument('modelName', help=Fore.GREEN + 'Name of the model to be initialiased.' + Style.RESET_ALL)
     parser.add_argument('modelCase', default='', help=Fore.GREEN + 'Case to be handled.' + Style.RESET_ALL)
 
-    parser.add_argument('--micrOmegasName', default=None,
-            help='micrOmegas model name. If nothing is passed then micrOmegasName is taken the same as modelName.')
-
-    parser.add_argument('--Description', default='', help='Descriptor that user wants to associate with the model')
-
-    parser.add_argument('--resumeGenRun',  help='Resume the latest run.', action="store_true")
     parser.add_argument('--numberOfCores', default=8, help='Number Of Threads to use in the scanning procedure.',
                         type=int)
     parser.add_argument('--numberOfPointsExplore', default=80,
                         help='Number Of Points to scan for in the exploration scan.', type=int)
+    exploreMsg = Fore.RED + ("Enable exploration running. NOTE that atributes marked as ExternalCalc are by default"
+                             "ignored. Set ignoreExternal = True to enable external attributes.") + Style.RESET_ALL
+    parser.add_argument("-rE", '--runExplore',  help=exploreMsg, action="store_true")
 
-    parser.add_argument("-rE", '--runExplore',  help = Fore.RED + 'Enable exploration running. NOTE that atributes marked as ExternalCalc are by default ignored. Set ignoreExternal = True to enable external attributes.'+ Style.RESET_ALL, action="store_true")
-    parser.add_argument("-rF", '--runFocused',  help = Fore.RED + 'Enable focused running.'+ Style.RESET_ALL, action="store_true")
-    parser.add_argument('--algFocus',       help = 'Algorithm to run focus scan with. Default algorithm is diffEvol.', default= 'diffEvol', type=str)
-    parser.add_argument('-tT', '--targetThreads',  help = 'Set flag to target the files from the previous thread runs', action="store_true")
-    parser.add_argument('--targetResDir', default = '', help = 'Descriptor that user wants to associate with the model')
+    parser.add_argument("-rF", '--runFocused',  help=Fore.RED + 'Enable focused running.' + Style.RESET_ALL,
+                        action="store_true")
+    parser.add_argument('--algFocus', help='Algorithm to run focus scan with. Default algorithm is diffEvol.',
+                        default='diffEvol', type=str)
+    parser.add_argument('-tT', '--targetThreads',  help='Set flag to target the files from the previous thread runs',
+                        action="store_true")
 
-    parser.add_argument("-spwn", '--spawnSubAlgorithms',  help = 'Algorithm to run focus scan with', action="store_true")
+    parser.add_argument('--targetResDir', default='', help='Descriptor that user wants to associate with the model')
+    parser.add_argument('--Description', default='', help='Descriptor that user wants to associate with the model')
+    parser.add_argument('--resumeGenRun',  help='Resume the latest run.', action="store_true")
 
-    # parser.add_argument('--nbOfSigmasRelax', default = 1, help = 'Number Of Sigmas for the focus scan to relax.', type = int)
+    micrOmMsg = 'micrOmegas model name. If nothing is passed then micrOmegasName is taken the same as modelName.'
+    parser.add_argument('--micrOmegasName', default=None, help=micrOmMsg)
+    parser.add_argument("-spwn", '--spawnSubAlgorithms',  help='Algorithm to run focus scan with', action="store_true")
+
+    # parser.add_argument('--nbOfSigmasRelax', default = 1, help = 'Number Of Sigmas for the focus scan to relax.',
+    # type = int)
     # parser.add_argument("-t", '--targetThread', default = False, help = 'Set to True to target', action="store_true")
 
-    # parser.add_argument("-e", '--sendCompletionEmail', help='Enable completion email from being sent with the provided params.', action="store_true")
+    # parser.add_argument("-e", '--sendCompletionEmail', help='Enable completion email from being sent with the
+    # provided params.', action="store_true")
     # parser.add_argument('--xAxis', default='mTop', help='X axis for the plot sent in the email.')
     # parser.add_argument('--yAxis', default='Higgs', help='Y axis for the plot sent in the email.')
     # parser.add_argument('--colorAxis', default='c0', help='Color axis for the plot sent in the email.')
     #
-    # parser.add_argument("-g", '--pushToGit', help='Push by default to the Results_Auto git repo the results when done.', action="store_true")
-    #
-    # parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts, Focus, sendCompletionEmail, and pushToGit',action="store_true")
+    # parser.add_argument("-g", '--pushToGit', help='Push by default to the Results_Auto git repo the results when
+    # done.', action="store_true")
+    # parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts,
+    # Focus, sendCompletionEmail, and pushToGit',action="store_true")
 
     parser.add_argument("-d", '--debug', help=Fore.RED + 'Enable to debug.' + Style.RESET_ALL, action="store_true")
     #####################################################################################################
@@ -149,10 +157,9 @@ if __name__ == '__main__':
         print(e)
         raise
 
-
     if scanCard['runExplore'] is True:
         psDict = newModel.runMultiThreadExplore(numberOfPoints=scanCard['numberOfPointsExplore'],
-                                                nbOfThreads=numbOfCores, debug=False, ignoreExternal=True,
+                                                nbOfThreads=numbOfCores, debug=debug, ignoreExternal=True,
                                                 ignoreInternal=False)
 
     if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:
@@ -166,7 +173,7 @@ if __name__ == '__main__':
         # scanCard['targetThreads'] = True
 
         if bool(psDict) is False:
-            psDict = newModel.loadResults(targetDir=resDir, specFile='08-08-2019')
+            psDict = newModel.loadResults(targetDir=resDir)
 
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores,
                                               scanCard['targetThreads'], newModel)
@@ -176,7 +183,10 @@ if __name__ == '__main__':
         # newModel.reRunMultiThread(psDict, numbOfCores = algCard['nbOfCores'])
         # exit()
 
-        newModel.runGenerationMultithread(psDict, numbOfCores = algCard['nbOfCores'] , numberOfPoints = algCard['nbOfPoints'], chi2LowerBound = algCard['chi2LowerBound'],debug = scanCard['debug'], algorithm = scanCard['algFocus'],sortByChiSquare =   algCard['sortByChiSquare'], statistic = algCard['statistic'], enableSubSpawn = enableSubSpawn)
+        newModel.runGenerationMultithread(psDict, numbOfCores=algCard['nbOfCores'], numberOfPoints=algCard['nbOfPoints'],
+                                          chi2LowerBound=algCard['chi2LowerBound'], debug=debug,
+                                          algorithm=scanCard['algFocus'], sortByChiSquare=algCard['sortByChiSquare'],
+                                          statistic=algCard['statistic'], enableSubSpawn=enableSubSpawn)
 
     elif scanCard['resumeGenRun'] is True:
         newModel.resumeGenRun()

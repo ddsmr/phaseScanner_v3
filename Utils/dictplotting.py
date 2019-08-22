@@ -43,69 +43,67 @@ class dictPlotting():
         #   Check the HardCuts and separate into pass/fail.
         for point in phaseSpaceDict.keys():
 
+            # Check if the point passes the hard cuts
+            hardCutPass = constrEvaluator._checkHardCut(phaseSpaceDict[point], specificCuts=specificCuts)
 
-            if constrEvaluator._checkHardCut( phaseSpaceDict[point] , specificCuts = specificCuts) == True :
+            # If point passes HardCuts then check if it passes bounded/ ParamMatch constraints
+            constraintDictPoint = constrEvaluator._constraintEvaluation(phaseSpaceDict[point],
+                                                     noOfSigmasB=noOfSigmasB, noOfSigmasPM=noOfSigmasPM,
+                                                     ignoreConstrList=ignoreConstrList)
 
+            # Start testing the passing criterion via the required test statistic.
+            if useChi2AsTest['Enable'] is True and useChi2AsTest['TestStatistic'] == 'ChiSquared':
+                pointChiSquared = constrEvaluator._calculateChiSquared(constraintDictPoint,
+                                                                       minimisationConstr='Global')
+                phaseSpaceDict[point].update({'ChiSquared': pointChiSquared})
 
-                # If point passes HardCuts then check if it passes bounded/ ParamMatch constraints
-                constraintDictPoint =  constrEvaluator._constraintEvaluation( phaseSpaceDict[point], noOfSigmasB = noOfSigmasB, noOfSigmasPM = noOfSigmasPM , ignoreConstrList = ignoreConstrList)
-
-                ######################## CHI SQUARED HERE!
-                if useChi2AsTest['Enable']== True and useChi2AsTest['TestStatistic'] == 'ChiSquared':
-                    pointChiSquared = constrEvaluator._calculateChiSquared(constraintDictPoint, minimisationConstr = 'Global')
-                    phaseSpaceDict[point].update({'ChiSquared':pointChiSquared} )
-
-                elif useChi2AsTest['Enable']== True and useChi2AsTest['TestStatistic'] == 'LogL':
-                    pointChiSquared = constrEvaluator._calculateLogLikelyhood(constraintDictPoint, minimisationConstr = 'Global')
-                    phaseSpaceDict[point].update({'LogL':pointChiSquared} )
-
-
-
-
-                if useChi2AsTest['Enable'] and useChi2AsTest['TestStatistic'] == 'ChiSquared':
-                    if pointChiSquared < useChi2AsTest['Chi2UpperBound']:
-                        pointPassed = True
-                    else:
-                        pointPassed = False
-
-                elif useChi2AsTest['Enable'] and useChi2AsTest['TestStatistic'] == 'LogL':
-                    if pointChiSquared > useChi2AsTest['Chi2UpperBound']:
-                        pointPassed = True
-                    else:
-                        pointPassed = False
-
-                else:
-
+                # For χ² we have < bound  as the passing criterion.
+                if pointChiSquared < useChi2AsTest['Chi2UpperBound']:
                     pointPassed = True
-                    # pp(constraintDictPoint)
-                    # exit()
-                    for constraints in constraintDictPoint.keys():
-                        pointPassed = pointPassed and constraintDictPoint[constraints]['PassTruth']
-
-
-                if pointPassed == True:
-                    passDict.update({point:phaseSpaceDict[point]})
-
                 else:
-                    failDict.update({point:phaseSpaceDict[point]})
+                    pointPassed = False
+
+            elif useChi2AsTest['Enable'] is True and useChi2AsTest['TestStatistic'] == 'LogL':
+                pointChiSquared = constrEvaluator._calculateLogLikelyhood(constraintDictPoint,
+                                                                          minimisationConstr='Global')
+                phaseSpaceDict[point].update({'LogL': pointChiSquared})
+
+                # For Log L we have > bound as the passing criterion.
+                if pointChiSquared > useChi2AsTest['Chi2UpperBound']:
+                    pointPassed = True
+                else:
+                    pointPassed = False
+
+            elif useChi2AsTest['Enable'] is False:
+
+                pointPassed = True
+                for constraints in constraintDictPoint.keys():
+                    pointPassed = pointPassed and constraintDictPoint[constraints]['PassTruth']
+
+            if (pointPassed and hardCutPass) is True:
+                passDict.update({point: phaseSpaceDict[point]})
 
             else:
-                ######################## CHI SQUARED HERE!
-                if useChi2AsTest['Enable']== True and useChi2AsTest['TestStatistic'] == 'ChiSquared':
-                    pointChiSquared = constrEvaluator._calculateChiSquared(constraintDictPoint, minimisationConstr = 'Global')
-                    # print(pointChiSquared, useChi2AsTest )
-                    phaseSpaceDict[point].update({'ChiSquared':pointChiSquared} )
+                failDict.update({point: phaseSpaceDict[point]})
 
-                elif useChi2AsTest['Enable']== True and useChi2AsTest['TestStatistic'] == 'LogL':
-                    pointChiSquared = constrEvaluator._calculateLogLikelyhood(constraintDictPoint, minimisationConstr = 'Global')
-                    # print(pointChiSquared, useChi2AsTest )
-                    phaseSpaceDict[point].update({'LogL':pointChiSquared} )
+            # else:
+            #     # ####################### CHI SQUARED HERE!
+            #     if useChi2AsTest['Enable'] is True and useChi2AsTest['TestStatistic'] == 'ChiSquared':
+            #         pointChiSquared = constrEvaluator._calculateChiSquared(constraintDictPoint,
+            #                           minimisationConstr = 'Global')
+            #         # print(pointChiSquared, useChi2AsTest )
+            #         phaseSpaceDict[point].update({'ChiSquared': pointChiSquared} )
+            #
+            #     elif useChi2AsTest['Enable']== True and useChi2AsTest['TestStatistic'] == 'LogL':
+            #         pointChiSquared = constrEvaluator._calculateLogLikelyhood(constraintDictPoint,
+            #                           minimisationConstr = 'Global')
+            #         # print(pointChiSquared, useChi2AsTest )
+            #         phaseSpaceDict[point].update({'LogL': pointChiSquared} )
+            #
+            #
+            #     failDict.update({point:phaseSpaceDict[point]})
 
-
-                failDict.update({point:phaseSpaceDict[point]})
-
-
-        return {'Passed': passDict, 'Failed' : failDict}
+        return {'Passed': passDict, 'Failed': failDict}
 
     def _makeListFromDict(self, phaseSpaceDict):
         '''

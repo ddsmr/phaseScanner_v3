@@ -7,14 +7,11 @@ from Utils.SmartRandomGenerator.smartRand import *
 from Utils.printUtils import *
 
 
-
-
 class engineClass:
     '''
     '''
 
-
-    def __init__(self): # phaseSpaceObj
+    def __init__(self):  # phaseSpaceObj
         '''
         '''
 
@@ -37,11 +34,11 @@ class engineClass:
         # elif '18.04' in sysInfo[1]:
         mathScript = 'wolframscript'
 
-
-        runCMD = mathScript + ' -script SO11_Masses_v6.m'  ### ThreadNb-n where n=1,2, ...
+        runCMD = mathScript + ' -script SO11_Masses_v6.m'  # ThreadNb-n where n=1,2, ...
         self.runCMD = runCMD
 
-    # def _generateRandomPointJSON(self, paramsDictMinMax, samplingPDF = 'Uniform' ,  threadNumber ="0", debug = False):
+    # def _generateRandomPointJSON(self, paramsDictMinMax, samplingPDF = 'Uniform' ,  threadNumber ="0",
+    # debug = False):
     #     '''
     #     '''
     #     targetDir = self.targetDir
@@ -53,7 +50,8 @@ class engineClass:
     #     paramsDict = smartRndGen.genSmartRnd(debug= debug, samplingPDF = samplingPDF)
     #
     #     # for param in paramsDictMinMax.keys():
-    #     #     paramsDict[param] = round ( random.uniform(paramsDictMinMax[param]['Min'], paramsDictMinMax[param]['Max'])  , 4)
+    #     #     paramsDict[param] = round ( random.uniform(paramsDictMinMax[param]['Min'],
+    #                                       paramsDictMinMax[param]['Max'])  , 4)
     #
     #
     #     with open(targetDir + '/dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
@@ -83,13 +81,13 @@ class engineClass:
     #     '''
     #     targetDir = self.targetDir
     #
-    #     paramsDict = self._generateRandomPointJSON(paramsDictMinMax, threadNumber = threadNumber, samplingPDF = samplingPDF, debug = debug)
+    #     paramsDict = self._generateRandomPointJSON(paramsDictMinMax, threadNumber = threadNumber,
+    #                                                samplingPDF = samplingPDF, debug = debug)
     #
     #     self._runCustomCMD(threadNumber)
     #
     #     return paramsDict
     #
-
 
     def _getRequiredAttributes(self, paramsDict, threadNumber="0", runDict={}, pointKey=''):
         '''
@@ -97,12 +95,11 @@ class engineClass:
         targetDir = self.targetDir
 
         for param in paramsDict.keys():
-            # print(param, paramsDict)
 
+            #   The  only allowed negative parameter isx c2, even though we set our definition domain to be strictly
+            # positive, during differential Evolution the parameter vector can migrate to negative regions
             if param != 'c2' and paramsDict[param] < 0:
-                # print('+++++++++++++++++++++++++++++++')
                 return {}
-
 
         try:
             with open(targetDir + '/massesOutThreadNb-' + threadNumber + '.json', 'r') as jSonInFile:
@@ -114,13 +111,13 @@ class engineClass:
 
         if phaseSpaceDict_NOID and phaseSpaceDict_NOID['Triviality'] == 0:
 
-            # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +  strftime("-%d%m%Y%H%M%S", gmtime())
-
+            # pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1,1000))) +
+            #                     strftime("-%d%m%Y%H%M%S", gmtime())
             phaseSpaceDict = {}
-            phaseSpaceDict[pointKey] =  paramsDict
-            phaseSpaceDict[pointKey].update( phaseSpaceDict_NOID )
+            phaseSpaceDict[pointKey] = paramsDict
+            phaseSpaceDict[pointKey].update(phaseSpaceDict_NOID)
 
-            ###########################  Calc initialisation ####################################
+            # ##########################  Calc initialisation #################################### Redundant
             # calcParamDict = {}
             # for calcParam in self.calc.keys():
             #     calcParamDict[calcParam] = None
@@ -138,10 +135,11 @@ class engineClass:
         targetDir = self.targetDir
 
         FNULL = open(os.devnull, 'w')
-        cleanList =[ 'dataInThreadNb-' + str(threadNumber) + '.json' , 'massesOutThreadNb-' + str(threadNumber) + '.json']
+        cleanList = ['dataInThreadNb-' + str(threadNumber) + '.json', 'massesOutThreadNb-'
+                                       + str(threadNumber) + '.json']
 
         for fileToClean in cleanList:
-            subprocess.call('rm -f ' + fileToClean , shell = True, cwd = targetDir)#, stdout=FNULL, stderr=subprocess.STDOUT)
+            subprocess.call('rm -f ' + fileToClean, shell=True, cwd=targetDir, stdout=FNULL, stderr=subprocess.STDOUT)
 
         return None
 
@@ -183,7 +181,6 @@ class engineClass:
         else:
             subprocess.call(runCMD, shell=True, cwd=targetDir)
 
-        # time.sleep(0.1)
         return None
 
     def _terminateSession(self):

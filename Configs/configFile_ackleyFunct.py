@@ -24,30 +24,30 @@ paramDict = {
 
 }
 attrDict = {
-'fAckley':{
-    'LaTeX': r'$f_{Ac}(x, y)$',
-    'Constraint': {
-        'Type': 'CheckBounded',#'None', #
-                'ToCheck': {
-                            'CentralVal': 0,
-                            'TheorySigma': 0.5,
-                            'ExpSigma': 0.5
-                            }
+    'fAckley': {
+        'LaTeX': r'$f_{Ac}(x, y)$',
+        'Constraint': {
+            'Type': 'CheckBounded',  # 'None', #
+                    'ToCheck': {
+                                'CentralVal': 0,
+                                'TheorySigma': 0.5,
+                                'ExpSigma': 0.5
+                                }
+        }
+    }
+
+}
+calcDict = {
+    'ChiSquared': {
+        'LaTeX': r'$\chi^2_G$',
+        'Calc': {'Type': 'ChiSquared'},
+        'Constraint': {
+            'Type': 'None'
+        }
     }
 }
 
-}
-calcDict={
-'ChiSquared':{
-    'LaTeX': r'$\chi^2_G$' ,
-    'Calc' : {'Type':'ChiSquared'},
-    'Constraint': {
-        'Type': 'None'
-    }
-}
-}
-
-#### Optional dictionaries #####
+# ### Optional dictionaries #####
 # noneAttr = []
 # plotFormatting = {
 #      'failPlot' : {'alpha':0.5, 'lw' :0, 's':100},
@@ -73,18 +73,13 @@ calcDict={
 # condDict = {}
 
 replacementRules = {
-'DummyCase' :{}
+    'DummyCase': {}
 }
 
 defaultPlot = {'xAxis': 'x', 'yAxis': 'y', 'colorAxis': 'fAckley'}
-
-
-# rgflowDict ={
-# }
 dictMinMax = {
               'x':    {'Min': -30.0, 'Max': 30.0},
               'y':     {'Min': -30.0, 'Max': 30.0},
-
               }
 # sigmasDict = {
 #              'tanBeta': 1.5,
@@ -134,8 +129,6 @@ dictMinMax = {
 #     }
 # }
 # }
-
-
 
 # classificationDict = {'Params': parameterDict,
 #                       'Particles' : particleDict ,

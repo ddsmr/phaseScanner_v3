@@ -2068,3 +2068,859 @@ Action : @ 19/08/2019 -- 10:32:42  Started Focus_diffEvol Scan :: ackleyFunctDum
 Action : @ 19/08/2019 -- 10:32:47  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
 ****************************************************************************************************
 
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:40:21 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:40:22  Started Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:40:22  Finished Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:40:23  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:40:44  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:40:57 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:41:03 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:41:37 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:41:46 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:41:47  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:42:22  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 19-08-2019_10:42:27 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:42:28  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 19/08/2019 -- 10:42:38  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:50:43 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:50:54 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:51:17 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:55:52 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:56:10 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:56:24 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:56:44 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:58:14 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:58:28 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:58:34 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:58:43 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:59:47 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_09:59:55 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:10:02 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:10:06 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:11:55 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:12:14 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:12:35 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:12:52 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:17:46 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:23:12 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:24:33 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:25:03 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:25:25 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:25:31 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 10:25:32  Started Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 10:25:32  Finished Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 10:25:32  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 10:26:04  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:26:11 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:26:40 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:28:44 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:29:03 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:29:18 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:31:59 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:32:21 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:59:38 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_10:59:50 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_11:03:01 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_13:14:20 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_13:16:33 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 13:16:34  Started Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 13:16:49  Finished Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 13:16:49  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 21/08/2019 -- 13:20:12  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 21-08-2019_13:22:43 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+

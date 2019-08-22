@@ -82,8 +82,12 @@ paramDict = {
         }
     }
 }
-
-
+# LHC limits:
+# ----------------------------------------------------------------------
+# Top^1 doesn't really need any limits since it sits quite close to MKK5
+# For bottom^1, psiDark, see arxiv:1509.04261 (> 690 GeV)
+# For Z' see arxiv:1709.07242 (> 2420 GeV)
+# For tau^1, see arxiv:1709.07242 (> 560 GeV)
 attrDict = {
             'Higgs':  {
                     'LaTeX': r'$m_H (GeV)$',
@@ -101,7 +105,7 @@ attrDict = {
                 'LaTeX': r'$m_{\psi_D} (GeV)$',
                 'Constraint': {
                     'Type': 'HardCutMore',
-                    'ToCheck': 2400
+                    'ToCheck': 690
                 }
                 # 'Constraint': {
                 #     'Type': 'CheckBounded',#'None'#
@@ -121,6 +125,13 @@ attrDict = {
                                         'TheorySigma': 0.01776,
                                         'ExpSigma': 0.00012
                                         }
+                }
+            },
+            'mTauTow': {
+                'LaTeX': r'$m_{\tau}^{(1)} (GeV)$',
+                'Constraint': {
+                    'Type': 'None',  # 'HardCutMore',
+                    'ToCheck': 560
                 }
             },
             # ### NOTE THE NEUTRINO IS MEASURED IN eV directly from the script
@@ -144,6 +155,13 @@ attrDict = {
                                         'TheorySigma': 0.0418,
                                         'ExpSigma': 0.04
                                         }
+                }
+            },
+            'mBottomTow': {
+                'LaTeX': r'$m_{b}^{(1)} (GeV)$',
+                'Constraint': {
+                    'Type': 'HardCutMore',  # 'HardCutMore',
+                    'ToCheck': 690
                 }
             },
             'mTop': {
@@ -191,7 +209,7 @@ attrDict = {
                 'LaTeX': r'''$m_{Z'} (GeV)$''',
                 'Constraint': {
                     'Type': 'HardCutMore',
-                    'ToCheck': 2000
+                    'ToCheck': 2420
                 }
             },
             'Triviality': {
@@ -327,20 +345,22 @@ calcDict = {
 }
 
 # ############## Min Max / Replacement Rules #
+defaultPlot = {'xAxis': 'k', 'yAxis': 'zL', 'colorAxis': 'ThetaHiggs'}
+
 dictMinMax = {
-    'Mu1':      {'Min': 0.0, 'Max': 50.0},
-    'Mu2Tilde': {'Min': 0.0, 'Max': 50.0},
-
-    'Mu11':     {'Min': 0.0, 'Max': 50.0},
-    'Mu11Prime': {'Min': 0.0, 'Max': 50.0},
-
-    'c0':        {'Min': 0.0, 'Max': 1.0},
-    'c0Prime':   {'Min': 0.0, 'Max': 1.0},
-    'c1':        {'Min': 0.0, 'Max': 2.0},
-    'c2':       {'Min': -3.0, 'Max': 3.0},
-
-    'k':        {'Min': 1000.0, 'Max': 10000000.0},
-    'zL':        {'Min': 10.0, 'Max': 2500.0}
+    # 'Mu1':      {'Min': 0.0, 'Max': 50.0},
+    # 'Mu2Tilde': {'Min': 0.0, 'Max': 50.0},
+    #
+    # 'Mu11':     {'Min': 0.0, 'Max': 50.0},
+    # 'Mu11Prime': {'Min': 0.0, 'Max': 50.0},
+    #
+    # 'c0':        {'Min': 0.0, 'Max': 1.0},
+    # 'c0Prime':   {'Min': 0.0, 'Max': 1.0},
+    # 'c1':        {'Min': 0.0, 'Max': 2.0},
+    # 'c2':       {'Min': -3.0, 'Max': 3.0},
+    #
+    # 'k':        {'Min': 1000.0, 'Max': 10000000.0},
+    # 'zL':        {'Min': 10.0, 'Max': 2500.0}
 
     # ##### Uncomment below to obtain the original solution #####
     # 'Mu1':      {'Min': 11.7911, 'Max': 11.9747},
@@ -358,21 +378,36 @@ dictMinMax = {
     # 'k':        {'Min': 88462.008, 'Max': 88955.77},
     # 'zL':        {'Min': 34.632, 'Max': 34.6673}
 
-    # ########## Restricted parameter range #############
-    # 'Mu1':      {'Min': 11.0, 'Max': 13.0},
-    # 'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
+    # ########## Restricted parameter range 1 #############
+    'Mu1':      {'Min': 11.0, 'Max': 13.0},
+    'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
+
+    'Mu11':      {'Min': 0.0, 'Max': 0.5},
+    'Mu11Prime': {'Min': 0.0, 'Max': 0.5},
+
+
+    'c0':        {'Min': 0.1, 'Max': 0.5},
+    'c0Prime':   {'Min': 0.4, 'Max': 0.7},
+    'c1':        {'Min': 0.0, 'Max': 0.2},
+    'c2':        {'Min': -1.0, 'Max': -0.5},
+
+    'k':         {'Min': 100000.0, 'Max': 300000.00},
+    'zL':        {'Min': 33.0, 'Max': 37.0}
+    # ########## Restricted parameter range 2 #############
+    # 'Mu1':       {'Min': 10.0, 'Max': 14.0},
+    # 'Mu2Tilde':  {'Min': 0.0, 'Max': 2.5},
     #
-    # 'Mu11':      {'Min': 0.0, 'Max': 0.5},
-    # 'Mu11Prime': {'Min': 0.0, 'Max': 0.5},
+    # 'Mu11':      {'Min': 0.0, 'Max': 1.5},
+    # 'Mu11Prime': {'Min': 0.0, 'Max': 1.5},
     #
     #
-    # 'c0':        {'Min': 0.1, 'Max': 0.5},
-    # 'c0Prime':   {'Min': 0.4, 'Max': 0.7},
-    # 'c1':        {'Min': 0.0, 'Max': 0.2},
-    # 'c2':        {'Min': -1.0, 'Max': -0.5},
+    # 'c0':        {'Min': 0.0, 'Max': 0.6},
+    # 'c0Prime':   {'Min': 0.3, 'Max': 0.8},
+    # 'c1':        {'Min': 0.0, 'Max': 0.3},
+    # 'c2':        {'Min': -1.1, 'Max': -0.4},
     #
-    # 'k':         {'Min': 100000.0, 'Max': 300000.00},
-    # 'zL':        {'Min': 33.0, 'Max': 37.0}
+    # 'k':         {'Min': 100000.0, 'Max': 500000.00},
+    # 'zL':        {'Min': 30.0, 'Max': 40.0}
 }
 replacementRules = {
     'DummyCase': {}
@@ -441,7 +476,7 @@ rndDict = OrderedDict([('Check-0', {'ToPick': ['k', 'zL'],
                           #              'Pass' : 'Success',
                           #              'Fail' : 'Check-3'}
                           # )
-                        ])
+                       ])
 
 toSetDict = {
             # 'Mu11' :   {

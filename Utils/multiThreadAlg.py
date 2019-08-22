@@ -741,6 +741,7 @@ class minimAlg:
             del listOfBestChi2[0]
             if chi2Min < self.chi2LowerBound:
                 # self.Que.put( int(self.threadNumber)+1 )
+                generatingEngine._terminateSession()
                 self.Que.put( {'Terminate': int(self.threadNumber)+1 } )
 
 
@@ -975,6 +976,7 @@ class minimAlg:
 
             if chi2Min > self.chi2LowerBound:
                 # self.Que.put( int(self.threadNumber)+1 )
+                generatingEngine._terminateSession()
                 self.Que.put( {'Terminate': int(self.threadNumber)+1 } )
 
 
@@ -1301,6 +1303,7 @@ class minimAlg:
 
                 # print(Fore.YELLOW + delimitator + Style.RESET_ALL)
                 # self.Que.put( int(self.threadNumber)+1 )
+                generatingEngine._terminateSession()
                 self.Que.put( {'Terminate': int(self.threadNumber)+1 } )
                 break
 
