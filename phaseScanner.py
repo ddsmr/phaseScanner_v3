@@ -439,10 +439,15 @@ class phaseScannerModel:
             Loads all the json result dictionaries as a full dictionary.
 
             Attributes:
+            -   nbOfPoints  ::  OPTIONAL, Type=Int. Specify number to number of points to be returned from the loading
+                session.
+            -   targetDir   ::  OPTIONAL, Type=Str. Specify directory w.r.t. the result dir of the model.
+            -   specFile    ::  OPTIONAL, Type=Str. Specify specific file within the directory in question.
+            -   ignoreIntegrCheck   ::  OPTIONAL, Type=Bool. Set to True to ignore the integrity check performed on the
+                phase space dictionary.
 
             Returns:
-            - dict              ::          phaseSpaceDict dictionary with all the points contained in all the json
-              files.
+            -   dict  ::  phaseSpaceDict dictionary.
         '''
         # ## Load all Jsons in Dicts/ dir.
         phaseSpaceDict = {}

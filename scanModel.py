@@ -111,6 +111,8 @@ if __name__ == '__main__':
                         action="store_true")
 
     parser.add_argument('--targetResDir', default='', help='Descriptor that user wants to associate with the model')
+    parser.add_argument('--targetSpecFile', default='', help='Descriptor that user wants to associate with the model')
+
     parser.add_argument('--Description', default='', help='Descriptor that user wants to associate with the model')
     parser.add_argument('--resumeGenRun',  help='Resume the latest run.', action="store_true")
 
@@ -163,17 +165,21 @@ if __name__ == '__main__':
                                                 ignoreInternal=False)
 
     if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:
+
         if scanCard['targetThreads'] is True and scanCard['targetResDir'] == '':
             resDir = getLatestFocusDir(newModel)
         elif scanCard['targetResDir'] != '':
             resDir = 'Dicts/' + scanCard['targetResDir']
+        elif scanCard['targetSpecFile'] != '':
+            resDir = 'Dicts/'
+            specFile = scanCard['targetSpecFile']
         else:
             resDir = 'Dicts/'
 
         # scanCard['targetThreads'] = True
 
         if bool(psDict) is False:
-            psDict = newModel.loadResults(targetDir=resDir)
+            psDict = newModel.loadResults(targetDir=resDir, specFile=specFile)
 
         algCard, psDict = _createFocusRunCard(scanCard['algFocus'], psDict, numbOfCores,
                                               scanCard['targetThreads'], newModel)
