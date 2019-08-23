@@ -2986,3 +2986,99 @@ Action : @ 23/08/2019 -- 09:15:07  Started Focus_diffEvol Scan :: ackleyFunctDum
 Action : @ 23/08/2019 -- 09:15:12  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
 ****************************************************************************************************
 
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-08-2019_09:34:58 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-08-2019_09:35:29 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:35:29  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:36:00  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-08-2019_09:36:02 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:36:02  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:36:09  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+----------------------------------------------------------------------------------------------------
+Initialised model @ 23-08-2019_09:36:56 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:36:56  Started Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 23/08/2019 -- 09:37:02  Finished Focus_diffEvol Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+

@@ -165,7 +165,7 @@ if __name__ == '__main__':
                                                 ignoreInternal=False)
 
     if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:
-
+        specFile = ''
         if scanCard['targetThreads'] is True and scanCard['targetResDir'] == '':
             resDir = getLatestFocusDir(newModel)
         elif scanCard['targetResDir'] != '':
@@ -192,7 +192,8 @@ if __name__ == '__main__':
         newModel.runGenerationMultithread(psDict, numbOfCores=algCard['nbOfCores'], numberOfPoints=algCard['nbOfPoints'],
                                           chi2LowerBound=algCard['chi2LowerBound'], debug=debug,
                                           algorithm=scanCard['algFocus'], sortByChiSquare=algCard['sortByChiSquare'],
-                                          statistic=algCard['statistic'], enableSubSpawn=enableSubSpawn)
+                                          statistic=algCard['statistic'], enableSubSpawn=enableSubSpawn,
+                                          ignoreExternal=True)
 
     elif scanCard['resumeGenRun'] is True:
         newModel.resumeGenRun()

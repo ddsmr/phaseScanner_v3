@@ -1005,9 +1005,14 @@ class phaseScannerModel:
 
     # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
-    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints=16, numbOfCores=1, minimisationConstr='Global',
-    ignoreConstrList=[], timeOut=600, noOfSigmasB=1, noOfSigmasPM=1, debug=False,  chi2LowerBound=1.0,  sortByChiSquare=True,
-    algorithm='singleCellEvol', reload=False, statistic='ChiSquared', enableSubSpawn=False):
+    def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints=16, numbOfCores=1,
+                                 minimisationConstr='Global', ignoreConstrList=[], noOfSigmasB=1, noOfSigmasPM=1,
+                                 timeOut=600, debug=False,
+                                 chi2LowerBound=1.0,  sortByChiSquare=True,
+                                 algorithm='singleCellEvol',  statistic='ChiSquared',
+                                 reload=False, enableSubSpawn=False,
+                                 ignoreExternal=False, ignoreInternal=False
+                                 ):
         '''
                 Given a phaseSpaceDict of points the function will multiprocess on numberOfCores a certain number of
             numberOfPoints, either randomly selected , or selected by their chi2 Value. The specified algorithm will
@@ -1030,7 +1035,7 @@ class phaseScannerModel:
         localQue = Queue()
         algClasses = [minimAlg(self, localQue, listOfchi2Lists[x], listOfsortedChi2Lists[x],
                                str(x), minimisationConstr, timeOut,  ignoreConstrList, noOfSigmasB, noOfSigmasPM,
-                               debug, chi2LowerBound)
+                               debug, chi2LowerBound, ignoreExternal, ignoreInternal)
                       for x in range(numbOfCores)]
 
         processes = {'Proc::'+str(x+1): Process(target=algClasses[x].__class__.__dict__[algorithm],

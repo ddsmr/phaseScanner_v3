@@ -91,7 +91,7 @@ def makeBranch( pointDict, newChi2 , parentID, pointID , Auxiliaries={}):
 class minimAlg:
     '''
     '''
-    def __init__(self, psObject, q, bestChiSquares, sortedChiSquare_ListOfTuples,  threadNumber = '0', minimisationConstr='Global', timeOut = 120, ignoreConstrList = [], noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0):
+    def __init__(self, psObject, q, bestChiSquares, sortedChiSquare_ListOfTuples,  threadNumber = '0', minimisationConstr='Global', timeOut = 120, ignoreConstrList = [], noOfSigmasB = 1, noOfSigmasPM = 1, debug= False,  chi2LowerBound = 1.0, ignoreExternal=False, ignoreInternal=False):
         '''
         '''
         self.psObject = psObject
@@ -110,6 +110,9 @@ class minimAlg:
         self.noOfSigmasPM = noOfSigmasPM
         self.debug = debug
         self.chi2LowerBound = chi2LowerBound
+
+        self.ignoreExternal = ignoreExternal
+        self.ignoreInternal = ignoreInternal
 
         return None
 
@@ -195,7 +198,9 @@ class minimAlg:
                     # ########## Selection stage ############
                     massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, mutatedDict,
                                                                                 threadNumber=self.threadNumber,
-                                                                                debug=self.debug)
+                                                                                debug=self.debug,
+                                                                                ignoreExternal=self.ignoreExternal,
+                                                                                ignoreInternal=self.ignoreInternal)
 
                     if massTruth is True:
 
@@ -375,7 +380,9 @@ class minimAlg:
                 # newPointWithAttr = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber)
                 # massTruth = generatingEngine._check0Mass( newPointWithAttr )
 
-                massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
+                massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, newParamsDict,
+                                                threadNumber=self.threadNumber, debug=self.debug,
+                                                ignoreExternal=self.ignoreExternal, ignoreInternal=self.ignoreInternal)
 
                 # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
                 # newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
@@ -469,7 +476,10 @@ class minimAlg:
 
                     newParamsDict = smartRndGen.genRandUniform_Rn( paramsDict , best_rSigma)
                     ### Generate a point and extract its attributes
-                    massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
+                    massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, newParamsDict,
+                                                                                threadNumber=self.threadNumber, debug=self.debug,
+                                                                                ignoreExternal=self.ignoreExternal,
+                                                                                ignoreInternal=self.ignoreInternal)
                     # genValidPointOutDict = generatingEngine.runPoint( newParamsDict, threadNumber = self.threadNumber , debug = self.debug)
                     # newPointWithAttr_int = generatingEngine._getRequiredAttributes(newParamsDict, self.threadNumber)
                     # newPointWithAttr = self.psObject._getCalcAttribForDict(newPointWithAttr_int )
@@ -823,7 +833,7 @@ class minimAlg:
                         newParamsDict = smartRndGen.genRandUniform_Rn( paramsDict , best_rSigma)
                         ### Generate a point and extract its attributes
 
-                        massTruth, newPointDict = self.psObject.engineProcedure(generatingEngine, newParamsDict, threadNumber = self.threadNumber, debug = self.debug)
+                        massTruth, newPointDict = self.psObject.engineProcedure(generatingEngine, newParamsDict, threadNumber = self.threadNumber, debug = self.debug, ignoreExternal=self.ignoreExternal, ignoreInternal=self.ignoreInternal)
 
                         if  massTruth == False:
                             ### Point has 0 masses clean and try again.
@@ -1112,7 +1122,7 @@ class minimAlg:
 
 
                     ########### Selection stage ############
-                    massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, mutatedDict, threadNumber = self.threadNumber, debug = self.debug)
+                    massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, mutatedDict, threadNumber = self.threadNumber, debug = self.debug, ignoreExternal=self.ignoreExternal, ignoreInternal=self.ignoreInternal)
 
                     # genValidPointOutDict = generatingEngine.runPoint( mutatedDict, threadNumber = self.threadNumber , debug = self.debug)
                     # newPointWithAttr_int = generatingEngine._getRequiredAttributes(mutatedDict, self.threadNumber)
