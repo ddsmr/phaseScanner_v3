@@ -1244,13 +1244,13 @@ class phaseScannerModel:
         # print(focusDate)
         # exit()
 
-        focusDir = self.resultDir+  'Dicts/Focus-' + focusDateTime_str +'/'
+        focusDir = self.resultDir + 'Dicts/Focus-' + focusDateTime_str + '/'
         pickleName = focusDir + 'RunCard.pickle'
-        with open(pickleName , 'rb') as fPickl:
+        with open(pickleName, 'rb') as fPickl:
             runCard = pickle.load(fPickl)
         threadDict = []
 
-        #### Gather the latest generational data
+        # ### Gather the latest generational data
         try:
             dirEntries = os.listdir(focusDir + 'GenResults/')
 
@@ -1259,19 +1259,16 @@ class phaseScannerModel:
                     thData = json.load(jsonIn)
 
                 # pp(thData)
-                thrNb = str( dirEntry.split('ThreadNb-')[1].replace('.json', ''))
+                thrNb = str(dirEntry.split('ThreadNb-')[1].replace('.json', ''))
                 if threadNb != 'All' and thrNb == threadNb:
 
-                    threadDict.append( thData )
+                    threadDict.append(thData)
                 elif threadNb == 'All':
-                    threadDict.append( thData )
-
+                    threadDict.append(thData)
 
         except Exception as e:
             print(e)
             raise
-
-
 
         pp(runCard)
         sortByChiSquare = False
@@ -1279,16 +1276,11 @@ class phaseScannerModel:
 
         if type(swicthAlg) == dict:
             runCard['algorihm'] = swicthAlg['NewAlg']
-            newAlgDict = self._setAlgParams(swicthAlg['NewAlg'], runCard['numbOfCores'], runCard['nbOfPoints'], threadNb = threadNb)
+            newAlgDict = self._setAlgParams(swicthAlg['NewAlg'], runCard['numbOfCores'], runCard['nbOfPoints'],
+                                            threadNb=threadNb)
             # pp(newAlgDict)
             runCard['nbOfPoints'], runCard['numbOfCores'], sortByChiSquare = newAlgDict['nbOfPoints'], newAlgDict['numbOfCores'], newAlgDict['sortByChiSquare']
             reload = False
-
-
-            # pass
-            ## Will change the run card
-
-
 
         psDict = {}
         for dictToApp in threadDict:
@@ -1299,11 +1291,13 @@ class phaseScannerModel:
         # exit()
         # pp(psDict)
         # print(delimitator)
-        self.runGenerationMultithread(psDict, numbOfCores = runCard['numbOfCores'], numberOfPoints = runCard['nbOfPoints'], algorithm = runCard['algorihm'], sortByChiSquare = sortByChiSquare, reload = reload)
+        self.runGenerationMultithread(psDict, numbOfCores=runCard['numbOfCores'], numberOfPoints=runCard['nbOfPoints'],
+                                      algorithm=runCard['algorihm'], sortByChiSquare=sortByChiSquare, reload=reload)
 
         return None
 
-    def _mThreadAUXrerun(self, q, listOfPoints, threadNumber='0', debug=False):
+    def _mThreadAUXrerun(self, q, listOfPoints, threadNumber='0', debug=False, ignoreInternal=False,
+                         ignoreExternal=False):
         '''
             Auxiliary worker multiprocessing function used to do a phase space rerun. Called in the master
         function reRunMultiThreadself.
@@ -1325,9 +1319,10 @@ class phaseScannerModel:
             paramsDict = listOfPoints[-1]
 
             try:
-
                 massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine,
-                                                                 paramsDict, threadNumber=threadNumber, debug=debug)
+                                                                 paramsDict, threadNumber=threadNumber, debug=debug,
+                                                                 ignoreExternal=ignoreExternal,
+                                                                 ignoreInternal=ignoreInternal)
 
                 # generatingEngine.runPoint( paramsDict, threadNumber = threadNumber , debug = debug)
                 # phaseSpaceDict = generatingEngine._getRequiredAttributes(paramsDict, threadNumber)
@@ -1349,7 +1344,8 @@ class phaseScannerModel:
 
         return None
 
-    def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False):
+    def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False,  ignoreInternal=False,
+                         ignoreExternal=False):
         '''
             Master multiprocessing function to be used to rerun points in a phaseSpaceDict. Writes the results to json,
 
@@ -1385,7 +1381,8 @@ class phaseScannerModel:
 
         localQue = Queue()
         processes = [Process(target=self._mThreadAUXrerun,
-                             args=(localQue, listOfLists[coreNumber], str(coreNumber), debug))
+                             args=(localQue, listOfLists[coreNumber], str(coreNumber), debug, ignoreInternal,
+                                   ignoreExternal))
                      for coreNumber in range(numbOfCores)]
 
         for proc in processes:
