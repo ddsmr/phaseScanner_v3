@@ -7,32 +7,6 @@ from phaseScanner import phaseScannerModel, checkListForLatestDate, convertDateT
 from Utils.printUtils import *
 
 
-# def getLatestFocusDir(psObject):
-#     '''
-#         Given a psObject the function will get the latest focus directory from the Results directory.
-#     '''
-#     try:
-#         # focusDate = ''
-#         dirEntries = os.listdir(psObject.resultDir + 'Dicts/')
-#
-#         listOfDirs = []
-#         for dirEntry in dirEntries:
-#             if 'Focus' in dirEntry and ('.' not in dirEntry):
-#                 listOfDirs.append(dirEntry.replace('Focus_', ''))
-#
-#         focusDate_DateTime = checkListForLatestDate(listOfDirs)
-#         focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
-#
-#     except Exception as e:
-#         print(e)
-#         raise
-#     # print(focusDate)
-#     # exit()
-#
-#     focusDir = 'Dicts/Focus-' + focusDateTime_str + '/'
-#     return focusDir
-
-
 def _createFocusRunCard(algorihm, psDict, numbOfCores, targetThreads, psObject):
     '''
         Provided the algorithm the function gives bakc the parameters for the focus scan.

@@ -416,6 +416,7 @@ class phaseScannerModel:
         #######################################################################################
         self.polygCuts = cutDict_Poly
 
+        self.session = 'Session' + strftime("-%d-%m-%Y_%H_%M_%S", gmtime()) + '-RID' + str(int(random.uniform(1, 1000)))
         if (writeToLogFile is True):
             writeToLogFile_InitModel(self)
 
@@ -1407,7 +1408,7 @@ class phaseScannerModel:
                     resultDict.update(result)
                 pbar.update(1)
 
-                if pointCounter % 20 == 0:
+                if pointCounter % 10 == 0:
                     with open(self.resultDir + 'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
                         json.dump(resultDict, outfile)
 
@@ -1428,8 +1429,8 @@ class phaseScannerModel:
         # subprocess.call('rm *.json', shell = True, cwd = self.resultDir + 'Dicts/' )
         # subprocess.call('rm -r Plots', shell = True, cwd = self.resultDir )
 
-        with open(self.resultDir + 'Dicts/ScanResults.' + scanID + '.json', 'w') as outfile:
-            json.dump(resultDict, outfile)
+        # with open(self.resultDir + 'Dicts/ScanResults.' + scanID + '.json', 'w') as outfile:
+        #     json.dump(resultDict, outfile)
         # self.cleanFiles()
 
         writeToLogFile_Action(self, 'Finished', 'ReRun')
