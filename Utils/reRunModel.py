@@ -79,5 +79,5 @@ if __name__ == '__main__':
     else:
         resDir = 'Dicts/'
 
-    psDict = newModel.loadResults(targetDir=resDir, specFile=specFile)
+    psDict = newModel.loadResults(targetDir=resDir, specFile=specFile, ignoreIntegrCheck=True)
     newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=debug, ignoreExternal=True)
