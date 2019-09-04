@@ -111,7 +111,7 @@ def chunkList(listToChunk, noOfLits, threadNBSort=False):
     return listOfLists
 
 
-def fixJsonWAppend(jsonDir):
+def fixJsonWAppend(jsonDir, specFile=''):
     '''
             Give a FOCUS Directory jSonDir, the function will use regEx to fix the append issue for the json files
         produced in the Generational algorithm.
@@ -124,7 +124,7 @@ def fixJsonWAppend(jsonDir):
 
     for jsonDict in os.listdir(jsonDir):
 
-        if ('.json' in jsonDict) and ('Focus' not in jsonDict):
+        if ('.json' in jsonDict) and ('Focus' not in jsonDict) and (specFile in jsonDict):
             try:
                 with open(jsonDir + jsonDict, 'r') as inFile:
                     jsonContent = inFile.readline()
@@ -133,7 +133,8 @@ def fixJsonWAppend(jsonDir):
                     nbJson = jsonDict.split('ThreadNb')[1]
                     currTime = strftime("-%d-%m-%Y_%H:%M:%S", gmtime())
 
-                    fileName = 'Focus_Clifford' + currTime + '_FixedJson-ThreadNb' + nbJson
+                    fileName = 'Fixed_' + jsonDict
+                    # fileName = 'Focus_Fixed' + currTime + '_FixedJson-ThreadNb' + nbJson
                     newJson = open(jsonDir + fileName, 'w')
                     newJson.write(correctedJSON)
                     newJson.close()
@@ -144,6 +145,8 @@ def fixJsonWAppend(jsonDir):
                         fixedDict = json.load(inFile)
 
                     subprocess.call('rm ' + jsonDict, shell=True, cwd=jsonDir)
+                    print()
+                    printCentered(' Fixed ' + jsonDict + ' ', fillerChar='=')
                 except Exception as e:
                     print('Failed to Fix Json ', jsonDict)
                     print(e)
@@ -1473,7 +1476,7 @@ if __name__ == '__main__':
     # auxCase ='DummyCase'
     # micrOmegasName = modelName
 
-    modelName = 'SO11Hosotani0'
+    modelName = 'SO11Hosotani'
     auxCase = 'DummyCase'
     micrOmegasName = modelName
 
@@ -1482,37 +1485,4 @@ if __name__ == '__main__':
     # engineModule_Class = importlib.import_module(engineString)
     # engine = engineModule_Class()
     newModel = phaseScannerModel(modelName, auxCase, micrOmegasName=micrOmegasName, writeToLogFile=True)
-
-    paramDict = {"k": 4940082.1133, "zL": 1873.5944, "c0": 0.7662, "c0Prime": 0.206, "c2": 2.031,
-                 "Mu2Tilde": 18.0885, "Mu11Prime": 37.4122, "c1": 1.2347, "Mu1": 13.1461, "Mu11": 32.8173}
-    # generatingEngine = newModel.engineClass(newModel)
-    # generatingEngine.runPoint(paramDict)
-
-    runRes = newModel.engineProcedure(newModel.generatingEngine, paramDict, ignoreExternal=True)
-    pp(runRes)
-    exit()
-
-    psDict = newModel.loadResults()
-
-    modelPlotter = dictPlotting(newModel)
-    modelPlotter.plotModel(psDict, 'x', 'y',  'fAckley', colorMap='RdYlGn')
-    # modelPlotter.plotModel( psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom', TeXAxis = [r'$\Delta\Delta\Delta$'])
-
-
-    # psDict = newModel.loadResults(targetDir = 'Dicts/Focus_28_06_2019/', ignoreIntegrCheck = True )
-    # print(psDict['Point T0-366-10072019140014-GenNb12468'])
-    # newModel.reRunMultiThread({'Point T0-366-10072019140014-GenNb12468' : psDict['Point T0-366-10072019140014-GenNb12468']}, numbOfCores = 1)
-    # print(len(psDict))
-    # newModel.reRunMultiThread(psDict, numbOfCores = 8)
-
-
-    # psDict = newModel.runMultiThreadExplore( numberOfPoints = 10, nbOfThreads = 8, debug = False)
-
-    # newModel.runGenerationMultithread(psDict, numbOfCores = 8  , numberOfPoints = 8, chi2LowerBound = 10.0, debug = False, algorithm = 'singleCellEvol', sortByChiSquare = True, statistic = 'ChiSquared')
-
-    # newModel.runGenerationMultithread(psDict, numbOfCores = 1  , numberOfPoints = 1, chi2LowerBound = -2.0, debug = False, algorithm = 'metropolisHastings', sortByChiSquare = True, statistic = 'LogL')
-
-
-    # newModel._evalKillThread('1', 'diffEvol', 'Results/testEngine_DummyCase/Dicts/Focus-07-22-2019_08_54_05/')
-    # newModel.resumeGenRun(swicthAlg = {'NewAlg':'singleCellEvol'}, threadNb = '1')
-    # newModel.resumeGenRun()
+    print(len(newModel.loadResults(targetDir='Dicts/PlotDicts_Sep2019/', ignoreIntegrCheck=True)))
