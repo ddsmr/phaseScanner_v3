@@ -243,7 +243,7 @@ class dictPlotting():
                   exprAxis = False, TeXAxis = '',
                   plotSeparateConstr = [], separateConstrMarkers = ['h'], defaultMarker = 'o',
                   exportFormatList = ['png'] ,
-                  useChi2AsTest = {'Enable': True , 'Chi2UpperBound' : 10.14, 'TestStatistic': 'ChiSquared'}
+                  useChi2AsTest = {'Enable': True , 'Chi2UpperBound' : 11.0705, 'TestStatistic': 'ChiSquared'}
         ):
         '''
             Super duper function to plot whatever you want from the model.

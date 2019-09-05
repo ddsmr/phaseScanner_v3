@@ -123,6 +123,7 @@ if __name__ == '__main__':
     psDict = newModel.loadResults(targetDir=resDir)
 
     modelPlotter = dictPlotting(newModel)
-    modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'])
+    modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'],
+                           useChi2AsTest={'Enable': True, 'Chi2UpperBound': 27.887, 'TestStatistic': 'ChiSquared'})
     # modelPlotter.plotModel(psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom',
     # TeXAxis = [r'$\Delta\Delta\Delta$'])
