@@ -946,10 +946,12 @@ class phaseScannerModel:
 
     def _restrictInterestingPoints(self, phaseSpaceDict, restrictingParam, restrictingParamMin, restrictingParamMax):
         '''
-            Restricts phaseSpaceDict to a subregion specified by restrictingParam, and the bounds [restrictingParamMin, restrictingParamMax].
+                Restricts phaseSpaceDict to a subregion specified by restrictingParam, and the bounds
+            [restrictingParamMin, restrictingParamMax].
 
             Arguments:
-                - listOfInteresingPoints                    ::          List of interesting points from getInterstingPoints.
+                - listOfInteresingPoints                    ::          List of interesting points
+                  from getInterstingPoints.
                 - restrictingParam                          ::          Attribute to restrict.
                 - restrictingParamMin, restrictingParamMax  ::          Bounds for the restriction.
 
@@ -958,7 +960,7 @@ class phaseScannerModel:
                 List of the points that are within the subregion.
         '''
         vettedDict = {}
-        modelConstr = constrEval( self )
+        modelConstr = constrEval(self)
 
         # paramType  = self.classification[restrictingParam]
 
@@ -968,12 +970,12 @@ class phaseScannerModel:
             pointKey = phaseSpacePointDict[0]
 
             if restrictingParam == 'ChiSquared':
-                toVet = modelConstr.getChi2( pointAttr )
+                toVet = modelConstr.getChi2(pointAttr)
 
             else:
                 toVet = pointAttr[restrictingParam]
 
-            ### Vetting procedure ####
+            # ## Vetting procedure ####
             if restrictingParamMax > toVet > restrictingParamMin:
                 vettedDict[pointKey] = pointAttr
 
@@ -989,11 +991,13 @@ class phaseScannerModel:
                            'Higgs'  :   {'Min':115.0, 'Max' : 135.0},
                            'ChiSquared' :{'Min':0.0, 'Max' : 100.0}
                            }
-            The function will return the points in the phaseSpaceDict that lie within ALL the specified bounds in the cutDict
+            The function will return the points in the phaseSpaceDict that lie within ALL the specified bounds
+            in the cutDict
         '''
         for attrToCut in cutDict.keys():
 
-            vettedDict = self._restrictInterestingPoints(phaseSpaceDict, attrToCut, cutDict[attrToCut]['Min'],  cutDict[attrToCut]['Max'])
+            vettedDict = self._restrictInterestingPoints(phaseSpaceDict, attrToCut, cutDict[attrToCut]['Min'],
+                                                         cutDict[attrToCut]['Max'])
 
             phaseSpaceDict = vettedDict
 
@@ -1003,7 +1007,7 @@ class phaseScannerModel:
         '''
             Exports the stats of the focus run so it can be recreated
         '''
-        dataDict= {'nbOfPoints' : nbOfPoints, 'numbOfCores': numbOfCores, 'algorihm':algorithm}
+        dataDict = {'nbOfPoints': nbOfPoints, 'numbOfCores': numbOfCores, 'algorihm': algorithm}
         with open(focusDir + 'RunCard.pickle', 'wb') as fPickl:
             pickle.dump(dataDict, fPickl, pickle.HIGHEST_PROTOCOL)
 
@@ -1083,7 +1087,8 @@ class phaseScannerModel:
                                     + str(result['GenStat']['ThreadNb']) + '*', shell=True, stdout=FNULL,
                                     stderr=subprocess.STDOUT)
 
-                    with open(resultsDirDicts + 'GenResults/GenResults.' + str(genNb) + '-ThreadNb-' + str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
+                    with open(resultsDirDicts + 'GenResults/GenResults.' + str(genNb) + '-ThreadNb-'
+                              + str(result['GenStat']['ThreadNb']) + '.json', 'w') as genOut:
                         json.dump(result['GenStat']['GenDict'], genOut)
 
                     if enableSubSpawn is True and self._evalKillThread(thrNb_str, algorithm, resultsDirDicts) is True:
@@ -1127,52 +1132,50 @@ class phaseScannerModel:
 
         return resultDict
 
-
-    def _evalKillThread( self, threadNb, algorithm, focusDir, genOfSet = 6, evolPerc = 0.01, ordMag = 1):
+    def _evalKillThread(self, threadNb, algorithm, focusDir, genOfSet=6, evolPerc=0.01, ordMag=1):
         '''
             Condition to kill a thread based on the convergence speed, varies for each algorithm specified.
         '''
         try:
             with open(focusDir + 'GenStatus_ThreadNb' + threadNb + '.dat', 'r') as fileIn:
                 GenStatAll = fileIn.readlines()
-        except:
+        except Exception as e:
+            print(e)
             return False
 
         statDict = {}
         for genLine in GenStatAll:
-            genNb =  genLine.replace(' ', '').split('||')[0]
+            genNb = genLine.replace(' ', '').split('||')[0]
 
-            auxDict = {  attrName:float(genLine.replace(' ', '').split('||')[x].split(':')[1])
-                        for x, attrName in zip([1, 2, 3],['MinChi2', 'MeanChi2', 'StdChi2'])  }
-            statDict.update( {genNb:auxDict} )
+            auxDict = {attrName: float(genLine.replace(' ', '').split('||')[x].split(':')[1])
+                       for x, attrName in zip([1, 2, 3], ['MinChi2', 'MeanChi2', 'StdChi2'])}
+            statDict.update({genNb: auxDict})
 
-
-        genList_revSort = sorted(statDict.keys(), key= lambda genNbr: int(genNbr.split('-')[1]), reverse=True)
+        genList_revSort = sorted(statDict.keys(), key=lambda genNbr: int(genNbr.split('-')[1]), reverse=True)
         latestGen = genList_revSort[0]
+
         try:
             targetGen = genList_revSort[genOfSet]
-        except:
+        except Exception as e:
+            print(e)
             return False
         else:
             # evolPerc = 0.5
             # ordMag = 1
 
             currChi2Mean = statDict[latestGen]['MeanChi2']
-            currChi2Std =  statDict[latestGen]['StdChi2']
+            currChi2Std = statDict[latestGen]['StdChi2']
             currChi2Min = statDict[latestGen]['MinChi2']
             prevChi2Min = statDict[targetGen]['MinChi2']
 
             # pp(subAlg_rules[algorithm])
 
-
-
-
             if algorithm == 'diffEvol':
-                #### Cut diff evolution if :
+                # ### Cut diff evolution if :
                 # 1) The current Mean and Minimum are 1 σ away from each other
                 # 2) Current Minimum hasn't evolved more than 1 % in the last genOfSet entries
 
-                if (currChi2Mean // 10**ordMag) >  currChi2Std:
+                if (currChi2Mean // 10**ordMag) > currChi2Std:
                     print('001', threadNb, algorithm, currChi2Min, currChi2Std)
                     return True
 
@@ -1182,44 +1185,43 @@ class phaseScannerModel:
                     return True
 
             elif algorithm == 'singleCellEvol':
-                #### Cut single Cell evolution if :
+                # ### Cut single Cell evolution if :
                 # 1) Current Minimum hasn't evolved more than 1 % in the last genOfSet entries
 
                 if abs(prevChi2Min - currChi2Min) / prevChi2Min < evolPerc:
                     print('001', threadNb, algorithm, currChi2Min, currChi2Std)
                     return True
 
-
         print('000')
         return False
 
-    def _getSubAlgorithm(self, algorithm ):
+    def _getSubAlgorithm(self, algorithm):
         '''
             Given an algorithm function returns one of the subalgorithms specified by the user in the algorithm module.
         '''
 
-        return random.choice( subAlg_rules[algorithm]['Children']  )
+        return random.choice(subAlg_rules[algorithm]['Children'])
 
-    def _setAlgParams(self, algorithm, numbOfCores, nbOfPoints, threadNb = 'All'):
+    def _setAlgParams(self, algorithm, numbOfCores, nbOfPoints, threadNb='All'):
         '''
             Given the algorithm will set  numberOfPoints ,  sortByChiSquare
         '''
         if threadNb == 'All':
-            algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints,
-                                        'nbOfPoints': nbOfPoints,
-                                         'sortByChiSquare': True},
-                        'diffEvol':{'numbOfCores': numbOfCores,
+            algDict = {'singleCellEvol': {'numbOfCores': nbOfPoints,
+                                          'nbOfPoints': nbOfPoints,
+                                          'sortByChiSquare': True},
+                       'diffEvol': {'numbOfCores': numbOfCores,
                                     'nbOfPoints': nbOfPoints,
                                     'sortByChiSquare': False}
-                    }
+                       }
         else:
-            algDict = {'singleCellEvol':{'numbOfCores': nbOfPoints // numbOfCores,
-                                        'nbOfPoints': nbOfPoints // numbOfCores,
-                                         'sortByChiSquare': True},
-                        'diffEvol':{'numbOfCores': 1,
+            algDict = {'singleCellEvol': {'numbOfCores': nbOfPoints // numbOfCores,
+                                          'nbOfPoints': nbOfPoints // numbOfCores,
+                                          'sortByChiSquare': True},
+                       'diffEvol': {'numbOfCores': 1,
                                     'nbOfPoints': nbOfPoints // numbOfCores,
                                     'sortByChiSquare': False}
-                    }
+                       }
 
         return algDict[algorithm]
 

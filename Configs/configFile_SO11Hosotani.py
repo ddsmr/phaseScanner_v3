@@ -130,7 +130,7 @@ attrDict = {
             'mTauTow': {
                 'LaTeX': r'$m_{\tau}^{(1)} (GeV)$',
                 'Constraint': {
-                    'Type': 'None',  # 'HardCutMore',
+                    'Type': 'HardCutMore',
                     'ToCheck': 560
                 }
             },
@@ -422,7 +422,7 @@ replacementRules = {
 
 
 plotFormatting = {
-     'failPlot': {'alpha': 0.5, 'lw': 0,   's': 100},
+     'failPlot': {'alpha': 0.1,  'lw': 0.0,   's': 100},
      'passPlot': {'alpha': 1,    'lw': 0.6, 's': 240},
      'fontSize': 40
 
