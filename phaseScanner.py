@@ -437,6 +437,7 @@ class phaseScannerModel:
 
         print('\n')
         printCentered('  ✔ Done Initialising Model  ', fillerChar='░', color=Fore.GREEN)
+        print('\n')
 
     def loadResults(self, nbOfPoints='All', targetDir='Dicts/', specFile='', ignoreIntegrCheck=False):
         '''

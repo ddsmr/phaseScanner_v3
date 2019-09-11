@@ -387,13 +387,13 @@ replacementRules = {
 
 
 plotFormatting = {
-     'failPlot': {'alpha': 0.5, 'lw': 0,   's': 100},
-     'passPlot': {'alpha': 1,    'lw': 0.6, 's': 240},
-     'fontSize': 40
+     # 'failPlot': {'alpha': 0.5, 'lw': 0,   's': 100},
+     # 'passPlot': {'alpha': 1,    'lw': 0.6, 's': 240},
+     # 'fontSize': 40
 
-      # 'failPlot' : {'alpha':0.1, 'lw' :0, 's':30},
-      # 'passPlot' : {'alpha':1,   'lw' : 0.17, 's':140}
-      # 'fontSize' : 30
+      'failPlot': {'alpha': 0.1, 'lw': 0, 's': 30},
+      'passPlot': {'alpha': 1,   'lw': 0.17, 's': 140},
+      'fontSize': 30
 }
 ######################################################################################################################
 

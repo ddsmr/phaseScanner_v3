@@ -16,7 +16,7 @@ delimitator2 = '\n' + '-' * nbrTerminalCols + '\n'
 FNULL = open(os.devnull, 'w')
 
 
-def printCentered(stringToPrint, color='' , fillerChar=' '):
+def printCentered(stringToPrint, color='', fillerChar=' '):
     '''
         Utility function that prints with a color the string defined in stringToPrint, centered in the console, with a fillerChar.
 

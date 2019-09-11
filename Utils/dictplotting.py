@@ -1,5 +1,6 @@
 import re
-import os,glob,subprocess
+import os
+import subprocess
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -11,6 +12,7 @@ from halo import Halo
 class dictPlotting():
     '''
     '''
+
     def __init__(self, psObject):
         '''
             Inherits all the attributes from the ps object.
@@ -143,9 +145,9 @@ class dictPlotting():
                             if modelAttribute + '-' + subAttr not in dictOfLists.keys():
                                 dictOfLists[modelAttribute + '-' + subAttr] = []
 
-                            dictOfLists[modelAttribute + '-' + subAttr].append( phaseSpaceDict[point][modelAttribute][subAttr] )
+                            dictOfLists[modelAttribute + '-' + subAttr].append(phaseSpaceDict[point][modelAttribute][subAttr])
                     else:
-                        dictOfLists[modelAttribute].append( phaseSpaceDict[point][modelAttribute] )
+                        dictOfLists[modelAttribute].append(phaseSpaceDict[point][modelAttribute])
 
                 # except Exception as e:
                 #     print(e)
@@ -155,7 +157,7 @@ class dictPlotting():
         # exit()
         return dictOfLists
 
-    def _makeAxisFromDict(self, phaseSpaceDictPF,  xAxisHandles, yAxisHandles, colorAxisHandles, exprAxis = False):
+    def _makeAxisFromDict(self, phaseSpaceDictPF,  xAxisHandles, yAxisHandles, colorAxisHandles, exprAxis=False):
         '''
             Given a phase space dictionary (either pass or fail), it makes plotting axis, according to the arguments.
 
@@ -242,7 +244,7 @@ class dictPlotting():
                   restrictAxis = False, xAxisLim = [], yAxisLim = [],
                   exprAxis = False, TeXAxis = '',
                   plotSeparateConstr = [], separateConstrMarkers = ['h'], defaultMarker = 'o',
-                  exportFormatList = ['png'] ,
+                  exportFormatList = ['png', 'pdf'] ,
                   useChi2AsTest = {'Enable': True , 'Chi2UpperBound' : 11.0705, 'TestStatistic': 'ChiSquared'}
         ):
         '''
@@ -432,30 +434,29 @@ class dictPlotting():
                 plt.xlim(xAxisLim)
 
         # plt.xticks([]), plt.yticks([])
-        plt.xlabel(axisLabels[0], fontsize = self.psObject.plotFormatting['fontSize'])
-        plt.ylabel(axisLabels[1], fontsize = self.psObject.plotFormatting['fontSize'])
+        plt.xlabel(axisLabels[0], fontsize=self.psObject.plotFormatting['fontSize'])
+        plt.ylabel(axisLabels[1], fontsize=self.psObject.plotFormatting['fontSize'])
 
-        spinner.stop_and_persist(symbol = Fore.GREEN+'✓' + Style.RESET_ALL,
-                                 text ='Finished plotting. Moving on to exporting')
-
+        spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
+                                 text='Finished plotting. Moving on to exporting')
 
         formatStr = ''
         for format in exportFormatList:
             formatStr += format
             formatStr += ' '
 
-        spinner = Halo(text='Exporting plots in format : ' + Fore.RED + formatStr + Style.RESET_ALL , spinner='dots')
+        spinner = Halo(text='Exporting plots in format : ' + Fore.RED + formatStr + Style.RESET_ALL, spinner='dots')
         spinner.start()
-        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, exportFormatList = exportFormatList)
-        spinner.stop_and_persist(symbol = Fore.GREEN+'✓' + Style.RESET_ALL,
-                                 text = 'Finished exporting.')
+        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, exportFormatList=exportFormatList)
+        spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
+                                 text='Finished exporting.')
 
-        # plt.tight_layout()
+        fig.tight_layout()
         plt.show()
 
-        return  returnDict, passAxisDict , failAxisDict
+        return returnDict, passAxisDict, failAxisDict
 
-    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, exportFormatList = [  'png'  ]):
+    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, exportFormatList=['png', 'pdf']):
         '''
             Given a string handle for the xAxis, yAxis, and colorAxis, the function exports plots in the formats specified in the exportFormatList, default is .pdf
 
