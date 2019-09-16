@@ -170,4 +170,4 @@ if __name__ == '__main__':
                                           ignoreExternal=True)
 
     elif scanCard['resumeGenRun'] is True:
-        newModel.resumeGenRun()
+        newModel.resumeGenRun(ignoreExternal=True, ignoreInternal=False)

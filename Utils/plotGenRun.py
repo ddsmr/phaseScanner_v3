@@ -62,6 +62,7 @@ if __name__ == '__main__':
     elif scanCard['targetResDir'] != '':
         resDir = 'Dicts/' + scanCard['targetResDir']
 
+
     genPlotDir = newModel.resultDir + resDir + 'GenRunPlots/'
     subprocess.call('mkdir ' + genPlotDir, shell=True,  stdout=FNULL, stderr=subprocess.STDOUT)
 
@@ -118,7 +119,7 @@ if __name__ == '__main__':
             # Subplot 2 containing the mean ± σχ^2 for the generational progression
             # p1 = axMean.plot(genDict['GenList'], np.log10(genDict['MeanList']), c=pltColor)
             #
-            # # meanMinusList = [max(0, np.log10(meanVal - stdVal)) for meanVal, stdVal in zip(genDict['MeanList'], genDict['StdList'])]
+            # meanMinusList = [max(0, np.log10(meanVal - stdVal)) for meanVal, stdVal in zip(genDict['MeanList'], genDict['StdList'])]
             # meanPlusList = [np.log10(meanVal + stdVal) for meanVal, stdVal in zip(genDict['MeanList'], genDict['StdList'])]
             #
             # axMean.fill_between(genDict['GenList'], np.log10(genDict['MeanList']), meanPlusList, alpha=0.5, color=pltColor)

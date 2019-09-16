@@ -1226,7 +1226,8 @@ class phaseScannerModel:
 
         return algDict[algorithm]
 
-    def resumeGenRun(self, focusDateTime_str='MostRecent', swicthAlg=False, threadNb='All'):
+    def resumeGenRun(self, focusDateTime_str='MostRecent', swicthAlg=False, threadNb='All', ignoreExternal=False,
+                     ignoreInternal=False):
         '''
                 Used to continue the generational multirun if interupted. Defaults to the most recent run of the model,
             loads the parameter and algorithm runs from the pickle run file.
@@ -1297,8 +1298,10 @@ class phaseScannerModel:
         # exit()
         # pp(psDict)
         # print(delimitator)
+
         self.runGenerationMultithread(psDict, numbOfCores=runCard['numbOfCores'], numberOfPoints=runCard['nbOfPoints'],
-                                      algorithm=runCard['algorihm'], sortByChiSquare=sortByChiSquare, reload=reload)
+                                      algorithm=runCard['algorihm'], sortByChiSquare=sortByChiSquare, reload=reload,
+                                      ignoreExternal=ignoreExternal, ignoreInternal=ignoreInternal)
 
         return None
 
