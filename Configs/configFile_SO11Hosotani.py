@@ -362,7 +362,7 @@ dictMinMax = {
     # 'k':        {'Min': 1000.0, 'Max': 10000000.0},
     # 'zL':        {'Min': 10.0, 'Max': 2500.0}
 
-    # ##### Uncomment below to obtain the original solution #####
+    # ##### Uncomment below to obtain the original solution Nb 1 #####
     # 'Mu1':      {'Min': 11.7911, 'Max': 11.9747},
     # 'Mu2Tilde':  {'Min': 0.7147, 'Max': 0.7190},
     #
@@ -378,6 +378,21 @@ dictMinMax = {
     # 'k':        {'Min': 88462.008, 'Max': 88955.77},
     # 'zL':        {'Min': 34.632, 'Max': 34.6673}
 
+    # ##### Uncomment below to obtain the original solution Nb 2 #####
+    'Mu1':      {'Min': 16.0, 'Max': 19.0},
+    'Mu2Tilde':  {'Min': 0.1, 'Max': 2.1},
+
+    'Mu11':      {'Min': 0.0, 'Max': 1.0},
+    'Mu11Prime': {'Min': 0.0, 'Max': 1.0},
+
+
+    'c0':       {'Min': 0.2, 'Max': 0.4},
+    'c0Prime':  {'Min': 0.4, 'Max': 0.7},
+    'c1':       {'Min': 0.0, 'Max': 0.2},
+    'c2':       {'Min': -0.9, 'Max': -0.5},
+
+    'k':        {'Min': 200000.0, 'Max': 300000.0},
+    'zL':       {'Min': 32.0, 'Max': 37.0}
     # ########## Restricted parameter range 1 #############
     # 'Mu1':      {'Min': 11.0, 'Max': 13.0},
     # 'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
@@ -409,20 +424,20 @@ dictMinMax = {
     # 'k':         {'Min': 100000.0, 'Max': 500000.00},
     # 'zL':        {'Min': 30.0, 'Max': 40.0}
     # ########## Restricted parameter range 3 #############
-    'Mu1':       {'Min': 9.0, 'Max': 15.0},
-    'Mu2Tilde':  {'Min': 0.0, 'Max': 3.5},
-
-    'Mu11':      {'Min': 0.0, 'Max': 2.5},
-    'Mu11Prime': {'Min': 0.0, 'Max': 2.5},
-
-
-    'c0':        {'Min': 0.0, 'Max': 0.8},
-    'c0Prime':   {'Min': 0.1, 'Max': 0.8},
-    'c1':        {'Min': 0.0, 'Max': 0.4},
-    'c2':        {'Min': -1.5, 'Max': -0.2},
-
-    'k':         {'Min': 200000.0, 'Max': 500000.00},
-    'zL':        {'Min': 30.0, 'Max': 60.0}
+    # 'Mu1':       {'Min': 9.0, 'Max': 15.0},
+    # 'Mu2Tilde':  {'Min': 0.0, 'Max': 3.5},
+    #
+    # 'Mu11':      {'Min': 0.0, 'Max': 2.5},
+    # 'Mu11Prime': {'Min': 0.0, 'Max': 2.5},
+    #
+    #
+    # 'c0':        {'Min': 0.0, 'Max': 0.8},
+    # 'c0Prime':   {'Min': 0.1, 'Max': 0.8},
+    # 'c1':        {'Min': 0.0, 'Max': 0.4},
+    # 'c2':        {'Min': -1.5, 'Max': -0.2},
+    #
+    # 'k':         {'Min': 200000.0, 'Max': 500000.00},
+    # 'zL':        {'Min': 30.0, 'Max': 60.0}
 }
 replacementRules = {
     'DummyCase': {}
