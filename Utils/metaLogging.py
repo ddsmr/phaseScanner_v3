@@ -40,6 +40,9 @@ def writeToLogFile_InitModel(phaseScannerModel):
     logFile.write("Attr: \n")
     logFile.write(json.dumps(phaseScannerModel.modelAttrs) + '\n')
 
+    logFile.write("Parameter Bounds: \n")
+    logFile.write(json.dumps(phaseScannerModel.paramBounds) + '\n')
+
     # logFile.write("Couplings: \n")
     # logFile.write(json.dumps(phaseScannerModel.rgflow)   + '\n')
     logFile.write("-"*100 + '\n\n')
