@@ -158,10 +158,25 @@ def fixJsonWAppend(jsonDir, specFile=''):
 
 
 def writeGenStat(resultsDirDicts, threadNumber, listOfStats, listOfStatsNames):
-    with open(resultsDirDicts + 'GenStatus_ThreadNb' + threadNumber + '.dat', 'a') as outFile:
+    '''
+        Write the generational status for the multithreaded scan.
+    '''
+    with open(resultsDirDicts + 'HistoryGen_ThreadNb' + threadNumber + '.dat', 'a') as outFile:
 
         outFile.write(''.join(attrName + str(attr) + '   ||  '
                               for attrName, attr in zip(listOfStatsNames, listOfStats)) + '\n')
+
+    with open(resultsDirDicts + 'CurrGen_StatusSummary.dat', 'r') as fileIn:
+        fileData = fileIn.readlines()
+
+    # print(fileData[0])
+    fileData[int(threadNumber) - 1] = 'Thread #' + threadNumber + '    Minimum χ²: ' + str(listOfStats[1]) + \
+                                      ' <---   Gen #: ' + str(listOfStats[0]) + '\n'
+
+    with open(resultsDirDicts + 'CurrGen_StatusSummary.dat', 'w') as outFile:
+        for line in fileData:
+            outFile.write(line)
+
     return None
 
 
@@ -519,21 +534,24 @@ class phaseScannerModel:
             return {k: phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
 
     def engineProcedure(self, generatingEngine, newParamsDict, threadNumber='0', debug=False,
-                        ignoreInternal=False, ignoreExternal=False):
+                        ignoreInternal=False, ignoreExternal=False, calcOnly=False):
         '''
                 Auxiliary procedure to compactify the generating engine and getting attributes.
             Also has the requirements for a engine along with the cleaning procedure
         '''
         # generatingEngine = self.engineClass()
         # generatingEngine = self.generatingEngine
-        genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
-
         # Associate a Point ID
         currTime = strftime("-%d%m%Y%H%M%S", gmtime())
         pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + currTime
 
-        phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber, genValidPointOutDict,
-                                                                     pointKey)
+        if calcOnly is not True:
+            genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
+
+            phaseSpaceDict_int = generatingEngine._getRequiredAttributes(newParamsDict, threadNumber,
+                                                                         genValidPointOutDict, pointKey)
+        else:
+            phaseSpaceDict_int = {pointKey: newParamsDict}
 
         phaseSpaceDict = self._getCalcAttribForDict(phaseSpaceDict_int, threadNumber=threadNumber,
                                                     ignoreExternal=ignoreExternal, ignoreInternal=ignoreInternal)
@@ -1012,6 +1030,11 @@ class phaseScannerModel:
         with open(focusDir + 'RunCard.pickle', 'wb') as fPickl:
             pickle.dump(dataDict, fPickl, pickle.HIGHEST_PROTOCOL)
 
+        with open(focusDir + 'CurrGen_StatusSummary.dat', 'w') as outFile:
+            for threadNumber in range(numbOfCores):
+                outFile.write('Thread #' + str(threadNumber + 1) + '    Minimum Chi2: NaN' + '\n')
+        return None
+
     # def _getAlgInitPop(self, phaseSpaceDict, numberOfCores, numberOfPoints):
 
     def runGenerationMultithread(self, phaseSpaceDict, numberOfPoints=16, numbOfCores=1,
@@ -1306,7 +1329,7 @@ class phaseScannerModel:
         return None
 
     def _mThreadAUXrerun(self, q, listOfPoints, threadNumber='0', debug=False, ignoreInternal=False,
-                         ignoreExternal=False):
+                         ignoreExternal=False, getCalcOnly=False):
         '''
             Auxiliary worker multiprocessing function used to do a phase space rerun. Called in the master
         function reRunMultiThreadself.
@@ -1331,7 +1354,7 @@ class phaseScannerModel:
                 massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine,
                                                                  paramsDict, threadNumber=threadNumber, debug=debug,
                                                                  ignoreExternal=ignoreExternal,
-                                                                 ignoreInternal=ignoreInternal)
+                                                                 ignoreInternal=ignoreInternal, calcOnly=getCalcOnly)
 
                 # generatingEngine.runPoint( paramsDict, threadNumber = threadNumber , debug = debug)
                 # phaseSpaceDict = generatingEngine._getRequiredAttributes(paramsDict, threadNumber)
@@ -1346,6 +1369,7 @@ class phaseScannerModel:
             except Exception as e:
 
                 print(e)
+                raise
                 listOfPoints.pop()
                 # generatingEngine._clean( threadNumber )
 
@@ -1353,8 +1377,8 @@ class phaseScannerModel:
 
         return None
 
-    def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False,  ignoreInternal=False,
-                         ignoreExternal=False):
+    def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False,  ignoreInternal=True,
+                         ignoreExternal=True, getCalcOnly=False):
         '''
             Master multiprocessing function to be used to rerun points in a phaseSpaceDict. Writes the results to json,
 
@@ -1376,11 +1400,16 @@ class phaseScannerModel:
         pointCounter = 0
 
         for point in phaseSpaceDict.keys():
-            try:
-                phaseSpacePoint = phaseSpaceDict[point]['Params']
-            except Exception as e:
-                paramsDict = {modelAttr: phaseSpaceDict[point][modelAttr] for modelAttr in self.params}
-                phaseSpacePoint = paramsDict
+            if getCalcOnly is not True:
+                try:
+                    phaseSpacePoint = phaseSpaceDict[point]['Params']
+                except Exception as e:
+                    paramsDict = {modelAttr: phaseSpaceDict[point][modelAttr] for modelAttr in self.params}
+                    phaseSpacePoint = paramsDict
+            else:
+                phaseSpacePoint = phaseSpaceDict[point]
+                ignoreExternal = False
+                ignoreInternal = False
 
             listOfLists[pointCounter % numbOfCores].append(phaseSpacePoint)
             pointCounter += 1
@@ -1391,7 +1420,7 @@ class phaseScannerModel:
         localQue = Queue()
         processes = [Process(target=self._mThreadAUXrerun,
                              args=(localQue, listOfLists[coreNumber], str(coreNumber), debug, ignoreInternal,
-                                   ignoreExternal))
+                                   ignoreExternal, getCalcOnly))
                      for coreNumber in range(numbOfCores)]
 
         for proc in processes:
@@ -1414,7 +1443,7 @@ class phaseScannerModel:
                     resultDict.update(result)
                 pbar.update(1)
 
-                if pointCounter % 10 == 0:
+                if pointCounter % 1 == 0:
                     with open(self.resultDir + 'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
                         json.dump(resultDict, outfile)
 
@@ -1444,7 +1473,7 @@ class phaseScannerModel:
 
         return None
 
-    def exportPSDitctCSV(self, phaseSpaceDict, listOfAttr, nameOut='Default'):
+    def exportPSDictCSV(self, phaseSpaceDict, listOfAttr, nameOut='Default'):
         '''
                 Given a phase space dictionary function will create a csv file with the PointIDs and the attributes
             specified in listOfAttr

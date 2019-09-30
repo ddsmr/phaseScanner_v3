@@ -26,8 +26,8 @@ def getWeinbergAngle(dataDict, threadNumber='0'):
     dataRuleExpr = wlexpr(bytes('dataRule=', 'utf-8') + dataDict_wl)
 
     # set the root level to INFO
-    logFileName = 'exampleThrNb-' + threadNumber + '.log'
-    logging.basicConfig(level=logging.INFO, filename=logFileName)
+    # logFileName = 'Weinberg_Log-' + threadNumber + '.log'  # '/dev/null'
+    logging.basicConfig(level=logging.ERROR)  # , filename=logFileName)
 
     session = WolframLanguageSession()
 
@@ -43,7 +43,8 @@ def getWeinbergAngle(dataDict, threadNumber='0'):
         weinbergAngle = session.evaluate(weinbergExpr)
     finally:
         session.terminate()
-        print('Weinberg Angle value: ', weinbergAngle)
+        print('\nWeinberg Angle value: ', weinbergAngle)
 
     # Should probably rm the log files
+
     return weinbergAngle

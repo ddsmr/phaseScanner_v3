@@ -1,12 +1,13 @@
 import sys
-sys.path.append('../')
 
 import argparse
 import os
+# from .. import phaseScanner
+sys.path.append('../')
 from phaseScanner import phaseScannerModel, checkListForLatestDate, convertDateTimeToStr, getLatestFocusDir
+from Utils.printUtils import *
 
 # from Utils.Gmail.gMailModule import *
-from Utils.printUtils import *
 
 
 if __name__ == '__main__':
@@ -44,6 +45,7 @@ if __name__ == '__main__':
     # done.', action="store_true")
     # parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts,
     # Focus, sendCompletionEmail, and pushToGit',action="store_true")
+    parser.add_argument("-gC", '--getCalcOnly', help='Enable to only rerun for the calc Attributes.', action="store_true")
 
     parser.add_argument("-d", '--debug', help=Fore.RED + 'Enable to debug.' + Style.RESET_ALL, action="store_true")
     #####################################################################################################
@@ -80,4 +82,6 @@ if __name__ == '__main__':
         resDir = 'Dicts/'
 
     psDict = newModel.loadResults(targetDir=resDir, specFile=specFile, ignoreIntegrCheck=True)
-    newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=debug, ignoreExternal=True)
+
+    newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=debug,
+                              getCalcOnly=scanCard['getCalcOnly'])

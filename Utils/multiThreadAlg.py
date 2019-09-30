@@ -995,90 +995,67 @@ class minimAlg:
         return None
 
     @regAlg
-    def diffEvolAdapt_1 ( self ):
+    def diffEvolAdapt_1(self):
         '''
             Differential evolution algorithm works as per Storn and Price [see ref]
         '''
 
-        modelConstr = constrEval( self.psObject )
-        mutationDictInit = {"F_factor" : 0.66,
-                            "CR_factor" : 0.236}
+        modelConstr = constrEval(self.psObject)
+        mutationDictInit = {"F_factor": 0.66,
+                            "CR_factor": 0.236}
 
-        pointTree =  formatTopChi2List_asGen0( self.bestChiSquares, self.sortedChiSquare_ListOfTuples, Auxiliaries= mutationDictInit)
+        pointTree = formatTopChi2List_asGen0(self.bestChiSquares, self.sortedChiSquare_ListOfTuples,
+                                             Auxiliaries=mutationDictInit)
 
-
-
-        alphaParents = list (  pointTree.keys() )
+        alphaParents = list(pointTree.keys())
         scanIDwThread = self.psObject.modelName + self.psObject.case.replace(" ","") + strftime("-%d-%m-%Y_%H_%M_%S", gmtime()) + '_ThreadNb' + self.threadNumber
         resultsDirDicts = self.psObject.resultDir + 'Dicts/Focus' + strftime("_%d_%m_%Y/", gmtime())
 
-        # print(delimitator)
         resultDict_Thread = {}
-
 
         # chi2Min = sortedChiSquare_ListOfTuples[0][1]
         # pp(sortedChiSquare_ListOfTuples[0])
         # 'chi2Min': min( newListOfChi2 ),
         # 'chi2Mean' : np.mean( newListOfChi2),
         # 'chi2Std' : np.std( newListOfChi2)
-        chi2Vals = [chi2Tuple[1] for chi2Tuple in self.sortedChiSquare_ListOfTuples ]
-        listOfChi2StatDicts = [ { 'chi2Min': min(chi2Vals),
-                                    'chi2Mean': np.mean(chi2Vals) ,
-                                    'chi2Std': np.std(chi2Vals)
-                                                 } ]
+        chi2Vals = [chi2Tuple[1] for chi2Tuple in self.sortedChiSquare_ListOfTuples]
+        listOfChi2StatDicts = [{'chi2Min': min(chi2Vals),
+                                'chi2Mean': np.mean(chi2Vals),
+                                'chi2Std': np.std(chi2Vals)
+                                }]
 
-
-        listOfBestChi2 = [  sorted(self.sortedChiSquare_ListOfTuples, key=lambda tup: tup[1])[0][1]  ]
-        ####  Pick target vector at rndom / as lowestchi2? ####
-
-
-        # F_factor = 0.5
-        # CR_factor = 0.1
-
+        listOfBestChi2 = [sorted(self.sortedChiSquare_ListOfTuples, key=lambda tup: tup[1])[0][1]]
+        # ###  Pick target vector at rndom / as lowestchi2? ####
 
         generatingEngine = self.psObject.engineClass()
 
-
-
-        #### Initialisation stage ####
-        # Pick out 4 points in phase space and assign one of them as the target.
-
-        ### This population size multiplier seems slightly unnecessary
+        # ## This population size multiplier seems slightly unnecessary
         genPopSize = len(alphaParents)
         genNb = 0
         changeNb = 0
-
 
         while True:
 
             newParents = []
             pointCount = 0
 
-            #### Populating the new generation. Stop when we have the same number of parents in the new one.
+            # ### Populating the new generation. Stop when we have the same number of parents in the new one.
             while len(newParents) < genPopSize:
 
                 for targetKey in alphaParents:
 
+                    rndKeyChoice = random.sample(alphaParents, 3)
 
-
-                    # alphaParentsMod = deepcopy(alphaParents)
-                    # alphaParentsMod = [ parent for parent in alphaParents if parent != targetKey]
-                    rndKeyChoice = random.sample(alphaParents , 3)
-
-                    # targetKey = rndKeyChoice[0]
                     targetChi2 = pointTree[targetKey]['Chi2']
                     targetF_fact = pointTree[targetKey]['Aux']['F_factor']
 
-                    # Gen newF_fact
-                    if random.uniform(0,1) < 0.1:
-                        newF_fact = 0.1 + random.uniform(0,1) * 0.9
+                    # Gen newF_fact based on 0.1 threshold
+                    if random.uniform(0, 1) < 0.1:
+                        newF_fact = 0.1 + random.uniform(0, 1) * 0.9
                     else:
                         newF_fact = targetF_fact
 
-
-
-
-                    #### Mutation stage ####
+                    # ### Mutation stage ####
                     # Create a donnor vector out of the parameters of the 3 others via the formula below.
                     donorDict = {}
                     for modelParam in self.psObject.params.keys():
@@ -1086,96 +1063,60 @@ class minimAlg:
                         xr2_Comp = pointTree[rndKeyChoice[1]][modelParam]
                         xr3_Comp = pointTree[rndKeyChoice[2]][modelParam]
 
-                        # F_factor = random.uniform(0, 2)
-                        # newF_fact
-
                         donorDict[modelParam] = xr1_Comp + newF_fact * (xr2_Comp - xr3_Comp)
 
-                    # alphaParents = [parentPoint for parentPoint in alphaParents if parentPoint not in rndKeyChoice]
-
-
-
-                    #### Recombination stage ####
+                    # ### Recombination stage ####
                     # Make a new hybrid vector
 
                     mutatedDict = {}
-                    rndParamChoice = random.choice(list(  self.psObject.params.keys() ) )
+                    rndParamChoice = random.choice(list(self.psObject.params.keys()))
                     targetCR_fact = pointTree[targetKey]['Aux']['CR_factor']
 
-                    # Gen newF_fact
-                    if random.uniform(0,1) < 0.1:
-                        newCR_fact = random.uniform(0,1)
+                    # Gen newCR_fact based on 0.1 acceptance threshold
+                    if random.uniform(0, 1) < 0.1:
+                        newCR_fact = random.uniform(0, 1)
                     else:
                         newCR_fact = targetCR_fact
-                    # Gen newCR_fact
 
                     for modelParam in self.psObject.params.keys():
-                        ### new CR Factor
-                        if   random.uniform(0, 1) <= newCR_fact or modelParam == rndParamChoice :
-                            # print ('_________--------\\\\\\\\')
+                        # Select the mutation subspace based on the random chance on CR
+                        if random.uniform(0, 1) <= newCR_fact or modelParam == rndParamChoice:
                             mutatedDict[modelParam] = donorDict[modelParam]
                         else:
-                            # print('---------------------')
                             mutatedDict[modelParam] = pointTree[targetKey][modelParam]
 
-
-
-
-                    ########### Selection stage ############
+                    # ########## Selection stage ############
                     massTruth, newPointWithAttr = self.psObject.engineProcedure(generatingEngine, mutatedDict, threadNumber = self.threadNumber, debug = self.debug, ignoreExternal=self.ignoreExternal, ignoreInternal=self.ignoreInternal)
 
-                    # genValidPointOutDict = generatingEngine.runPoint( mutatedDict, threadNumber = self.threadNumber , debug = self.debug)
-                    # newPointWithAttr_int = generatingEngine._getRequiredAttributes(mutatedDict, self.threadNumber)
-                    # newPointWithAttr = self.psObject._getCalcAttribForDict( newPointWithAttr_int )
-                    # massTruth = generatingEngine._check0Mass( newPointWithAttr )
-
-
-
-                    if  massTruth == True:
+                    if massTruth is True:
 
                         newPointKey = list(newPointWithAttr.keys())[0]
-
-                        newChiSquared = modelConstr.getChi2(
-                        newPointWithAttr[newPointKey], ignoreConstrList = self.ignoreConstrList, minimisationConstr = self.minimisationConstr, returnDict = False)
+                        newChiSquared = modelConstr.getChi2(newPointWithAttr[newPointKey], ignoreConstrList=self.ignoreConstrList,
+                                                            minimisationConstr=self.minimisationConstr, returnDict=False)
                     else:
                         newChiSquared = targetChi2 + 1
 
-
-                    # newPointWithAttr = generatingEngine._getRequiredAttributes(mutatedDict, threadNumber)
-                    ### New point evaluation
-
-                    # print(newChiSquared, targetChi2)
-                    # time.sleep(0.3)
-
+                    # ## New point evaluation, accept to new generation if it beats the target χ²
                     if newChiSquared < targetChi2:
 
                         oldID = list(newPointWithAttr.keys())[0]
-                        pointGenID = oldID + '-GenNb'+ str(genNb)
+                        pointGenID = oldID + '-GenNb' + str(genNb)
 
                         toAddDict = {}
                         toAddDict[pointGenID] = newPointWithAttr[oldID]
                         toAddChi2 = newChiSquared
 
-                        self.Que.put( {'NewPoint' : {'Dict' : toAddDict,
-                                                     'ThreadNb' : int(self.threadNumber)+1}} )
-
-                        # print(toAddChi2, list(toAddDict.keys()) )
-                        # with open( resultsDirDicts +'ScanResults.' + scanIDwThread + '.json', 'a') as outfile:
-                        #     json.dump(toAddDict, outfile)
+                        self.Que.put({'NewPoint': {'Dict': toAddDict,
+                                                   'ThreadNb': int(self.threadNumber)+1}})
 
                     else:
                         toAddDict = pointTree[targetKey]['FullDescription']
                         toAddChi2 = targetChi2
 
-                    generatingEngine._clean( self.threadNumber )
-                    # print( delimitator )
-                    ### Add to the new generation
+                    generatingEngine._clean(self.threadNumber)
+
+                    # ## Add to the new generation
                     pointCount += 1
-
-                    # newPointKey = list(newPointDict['NewPointDict'].keys())[0]
-                    # newParamsDict = newPointDict['NewPointDict']
-                    # newChi2 = newPointDict['ChiSquared']
-
                     parentID = targetKey
                     childID = 'G' + str(genNb + 1) + '-P' + str(pointCount)
 
