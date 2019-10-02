@@ -184,7 +184,7 @@ class dictPlotting():
 
 
         # If exprAxis is False, format assumed is keys and their classification from self.classification['axisName']
-        if exprAxis == False:
+        if exprAxis is False:
 
             for point in phaseSpaceDictPF.keys():
 
@@ -211,14 +211,14 @@ class dictPlotting():
         #      xAxisHandle OR yAxisHandle OR colorAxisHandles =   [['BMu', 'Mu'],  'BMu/Mu']
         else:
             for point in phaseSpaceDictPF.keys():
-                for axis, axisHandles in zip([xAxis, yAxis, colorAxis], [ xAxisHandles, yAxisHandles, colorAxisHandles]):
-
-                    axisParams = axisHandles[0]
-                    axisExpr   = axisHandles[1]
+                for axis, axisHandles in zip([xAxis, yAxis, colorAxis], [xAxisHandles, yAxisHandles, colorAxisHandles]):
 
                     # print(axis, axisHandles)
 
-                    if type(axisParams)== list:
+                    if type(axisHandles) == list:
+
+                        axisParams = axisHandles[0]
+                        axisExpr = axisHandles[1]
                         for param in axisParams:
 
                             paramType = self.psObject.classDict[param]
@@ -227,36 +227,38 @@ class dictPlotting():
                         # print(eval (axisExpr))
                         axis.append(eval (axisExpr) )
 
-                    elif   axisHandles in self.psObject.allDicts.keys():
+                    elif axisHandles in self.psObject.allDicts.keys():
                         # print(axisParams)
                         # print('delimitator')
-                        axis.append( phaseSpaceDictPF[point][axisHandles]  )
+                        axis.append(phaseSpaceDictPF[point][axisHandles])
                     # else:
 
+        return {'xAxis': xAxis, 'yAxis': yAxis, 'colorAxis': colorAxis, 'pointIDAxis': pointIDAxis}
 
-
-
-        return {'xAxis' : xAxis, 'yAxis': yAxis, 'colorAxis':colorAxis, 'pointIDAxis':pointIDAxis }
-
-    def plotModel(self, phaseSpaceDict, xAxisHandles, yAxisHandles, colorAxisHandles, colorMap = 'winter_r',
-                  specificCuts = 'Global',
-                  ignoreConstrList = [], noOfSigmasB = 1, noOfSigmasPM = 1,  # < ------- Needed in the pass Fail stage
-                  restrictAxis = False, xAxisLim = [], yAxisLim = [],
-                  exprAxis = False, TeXAxis = '',
-                  plotSeparateConstr = [], separateConstrMarkers = ['h'], defaultMarker = 'o',
-                  exportFormatList = ['png', 'pdf'] ,
-                  useChi2AsTest = {'Enable': True , 'Chi2UpperBound' : 11.0705, 'TestStatistic': 'ChiSquared'}
-        ):
+    def plotModel(self, phaseSpaceDict, xAxisHandles, yAxisHandles, colorAxisHandles, colorMap='winter_r',
+                  specificCuts='Global',
+                  ignoreConstrList=[], noOfSigmasB=1, noOfSigmasPM=1,  # < ------- Needed in the pass Fail stage
+                  restrictAxis=False, xAxisLim=[], yAxisLim=[],
+                  # exprAxis=False,
+                  TeXAxis='',
+                  pltName='',
+                  plotSeparateConstr=[], separateConstrMarkers=['h'], defaultMarker='o',
+                  exportFormatList=['png', 'pdf'],
+                  useChi2AsTest={'Enable': True, 'Chi2UpperBound': 11.0705, 'TestStatistic': 'ChiSquared'}
+                  ):
         '''
             Super duper function to plot whatever you want from the model.
 
             Arguments:
                 - phaseSpaceDict                                          ::      Phase space Dictionary.
                 - xAxisHandles, yAxisHandles, colorAxisHandles            ::      e.g. [ 'Params', 'aHat' ]
-                - colorMap                      ::          DEFAULT : 'flag'. Set to what color scheme you want. See matplotlib documentation for all available styles.
+                - colorMap                      ::          DEFAULT : 'flag'. Set to what color scheme you want.
+                See matplotlib documentation for all available styles.
 
-                - plotSeparateConstr            ::          DEFAULT: []. Sepcify in list what constraints to be plot separatelly, i.e. disregarding the others. If let empty will look at all constraints.
-                - separateConstrMarkers         ::          DEFAULT: ['o']. all the diffrent constraint markers to go with plotSeparateConstr.
+                - plotSeparateConstr            ::          DEFAULT: []. Sepcify in list what constraints to be plot
+                separatelly, i.e. disregarding the others. If let empty will look at all constraints.
+                - separateConstrMarkers         ::          DEFAULT: ['o']. all the diffrent constraint markers to go
+                with plotSeparateConstr.
 
                 - exprAxis                      ::          DEFAULT: False. Set to true to use expresions for the axis.
                 - TeXAxis                       ::          DEFAULT: ''. To be set to the LaTeX label for the exprAxis.
@@ -266,12 +268,14 @@ class dictPlotting():
 
 
                 For checkHardCut:
-                - specificCuts                  ::          DEFAULT: Global. Can be set to a list of a subset of all the cuts in the config. Will plot points based on subset of cuts instead of all.
+                - specificCuts                  ::          DEFAULT: Global. Can be set to a list of a subset of all
+                the cuts in the config. Will plot points based on subset of cuts instead of all.
 
                 For constraintEvaluation:
                 - noOfSigmasB                   ::           Number of sigmas for the bounds.
                 - noOfSigmasPM                  ::           Number of sigmas for the parameter matching.
-                - ignoreConstrList              ::           DEFAULT : [] . List of constraints to be ignored . Used in plotting multiple constaints in the plot function.
+                - ignoreConstrList              ::           DEFAULT : [] . List of constraints to be ignored . Used in
+                plotting multiple constaints in the plot function.
 
             Returns:
                 - auxDict = {'Passed' : passDict, 'Fail' : failDict }
@@ -279,24 +283,24 @@ class dictPlotting():
         if type(xAxisHandles) == list or type(yAxisHandles) == list or type(colorAxisHandles) == list:
             exprAxis = True
 
-        if (bool(plotSeparateConstr) == False ):
+        if (bool(plotSeparateConstr) is False):
             plotCount = 1
         else:
             plotCount = len(plotSeparateConstr)
 
         plotListPass = []
         plotListExclude = []
+        # ######### Font size / Fig size
+        plt.rc('font', size=self.psObject.plotFormatting['fontSize'])
+        plt.rc('text', usetex=True)
 
-        ########## Font size / Fig size
-        plt.rc('font', size = self.psObject.plotFormatting['fontSize'])
-        plt.rc('text',usetex=True)
-
-        fig = plt.figure(figsize = (20,10))
+        fig = plt.figure(figsize=(20, 10))
         ax1 = fig.add_subplot(111)
 
         returnDict = {}
 
-        spinner = Halo(text='Working hard for the money, so hard for the money ' + Fore.GREEN + '$$$' + Style.RESET_ALL , spinner='dots')
+        spinner = Halo(text='Working hard for the money, so hard for the money ' + Fore.GREEN + '$$$' + Style.RESET_ALL,
+                       spinner='dots')
         spinner.start()
 
         print(exprAxis)
@@ -307,30 +311,36 @@ class dictPlotting():
         # stripedName = p.sub('', self.psObject.name+'.')
         # pltStr = (str(xAxisHandles)+ '-' + str(yAxisHandles) + '-' + str(colorAxisHandles))
         p = re.compile(r"['*[,\] ]+")
-        pltStr = p.sub('', (str(xAxisHandles)+ '-' + str(yAxisHandles) + '-' + str(colorAxisHandles)) )
+        if exprAxis is not True:
+            pltStr = p.sub('', (str(xAxisHandle) + '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)))
+        else:
+            pltStr = 'CustomPlot-' + pltName
+        # pltStr = p.sub('', (str(xAxisHandles) + '-' + str(yAxisHandles) + '-' + str(colorAxisHandles)))
         # print(delimitator)
         # print(pltStr)
         # print(stripedName)
         # print(delimitator)
         # exit()
 
-        self._writePlotAttr(xAxisHandles, yAxisHandles, colorAxisHandles )
-        for plotNumber in range(plotCount) :
+        self._writePlotAttr(xAxisHandles, yAxisHandles, colorAxisHandles, useChi2AsTest, pltStr)
+        for plotNumber in range(plotCount):
 
-            if bool(plotSeparateConstr) == False:
-                auxDict = self._makePassFailDicts(phaseSpaceDict, specificCuts = specificCuts, noOfSigmasB = noOfSigmasB, noOfSigmasPM = noOfSigmasPM, ignoreConstrList = ignoreConstrList, useChi2AsTest = useChi2AsTest)
+            if bool(plotSeparateConstr) is False:
+                auxDict = self._makePassFailDicts(phaseSpaceDict, specificCuts=specificCuts, noOfSigmasB=noOfSigmasB,
+                                                  noOfSigmasPM=noOfSigmasPM, ignoreConstrList=ignoreConstrList,
+                                                  useChi2AsTest=useChi2AsTest)
 
                 statsStr = 'Global'
 
-
             else:
-                auxIgnoreList = copy.deepcopy( plotSeparateConstr )
-                auxIgnoreList.remove( plotSeparateConstr[plotNumber] )
+                auxIgnoreList = copy.deepcopy(plotSeparateConstr)
+                auxIgnoreList.remove(plotSeparateConstr[plotNumber])
 
                 statsStr = plotSeparateConstr[plotNumber]
 
-                auxDict = self._makePassFailDicts(phaseSpaceDict, specificCuts = specificCuts, noOfSigmasB = noOfSigmasB, noOfSigmasPM = noOfSigmasPM, ignoreConstrList =  auxIgnoreList, useChi2AsTest = useChi2AsTest)
-
+                auxDict = self._makePassFailDicts(phaseSpaceDict, specificCuts=specificCuts, noOfSigmasB=noOfSigmasB,
+                                                  noOfSigmasPM=noOfSigmasPM, ignoreConstrList=auxIgnoreList,
+                                                  useChi2AsTest=useChi2AsTest)
 
             passDict = auxDict['Passed']
             failDict = auxDict['Failed']
@@ -339,56 +349,44 @@ class dictPlotting():
             #
             # print(len(passDict), len(failDict))
             # print(delimitator)
-            #
-            self._writeStatsFromDict(passDict, pltStr, passFailString = 'Passed-'+statsStr+'-Constr' )
-            self._writeStatsFromDict(failDict, pltStr, passFailString = 'Failed-'+statsStr+'-Constr')
 
-            passAxisDict = self._makeAxisFromDict( passDict,  xAxisHandles, yAxisHandles, colorAxisHandles, exprAxis = exprAxis)
-            failAxisDict = self._makeAxisFromDict( failDict,  xAxisHandles, yAxisHandles, colorAxisHandles, exprAxis = exprAxis)
+            self._writeStatsFromDict(passDict, pltStr, passFailString='Passed-' + statsStr + '-Constr')
+            self._writeStatsFromDict(failDict, pltStr, passFailString='Failed-' + statsStr + '-Constr')
 
-            # pp(passAxisDict['pointIDAxis'])
-
-
-            # print( 44444444444444444    )
-            # exit()
-
-
-
+            passAxisDict = self._makeAxisFromDict(passDict, xAxisHandles, yAxisHandles, colorAxisHandles,
+                                                  exprAxis=exprAxis)
+            failAxisDict = self._makeAxisFromDict(failDict, xAxisHandles, yAxisHandles, colorAxisHandles,
+                                                  exprAxis=exprAxis)
 
             scattPlot = ax1.scatter(failAxisDict['xAxis'], failAxisDict['yAxis'], c=failAxisDict['colorAxis'],
-                                        cmap = plt.get_cmap(colorMap),
-                                        marker= defaultMarker,
-                                        alpha = self.psObject.plotFormatting['failPlot']['alpha'],
-                                        lw = self.psObject.plotFormatting['failPlot']['lw'],
-                                        s = self.psObject.plotFormatting['failPlot']['s'] , zorder = 1)
-
-            climx, climy =scattPlot.get_clim()
+                                    cmap=plt.get_cmap(colorMap), marker=defaultMarker,
+                                    alpha=self.psObject.plotFormatting['failPlot']['alpha'],
+                                    lw=self.psObject.plotFormatting['failPlot']['lw'],
+                                    s=self.psObject.plotFormatting['failPlot']['s'], zorder=1)
+            climx, climy = scattPlot.get_clim()
             if (len(passAxisDict['colorAxis']) != 0):
                 climx = min(climx, min(passAxisDict['colorAxis']))
                 climy = max(climy, max(passAxisDict['colorAxis']))
 
+            scattPlot_pass = ax1.scatter(passAxisDict['xAxis'], passAxisDict['yAxis'], cmap=plt.get_cmap(colorMap),
+                                         marker=separateConstrMarkers[plotNumber], c=passAxisDict['colorAxis'],
+                                         alpha=self.psObject.plotFormatting['passPlot']['alpha'],
+                                         lw=self.psObject.plotFormatting['passPlot']['lw'],
+                                         s=self.psObject.plotFormatting['passPlot']['s'],
+                                         zorder=2,  vmin=climx, vmax=climy, edgecolor='black')
 
-            scattPlot_pass =  ax1.scatter(passAxisDict['xAxis'], passAxisDict['yAxis'], cmap = plt.get_cmap(colorMap),
-                                    marker = separateConstrMarkers[plotNumber] ,
-                                    c = passAxisDict['colorAxis'],
-                                    alpha = self.psObject.plotFormatting['passPlot']['alpha'],
-                                    lw = self.psObject.plotFormatting['passPlot']['lw'],
-                                    s = self.psObject.plotFormatting['passPlot']['s'],
-                                    zorder=2,  vmin=climx, vmax=climy, edgecolor='black')
-
-            if bool(plotSeparateConstr) == False:
+            if bool(plotSeparateConstr) is False:
                 returnDict = auxDict
             else:
-                returnDict[ plotSeparateConstr[plotNumber] ] = auxDict
+                returnDict[plotSeparateConstr[plotNumber]] = auxDict
 
-          # Puts labels according to the type of dictionary
-
+        # Puts labels according to the type of dictionary
         axisLabels = []
         TeXAxisCount = 0
         for axis in [xAxisHandles, yAxisHandles, colorAxisHandles]:
 
             if type(axis) == list:
-                if exprAxis == True:
+                if exprAxis is True:
                     latexLabel = TeXAxis[TeXAxisCount]
                     axisLabels.append(latexLabel)
                     TeXAxisCount += 1
@@ -397,9 +395,7 @@ class dictPlotting():
                 latexLabel = self.psObject.allDicts[axis]['LaTeX']
                 axisLabels.append(latexLabel)
 
-
-
-        color_bar = fig.colorbar(scattPlot, label=axisLabels[2])#, ticks=[climx, 0, climy])
+        color_bar = fig.colorbar(scattPlot, label=axisLabels[2])  # , ticks=[climx, 0, climy])
         if type(colorAxisHandles) != list:
             toCheckDict = self.psObject.allDicts[colorAxisHandles]
 
@@ -447,7 +443,7 @@ class dictPlotting():
 
         spinner = Halo(text='Exporting plots in format : ' + Fore.RED + formatStr + Style.RESET_ALL, spinner='dots')
         spinner.start()
-        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, exportFormatList=exportFormatList)
+        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, pltStr, exportFormatList=exportFormatList)
         spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
                                  text='Finished exporting.')
 
@@ -456,13 +452,15 @@ class dictPlotting():
 
         return returnDict, passAxisDict, failAxisDict
 
-    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, exportFormatList=['png', 'pdf']):
+    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, plotName, exportFormatList=['png', 'pdf']):
         '''
-            Given a string handle for the xAxis, yAxis, and colorAxis, the function exports plots in the formats specified in the exportFormatList, default is .pdf
+            Given a string handle for the xAxis, yAxis, and colorAxis, the function exports plots in the formats
+            specified in the exportFormatList, default is .pdf
 
             Arguments:
                 - xAxisHandle, yAxisHandle, colorAxisHandle     ::      handles for the different axis.
-                - exportFormatList                              ::      DEFAULT : ["pdf"]. List of the different formats to export to.
+                - exportFormatList                              ::      DEFAULT : ["pdf"]. List of the different
+                formats to export to.
 
             Return:
                 - None.
@@ -479,33 +477,35 @@ class dictPlotting():
         FNULL = open(os.devnull, 'w')
 
         p = re.compile(r"['*[,\] ]+")
-        plotName = p.sub('', (str(xAxisHandle)+ '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)))
+        # if type(xAxisHandle) != list and type(yAxisHandle) != list and type(colorAxisHandle) != list:
+        #     plotName = p.sub('', (str(xAxisHandle) + '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)))
+        # else:
+        #     plotName = 'CustomPlot-' + strftime("-%d%m%Y%H%M%S", gmtime())
         # plotName = xAxisHandle.replace('/', '.') + '-' + yAxisHandle.replace('/', '.') + '-' + colorAxisHandle.replace('/', '.')
-        subprocess.call('mkdir ' + resultsDirPlots, shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
-        subprocess.call('mkdir ' + resultsDirPlots + plotName + '/', shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirPlots, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirPlots + plotName + '/', shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
 
         for formatType in exportFormatList:
-            plotStr = resultsDirPlots + plotName + '/' + plotName +"." + formatType
+            plotStr = resultsDirPlots + plotName + '/' + plotName + "." + formatType
             plt.savefig(plotStr)
 
         return None
 
-    ######### Write TeX stuff ###########
-    def _writeTeXfile(self, rawString, passFailString='Global', titleStr = 'Give Me A Title', resultDir = 'Default'):
+    # ######## Write TeX stuff ###########
+    def _writeTeXfile(self, rawString, passFailString='Global', titleStr='Give Me A Title', resultDir='Default'):
         '''
             Function that compiles and produces a pdf file via pdflatex.
         '''
 
-        header = r'''\documentclass{article} \title{'''+ titleStr + r'''} \begin{document} '''
+        header = r'''\documentclass{article} \title{''' + titleStr + r'''} \begin{document} '''
         footer = r'''\end{document}'''
 
         # main = '''I'm writing #LaTeX with Python !'''
 
         content = header + rawString + footer
         fileName = self.psObject.name + '_Stats_' + passFailString
-        with open(fileName + '.tex' ,'w') as f:
-             f.write(content)
-
+        with open(fileName + '.tex', 'w') as f:
+            f.write(content)
 
         try:
             subprocess.call('pdflatex ' + fileName, shell=True,  stdout=FNULL, stderr=subprocess.STDOUT)
@@ -523,11 +523,12 @@ class dictPlotting():
         else:
             toMoveDir = resultDir
 
-        subprocess.call('mv ' + fileName + '.pdf ' + toMoveDir + fileName + '.pdf', shell=True )
+        subprocess.call('mv ' + fileName + '.pdf ' + toMoveDir + fileName + '.pdf', shell=True)
 
-    def _writePlotAttr(self, xAxisHandle, yAxisHandle, colorAxisHandle, individConstr = ''):
+    def _writePlotAttr(self, xAxisHandle, yAxisHandle, colorAxisHandle, useChi2AsTest, plotStr, individConstr=''):
         '''
-            Function is called when we make a plot to write in the same directory the attirbutes on which the plot is based, i.e. what are the :
+            Function is called when we make a plot to write in the same directory the attirbutes on which the plot is
+            based, i.e. what are the :
                 - HardCuts
                 - Global / local Chi squared with it's constituents and standard deviations.
 
@@ -537,16 +538,18 @@ class dictPlotting():
         resultsDirPlots = self.psObject.resultDir + 'Plots/'
 
         p = re.compile(r"['*[,\] ]+")
-        plotStr = p.sub('', (str(xAxisHandle)+ '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)) )
+        # plotStr = p.sub('', (str(xAxisHandle) + '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)))
         # plotStr = (str(xAxisHandle)+ '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)).replace('/','.')
 
         # plotStr = xAxisHandle.replace('/', '.') + '-' + yAxisHandle.replace('/', '.') + '-' + colorAxisHandle.replace('/', '.')
 
-        subprocess.call('mkdir ' +  resultsDirPlots ,  shell = True, stdout=FNULL, stderr=subprocess.STDOUT)
-        subprocess.call('mkdir ' +  resultsDirPlots + plotStr + '/',  shell = True , stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirPlots, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+        subprocess.call('mkdir ' + resultsDirPlots + plotStr + '/',  shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
 
         TeXString = '''\maketitle
         Statistics for ''' + stripedName + r''' attributes.'''
+        TeXString += '''\\newline We are imposing a ''' + useChi2AsTest['TestStatistic'] + ''' cut at a upper bound of :''' + \
+                     str(useChi2AsTest['Chi2UpperBound']) + '''\\newline'''
         TeXString += ''' The following are the attributes that go into the making of the plot \\textbf{''' + plotStr+ '''}: \\newline\\newline  The following have a contribution to $\chi^2_G$ corresponding to: \\newline \\newline'''
 
         #### Putting in the constraints:
@@ -610,13 +613,12 @@ class dictPlotting():
                      r'''\end{itemize}'''
             TeXString += rawStr
 
-
-
-        self._writeTeXfile(TeXString, titleStr='Plot Attributes ' + stripedName, resultDir = resultsDirPlots + plotStr + '/', passFailString='PlotAttrib'+individConstr)
+        self._writeTeXfile(TeXString, titleStr='Plot Attributes ' + stripedName, resultDir=resultsDirPlots + plotStr + '/',
+                           passFailString='PlotAttrib' + individConstr)
 
         return None
 
-    def _writeStatsFromDict(self, phaseSpaceDict,  plotStr , passFailString='Global', printStats = True, showHists = False):
+    def _writeStatsFromDict(self, phaseSpaceDict, plotStr, passFailString='Global', printStats=True, showHists=False):
         '''
             Given a valid phaseSpaceDict, the function goes through the values of the different attributes and outputs the average value and standard deviation.
 
@@ -626,7 +628,6 @@ class dictPlotting():
         dictOfLists = self._makeListFromDict(phaseSpaceDict)
         resultsDirPlots = self.psObject.resultDir + 'Plots/'
 
-
         p = re.compile(r'\W+|[_]')
         stripedName = p.sub('', self.psObject.name+'.')
 
@@ -634,12 +635,10 @@ class dictPlotting():
         Statistics for ''' + stripedName + r''' attributes.'''
         TeXString += ''' The following is for points that \\textbf{''' + passFailString + '''} the constraints: \\newline\\newline'''
 
-
-        dictMinMax = {classType :{} for classType in self.psObject.allDicts.keys()  }
-        teXDict = {classType :{'BodyStr':'',
-                               'HeaderStr':r'The following are the statistics for \textbf{ ' + str(classType) + r'} :'}
-                for classType in self.psObject.classList } #self.psObject.allDicts.keys()
-
+        dictMinMax = {classType: {} for classType in self.psObject.allDicts.keys()}
+        teXDict = {classType: {'BodyStr': '',
+                               'HeaderStr': r'The following are the statistics for \textbf{ ' + str(classType) + r'} :'}
+                   for classType in self.psObject.classList}
 
         # sectionHeader = {'Params':{'String':'Param String'},
         #                  'Particles':{'String':'Particles String'},
@@ -654,9 +653,9 @@ class dictPlotting():
             # print(delimitator2)
             # print(modelAttribute)
 
-            try :
+            try:
 
-                dictMinMax[modelAttribute] = {'Min' : min(dictOfLists[modelAttribute]), 'Max': max(dictOfLists[modelAttribute]) }
+                dictMinMax[modelAttribute] = {'Min': min(dictOfLists[modelAttribute]), 'Max': max(dictOfLists[modelAttribute])}
 
 
                 meanVal = np.mean(dictOfLists[modelAttribute])
@@ -744,7 +743,8 @@ class dictPlotting():
             teXDict[classType]['HeaderStr'] + r'\newline \newline' + teXDict[classType]['BodyStr']
             TeXString += ToPrintStr
 
-        self._writeTeXfile(TeXString, passFailString, titleStr = stripedName + ' ' + passFailString, resultDir = resultsDirPlots + plotStr + '/')
+        self._writeTeXfile(TeXString, passFailString, titleStr=stripedName + ' ' + passFailString,
+                           resultDir=resultsDirPlots + plotStr + '/')
 
         # import sys
         # sys.exit()

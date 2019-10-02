@@ -1520,4 +1520,6 @@ if __name__ == '__main__':
     # engineModule_Class = importlib.import_module(engineString)
     # engine = engineModule_Class()
     newModel = phaseScannerModel(modelName, auxCase, micrOmegasName=micrOmegasName, writeToLogFile=True)
-    print(len(newModel.loadResults(targetDir='Dicts/PlotDicts_Sep2019/', ignoreIntegrCheck=True)))
+    psDict = newModel.loadResults()
+    newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
+    

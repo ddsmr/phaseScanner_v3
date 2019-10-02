@@ -1,4 +1,5 @@
 import argparse
+import re
 from phaseScanner import phaseScannerModel, checkListForLatestDate, convertDateTimeToStr, getLatestFocusDir
 from Utils.Gmail.gMailModule import *
 from Utils.printUtils import *
@@ -29,6 +30,27 @@ def convertToFloatList(strToConvert):
     return splitList
 
 
+def makeCutDictFromStr(strToConvert):
+    '''
+            Given a string in the form "{Higgs:[100, 200], Top:[300, 400]}" the function creates a cut dictionary in the
+        form {'Higgs': {'Min': 100, 'Max': 200}, 'Top':{'Min': 300, 'Max': 400}}
+    '''
+    pKeys = re.compile(r':')
+    pPunct = re.compile(r'\W')
+
+    cutDict = {}
+    for attrEntry in strToConvert.split('|'):
+        splitStr = pKeys.split(attrEntry)
+        attrKey, intervalStr = pPunct.sub('', splitStr[0]), splitStr[1]
+
+        minMaxDict = {}
+        for intervalSide, intKey in zip(intervalStr.split(','), ('Min', 'Max')):
+            minMaxDict[intKey] = float(pPunct.sub('', intervalSide))
+        cutDict[attrKey] = minMaxDict
+
+    return cutDict
+
+
 if __name__ == '__main__':
     # #################################      Arguments      ###########################################
     parser = argparse.ArgumentParser(description='Process the inputs for the plotting function')
@@ -46,7 +68,7 @@ if __name__ == '__main__':
                         action="store_true")
     parser.add_argument('--targetResDir', default='', help='Open the specific result directory for plotting.')
     parser.add_argument('--colorMap', default='winter_r', help='Color map to be used. Default winter_r')
-
+    parser.add_argument('--filterByAttrs', default='', help='Set to filter by attributes, e.g. "{Higgs:[100, 200], mTop:[300, 400]}" will only admit those points that have a Higgs mass between the values of 100 and 400.', type=str)
     axisMsg = 'Handle to specify if the axis are restricted. Set to string of the form e.g. "[100, 200]"'
     parser.add_argument('--xAxisLim', help=axisMsg, type=str)
     parser.add_argument('--yAxisLim', help=axisMsg, type=str)
@@ -56,10 +78,11 @@ if __name__ == '__main__':
                               'entered as a string consisting of [param1, param2, ...] | expr(param1, param2, ...),'
                               'with the | delimitator.  E.g. -x="[BMu, Mu, aHat]| BMu / Mu  + 2* aHat" ')
     parser.add_argument('--exprAxis', help=exprAxisMsg, type=bool, default=False)
+    parser.add_argument('--pltName', help='Set custom Name for the plot.', type=str, default='')
 
     texLabelMsg = ('Labels for the axis if exprAxis is used. Enter raw TeX strings for each axis that requires a '
                    'custom label. E.g. if we have 2 custom axis we enter "$\alpha$ | $\beta$" for their formatting.')
-    parser.add_argument('--TeXlabels', help=texLabelMsg, type=str)
+    parser.add_argument('--TeXlabels', help=texLabelMsg, type=str, default='')
 
     parser.add_argument("-g", '--pushToGit', help='Push by default to the Results_Auto repo the plot when done.',
                         action="store_true")
@@ -94,8 +117,39 @@ if __name__ == '__main__':
         else:
             plotDict[axisLabel] = scanCard[axisLabel]
 
-    # ################## Limiting axis ranges ################################
+    teXAxisList = []
+    if scanCard['exprAxis'] is True:
+        # xHandles = []
+        # yHandles = []
+        # colorHandles = []
+        if scanCard['TeXlabels'] != '':
+            for teXAxis in scanCard['TeXlabels'].split('|'):
+                teXAxisList.append(teXAxis)
+        else:
+            print("Need TeXlabels!")
+            exit()
 
+        for axisType in ['xAxis', 'yAxis', 'colorAxis']:
+
+            if (scanCard[axisType] not in newModel.classDict.keys()) and (scanCard[axisType] != ''):
+
+                paramList = scanCard[axisType].split('|')[0]
+                for char in ['[', ']', ' ']:
+                    paramList = paramList.replace(char, '')
+
+                paramList = paramList.split(',')
+                paramExpres = scanCard[axisType].split('|')[1]
+                plotDict[axisType] = [paramList, paramExpres]
+
+                # axisHandles.append([paramList, paramExpres])
+
+            else:
+                pass
+                # axisHandles.append([wkFSmodel.classification[modelAttributes[axisType]], modelAttributes[axisType]])
+
+    # ################## Limiting axis ranges ################################
+    # pp(plotDict)
+    # exit()
     xAxisLimits = []
     yAxisLimits = []
 
@@ -122,8 +176,17 @@ if __name__ == '__main__':
         resDir = 'Dicts/'
     psDict = newModel.loadResults(targetDir=resDir)
 
+    if scanCard['filterByAttrs'] is not '':
+
+        cutDict = makeCutDictFromStr(scanCard['filterByAttrs'])
+        psDict = newModel.filterDictByCutDict(psDict, cutDict)
+
     modelPlotter = dictPlotting(newModel)
-    modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'],
-                           useChi2AsTest={'Enable': True, 'Chi2UpperBound': 20.52, 'TestStatistic': 'ChiSquared'})
+    # print(len(psDict))
+    # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
+
+    modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'], colorMap=scanCard['colorMap'],
+                           useChi2AsTest={'Enable': True, 'Chi2UpperBound': 20.52, 'TestStatistic': 'ChiSquared'},
+                           TeXAxis=teXAxisList, pltName=scanCard['pltName'])
     # modelPlotter.plotModel(psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom',
     # TeXAxis = [r'$\Delta\Delta\Delta$'])
