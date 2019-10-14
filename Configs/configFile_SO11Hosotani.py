@@ -236,6 +236,21 @@ attrDict = {
             # }
             #
             # ,
+            # 'CrossSect': {
+            #     'LaTeX': r'''$\sigma(hh) (fb)$''',
+            #     'Constraint': {
+            #         'Type': 'None'
+            #     }
+            #
+            # },
+            # 'Error': {
+            #     'LaTeX': r'''$\Delta_{HH}$''',
+            #     'Constraint': {
+            #         'Type': 'None'
+            #     }
+            #
+            # }
+            # ,
             # 'TrilinRescSM':{
             #     'LaTeX': r'''$1 - \tau_H / \tau_H^{SM} $''',
             #     'Constraint': {
@@ -250,21 +265,7 @@ attrDict = {
             #     }
             #
             # }
-            ,
-            'CrossSect': {
-                'LaTeX': r'''$\sigma(hh) (fb)$''',
-                'Constraint': {
-                    'Type': 'None'
-                }
 
-            },
-            'Error': {
-                'LaTeX': r'''$\Delta_{HH}$''',
-                'Constraint': {
-                    'Type': 'None'
-                }
-
-            }
             # ,
             # 'CrossSectRescSM':{
             #     'LaTeX': r'''$\sigma(hh) / \sigma^{SM}(hh) $''',

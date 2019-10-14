@@ -161,6 +161,7 @@ if __name__ == '__main__':
         # pp(psDict)
         # newModel.reRunMultiThread(psDict, numbOfCores=1)
         # newModel.reRunMultiThread(psDict, numbOfCores = algCard['nbOfCores'])
+        # print(len(psDict))
         # exit()
 
         newModel.runGenerationMultithread(psDict, numbOfCores=algCard['nbOfCores'], numberOfPoints=algCard['nbOfPoints'],

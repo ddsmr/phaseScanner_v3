@@ -507,13 +507,13 @@ class phaseScannerModel:
 
                     # ### Check if the point in question hass all the attributes specified by the model
                     if attribute not in phaseSpaceDict[point].keys():
-                        # print(attribute, ' not present in', point)
+                        print(attribute, ' not present in', point)
                         pointsToRemove.append(point)
 
                     # ### If it has all the attributes then check if they are non empty
                     elif (phaseSpaceDict[point][attribute] is None) and (attribute not in self.noneAttr):
                         # attribute!='ChiSquared'
-                        # print(attribute)
+                        print(attribute)
                         pointsToRemove.append(point)
 
         # exit()
