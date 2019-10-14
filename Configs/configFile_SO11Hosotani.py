@@ -219,21 +219,21 @@ attrDict = {
                 }
 
             }
-            ,
-            'TopYukawa': {
-                'LaTeX': r'''$y_t$''',
-                'Constraint': {
-                    'Type': 'None'
-                }
-
-            },
-            'HiggsTrilin': {
-                'LaTeX': r'''$\tau_H$''',
-                'Constraint': {
-                    'Type': 'None'
-                }
-
-            }
+            # ,
+            # 'TopYukawa': {
+            #     'LaTeX': r'''$y_t$''',
+            #     'Constraint': {
+            #         'Type': 'None'
+            #     }
+            #
+            # },
+            # 'HiggsTrilin': {
+            #     'LaTeX': r'''$\tau_H$''',
+            #     'Constraint': {
+            #         'Type': 'None'
+            #     }
+            #
+            # }
             #
             # ,
             # 'TrilinRescSM':{
