@@ -348,19 +348,19 @@ calcDict = {
 defaultPlot = {'xAxis': 'k', 'yAxis': 'zL', 'colorAxis': 'ThetaHiggs'}
 
 dictMinMax = {
-    # 'Mu1':      {'Min': 0.0, 'Max': 50.0},
-    # 'Mu2Tilde': {'Min': 0.0, 'Max': 50.0},
-    #
-    # 'Mu11':     {'Min': 0.0, 'Max': 50.0},
-    # 'Mu11Prime': {'Min': 0.0, 'Max': 50.0},
-    #
-    # 'c0':        {'Min': 0.0, 'Max': 1.0},
-    # 'c0Prime':   {'Min': 0.0, 'Max': 1.0},
-    # 'c1':        {'Min': 0.0, 'Max': 2.0},
-    # 'c2':       {'Min': -3.0, 'Max': 3.0},
-    #
-    # 'k':        {'Min': 1000.0, 'Max': 10000000.0},
-    # 'zL':        {'Min': 10.0, 'Max': 2500.0}
+    'Mu1':      {'Min': 0.0, 'Max': 50.0},
+    'Mu2Tilde': {'Min': 0.0, 'Max': 50.0},
+
+    'Mu11':     {'Min': 0.0, 'Max': 50.0},
+    'Mu11Prime': {'Min': 0.0, 'Max': 50.0},
+
+    'c0':        {'Min': 0.0, 'Max': 1.0},
+    'c0Prime':   {'Min': 0.0, 'Max': 1.0},
+    'c1':        {'Min': 0.0, 'Max': 2.0},
+    'c2':       {'Min': -3.0, 'Max': 3.0},
+
+    'k':        {'Min': 1000.0, 'Max': 10000000.0},
+    'zL':        {'Min': 10.0, 'Max': 2500.0}
 
     # ##### Uncomment below to obtain the original solution Nb 1 #####
     # 'Mu1':      {'Min': 11.7911, 'Max': 11.9747},
@@ -379,20 +379,20 @@ dictMinMax = {
     # 'zL':        {'Min': 34.632, 'Max': 34.6673}
 
     # ##### Uncomment below to obtain the original solution Nb 2 #####
-    'Mu1':      {'Min': 16.0, 'Max': 19.0},
-    'Mu2Tilde':  {'Min': 0.1, 'Max': 2.1},
-
-    'Mu11':      {'Min': 0.0, 'Max': 1.0},
-    'Mu11Prime': {'Min': 0.0, 'Max': 1.0},
-
-
-    'c0':       {'Min': 0.2, 'Max': 0.4},
-    'c0Prime':  {'Min': 0.4, 'Max': 0.7},
-    'c1':       {'Min': 0.0, 'Max': 0.2},
-    'c2':       {'Min': -0.9, 'Max': -0.5},
-
-    'k':        {'Min': 200000.0, 'Max': 300000.0},
-    'zL':       {'Min': 32.0, 'Max': 37.0}
+    # 'Mu1':      {'Min': 16.0, 'Max': 19.0},
+    # 'Mu2Tilde':  {'Min': 0.1, 'Max': 2.1},
+    #
+    # 'Mu11':      {'Min': 0.0, 'Max': 1.0},
+    # 'Mu11Prime': {'Min': 0.0, 'Max': 1.0},
+    #
+    #
+    # 'c0':       {'Min': 0.2, 'Max': 0.4},
+    # 'c0Prime':  {'Min': 0.4, 'Max': 0.7},
+    # 'c1':       {'Min': 0.0, 'Max': 0.2},
+    # 'c2':       {'Min': -0.9, 'Max': -0.5},
+    #
+    # 'k':        {'Min': 200000.0, 'Max': 300000.0},
+    # 'zL':       {'Min': 32.0, 'Max': 37.0}
     # ########## Restricted parameter range 1 #############
     # 'Mu1':      {'Min': 11.0, 'Max': 13.0},
     # 'Mu2Tilde':  {'Min': 0.0, 'Max': 1.5},
