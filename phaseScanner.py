@@ -1522,4 +1522,4 @@ if __name__ == '__main__':
     newModel = phaseScannerModel(modelName, auxCase, micrOmegasName=micrOmegasName, writeToLogFile=True)
     psDict = newModel.loadResults()
     newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
-    
+    print(len(psDict))

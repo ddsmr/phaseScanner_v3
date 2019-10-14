@@ -54,11 +54,15 @@ def makeCutDictFromStr(strToConvert):
 if __name__ == '__main__':
     # #################################      Arguments      ###########################################
     parser = argparse.ArgumentParser(description='Process the inputs for the plotting function')
+    exprAxisMsg = Fore.RED + ' Optional Behaviour || ' + Style.RESET_ALL \
+                           + ('If the axis are expressions, the axis should be '
+                              'entered as a string consisting of [param1, param2, ...] | expr(param1, param2, ...),'
+                              'with the | delimitator.  E.g. -x="[BMu, Mu, aHat]| BMu / Mu  + 2* aHat" ')
     parser.add_argument('modelName', help=Fore.GREEN + 'Name of the model to be initialiased.' + Style.RESET_ALL)
     parser.add_argument('modelCase', help=Fore.GREEN + 'Case to be handled.' + Style.RESET_ALL)
     # parser.add_argument('--CustomRun', default = None, help = 'Use flag to run custom user defined script.')
 
-    parser.add_argument("-x", '--xAxis', help='Attribute to plot on the x Axis. Default specified in config',
+    parser.add_argument("-x", '--xAxis', help='Attribute to plot on the x Axis. Default specified in config' + exprAxisMsg,
                         type=str, default='')
     parser.add_argument("-y", '--yAxis', help='Attribute to plot on the y Axis. Default specified in config',
                         type=str, default='')
@@ -73,12 +77,9 @@ if __name__ == '__main__':
     parser.add_argument('--xAxisLim', help=axisMsg, type=str)
     parser.add_argument('--yAxisLim', help=axisMsg, type=str)
 
-    exprAxisMsg = Fore.RED + 'DEFAULT: False ' + Style.RESET_ALL \
-                           + ('Handle to specify if the axis are expressions. If set to TRUE , the axis should be '
-                              'entered as a string consisting of [param1, param2, ...] | expr(param1, param2, ...),'
-                              'with the | delimitator.  E.g. -x="[BMu, Mu, aHat]| BMu / Mu  + 2* aHat" ')
-    parser.add_argument('--exprAxis', help=exprAxisMsg, type=bool, default=False)
-    parser.add_argument('--pltName', help='Set custom Name for the plot.', type=str, default='')
+
+    # parser.add_argument('--exprAxis', help=exprAxisMsg, type=bool, default=False)
+    parser.add_argument('--pltName', help='Set custom Name for the plot.' + Fore.RED + 'Required' + Style.RESET_ALL + ' for custom expression plots', type=str, default='')
 
     texLabelMsg = ('Labels for the axis if exprAxis is used. Enter raw TeX strings for each axis that requires a '
                    'custom label. E.g. if we have 2 custom axis we enter "$\alpha$ | $\beta$" for their formatting.')
@@ -111,19 +112,24 @@ if __name__ == '__main__':
         raise
 
     plotDict = {}
+    exprAxis = False
     for axisLabel in ['xAxis', 'yAxis', 'colorAxis']:
         if scanCard[axisLabel] == '':
             plotDict[axisLabel] = newModel.defaultPlot[axisLabel]
         else:
+            if scanCard[axisLabel] not in newModel.allDicts.keys():
+                exprAxis = True
             plotDict[axisLabel] = scanCard[axisLabel]
 
     teXAxisList = []
-    if scanCard['exprAxis'] is True:
+    if exprAxis is True:
         # xHandles = []
         # yHandles = []
         # colorHandles = []
         if scanCard['TeXlabels'] != '':
             for teXAxis in scanCard['TeXlabels'].split('|'):
+                # print(teXAxis)
+                # exit()
                 teXAxisList.append(teXAxis)
         else:
             print("Need TeXlabels!")
@@ -182,6 +188,8 @@ if __name__ == '__main__':
         psDict = newModel.filterDictByCutDict(psDict, cutDict)
 
     modelPlotter = dictPlotting(newModel)
+    # print(newModel.allDicts.keys())
+    # exit()
     # print(len(psDict))
     # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
 

@@ -282,6 +282,8 @@ class dictPlotting():
         '''
         if type(xAxisHandles) == list or type(yAxisHandles) == list or type(colorAxisHandles) == list:
             exprAxis = True
+        else:
+            exprAxis = False
 
         if (bool(plotSeparateConstr) is False):
             plotCount = 1
@@ -290,7 +292,8 @@ class dictPlotting():
 
         plotListPass = []
         plotListExclude = []
-        # ######### Font size / Fig size
+        # ######### Font size / Fig sizefrom matplotlib import rc
+        plt.rc('font', **{'family': 'serif', 'serif': ['DejaVu Sans']})
         plt.rc('font', size=self.psObject.plotFormatting['fontSize'])
         plt.rc('text', usetex=True)
 
@@ -312,7 +315,7 @@ class dictPlotting():
         # pltStr = (str(xAxisHandles)+ '-' + str(yAxisHandles) + '-' + str(colorAxisHandles))
         p = re.compile(r"['*[,\] ]+")
         if exprAxis is not True:
-            pltStr = p.sub('', (str(xAxisHandle) + '-' + str(yAxisHandle) + '-' + str(colorAxisHandle)))
+            pltStr = p.sub('', (str(xAxisHandles) + '-' + str(yAxisHandles) + '-' + str(colorAxisHandles)))
         else:
             pltStr = 'CustomPlot-' + pltName
         # pltStr = p.sub('', (str(xAxisHandles) + '-' + str(yAxisHandles) + '-' + str(colorAxisHandles)))
@@ -395,7 +398,9 @@ class dictPlotting():
                 latexLabel = self.psObject.allDicts[axis]['LaTeX']
                 axisLabels.append(latexLabel)
 
-        color_bar = fig.colorbar(scattPlot, label=axisLabels[2])  # , ticks=[climx, 0, climy])
+        color_bar = fig.colorbar(scattPlot, format='%.1f')  # , label=axisLabels[2], ticks=[climx, 0, climy])
+        color_bar.set_label(axisLabels[2], labelpad=20)
+
         if type(colorAxisHandles) != list:
             toCheckDict = self.psObject.allDicts[colorAxisHandles]
 
@@ -423,14 +428,14 @@ class dictPlotting():
         color_bar.set_alpha(1)
         color_bar.draw_all()
 
-        if restrictAxis == True:
+        if restrictAxis is True:
             if (yAxisLim != []):
                 plt.ylim(yAxisLim)
             if(xAxisLim != []):
                 plt.xlim(xAxisLim)
 
         # plt.xticks([]), plt.yticks([])
-        plt.xlabel(axisLabels[0], fontsize=self.psObject.plotFormatting['fontSize'])
+        plt.xlabel(axisLabels[0], fontsize=self.psObject.plotFormatting['fontSize'],  labelpad=20)
         plt.ylabel(axisLabels[1], fontsize=self.psObject.plotFormatting['fontSize'])
 
         spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
@@ -441,13 +446,26 @@ class dictPlotting():
             formatStr += format
             formatStr += ' '
 
+        # sensitivity region here
+        # xmin, xmax, ymin, ymax = plt.axis()
+        # ax1.margins(x=0)
+        # cmapClrs = plt.get_cmap(colorMap)
+        # fillColor = cmapClrs(0.3)
+        #
+        # ax1.fill_between(np.linspace(xmin, xmax), 39.128 / 16.319, 14.000479 / 16.319, alpha=0.3, zorder=3,
+        #                  facecolor=fillColor,
+        #                  edgecolor=fillColor, hatch=r'/', lw=0.1
+        #                  )
+        # fig.tight_layout()
+        fig.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
+        # fig.tight_layout(pad=1.0, w_pad=0.5, h_pad=1.0)
+
         spinner = Halo(text='Exporting plots in format : ' + Fore.RED + formatStr + Style.RESET_ALL, spinner='dots')
         spinner.start()
+
         self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, pltStr, exportFormatList=exportFormatList)
         spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
                                  text='Finished exporting.')
-
-        fig.tight_layout()
         plt.show()
 
         return returnDict, passAxisDict, failAxisDict

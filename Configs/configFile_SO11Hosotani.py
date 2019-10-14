@@ -250,21 +250,21 @@ attrDict = {
             #     }
             #
             # }
-            # ,
-            # 'CrossSect':{
-            #     'LaTeX': r'''$\sigma(hh) (fb)$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # },
-            # 'Error':{
-            #     'LaTeX': r'''$\Delta_{HH}$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # }
+            ,
+            'CrossSect': {
+                'LaTeX': r'''$\sigma(hh) (fb)$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            },
+            'Error': {
+                'LaTeX': r'''$\Delta_{HH}$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            }
             # ,
             # 'CrossSectRescSM':{
             #     'LaTeX': r'''$\sigma(hh) / \sigma^{SM}(hh) $''',
