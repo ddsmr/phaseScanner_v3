@@ -300,7 +300,7 @@ calcDict = {
                 'LaTeX': r'$\sin^2 \theta_W$',
                 'Marker': 'O',
                 'Calc': {'Type': 'ExternalCalc',
-                          'Routine': 'weinbergAnalysis',
+                          'Routine': 'weinbergAnalysis_v2',  # weinbergAnalysis
                           'Method': 'getWeinbergAngle',
                           'ParamList': ["k", "zL", "c0", "c1", "c2", "c0Prime",
                                         "Mu1", "Mu2Tilde", "Mu11", "Mu11Prime",

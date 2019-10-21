@@ -43,7 +43,7 @@ def getWeinbergAngle(dataDict, threadNumber='0'):
         weinbergAngle = session.evaluate(weinbergExpr)
     finally:
         session.terminate()
-        print('\nWeinberg Angle value: ', weinbergAngle)
+        print('\nWeinberg Angle value: ', weinbergAngle, '  for Thread Nb-', threadNumber)
 
     # Should probably rm the log files
 

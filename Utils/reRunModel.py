@@ -83,5 +83,5 @@ if __name__ == '__main__':
 
     psDict = newModel.loadResults(targetDir=resDir, specFile=specFile, ignoreIntegrCheck=True)
 
-    newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=debug,
+    newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=scanCard['debug'],
                               getCalcOnly=scanCard['getCalcOnly'])
