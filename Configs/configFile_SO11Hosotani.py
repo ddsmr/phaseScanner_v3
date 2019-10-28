@@ -219,37 +219,37 @@ attrDict = {
                 }
 
             }
-            # ,
-            # 'TopYukawa': {
-            #     'LaTeX': r'''$y_t$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # },
-            # 'HiggsTrilin': {
-            #     'LaTeX': r'''$\tau_H$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # }
-            #
-            # ,
-            # 'CrossSect': {
-            #     'LaTeX': r'''$\sigma(hh) (fb)$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # },
-            # 'Error': {
-            #     'LaTeX': r'''$\Delta_{HH}$''',
-            #     'Constraint': {
-            #         'Type': 'None'
-            #     }
-            #
-            # }
+            ,
+            'TopYukawa': {
+                'LaTeX': r'''$y_t$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            },
+            'HiggsTrilin': {
+                'LaTeX': r'''$\tau_H$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            }
+
+            ,
+            'CrossSect': {
+                'LaTeX': r'''$\sigma(hh) (fb)$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            },
+            'Error': {
+                'LaTeX': r'''$\Delta_{HH}$''',
+                'Constraint': {
+                    'Type': 'None'
+                }
+
+            }
             # ,
             # 'TrilinRescSM':{
             #     'LaTeX': r'''$1 - \tau_H / \tau_H^{SM} $''',
@@ -453,7 +453,7 @@ replacementRules = {
 
 
 plotFormatting = {
-     'failPlot': {'alpha': 0.1,  'lw': 0.0,   's': 100},
+     'failPlot': {'alpha': 0.3,  'lw': 0.0,   's': 100},
      'passPlot': {'alpha': 1,    'lw': 0.6, 's': 240},
      'fontSize': 40
 

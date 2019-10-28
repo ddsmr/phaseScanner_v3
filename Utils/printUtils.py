@@ -3,8 +3,6 @@ from pprint import pprint as pp
 from colorama import Fore, Back, Style
 from time import gmtime, strftime
 
-
-
 #### Printing utilities ####
 nbrTerminalRows, nbrTerminalCols = os.popen('stty size', 'r').read().split()
 nbrTerminalRows = int(nbrTerminalRows)

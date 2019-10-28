@@ -3,7 +3,7 @@ import os
 import subprocess
 import json
 
-from printUtils import *
+# from printUtils import *
 
 
 def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
@@ -18,7 +18,7 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
             - weinbergAngle :   Type(Float) value of the resulting angle
 
     '''
-    targetDir = os.path.expanduser('~') + '/Documents/Wolfram Mathematica/'
+    targetDir = os.path.expanduser('~') + '/Users/dds/Documents/Hosotani_SO11/Mathematica/WeinbergAnalysis/'
     # runCMD2 = 'ls ' + targetDir
     # subprocess.call(runCMD2, shell=True, cwd=targetDir, stdout=FNULL, stderr=subprocess.STDOUT)
     with open(targetDir + 'dataInThreadNb-' + threadNumber + '.json', 'w') as jsonParamFile:
@@ -38,6 +38,6 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
         sinWeinbergAngle = None
 
     if debug:
-        print(delimitator, sinWeinbergAngle, delimitator)
+        print(sinWeinbergAngle)
 
     return sinWeinbergAngle

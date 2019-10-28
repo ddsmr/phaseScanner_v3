@@ -398,7 +398,7 @@ class dictPlotting():
                 latexLabel = self.psObject.allDicts[axis]['LaTeX']
                 axisLabels.append(latexLabel)
 
-        color_bar = fig.colorbar(scattPlot, format='%.1f')  # , label=axisLabels[2], ticks=[climx, 0, climy])
+        color_bar = fig.colorbar(scattPlot, format='%.2f')  # , label=axisLabels[2], ticks=[climx, 0, climy])
         color_bar.set_label(axisLabels[2], labelpad=20)
 
         if type(colorAxisHandles) != list:
