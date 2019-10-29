@@ -1,5 +1,5 @@
 import sys
-
+import json
 import argparse
 import os
 # from .. import phaseScanner
@@ -46,6 +46,7 @@ if __name__ == '__main__':
     # parser.add_argument("-FULL", '--fullBonanza',  help='Set to True for the full bonanza: Explore ≈ 5000 pts,
     # Focus, sendCompletionEmail, and pushToGit',action="store_true")
     parser.add_argument("-gC", '--getCalcOnly', help='Enable to only rerun for the calc Attributes.', action="store_true")
+    parser.add_argument('--contRun', help='Enable to continue the last available rerun', action="store_true")
 
     parser.add_argument("-d", '--debug', help=Fore.RED + 'Enable to debug.' + Style.RESET_ALL, action="store_true")
     #####################################################################################################
@@ -81,7 +82,19 @@ if __name__ == '__main__':
     else:
         resDir = 'Dicts/'
 
+    if scanCard['contRun'] is True:
+        contDir = getLatestFocusDir(newModel, keyWord='Rerun')
+        with open(newModel.resultDir + contDir + 'Remaining_Done_PointIDs.json', 'r') as jsonIn:
+            rerunStatus = json.load(jsonIn)
+    else:
+        rerunStatus = None
+
     psDict = newModel.loadResults(targetDir=resDir, specFile=specFile, ignoreIntegrCheck=True)
 
+    # Filter the phase space dictionary if they've been already run
+    if scanCard['contRun'] is True:
+        for pointID in rerunStatus['Done points']:
+            del psDict[pointID]
+
     newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=scanCard['debug'],
-                              getCalcOnly=scanCard['getCalcOnly'])
+                              getCalcOnly=scanCard['getCalcOnly'], rerunStatus=rerunStatus)

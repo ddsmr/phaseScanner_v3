@@ -24,7 +24,7 @@ from Utils.multiThreadAlg import *
 # from Utils.dictplotting import *
 
 
-def getLatestFocusDir(psObject):
+def getLatestFocusDir(psObject, keyWord='Focus'):
     '''
         Given a psObject the function will get the latest focus directory from the Results directory.
     '''
@@ -34,8 +34,8 @@ def getLatestFocusDir(psObject):
 
         listOfDirs = []
         for dirEntry in dirEntries:
-            if 'Focus' in dirEntry and ('.' not in dirEntry):
-                listOfDirs.append(dirEntry.replace('Focus_', ''))
+            if keyWord in dirEntry and ('.' not in dirEntry):
+                listOfDirs.append(dirEntry.replace(keyWord + '_', ''))
 
         focusDate_DateTime = checkListForLatestDate(listOfDirs)
         focusDateTime_str = convertDateTimeToStr(focusDate_DateTime)
@@ -46,7 +46,7 @@ def getLatestFocusDir(psObject):
     # print(focusDate)
     # exit()
 
-    focusDir = 'Dicts/Focus-' + focusDateTime_str + '/'
+    focusDir = 'Dicts/' + keyWord + '-' + focusDateTime_str + '/'
     return focusDir
 
 
@@ -534,16 +534,17 @@ class phaseScannerModel:
             return {k: phaseSpaceDict[k] for k in set(phaseSpaceDict).intersection(listOfPointIDs)}
 
     def engineProcedure(self, generatingEngine, newParamsDict, threadNumber='0', debug=False,
-                        ignoreInternal=False, ignoreExternal=False, calcOnly=False):
+                        ignoreInternal=False, ignoreExternal=False, calcOnly=False, newID=True):
         '''
                 Auxiliary procedure to compactify the generating engine and getting attributes.
             Also has the requirements for a engine along with the cleaning procedure
         '''
-        # generatingEngine = self.engineClass()
-        # generatingEngine = self.generatingEngine
-        # Associate a Point ID
-        currTime = strftime("-%d%m%Y%H%M%S", gmtime())
-        pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + currTime
+        # Associate a Point ID if it the user has not passed one already
+        if newID is True and type(newID) == boole:
+            currTime = strftime("-%d%m%Y%H%M%S", gmtime())
+            pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + currTime
+        elif type(newID) == str:
+            pointKey = newID
 
         if calcOnly is not True:
             genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
@@ -1348,13 +1349,15 @@ class phaseScannerModel:
 
         ################################################################
         while bool(listOfPoints) is not False:
-            paramsDict = listOfPoints[-1]
+            pointID = list(listOfPoints[-1].keys())[0]
+            paramsDict = listOfPoints[-1][pointID]
 
             try:
                 massTruth, phaseSpaceDict = self.engineProcedure(generatingEngine,
                                                                  paramsDict, threadNumber=threadNumber, debug=debug,
                                                                  ignoreExternal=ignoreExternal,
-                                                                 ignoreInternal=ignoreInternal, calcOnly=getCalcOnly)
+                                                                 ignoreInternal=ignoreInternal, calcOnly=getCalcOnly,
+                                                                 newID=pointID)
 
                 # generatingEngine.runPoint( paramsDict, threadNumber = threadNumber , debug = debug)
                 # phaseSpaceDict = generatingEngine._getRequiredAttributes(paramsDict, threadNumber)
@@ -1378,7 +1381,7 @@ class phaseScannerModel:
         return None
 
     def reRunMultiThread(self, phaseSpaceDict, numbOfCores=8, debug=False,  ignoreInternal=True,
-                         ignoreExternal=True, getCalcOnly=False):
+                         ignoreExternal=True, getCalcOnly=False, rerunStatus=None):
         '''
             Master multiprocessing function to be used to rerun points in a phaseSpaceDict. Writes the results to json,
 
@@ -1394,6 +1397,7 @@ class phaseScannerModel:
                 - None
 
         '''
+
         listOfLists = []
         for core in range(numbOfCores):
             listOfLists.append([])
@@ -1405,9 +1409,9 @@ class phaseScannerModel:
                     phaseSpacePoint = phaseSpaceDict[point]['Params']
                 except Exception as e:
                     paramsDict = {modelAttr: phaseSpaceDict[point][modelAttr] for modelAttr in self.params}
-                    phaseSpacePoint = paramsDict
+                    phaseSpacePoint = {point: paramsDict}
             else:
-                phaseSpacePoint = phaseSpaceDict[point]
+                phaseSpacePoint = {point: phaseSpaceDict[point]}
                 ignoreExternal = False
                 ignoreInternal = False
 
@@ -1426,7 +1430,11 @@ class phaseScannerModel:
         for proc in processes:
             proc.start()
 
-        scanID = self.modelName + '_' + self.case.replace(" ", "") + '_' + strftime("%d-%m-%-Y_%H:%M:%S", gmtime())
+        currTime = strftime("%m-%d-%-Y_%H:%M:%S", gmtime())
+        scanID = self.modelName + '_' + self.case.replace(" ", "") + '_' + currTime
+        dirToMake = self.resultDir + 'Dicts/Rerun-' + currTime.replace(':', '_')
+        subprocess.call('mkdir ' + dirToMake, shell=True, stdout=FNULL, stderr=subprocess.STDOUT)
+
         printHeader('ReRun', 'Started', numbOfCores)
         writeToLogFile_Action(self, 'Start', 'ReRun')
         pbar = tqdm(total=pointCounter,
@@ -1435,22 +1443,39 @@ class phaseScannerModel:
         resultDict = {}
         pointCounterCopy = pointCounter
 
+        pointID_remain = {pointID: '' for pointID in phaseSpaceDict.keys()}
+        if rerunStatus is None:
+            pointID_done = []
+        elif type(rerunStatus) == dict:
+            pointID_done = rerunStatus['Done points']
+
         try:
             while pointCounter > 0:
                 result = localQue.get()
 
                 if result is not None:
+                    # Update the result dictionary, and the done/remaining dicts
                     resultDict.update(result)
+                    newPointID = list(result.keys())[0]
+                    pointID_done.append(newPointID)
+                    del pointID_remain[newPointID]
+
+                # print('\nDone ', len(pointID_done), ' remaining ', len(pointID_remain.keys()))
+                # print(pointID_done)
                 pbar.update(1)
 
                 if pointCounter % 1 == 0:
-                    with open(self.resultDir + 'Dicts/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
+                    with open(dirToMake + '/ReRun_ScanResults.' + scanID + '.json', 'w') as outfile:
                         json.dump(resultDict, outfile)
-
+                    with open(dirToMake + '/Remaining_Done_PointIDs.json', 'w') as jsonOut:
+                        json.dump({'Remaining Points': list(pointID_remain.keys()), 'Done points': pointID_done},
+                                  jsonOut)
                 pointCounter += (-1)
                 ##################################################
         except KeyboardInterrupt:
             print('\nProcess killed by user')
+        # finally:
+        #     print('aaaaaaaaaaaaaa')
 
         for proc in processes:
             proc.terminate()
