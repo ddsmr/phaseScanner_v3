@@ -218,8 +218,7 @@ attrDict = {
                     'Type': 'None'
                 }
 
-            }
-            ,
+            },
             'TopYukawa': {
                 'LaTeX': r'''$y_t$''',
                 'Constraint': {
@@ -233,9 +232,7 @@ attrDict = {
                     'Type': 'None'
                 }
 
-            }
-
-            ,
+            },
             'CrossSect': {
                 'LaTeX': r'''$\sigma(hh) (fb)$''',
                 'Constraint': {
@@ -281,22 +278,22 @@ attrDict = {
 # ######## To define a test measure e.g. χ^2 or Log L the attribute must be of
 # Type:'ChiSquared'
 
-calcDict = {
-            'ChiSquared': {
+calcDict = OrderedDict([
+            ('ChiSquared', {
                 'LaTeX': r'$\chi^2_G$',
                 'Calc': {'Type': 'ChiSquared'},
                 'Constraint': {
                                 'Type': 'None'
                                 }
-                },
-            'LogL': {
+                }),
+            ('LogL', {
                 'LaTeX': r'$\log L$',
                 'Calc': {'Type': 'ChiSquared'},
                 'Constraint': {
                                 'Type': 'None'
                                 }
-            },
-            'sin2ThW': {
+            }),
+            ('sin2ThW', {
                 'LaTeX': r'$\sin^2 \theta_W$',
                 'Marker': 'O',
                 'Calc': {'Type': 'ExternalCalc',
@@ -314,9 +311,25 @@ calcDict = {
                                             'ExpSigma': 0.0
                                             }
                                 }
-            }
-
-
+            })
+            # ,
+            # ('LambdaMax', {
+            #     'LaTeX': r'$\Lambda_{Max}$',
+            #     'Marker': 'O',
+            #     'Calc': {'Type': 'ExternalCalc',
+            #               'Routine': 'weinbergAnalysis_v2',  # weinbergAnalysis
+            #               'Method': 'getLambdaMax',
+            #               'ParamList': []
+            #              },
+            #     'Constraint': {
+            #                     'Type': 'None',  # <<<<< HardCutLess
+            #                     'ToCheck': {
+            #                                 'CentralVal': 0.375,
+            #                                 'TheorySigma': 1.0,
+            #                                 'ExpSigma': 0.0
+            #                                 }
+            #                     }
+            # })
             # ,
             # 'mTopTower' :{
             #     'LaTeX' : r'$\Omega_c h^2$' ,
@@ -343,7 +356,7 @@ calcDict = {
             #     }
             # }
 
-}
+])
 
 # ############## Min Max / Replacement Rules #
 defaultPlot = {'xAxis': 'k', 'yAxis': 'zL', 'colorAxis': 'ThetaHiggs'}

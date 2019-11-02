@@ -3,7 +3,10 @@ import os
 import subprocess
 import json
 
-from printUtils import *
+# from printUtils import *
+
+# ### FNULL declaration to supress cmd line output ####
+FNULL = open(os.devnull, 'w')
 
 
 def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
@@ -41,3 +44,30 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
         print(sinWeinbergAngle)
 
     return sinWeinbergAngle
+
+
+# def getLambdaMax(dataDict, threadNumber='0', debug=True):
+#     '''
+#             Starts a Wolfram WolframLanguage Session and runs the code in /Documents/Wolfram Mathematica/pyMathTest.m
+#         with the parameters defined in dataDict.
+#
+#         Arguments:
+#             - dataDict  :   Type(Dict) containing all the parameters necesary for the Weinberg analysis.
+#
+#         Returns:
+#             - weinbergAngle :   Type(Float) value of the resulting angle
+#
+#     '''
+#     targetDir = os.path.expanduser('~') + '/Documents/Hosotani_SO11/Mathematica/WeinbergAnalysis/'
+#
+#     try:
+#         with open(targetDir + '/weinbergAngleOutThreadNb-' + threadNumber + '.json', 'r') as jSonInFile:
+#             weinbergDict = json.load(jSonInFile)
+#         LambdaMax = weinbergDict['LambdaMax']
+#     except Exception as e:
+#         LambdaMax = None
+#
+#     if debug:
+#         print(LambdaMax)
+#
+#     return LambdaMax
