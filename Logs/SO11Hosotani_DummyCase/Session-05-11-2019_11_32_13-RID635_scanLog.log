@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------
+Initialised model @ 05-11-2019_11:32:13 with attributes:
+Engine ::HosotaniSO11
+Version :: 6.0
+Model Name: SO11Hosotani
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"k": {"LaTeX": "$k (GeV)$", "Constraint": {"Type": "None"}}, "zL": {"LaTeX": "$ z_L$", "Constraint": {"Type": "None"}}, "c0": {"LaTeX": "$ c_0$", "Constraint": {"Type": "None"}}, "c1": {"LaTeX": "$ c_1$", "Constraint": {"Type": "None"}}, "c2": {"LaTeX": "$ c_2$", "Constraint": {"Type": "None"}}, "c0Prime": {"LaTeX": "$ c^{\\prime}_0$", "Constraint": {"Type": "None"}}, "Mu1": {"LaTeX": "$ \\mu_{1}$", "Constraint": {"Type": "None"}}, "Mu11": {"LaTeX": "$ \\mu_{11}$", "Constraint": {"Type": "None"}}, "Mu11Prime": {"LaTeX": "$ \\mu^{\\prime}_{11} $", "Constraint": {"Type": "None"}}, "Mu2Tilde": {"LaTeX": "$ \\tilde{\\mu_2}$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"Higgs": {"LaTeX": "$m_H (GeV)$", "Marker": "o", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 125.18, "TheorySigma": 1.25, "ExpSigma": 0.16}}}, "mPsiDark": {"LaTeX": "$m_{\\psi_D} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 690}}, "mTau": {"LaTeX": "$m_{\\tau} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 1.776, "TheorySigma": 0.01776, "ExpSigma": 0.00012}}}, "mTauTow": {"LaTeX": "$m_{\\tau}^{(1)} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 560}}, "mNeutrino": {"LaTeX": "$m_{\\nu} (eV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0.1, "TheorySigma": 1.0, "ExpSigma": 0.0}}}, "mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.0418, "ExpSigma": 0.04}}}, "mBottomTow": {"LaTeX": "$m_{b}^{(1)} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 690}}, "mTop": {"LaTeX": "$m_{t} (GeV)$", "Marker": "^", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 172.44, "TheorySigma": 1.724, "ExpSigma": 0.9}}}, "ThetaHiggs": {"LaTeX": "$\\langle \\theta_H \\rangle (rads)$", "Constraint": {"Type": "None"}}, "mZ0": {"LaTeX": "$m_Z (GeV)$", "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 91.1876, "TheorySigma": 0.9118, "ExpSigma": 0.0021}}}, "mWpm": {"LaTeX": "$m_{W^\\pm} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 80.379, "TheorySigma": 0.8037, "ExpSigma": 0.012}}}, "mZprime": {"LaTeX": "$m_{Z'} (GeV)$", "Constraint": {"Type": "HardCutMore", "ToCheck": 2420}}, "Triviality": {"LaTeX": "$T$", "Constraint": {"Type": "None"}}, "TopYukawa": {"LaTeX": "$y_t$", "Constraint": {"Type": "None"}}, "HiggsTrilin": {"LaTeX": "$\\tau_H$", "Constraint": {"Type": "None"}}, "CrossSect": {"LaTeX": "$\\sigma(hh) (fb)$", "Constraint": {"Type": "None"}}, "Error": {"LaTeX": "$\\Delta_{HH}$", "Constraint": {"Type": "None"}}}
+Parameter Bounds: 
+{"Mu1": {"Min": 0.0, "Max": 50.0}, "Mu2Tilde": {"Min": 0.0, "Max": 50.0}, "Mu11": {"Min": 0.0, "Max": 50.0}, "Mu11Prime": {"Min": 0.0, "Max": 50.0}, "c0": {"Min": 0.0, "Max": 1.0}, "c0Prime": {"Min": 0.0, "Max": 1.0}, "c1": {"Min": 0.0, "Max": 2.0}, "c2": {"Min": -3.0, "Max": 3.0}, "k": {"Min": 1000.0, "Max": 10000000.0}, "zL": {"Min": 10.0, "Max": 2500.0}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "LogL": {"LaTeX": "$\\log L$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "sin2ThW": {"LaTeX": "$\\sin^2 \\theta_W$", "Marker": "O", "Calc": {"Type": "ExternalCalc", "Routine": "weinbergAnalysis_v2", "Method": "getWeinbergAngle", "ParamList": ["k", "zL", "c0", "c1", "c2", "c0Prime", "Mu1", "Mu2Tilde", "Mu11", "Mu11Prime", "ThetaHiggs"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 0.375, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+

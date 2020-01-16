@@ -1,0 +1,20 @@
+----------------------------------------------------------------------------------------------------
+Initialised model @ 16-01-2020_12:02:32 with attributes:
+Engine ::testEngine
+Version :: 6.0
+Model Name: testEngine
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"Lambda": {"LaTeX": "$\\lambda$", "Constraint": {"Type": "None"}}, "Kappa": {"LaTeX": "$\\kappa$", "Constraint": {"Type": "None"}}, "tanBeta": {"LaTeX": "$ \\tan \\beta$", "Constraint": {"Type": "HardCutMore", "ToCheck": 0}}}
+Attr: 
+{"mBottom": {"LaTeX": "$m_{b} (GeV)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 4.18, "TheorySigma": 0.005, "ExpSigma": 0.04}}}}
+Parameter Bounds: 
+{"tanBeta": {"Min": 10.0, "Max": 40.0}, "Lambda": {"Min": 0.001, "Max": 0.999}, "Kappa": {"Min": 0.001, "Max": 0.999}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "LogL": {"LaTeX": "$\\log L$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "testCalc": {"LaTeX": "$\\Delta_{int}$", "Marker": "X", "Calc": {"Type": "InternalCalc", "ToCalc": {"ParamList": ["Lambda", "Kappa", "tanBeta", "mBottom"], "Expression": "Lambda**2 + mBottom / 2 + Kappa * tanBeta"}}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 2.86e-09, "TheorySigma": 800.0, "ExpSigma": 0.0}}}, "extTest": {"LaTeX": "$\\Delta a_{\\mu}$", "Marker": "O", "Calc": {"Type": "ExternalCalc", "Routine": "testExtCalc", "Method": "testRoutine", "ParamList": ["Lambda", "Kappa", "tanBeta"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 100, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+

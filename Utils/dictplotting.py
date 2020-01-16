@@ -398,7 +398,7 @@ class dictPlotting():
                 latexLabel = self.psObject.allDicts[axis]['LaTeX']
                 axisLabels.append(latexLabel)
 
-        color_bar = fig.colorbar(scattPlot, format='%.1f')  # , label=axisLabels[2], ticks=[climx, 0, climy])
+        color_bar = fig.colorbar(scattPlot, format='%.2f')  # , label=axisLabels[2], ticks=[climx, 0, climy])
         color_bar.set_label(axisLabels[2], labelpad=20)
 
         if type(colorAxisHandles) != list:
@@ -447,15 +447,49 @@ class dictPlotting():
             formatStr += ' '
 
         # sensitivity region here
+        # 100 TeV band: [0.958, 1.044]
+        # CMS sensitivity band: [39.128 / 16.319, 14.000479 / 16.319]
         # xmin, xmax, ymin, ymax = plt.axis()
         # ax1.margins(x=0)
         # cmapClrs = plt.get_cmap(colorMap)
         # fillColor = cmapClrs(0.3)
-        #
+        # ax1.fill_between(np.linspace(xmin, xmax), 1.044, 0.958, alpha=0.3, zorder=3,
         # ax1.fill_between(np.linspace(xmin, xmax), 39.128 / 16.319, 14.000479 / 16.319, alpha=0.3, zorder=3,
         #                  facecolor=fillColor,
         #                  edgecolor=fillColor, hatch=r'/', lw=0.1
         #                  )
+        # # inset axes....
+        # from mpl_toolkits.axes_grid1.inset_locator import zoomed_inset_axes
+        # axins = zoomed_inset_axes(ax1, 2.5, loc=1)  # zoom-factor: 2.5, location: upper-left
+        # axins.scatter(passAxisDict['xAxis'], passAxisDict['yAxis'], cmap=plt.get_cmap(colorMap),
+        #                              marker=separateConstrMarkers[plotNumber], c=passAxisDict['colorAxis'],
+        #                              alpha=self.psObject.plotFormatting['passPlot']['alpha'],
+        #                              lw=self.psObject.plotFormatting['passPlot']['lw'],
+        #                              s=self.psObject.plotFormatting['passPlot']['s'],
+        #                              zorder=2,  vmin=climx, vmax=climy, edgecolor='black')
+        # axins.scatter(failAxisDict['xAxis'], failAxisDict['yAxis'], c=failAxisDict['colorAxis'],
+        #                             cmap=plt.get_cmap(colorMap), marker=defaultMarker,
+        #                             alpha=self.psObject.plotFormatting['failPlot']['alpha'],
+        #                             lw=self.psObject.plotFormatting['failPlot']['lw'],
+        #                             s=self.psObject.plotFormatting['failPlot']['s'], zorder=1)
+        #
+        # xmin, xmax, ymin, ymax = plt.axis()
+        # axins.margins(x=0)
+        #
+        #
+        # axins.fill_between(np.linspace(xmin, xmax), 1.044, 0.958, alpha=0.3, zorder=3,
+        #                  facecolor=fillColor,
+        #                  edgecolor=fillColor, hatch=r'/', lw=0.1
+        #                  )
+        # x1, x2, y1, y2 = 0.85, 1.03, 0.90, 1.15# specify the limits
+        # axins.set_xlim(x1, x2) # apply the x-limits
+        # axins.set_ylim(y1, y2) # apply the y-limits
+        # plt.yticks(visible=False)
+        # plt.xticks(visible=False)
+        #
+        # from mpl_toolkits.axes_grid1.inset_locator import mark_inset
+        # mark_inset(ax1, axins, loc1=2, loc2=4, fc="none", ec="0.5")
+
         # fig.tight_layout()
         fig.tight_layout(pad=0.4, w_pad=0.5, h_pad=1.0)
         # fig.tight_layout(pad=1.0, w_pad=0.5, h_pad=1.0)

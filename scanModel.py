@@ -135,7 +135,7 @@ if __name__ == '__main__':
 
     if scanCard['runExplore'] is True:
         psDict = newModel.runMultiThreadExplore(numberOfPoints=scanCard['numberOfPointsExplore'],
-                                                nbOfThreads=numbOfCores, debug=debug, ignoreExternal=True,
+                                                nbOfThreads=numbOfCores, debug=debug, ignoreExternal=False,
                                                 ignoreInternal=False)
 
     if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:

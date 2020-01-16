@@ -13,7 +13,7 @@ engVers = '6.0'
 
 paramDict = {
     'k': {
-        'LaTeX': r'$k (GeV)$',
+        'LaTeX': r'$k (\mathrm{GeV})$',
         'Constraint': {
             'Type': 'None'
 
@@ -85,12 +85,12 @@ paramDict = {
 # LHC limits:
 # ----------------------------------------------------------------------
 # Top^1 doesn't really need any limits since it sits quite close to MKK5
-# For bottom^1, psiDark, see arxiv:1509.04261 (> 690 GeV)
-# For Z' see arxiv:1709.07242 (> 2420 GeV)
-# For tau^1, see arxiv:1709.07242 (> 560 GeV)
+# For bottom^1, psiDark, see arxiv:1509.04261 (> 690 \mathrm{GeV})
+# For Z' see arxiv:1709.07242 (> 2420 \mathrm{GeV})
+# For tau^1, see arxiv:1709.07242 (> 560 \mathrm{GeV})
 attrDict = {
             'Higgs':  {
-                    'LaTeX': r'$m_H (GeV)$',
+                    'LaTeX': r'$m_H (\mathrm{GeV})$',
                     'Marker': 'o',
                     'Constraint': {
                         'Type': 'CheckBounded',  # 'None'#
@@ -102,7 +102,7 @@ attrDict = {
                                   }
                           },
             'mPsiDark': {
-                'LaTeX': r'$m_{\psi_D} (GeV)$',
+                'LaTeX': r'$m_{\psi_D} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'HardCutMore',
                     'ToCheck': 690
@@ -117,7 +117,7 @@ attrDict = {
                 #               }
             },
             'mTau': {
-                'LaTeX': r'$m_{\tau} (GeV)$',
+                'LaTeX': r'$m_{\tau} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'CheckBounded',  # 'None', #
                             'ToCheck': {
@@ -128,7 +128,7 @@ attrDict = {
                 }
             },
             'mTauTow': {
-                'LaTeX': r'$m_{\tau}^{(1)} (GeV)$',
+                'LaTeX': r'$m_{\tau}^{(1)} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'HardCutMore',
                     'ToCheck': 560
@@ -138,7 +138,9 @@ attrDict = {
             'mNeutrino': {
                 'LaTeX': r'$m_{\nu} (eV)$',
                 'Constraint': {
-                    'Type': 'CheckBounded',  # 'None', #
+                    'Type': 'CheckBounded',  # 'HardCutMore',
+                    # 'ToCheck': 0.1
+
                             'ToCheck': {
                                         'CentralVal': 0.1,
                                         'TheorySigma': 1.0,
@@ -147,7 +149,7 @@ attrDict = {
                 }
             },
             'mBottom': {
-                'LaTeX': r'$m_{b} (GeV)$',
+                'LaTeX': r'$m_{b} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'CheckBounded',  # 'None', #
                             'ToCheck': {
@@ -158,14 +160,14 @@ attrDict = {
                 }
             },
             'mBottomTow': {
-                'LaTeX': r'$m_{b}^{(1)} (GeV)$',
+                'LaTeX': r'$m_{b}^{(1)} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'HardCutMore',  # 'HardCutMore',
                     'ToCheck': 690
                 }
             },
             'mTop': {
-                'LaTeX': r'$m_{t} (GeV)$',
+                'LaTeX': r'$m_{t} (\mathrm{GeV})$',
                 'Marker': '^',
                 'Constraint': {
                     'Type': 'CheckBounded',  # 'None'#
@@ -177,13 +179,13 @@ attrDict = {
                               }
             },
             'ThetaHiggs': {
-                'LaTeX': r'$\langle \theta_H \rangle (rads)$',
+                'LaTeX': r'$\langle \theta_H \rangle (\mbox{rad})$',
                 'Constraint': {
                     'Type': 'None'
                 }
             },
             'mZ0': {
-                'LaTeX': r'$m_Z (GeV)$',
+                'LaTeX': r'$m_Z (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'None',  # 'CheckBounded',#
                             'ToCheck': {
@@ -194,7 +196,7 @@ attrDict = {
                               }
             },
             'mWpm': {
-                'LaTeX': r'$m_{W^\pm} (GeV)$',
+                'LaTeX': r'$m_{W^\pm} (\mathrm{GeV})$',
                 'Constraint': {
                     'Type': 'CheckBounded',  # 'None', #
                             'ToCheck': {
@@ -206,7 +208,7 @@ attrDict = {
 
             },
             'mZprime': {
-                'LaTeX': r'''$m_{Z'} (GeV)$''',
+                'LaTeX': r'''$m_{Z'} (\mathrm{GeV})$''',
                 'Constraint': {
                     'Type': 'HardCutMore',
                     'ToCheck': 2420
@@ -293,9 +295,60 @@ calcDict = OrderedDict([
                                 'Type': 'None'
                                 }
             }),
+
+            ('LambdaMax', {
+                'LaTeX': r'$\Lambda_\mathrm{Max}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('sin2ThW-Lambda', {
+                'LaTeX': r'$\sin^2 \theta_W @ \Lambda$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {
+                                'Type': 'None'
+                                }
+            }),
+            ('sin2ThW-MKK5', {
+                'LaTeX': r'$\sin^2 \theta_W @ \mathrm{KK}_5 $',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {
+                                'Type': 'None'
+                                }
+            }),
+            ('a1Yinv-MKK5', {
+                'LaTeX': r'$(\alpha)^{-1}_{1Y}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('a2Linv-MKK5', {
+                'LaTeX': r'$(\alpha)^{-1}_{2L}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('a3Cinv-MKK5', {
+                'LaTeX': r'$(\alpha)^{-1}_{3C}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('a4Cinv-Lambda', {
+                'LaTeX': r'$(\alpha)^{-1}_{4C}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('a2Linv-Lambda', {
+                'LaTeX': r'$(\alpha)^{-1}_{2L}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
+            ('a2Rinv-Lambda', {
+                'LaTeX': r'$(\alpha)^{-1}_{3C}$',
+                'Calc': {'Type': 'Unpack'},
+                'Constraint': {'Type': 'None'}
+            }),
             ('sin2ThW', {
                 'LaTeX': r'$\sin^2 \theta_W$',
                 'Marker': 'O',
+                'Unpack': ['LambdaMax', 'sin2ThW-Lambda', 'sin2ThW-MKK5', 'a1Yinv-MKK5', 'a2Linv-MKK5', 'a3Cinv-MKK5', 'a4Cinv-Lambda', 'a2Linv-Lambda', 'a2Rinv-Lambda'],
                 'Calc': {'Type': 'ExternalCalc',
                           'Routine': 'weinbergAnalysis_v2',  # weinbergAnalysis
                           'Method': 'getWeinbergAngle',
@@ -303,14 +356,7 @@ calcDict = OrderedDict([
                                         "Mu1", "Mu2Tilde", "Mu11", "Mu11Prime",
                                         "ThetaHiggs"]
                          },
-                'Constraint': {
-                                'Type': 'None',  # <<<<< HardCutLess
-                                'ToCheck': {
-                                            'CentralVal': 0.375,
-                                            'TheorySigma': 1.0,
-                                            'ExpSigma': 0.0
-                                            }
-                                }
+                'Constraint': {'Type': 'None'}
             })
             # ,
             # ('LambdaMax', {
@@ -344,7 +390,7 @@ calcDict = OrderedDict([
             # }
 
             # ,'Zprime' :{
-            #     'LaTeX' : r'''$Z' (GeV)$''' ,
+            #     'LaTeX' : r'''$Z' (\mathrm{GeV})$''' ,
             #     'Calc' : {'Type':'ExternalCalc',
             #               'Routine':'mTopTower',
             #               'Method' : 'findFirstSol',
@@ -466,7 +512,7 @@ replacementRules = {
 
 
 plotFormatting = {
-     'failPlot': {'alpha': 0.3,  'lw': 0.0,   's': 100},
+     'failPlot': {'alpha': 0.05,  'lw': 0.0,   's': 100},
      'passPlot': {'alpha': 1,    'lw': 0.6, 's': 240},
      'fontSize': 40
 

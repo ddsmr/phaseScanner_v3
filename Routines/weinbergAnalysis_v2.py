@@ -2,7 +2,7 @@ import logging
 import os
 import subprocess
 import json
-
+from pprint import pprint as pp
 # from printUtils import *
 
 # ### FNULL declaration to supress cmd line output ####
@@ -36,14 +36,15 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
     try:
         with open(targetDir + '/weinbergAngleOutThreadNb-' + threadNumber + '.json', 'r') as jSonInFile:
             weinbergDict = json.load(jSonInFile)
-        sinWeinbergAngle = weinbergDict['sin2ThW']
+        # sinWeinbergAngle = weinbergDict['sin2ThW']
     except Exception as e:
-        sinWeinbergAngle = None
-
+        weinbergDict = {}
+        # sinWeinbergAngle = None
+    pp(weinbergDict)
     if debug:
-        print(sinWeinbergAngle)
+        print(weinbergDict)
 
-    return sinWeinbergAngle
+    return weinbergDict
 
 
 # def getLambdaMax(dataDict, threadNumber='0', debug=True):

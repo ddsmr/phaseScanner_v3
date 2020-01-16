@@ -44,6 +44,42 @@ calcDict = {
         'Constraint': {
             'Type': 'None'
         }
+    },
+
+    'res1': {
+        'LaTeX': r'$\xi_1 (TeV)$',
+        'Calc': {'Type': 'Unpack'},
+        'Constraint': {
+            'Type': 'None'
+        }
+    },
+
+    'res2': {
+        'LaTeX': r'$\xi_2 (TeV)$',
+        'Calc': {'Type': 'Unpack'},
+        'Constraint': {
+            'Type': 'None'
+        }
+    },
+
+    'extTest': {
+        'LaTeX': r'$\Delta a_{\mu}$',
+        'Marker': 'O',
+        'Unpack': ['extTest', 'res1', 'res2'],
+        'Calc': {'Type': 'ExternalCalc',
+                 'Routine': 'testExtCalc',
+                 'Method': 'testRoutine',
+                 'ParamList': ['x', 'y', 'fAckley']
+                 },
+        'Constraint': {
+            'Type': 'None',  # <<<<<
+            'ToCheck': {
+                            'CentralVal': 100,
+                            'TheorySigma': 1.0,
+                            'ExpSigma': 0.0
+                            }
+                        }
+
     }
 }
 

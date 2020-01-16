@@ -189,7 +189,21 @@ if __name__ == '__main__':
 
     modelPlotter = dictPlotting(newModel)
     # print(newModel.allDicts.keys())
-    # exit()
+    # exoticHist = {'mBottomTow': 0, 'mTauTow': 0, 'mPsiDark': 0}
+    # for pointID in psDict.keys():
+    #     candidPartMasses = {partName: psDict[pointID][partName] for partName in ['mBottomTow', 'mTauTow', 'mPsiDark']}
+    #     minExotic = [(k, candidPartMasses[k]) for k in sorted(candidPartMasses, key=candidPartMasses.get, reverse=True)]
+    #     exoticHist[minExotic[0][0]] += 1
+    # pp(exoticHist)
+    #
+    # nbofNone = 0
+    # for pointID in psDict.keys():
+    #     if psDict[pointID]['sin2ThW'] is None:
+    #         # The None cases for the Weinberg Angles correspond to non-perturbative runnings, i.e. set the value to 0
+    #         print(pointID)
+    #         nbofNone += 1
+    #         psDict[pointID]['sin2ThW'] = 0
+    # print('Nb of points with non-valid sin2ThW :', nbofNone)
     # print(len(psDict))
     # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
 

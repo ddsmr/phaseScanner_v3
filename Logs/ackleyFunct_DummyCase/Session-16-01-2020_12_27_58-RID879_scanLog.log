@@ -1,0 +1,28 @@
+----------------------------------------------------------------------------------------------------
+Initialised model @ 16-01-2020_12:27:58 with attributes:
+Engine ::ackleyFunct
+Version :: 0.1
+Model Name: ackleyFunct
+Case Name: DummyCase
+Description: 
+
+Parameters: 
+{"x": {"LaTeX": "$x$", "Constraint": {"Type": "None"}}, "y": {"LaTeX": "$y$", "Constraint": {"Type": "None"}}}
+Attr: 
+{"fAckley": {"LaTeX": "$f_{Ac}(x, y)$", "Constraint": {"Type": "CheckBounded", "ToCheck": {"CentralVal": 0, "TheorySigma": 0.5, "ExpSigma": 0.5}}}}
+Parameter Bounds: 
+{"x": {"Min": -30.0, "Max": 30.0}, "y": {"Min": -30.0, "Max": 30.0}}
+----------------------------------------------------------------------------------------------------
+
+Calculated Attributes: 
+{"ChiSquared": {"LaTeX": "$\\chi^2_G$", "Calc": {"Type": "ChiSquared"}, "Constraint": {"Type": "None"}}, "res1": {"LaTeX": "$\\xi_1 (TeV)$", "Calc": {"Type": "Unpack"}, "Constraint": {"Type": "None"}}, "res2": {"LaTeX": "$\\xi_2 (TeV)$", "Calc": {"Type": "Unpack"}, "Constraint": {"Type": "None"}}, "extTest": {"LaTeX": "$\\Delta a_{\\mu}$", "Marker": "O", "Unpack": ["res1", "res2"], "Calc": {"Type": "ExternalCalc", "Routine": "testExtCalc", "Method": "testRoutine", "ParamList": ["x", "y", "fAckley"]}, "Constraint": {"Type": "None", "ToCheck": {"CentralVal": 100, "TheorySigma": 1.0, "ExpSigma": 0.0}}}}
+----------------------------------------------------------------------------------------------------
+
+****************************************************************************************************
+Action : @ 16/01/2020 -- 12:28:00  Started Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+
+****************************************************************************************************
+Action : @ 16/01/2020 -- 12:28:00  Finished Explore Scan :: ackleyFunctDummyCase
+****************************************************************************************************
+

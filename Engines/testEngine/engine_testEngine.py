@@ -12,7 +12,7 @@ class engineClass:
 
 
     # def __init__(self, modelName, caseHandle):
-    def __init__(self, phaseSpaceObj):
+    def __init__(self):
 
         '''
         '''
@@ -27,13 +27,13 @@ class engineClass:
         # self.runCMD = configModule.runCMD
         # self.calc = configModule.calcDict
 
-        self.condDict = phaseSpaceObj.condDict
-        self.rndDict = phaseSpaceObj.rndDict
-        self.toSetDict = phaseSpaceObj.toSetDict
-        # self.targetDir = phaseSpaceObj.engineDir
-        # self.runCMD = phaseSpaceObj.runCMD
-
-        self.calc = phaseSpaceObj.calc
+        # self.condDict = phaseSpaceObj.condDict
+        # self.rndDict = phaseSpaceObj.rndDict
+        # self.toSetDict = phaseSpaceObj.toSetDict
+        # # self.targetDir = phaseSpaceObj.engineDir
+        # # self.runCMD = phaseSpaceObj.runCMD
+        #
+        # self.calc = phaseSpaceObj.calc
 
     # def _genValidPoint(self, paramsDictMinMax, threadNumber = "0", debug = False ):
     #

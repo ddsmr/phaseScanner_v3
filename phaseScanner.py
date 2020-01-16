@@ -540,7 +540,7 @@ class phaseScannerModel:
             Also has the requirements for a engine along with the cleaning procedure
         '''
         # Associate a Point ID if it the user has not passed one already
-        if newID is True and type(newID) == boole:
+        if newID is True and type(newID) == bool:
             currTime = strftime("-%d%m%Y%H%M%S", gmtime())
             pointKey = 'Point T' + threadNumber + "-" + str(int(random.uniform(1, 1000))) + currTime
         elif type(newID) == str:
@@ -874,8 +874,17 @@ class phaseScannerModel:
                             for paramName in self.calc[calcParam]['Calc']['ParamList']:
                                 extParamDict[paramName] = phaseSpaceDict[point][paramName]
 
-                            calcVal = routineModule.__dict__[methodStr](extParamDict, threadNumber=threadNumber)
-                            phaseSpaceDict[point][calcParam] = calcVal
+                            calcDict = routineModule.__dict__[methodStr](extParamDict, threadNumber=threadNumber)
+                            if 'Unpack' not in self.calc[calcParam].keys():
+                                phaseSpaceDict[point][calcParam] = calcDict
+                            else:
+                                for unpackParam in self.calc[calcParam]['Unpack']:
+                                    try:
+                                        phaseSpaceDict[point][unpackParam] = calcDict[unpackParam]
+                                    except Exception as e:
+                                        print(e)
+                                        phaseSpaceDict[point][unpackParam] = None
+
                     else:
                         pass
 
