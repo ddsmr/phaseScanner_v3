@@ -219,13 +219,16 @@ class dictPlotting():
 
                         axisParams = axisHandles[0]
                         axisExpr = axisHandles[1]
+                        print(axisExpr, axisParams)
                         for param in axisParams:
 
                             paramType = self.psObject.classDict[param]
-                            exec (param + '='  + str(phaseSpaceDictPF[point][param]) )
+                            # print (param, phaseSpaceDictPF[point][param])
+                            exec(param + '=' + str(phaseSpaceDictPF[point][param]))
+                            # exit()
 
                         # print(eval (axisExpr))
-                        axis.append(eval (axisExpr) )
+                        axis.append(eval(axisExpr))
 
                     elif axisHandles in self.psObject.allDicts.keys():
                         # print(axisParams)
