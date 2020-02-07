@@ -219,7 +219,7 @@ class dictPlotting():
 
                         axisParams = axisHandles[0]
                         axisExpr = axisHandles[1]
-                        print(axisExpr, axisParams)
+                        # print(axisExpr, axisParams, 'aaaaaaaaaaaaaa')
                         for param in axisParams:
 
                             paramType = self.psObject.classDict[param]

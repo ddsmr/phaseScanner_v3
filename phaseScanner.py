@@ -546,6 +546,7 @@ class phaseScannerModel:
         elif type(newID) == str:
             pointKey = newID
 
+        print(pointKey)
         if calcOnly is not True:
             genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
 

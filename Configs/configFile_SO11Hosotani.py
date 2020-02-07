@@ -301,46 +301,46 @@ calcDict = OrderedDict([
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('sin2ThW-Lambda', {
+            ('sin2ThWLambda', {
                 'LaTeX': r'$\sin^2 \theta_W @ \Lambda$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {
                                 'Type': 'None'
                                 }
             }),
-            ('sin2ThW-MKK5', {
+            ('sin2ThWMKK5', {
                 'LaTeX': r'$\sin^2 \theta_W @ \mathrm{KK}_5 $',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {
                                 'Type': 'None'
                                 }
             }),
-            ('a1Yinv-MKK5', {
+            ('a1YinvMKK5', {
                 'LaTeX': r'$(\alpha)^{-1}_{1Y}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('a2Linv-MKK5', {
+            ('a2LinvMKK5', {
                 'LaTeX': r'$(\alpha)^{-1}_{2L}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('a3Cinv-MKK5', {
+            ('a3CinvMKK5', {
                 'LaTeX': r'$(\alpha)^{-1}_{3C}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('a4Cinv-Lambda', {
+            ('a4CinvLambda', {
                 'LaTeX': r'$(\alpha)^{-1}_{4C}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('a2Linv-Lambda', {
+            ('a2LinvLambda', {
                 'LaTeX': r'$(\alpha)^{-1}_{2L}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
-            ('a2Rinv-Lambda', {
+            ('a2RinvLambda', {
                 'LaTeX': r'$(\alpha)^{-1}_{3C}$',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
@@ -348,7 +348,7 @@ calcDict = OrderedDict([
             ('sin2ThW', {
                 'LaTeX': r'$\sin^2 \theta_W$',
                 'Marker': 'O',
-                'Unpack': ['LambdaMax', 'sin2ThW-Lambda', 'sin2ThW-MKK5', 'a1Yinv-MKK5', 'a2Linv-MKK5', 'a3Cinv-MKK5', 'a4Cinv-Lambda', 'a2Linv-Lambda', 'a2Rinv-Lambda'],
+                'Unpack': ['LambdaMax', 'sin2ThWLambda', 'sin2ThWMKK5', 'a1YinvMKK5', 'a2LinvMKK5', 'a3CinvMKK5', 'a4CinvLambda', 'a2LinvLambda', 'a2RinvLambda'],
                 'Calc': {'Type': 'ExternalCalc',
                           'Routine': 'weinbergAnalysis_v2',  # weinbergAnalysis
                           'Method': 'getWeinbergAngle',
