@@ -9,7 +9,7 @@ from pprint import pprint as pp
 FNULL = open(os.devnull, 'w')
 
 
-def getWeinbergAngle(dataDict, threadNumber='0', debug=True):
+def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
     '''
             Starts a Wolfram WolframLanguage Session and runs the code in /Documents/Wolfram Mathematica/pyMathTest.m
         with the parameters defined in dataDict.
@@ -38,11 +38,13 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=True):
             weinbergDict = json.load(jSonInFile)
         # sinWeinbergAngle = weinbergDict['sin2ThW']
     except Exception as e:
+        # print(delimitator)
+        print(str(e))
         weinbergDict = {}
         # sinWeinbergAngle = None
-    pp(weinbergDict)
+
     if debug:
-        print(weinbergDict)
+        print("Returning :", weinbergDict)
 
     return weinbergDict
 

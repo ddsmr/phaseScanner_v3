@@ -198,13 +198,14 @@ if __name__ == '__main__':
     #
     # nbofNone = 0
     # for pointID in psDict.keys():
-    #     if psDict[pointID]['sin2ThW'] is None:
+    #     if psDict[pointID]['a1YinvMKK5'] is None:
     #         # The None cases for the Weinberg Angles correspond to non-perturbative runnings, i.e. set the value to 0
-    #         print(pointID)
+    #         print(pointID, 'contains a nonValid coupling')
     #         nbofNone += 1
-    #         psDict[pointID]['sin2ThW'] = 0
-    # print('Nb of points with non-valid sin2ThW :', nbofNone)
+    #         psDict[pointID]['a1YinvMKK5'] = 0
+    # print('Nb of points with non-valid couplings :', nbofNone)
     # print(len(psDict))
+    # exit()
     # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
 
     modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'], colorMap=scanCard['colorMap'],

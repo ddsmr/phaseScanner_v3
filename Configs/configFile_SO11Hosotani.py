@@ -297,23 +297,24 @@ calcDict = OrderedDict([
             }),
 
             ('LambdaMax', {
-                'LaTeX': r'$\Lambda_\mathrm{Max}$',
+                'LaTeX': r'$\Lambda_\mathrm{Max} (\mathrm{GeV})  $',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {'Type': 'None'}
             }),
             ('sin2ThWLambda', {
-                'LaTeX': r'$\sin^2 \theta_W @ \Lambda$',
+                'LaTeX': r'$\sin^2 \theta_W ( \Lambda_{\mathrm{Max}}) $',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {
                                 'Type': 'None'
                                 }
             }),
             ('sin2ThWMKK5', {
-                'LaTeX': r'$\sin^2 \theta_W @ \mathrm{KK}_5 $',
+                'LaTeX': r'$\sin^2 \theta_W  (M_{\mathrm{KK}_5}) $',
                 'Calc': {'Type': 'Unpack'},
                 'Constraint': {
-                                'Type': 'None'
-                                }
+                    'Type': 'None',  # 'HardCutMore',
+                    'ToCheck': 0.2312
+                }
             }),
             ('a1YinvMKK5', {
                 'LaTeX': r'$(\alpha)^{-1}_{1Y}$',

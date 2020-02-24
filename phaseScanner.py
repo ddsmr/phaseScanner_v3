@@ -490,7 +490,7 @@ class phaseScannerModel:
                         printCentered(' Opening ' + jsonDict + ' ', fillerChar='-')
                         phaseSpaceDict = {**phaseSpaceDict, **tempDict}
                     except Exception as e:
-                        print(e)
+                        print('Exception occured at ', e)
                         printCentered('❎ Cannot open ' + jsonDict, color=Fore.RED, fillerChar='-')
 
         print()
@@ -509,12 +509,14 @@ class phaseScannerModel:
                     if attribute not in phaseSpaceDict[point].keys():
                         print(attribute, ' not present in', point)
                         pointsToRemove.append(point)
+                        break
 
                     # ### If it has all the attributes then check if they are non empty
                     elif (phaseSpaceDict[point][attribute] is None) and (attribute not in self.noneAttr):
                         # attribute!='ChiSquared'
-                        print(attribute)
+                        print('Removing point: ', point, " ", attribute, " not present")
                         pointsToRemove.append(point)
+                        break
 
         # exit()
         # Remove the points , using set to ensure they're no duplicates.
@@ -546,7 +548,7 @@ class phaseScannerModel:
         elif type(newID) == str:
             pointKey = newID
 
-        print(pointKey)
+        # print(pointKey)
         if calcOnly is not True:
             genValidPointOutDict = generatingEngine.runPoint(newParamsDict, threadNumber=threadNumber, debug=debug)
 
