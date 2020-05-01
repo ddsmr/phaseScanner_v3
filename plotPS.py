@@ -92,6 +92,7 @@ if __name__ == '__main__':
                         action="store_true")
     sepConstrMsg = 'Specify handle to plot the separate constraints indiviudally as opposed to a global chi squared.'
     parser.add_argument('--plotSepConstr', help=sepConstrMsg, action="store_true")
+    # parser.add_argument('--plotCard', help='Specify plot name for plot card. Will terminate script.', action="store_true")
 
     # ########################################################################################################
     argsPars = parser.parse_args()
@@ -204,12 +205,11 @@ if __name__ == '__main__':
     #         nbofNone += 1
     #         psDict[pointID]['a1YinvMKK5'] = 0
     # print('Nb of points with non-valid couplings :', nbofNone)
-    # print(len(psDict))
     # exit()
     # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
 
     modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'], colorMap=scanCard['colorMap'],
                            useChi2AsTest={'Enable': True, 'Chi2UpperBound': 20.52, 'TestStatistic': 'ChiSquared'},
-                           TeXAxis=teXAxisList, pltName=scanCard['pltName'])
+                           TeXAxis=teXAxisList, pltName=scanCard['pltName'], plotCard=scanCard)
     # modelPlotter.plotModel(psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom',
     # TeXAxis = [r'$\Delta\Delta\Delta$'])

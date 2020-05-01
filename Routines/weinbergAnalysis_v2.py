@@ -34,7 +34,7 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
         subprocess.call(runCMD, shell=True, cwd=targetDir)
 
     try:
-        with open(targetDir + '/weinbergAngleOutThreadNb-' + threadNumber + '.json', 'r') as jSonInFile:
+        with open(targetDir + 'weinbergAngleOutThreadNb-' + threadNumber + '.json', 'r') as jSonInFile:
             weinbergDict = json.load(jSonInFile)
         # sinWeinbergAngle = weinbergDict['sin2ThW']
     except Exception as e:

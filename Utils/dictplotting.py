@@ -4,6 +4,7 @@ import subprocess
 import matplotlib.pyplot as plt
 import numpy as np
 import math as math
+import json
 
 from matplotlib.pyplot import colorbar
 from Utils.printUtils import *
@@ -248,7 +249,8 @@ class dictPlotting():
                   pltName='',
                   plotSeparateConstr=[], separateConstrMarkers=['h'], defaultMarker='o',
                   exportFormatList=['png', 'pdf'],
-                  useChi2AsTest={'Enable': True, 'Chi2UpperBound': 11.0705, 'TestStatistic': 'ChiSquared'}
+                  useChi2AsTest={'Enable': True, 'Chi2UpperBound': 11.0705, 'TestStatistic': 'ChiSquared'},
+                  plotCard={}
                   ):
         '''
             Super duper function to plot whatever you want from the model.
@@ -501,14 +503,16 @@ class dictPlotting():
         spinner = Halo(text='Exporting plots in format : ' + Fore.RED + formatStr + Style.RESET_ALL, spinner='dots')
         spinner.start()
 
-        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, pltStr, exportFormatList=exportFormatList)
+        self._exportPlots(xAxisHandles, yAxisHandles, colorAxisHandles, pltStr, exportFormatList=exportFormatList,
+                          plotCard=plotCard)
         spinner.stop_and_persist(symbol=Fore.GREEN + '✓' + Style.RESET_ALL,
                                  text='Finished exporting.')
         plt.show()
 
         return returnDict, passAxisDict, failAxisDict
 
-    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, plotName, exportFormatList=['png', 'pdf']):
+    def _exportPlots(self, xAxisHandle, yAxisHandle, colorAxisHandle, plotName, exportFormatList=['png', 'pdf'],
+                    plotCard={}):
         '''
             Given a string handle for the xAxis, yAxis, and colorAxis, the function exports plots in the formats
             specified in the exportFormatList, default is .pdf
@@ -545,6 +549,9 @@ class dictPlotting():
             plotStr = resultsDirPlots + plotName + '/' + plotName + "." + formatType
             plt.savefig(plotStr)
 
+        # Save the .json file containing the plt parameters
+        with open(resultsDirPlots + plotName + '/' + plotName + ".json", 'w') as jsonOut:
+            json.dump(plotCard, jsonOut)
         return None
 
     # ######## Write TeX stuff ###########
