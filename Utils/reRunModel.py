@@ -97,4 +97,7 @@ if __name__ == '__main__':
             del psDict[pointID]
 
     newModel.reRunMultiThread(psDict, numbOfCores=scanCard['numberOfCores'], debug=scanCard['debug'],
-                              getCalcOnly=scanCard['getCalcOnly'], rerunStatus=rerunStatus, ignoreExternal=False)
+                              getCalcOnly=scanCard['getCalcOnly'], rerunStatus=rerunStatus,
+                              # ignoreExternal=False
+                              ignoreInternal=True, ignoreExternal=True,
+                              )

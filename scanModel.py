@@ -135,8 +135,8 @@ if __name__ == '__main__':
 
     if scanCard['runExplore'] is True:
         psDict = newModel.runMultiThreadExplore(numberOfPoints=scanCard['numberOfPointsExplore'],
-                                                nbOfThreads=numbOfCores, debug=debug, ignoreExternal=False,
-                                                ignoreInternal=False)
+                                                nbOfThreads=numbOfCores, debug=debug, ignoreExternal=True,
+                                                ignoreInternal=True)
 
     if scanCard['runFocused'] is True and scanCard['resumeGenRun'] is False:
         specFile = ''
@@ -171,4 +171,4 @@ if __name__ == '__main__':
                                           ignoreExternal=True)
 
     elif scanCard['resumeGenRun'] is True:
-        newModel.resumeGenRun(ignoreExternal=True, ignoreInternal=False)
+        newModel.resumeGenRun(ignoreExternal=True, ignoreInternal=True)

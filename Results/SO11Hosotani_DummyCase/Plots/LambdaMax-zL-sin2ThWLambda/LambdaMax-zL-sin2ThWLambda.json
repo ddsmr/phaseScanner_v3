@@ -1,0 +1,1 @@
+{"modelName": "SO11Hosotani", "modelCase": "DummyCase", "xAxis": "LambdaMax", "yAxis": "", "colorAxis": "sin2ThWLambda", "oRF": false, "targetResDir": "ReRun_May2020_GenNbs1/", "colorMap": "RdYlBu", "filterByAttrs": "", "xAxisLim": null, "yAxisLim": null, "pltName": "", "TeXlabels": "", "pushToGit": false, "modelAttributes": false, "plotSepConstr": false}

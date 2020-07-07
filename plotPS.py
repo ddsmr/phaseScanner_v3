@@ -185,8 +185,12 @@ if __name__ == '__main__':
 
     if scanCard['filterByAttrs'] is not '':
 
+        print(len(psDict))
         cutDict = makeCutDictFromStr(scanCard['filterByAttrs'])
+        pp(cutDict)
         psDict = newModel.filterDictByCutDict(psDict, cutDict)
+        print(len(psDict))
+        # exit()
 
     modelPlotter = dictPlotting(newModel)
     # print(newModel.allDicts.keys())
@@ -208,8 +212,30 @@ if __name__ == '__main__':
     # exit()
     # newModel.exportPSDictCSV(psDict, ['Higgs', 'mTop', 'ThetaHiggs', 'TopYukawa', 'HiggsTrilin'])
 
-    modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'], colorMap=scanCard['colorMap'],
+    retDict, pA, fA = modelPlotter.plotModel(psDict, plotDict['xAxis'], plotDict['yAxis'], plotDict['colorAxis'],
+                           colorMap=scanCard['colorMap'],
                            useChi2AsTest={'Enable': True, 'Chi2UpperBound': 20.52, 'TestStatistic': 'ChiSquared'},
                            TeXAxis=teXAxisList, pltName=scanCard['pltName'], plotCard=scanCard)
+
+    ################################################
+    paramList = list(newModel.params.keys())
+    exportDict = {'PointDict': {}, 'ParamsList': paramList}
+
+    for pfStirng in ['Failed', 'Passed']:
+        for pointID in retDict[pfStirng].keys():
+            valList = []
+            chi2Val = retDict[pfStirng][pointID]['ChiSquared']
+            for param in paramList:
+                valList.append(retDict[pfStirng][pointID][param])
+            exportDict['PointDict'][pointID] = {'Chi2': chi2Val, 'ParamVec': valList}
+
+    print(len(exportDict))
+    print(exportDict['PointDict']['Point T4-488-01102019090448'])
+    print(exportDict['ParamsList'])
+
+    import json
+
+    with open('expDict_wParams.json', 'w') as jsonOut:
+        json.dump(exportDict, jsonOut)
     # modelPlotter.plotModel(psDict , 'tanBeta', [['tanBeta', 'Lambda'],  'tanBeta * Lambda'], 'mBottom',
     # TeXAxis = [r'$\Delta\Delta\Delta$'])

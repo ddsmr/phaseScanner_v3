@@ -9,7 +9,7 @@ from pprint import pprint as pp
 FNULL = open(os.devnull, 'w')
 
 
-def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
+def getWeinbergAngle(dataDict, threadNumber='0', debug=True):
     '''
             Starts a Wolfram WolframLanguage Session and runs the code in /Documents/Wolfram Mathematica/pyMathTest.m
         with the parameters defined in dataDict.
@@ -28,6 +28,7 @@ def getWeinbergAngle(dataDict, threadNumber='0', debug=False):
         json.dump(dataDict, jsonParamFile)
 
     runCMD = 'wolframscript -script weinbergAnalysis.m ' + ' ThreadNb-' + threadNumber  # + ' ThreadNb-' + threadNumber
+    print(debug)
     if debug is False:
         subprocess.call(runCMD, shell=True, cwd=targetDir, stdout=FNULL, stderr=subprocess.STDOUT)
     else:

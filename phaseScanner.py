@@ -1008,6 +1008,7 @@ class phaseScannerModel:
                 toVet = pointAttr[restrictingParam]
 
             # ## Vetting procedure ####
+            # print(restrictingParamMax, toVet, restrictingParamMin)
             if restrictingParamMax > toVet > restrictingParamMin:
                 vettedDict[pointKey] = pointAttr
 

@@ -234,7 +234,8 @@ attrDict = {
                     'Type': 'None'
                 }
 
-            },
+            }
+            ,
             'CrossSect': {
                 'LaTeX': r'''$\sigma(hh) (fb)$''',
                 'Constraint': {

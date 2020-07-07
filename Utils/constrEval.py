@@ -237,7 +237,7 @@ class constrEval:
                     elif (constraintType == 'HardCutLess'):
 
                         constraintHCvalue = auxDict['ToCheck']
-                        constrVal = float( phaseSpacePointDict[modelAttribute] )
+                        constrVal = float(phaseSpacePointDict[modelAttribute])
 
                         if constrVal < constraintHCvalue:
                             passCut = passCut and True
@@ -246,9 +246,8 @@ class constrEval:
 
                     elif (constraintType == 'HardCutMore'):
 
-
                         constraintHCvalue = auxDict['ToCheck']
-                        constrVal = float ( phaseSpacePointDict[modelAttribute] )
+                        constrVal = float(phaseSpacePointDict[modelAttribute])
 
                         if constrVal > constraintHCvalue:
                             passCut = passCut and True
